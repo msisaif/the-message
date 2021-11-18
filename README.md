@@ -15,7 +15,7 @@
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/msisaif/book-store.git
+$ git clone https://github.com/msisaif/the-message.git
 
 # go into app's directory
 $ cd book-store
@@ -36,7 +36,7 @@ Then in file ".env" setup database configuration:
 * DB_CONNECTION=mysql
 * DB_HOST=127.0.0.1
 * DB_PORT=3306
-* DB_DATABASE=book_store
+* DB_DATABASE=the_message
 * DB_USERNAME=root
 * DB_PASSWORD=
 
