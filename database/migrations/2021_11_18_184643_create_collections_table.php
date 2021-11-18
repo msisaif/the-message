@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecitersTable extends Migration
+class CreateCollectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateRecitersTable extends Migration
      */
     public function up()
     {
-        Schema::create('reciters', function (Blueprint $table) {
+        Schema::create('collections', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('user_id');
+            $table->string('arabic')->nullable();
+            $table->string('bengali')->nullable();
+            $table->string('english')->nullable();
+            $table->unsignedBigInteger('parent_id')->default(0);
+            $table->unsignedTinyInteger('type')->comment('1=Book, 2=Chapter');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +32,6 @@ class CreateRecitersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reciters');
+        Schema::dropIfExists('collections');
     }
 }
