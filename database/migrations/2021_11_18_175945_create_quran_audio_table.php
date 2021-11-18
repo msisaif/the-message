@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTranslationsTable extends Migration
+class CreateQuranAudioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('translations', function (Blueprint $table) {
+        Schema::create('quran_audio', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedTinyInteger('tafsir_id');
+            $table->unsignedBigInteger('reciter_id');
             $table->unsignedSmallInteger('ayah_number');
-            $table->text('text');
+            $table->string('url');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreateTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('translations');
+        Schema::dropIfExists('quran_audio');
     }
 }
