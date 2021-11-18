@@ -18,7 +18,7 @@
 $ git clone https://github.com/msisaif/the-message.git
 
 # go into app's directory
-$ cd book-store
+$ cd the-message
 
 # install app's dependencies
 $ composer install
