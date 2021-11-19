@@ -1,14 +1,14 @@
 <template>
-    <Head title="User" />
+    <Head title="Admin" />
 
     <app-layout>
         <template #header>
-            User List
+            Admin List
         </template>
 
-        <add-new-button :href="route('users.create')" />
+        <add-new-button :href="route('admins.create')" />
 
-        <data-table :collections="users" :filters="filters" :dateFilter="true">
+        <data-table :collections="admins" :filters="filters" :dateFilter="true">
             <template #head>
                 <th class="py-3 px-2 text-left">ID</th>
                 <th class="py-3 px-2 text-left">Name</th>
@@ -16,15 +16,15 @@
                 <th class="py-3 px-2 text-left">Phone</th>
                 <th class="py-3 px-2 text-center">Action</th>
             </template>
-            <template #default="{ item: user }">
-                <td class="py-3 px-2 text-left">{{ user.id }}</td>
-                <td class="py-3 px-2 text-left">{{ user.name }}</td>
-                <td class="py-3 px-2 text-left">{{ user.email }}</td>
-                <td class="py-3 px-2 text-left">{{ user.phone }}</td>
+            <template #default="{ item: admin }">
+                <td class="py-3 px-2 text-left">{{ admin.id }}</td>
+                <td class="py-3 px-2 text-left">{{ admin.name }}</td>
+                <td class="py-3 px-2 text-left">{{ admin.email }}</td>
+                <td class="py-3 px-2 text-left">{{ admin.phone }}</td>
                 <td class="py-2.5 px-2">
                     <div class="flex justify-center items-center gap-1 md:gap-2">
-                        <action-button-show :href="route('users.show', user.id)" />
-                        <action-button-edit :href="route('users.edit', user.id)" />
+                        <action-button-show :href="route('admins.show', admin.id)" />
+                        <action-button-edit :href="route('admins.edit', admin.id)" />
                     </div>
                 </td>
             </template>
@@ -51,7 +51,7 @@ export default {
         AddNewButton,
     },
     props: {
-        users: { type: Object, default: {} },
+        admins: { type: Object, default: {} },
         filters: { type: Object, default: {} },
     },
 };

@@ -25,6 +25,16 @@ class User extends Authenticatable
         return (Self::$type)[$this->type] ?? '';
     }
 
+    public function scopeOnlyAdmin($query)
+    {
+        return $query->where('type', 1);
+    }
+
+    public function scopeOnlyUser($query)
+    {
+        return $query->where('type', 2);
+    }
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -34,7 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['email_verified'];
+    protected $appends = [
+        'email_verified',
+    ];
 
     public function getEmailVerifiedAttribute()
     {

@@ -21,11 +21,11 @@
             </div>
             <div class="w-full max-w-sm flex justify-end items-center gap-1">
                 <!-- <label class="w-12 text-right">From</label> -->
-                <input :readonly="valueDateFilter" @input="searchHandler" v-model="dateFrom" :max="this.dateTo" type="date" class="block w-full max-w-xs rounded-md shadow-sm focus:outline-none focus:ring-0" />
+                <input v-show="! valueDateFilter" @input="searchHandler" v-model="dateFrom" :max="this.dateTo" type="date" class="block w-full max-w-xs rounded-md shadow-sm focus:outline-none focus:ring-0" />
             </div>
             <div class="w-full max-w-sm flex justify-end items-center gap-1">
                 <!-- <label class="w-12 text-right">To</label> -->
-                <input :readonly="valueDateFilter" @input="searchHandler" v-model="dateTo" :min="this.dateFrom" type="date" class="block w-full max-w-xs rounded-md shadow-sm focus:outline-none focus:ring-0" />
+                <input v-show="! valueDateFilter" @input="searchHandler" v-model="dateTo" :min="this.dateFrom" type="date" class="block w-full max-w-xs rounded-md shadow-sm focus:outline-none focus:ring-0" />
             </div>
         </div>
 

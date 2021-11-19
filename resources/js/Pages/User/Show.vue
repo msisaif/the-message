@@ -18,8 +18,6 @@
 
                 <show-table-row heading="Phone">{{ user.phone }}</show-table-row>
 
-                <show-table-row heading="Type">{{ user.typeName }}</show-table-row>
-
                 <show-table-row heading="Action">
                     <div class="flex justify-start items-center gap-1 md:gap-2">
                         <action-button-edit :href="route('users.edit', user.id)" />

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\DateFilter;
@@ -10,78 +11,77 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     use DateFilter;
 
     public function index()
     {
-        $users = $this->setQuery(User::query())
+        $admins = $this->setQuery(User::query())
             ->search()->filter()
             ->dateFilter()
             ->getQuery()
-            ->onlyUser()
+            ->onlyAdmin()
             ->latest();
 
-        return Inertia::render('User/Index', [
-            'users' => UserResource::collection($users->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+        return Inertia::render('Admin/Index', [
+            'admins' => UserResource::collection($admins->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('User/Create', [
-            'user'      => new User(),
-            'userType'  => User::$type,
+        return Inertia::render('Admin/Create', [
+            'admin' => new User(),
         ]);
     }
 
     public function store(Request $request)
     {
-        $user = User::create($this->validateData($request) + [
+        $admin = User::create($this->validateData($request) + [
             'password'  => Hash::make(123456),
-            'type'      => 2,
+            'type'      => 1,
         ]);
 
         return redirect()
-            ->route('users.show', $user->id)
+            ->route('admins.show', $admin->id)
             ->with('status', 'The record has been added successfully.');
     }
 
-    public function show(User $user)
+    public function show(User $admin)
     {
         UserResource::withoutWrapping();
 
-        return Inertia::render('User/Show', [
-            'user' => new UserResource($user),
+        return Inertia::render('Admin/Show', [
+            'admin' => new UserResource($admin),
         ]);
     }
 
-    public function edit(User $user)
+    public function edit(User $admin)
     {
-        return Inertia::render('User/Edit', [
-            'user'      => $user,
-            'userType'  => User::$type,
+        return Inertia::render('Admin/Edit', [
+            'admin' => $admin,
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $admin)
     {
-        $user->update($this->validateData($request, $user->id) + [
-            'type' => 2,
+        $admin->update($this->validateData($request, $admin->id) + [
+            'type' => 1,
         ]);
 
         return redirect()
-            ->route('users.show', $user->id)
+            ->route('admins.show', $admin->id)
             ->with('status', 'The record has been update successfully.');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $admin)
     {
-        $user->delete();
+        $admin->delete();
 
-        return back()
+        return redirect()
+            ->route('admins.index')
             ->with('status', 'The record has been delete successfully.');
     }
 
@@ -90,8 +90,10 @@ class UserController extends Controller
         $this->getQuery()
             ->when(request()->search, function ($query, $search) {
                 $query->where(function ($query) use ($search) {
-                    $query->where('name', 'regexp', $search)
-                        ->orWhere('email', 'regexp', $search);
+                    $query->where('id', $search)
+                        ->orWhere('name', 'regexp', $search)
+                        ->orWhere('email', 'regexp', $search)
+                        ->orWhere('phone', 'regexp', $search);
                 });
             });
 
@@ -111,7 +113,7 @@ class UserController extends Controller
             //
         ];
     }
-    
+
     private function validateData($request, $id = '')
     {
         return $request->validate([
@@ -132,4 +134,5 @@ class UserController extends Controller
             ],
         ]);
     }
+
 }
