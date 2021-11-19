@@ -3,6 +3,7 @@
         <nav-link :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</nav-link>
         <nav-link :href="route('admins.index')" :active="route().current('admins.*')">Admins</nav-link>
         <nav-link :href="route('users.index')" :active="route().current('users.*')">Users</nav-link>
+        <nav-link :href="route('posts.index')" :active="route().current('posts.*')">Posts</nav-link>
     </div>
 </template>
 

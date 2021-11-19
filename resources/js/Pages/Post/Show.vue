@@ -1,33 +1,41 @@
 <template>
-    <Head title="User" />
+    <Head title="Post" />
 
     <app-layout>
         <template #header>
-            {{ user.name }}
+            {{ post.name }}
         </template>
 
-        <add-new-button :href="route('users.create')" class="mb-2" />
+        <add-new-button :href="route('posts.create')" class="mb-2" />
         
         <div class="overflow-auto bg-white border">
             <table class="table-auto">
-                <show-table-row heading="ID">{{ user.id }}</show-table-row>
+                <show-table-row heading="ID">{{ post.id }}</show-table-row>
 
-                <show-table-row heading="Name">{{ user.name }}</show-table-row>
+                <show-table-row heading="Author">
+                    <Link :href="route('users.show', post.userId)" class="text-blue-600 hover:underline">
+                        {{ post.userName }}
+                    </Link>
+                </show-table-row>
 
-                <show-table-row heading="Email">{{ user.email }}</show-table-row>
+                <show-table-row heading="Title">{{ post.title }}</show-table-row>
 
-                <show-table-row heading="Phone">{{ user.phone }}</show-table-row>
+                <show-table-row heading="Description">{{ post.description }}</show-table-row>
+
+                <show-table-row heading="Body">
+                    <div class="whitespace-pre-wrap">{{ post.body }}</div>
+                </show-table-row>
 
                 <show-table-row heading="Action">
                     <div class="flex justify-start items-center gap-1 md:gap-2">
-                        <action-button-edit :href="route('users.edit', user.id)" />
+                        <action-button-edit :href="route('posts.edit', post.id)" />
                     </div>
                 </show-table-row>
             </table>
         </div>
 
         <div class="w-full mt-4 flex">
-            <go-to-list :href="route('users.index')"/>
+            <go-to-list :href="route('posts.index')"/>
         </div>
     </app-layout>
 </template>
@@ -51,7 +59,7 @@ export default {
         AddNewButton,
     },
     props: {
-        user: { type: Object, default: {} },
+        post: { type: Object, default: {} },
     },
 };
 </script>

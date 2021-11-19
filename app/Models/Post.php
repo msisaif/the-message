@@ -11,4 +11,23 @@ class Post extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public static function getTypes()
+    {
+        return [
+            1 => 'Article',
+        ];
+    }
+
+    public function getValueOfTypeAttribute()
+    {
+        $types = self::getTypes();
+
+        return $types[$this->type];
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
