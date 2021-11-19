@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     public function getTypeNameAttribute()
     {
-        return (Self::$type)[$this->type] ?? '';
+        return (self::$type)[$this->type] ?? '';
     }
 
     public function scopeOnlyAdmin($query)
