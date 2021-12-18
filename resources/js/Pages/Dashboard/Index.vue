@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/App.vue";
+import AppLayout from "@/Layouts/Dashboard/App.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import DashboardCard from "@/Components/DashboardCard.vue";
 

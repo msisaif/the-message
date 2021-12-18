@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/App.vue";
+import AppLayout from "@/Layouts/Dashboard/App.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import DataTable from "@/Components/DataTable.vue";
 import ActionButtonShow from "@/Components/ActionButtonShow.vue";
