@@ -2,9 +2,7 @@
     <Head title="User" />
 
     <app-layout>
-        <template #header>
-            User List
-        </template>
+        <template #header> User List </template>
 
         <add-new-button :href="route('users.create')" />
 
@@ -22,9 +20,15 @@
                 <td class="py-3 px-2 text-left">{{ user.email }}</td>
                 <td class="py-3 px-2 text-left">{{ user.phone }}</td>
                 <td class="py-2.5 px-2">
-                    <div class="flex justify-center items-center gap-1 md:gap-2">
-                        <action-button-show :href="route('users.show', user.id)" />
-                        <action-button-edit :href="route('users.edit', user.id)" />
+                    <div
+                        class="flex justify-center items-center gap-1 md:gap-2"
+                    >
+                        <action-button-show
+                            :href="route('users.show', user.id)"
+                        />
+                        <action-button-edit
+                            :href="route('users.edit', user.id)"
+                        />
                     </div>
                 </td>
             </template>
@@ -38,7 +42,7 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 import DataTable from "@/Components/DataTable.vue";
 import ActionButtonShow from "@/Components/ActionButtonShow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
-import AddNewButton from '@/Components/AddNewButton.vue';
+import AddNewButton from "@/Components/AddNewButton.vue";
 
 export default {
     components: {

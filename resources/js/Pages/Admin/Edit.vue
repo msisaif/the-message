@@ -2,16 +2,14 @@
     <Head title="Admin" />
 
     <app-layout>
-        <template #header>
-            Edit Admin
-        </template>
-        
+        <template #header> Edit Admin </template>
+
         <form-component :data="{ admin }" module-action="update" />
     </app-layout>
 </template>
 
 <script>
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/App.vue";
 import FormComponent from "./Form.vue";
 
@@ -25,7 +23,7 @@ export default {
     props: {
         admin: {
             type: Object,
-            default: {}
+            default: {},
         },
     },
 };
