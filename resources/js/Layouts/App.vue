@@ -1,79 +1,37 @@
 <template>
     <div class="min-h-screen bg-gray-100">
-        <header class="bg-white w-full shadow z-40 px-2">
-            <div class="flex justify-between items-center h-16">
-                <!-- Hamburger -->
-                <div class="flex items-center">
-                    <button
-                        @click="
-                            showingNavigationDropdown =
-                                !showingNavigationDropdown
-                        "
-                        class="
-                            inline-flex
-                            items-center
-                            justify-center
-                            p-2
-                            rounded-md
-                            text-gray-600
-                            hover:text-gray-700 hover:bg-gray-200
-                            focus:outline-none
-                            focus:bg-gray-200
-                            focus:text-gray-700
-                            transition
-                            duration-150
-                            ease-in-out
-                        "
-                    >
-                        <svg
-                            class="h-6 w-6"
-                            stroke="currentColor"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                :class="{
-                                    hidden: showingNavigationDropdown,
-                                    'inline-flex': !showingNavigationDropdown,
-                                }"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                            <path
-                                :class="{
-                                    hidden: !showingNavigationDropdown,
-                                    'inline-flex': showingNavigationDropdown,
-                                }"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Page Heading -->
-                <h3
-                    class="
-                        px-2
-                        text-blue-800 text-xs
-                        sm:text-sm
-                        h-16
-                        overflow-hidden
-                        flex
-                        justify-center
-                        items-center
-                    "
-                >
-                    <slot name="header" />
-                </h3>
-
+        <header class="bg-white w-full z-40">
+            <div
+                class="
+                    container
+                    mx-auto
+                    h-20
+                    py-4
+                    flex
+                    justify-between
+                    items-center
+                "
+            >
+                <Link href="/" class="h-full">
+                    <application-logo class="h-full" />
+                </Link>
+                <bismillahir-rahmanir-rahim class="h-full" />
                 <div class="min-w-max flex items-center">
                     <!-- Settings Dropdown -->
-                    <div class="ml-3 relative">
+                    <div v-if="!$page.props.auth.user">
+                        <Link
+                            :href="route('login')"
+                            class="
+                                px-6
+                                py-1.5
+                                border border-green-600
+                                text-green-600
+                                hover:bg-green-600 hover:text-white
+                            "
+                            >Login</Link
+                        >
+                    </div>
+                    <div v-else class="relative">
                         <dropdown align="right" width="48">
                             <template #trigger>
                                 <span class="inline-flex rounded-md">
@@ -109,9 +67,12 @@
                                                 clip-rule="evenodd"
                                             />
                                         </svg>
-                                        <span class="hidden sm:block">{{
-                                            $page.props.auth.user.name
-                                        }}</span>
+                                        <span
+                                            class="hidden sm:block"
+                                            v-if="$page.props.auth.user"
+                                        >
+                                            {{ $page.props.auth.user.name }}
+                                        </span>
                                         <svg
                                             class="h-4 w-4"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -142,6 +103,57 @@
                 </div>
             </div>
         </header>
+        <div class="flex justify-between items-center h-16">
+            <!-- Hamburger -->
+            <div class="flex items-center">
+                <button
+                    @click="
+                        showingNavigationDropdown = !showingNavigationDropdown
+                    "
+                    class="
+                        inline-flex
+                        items-center
+                        justify-center
+                        p-2
+                        rounded-md
+                        text-gray-600
+                        hover:text-gray-700 hover:bg-gray-200
+                        focus:outline-none focus:bg-gray-200 focus:text-gray-700
+                        transition
+                        duration-150
+                        ease-in-out
+                    "
+                >
+                    <svg
+                        class="h-6 w-6"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            :class="{
+                                hidden: showingNavigationDropdown,
+                                'inline-flex': !showingNavigationDropdown,
+                            }"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                        <path
+                            :class="{
+                                hidden: !showingNavigationDropdown,
+                                'inline-flex': showingNavigationDropdown,
+                            }"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
+            </div>
+        </div>
 
         <div class="w-full flex z-30 overflow-hidden">
             <nav
@@ -186,7 +198,8 @@ import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
-import Navigation from "../Dashboard/Navigation.vue";
+import Navigation from "./Navigation.vue";
+import BismillahirRahmanirRahim from "@/Components/BismillahirRahmanirRahim.vue";
 
 export default {
     components: {
@@ -196,6 +209,7 @@ export default {
         NavLink,
         Link,
         Navigation,
+        BismillahirRahmanirRahim,
     },
 
     data() {

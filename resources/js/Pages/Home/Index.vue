@@ -21,10 +21,14 @@
 </template>
 
 <script>
+import AppLayout from "@/Layouts/App.vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import BismillahirRahmanirRahim from "@/Components/BismillahirRahmanirRahim.vue";
+
 export default {
+    layout: AppLayout,
     components: {
+        AppLayout,
         ApplicationLogo,
         BismillahirRahmanirRahim,
     },

@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/Dashboard/App.vue";
+import AppLayout from "@/Layouts/App.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import ShowTableRow from "@/Components/ShowTableRow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
