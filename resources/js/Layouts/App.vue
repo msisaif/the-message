@@ -167,7 +167,7 @@
                             absolute
                             top-full
                             ring-0
-                            md:right-full
+                            left-0
                             w-full
                             md:max-w-max
                             overflow-hidden
@@ -193,10 +193,11 @@
                         class="
                             hidden
                             md:flex
-                            justify-between
+                            justify-center
+                            md:justify-between
                             items-center
                             w-full
-                            px-2
+                            px-1
                             md:px-4
                             py-1
                             border
@@ -207,7 +208,7 @@
                     >
                         <span>Home</span>
                         <svg
-                            class="h-4 w-4 md:h-6 md:w-6"
+                            class="h-4 w-4 md:h-6 md:w-6 hidden md:block"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
@@ -223,10 +224,11 @@
                         :href="route('quran.index')"
                         class="
                             flex
-                            justify-between
+                            justify-center
+                            md:justify-between
                             items-center
                             w-full
-                            px-2
+                            px-1
                             md:px-4
                             py-1
                             border
@@ -237,7 +239,7 @@
                     >
                         <span>Al-Quran</span>
                         <svg
-                            class="h-4 w-4 md:h-6 md:w-6"
+                            class="h-4 w-4 md:h-6 md:w-6 hidden md:block"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
@@ -253,10 +255,11 @@
                         :href="route('hadith.index')"
                         class="
                             flex
-                            justify-between
+                            justify-center
+                            md:justify-between
                             items-center
                             w-full
-                            px-2
+                            px-1
                             md:px-4
                             py-1
                             border
@@ -267,7 +270,7 @@
                     >
                         <span>Hadith</span>
                         <svg
-                            class="h-4 w-4 md:h-6 md:w-6"
+                            class="h-4 w-4 md:h-6 md:w-6 hidden md:block"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
@@ -283,10 +286,11 @@
                         :href="route('article.index')"
                         class="
                             flex
-                            justify-between
+                            justify-center
+                            md:justify-between
                             items-center
                             w-full
-                            px-2
+                            px-1
                             md:px-4
                             py-1
                             border
@@ -297,7 +301,7 @@
                     >
                         <span>Article</span>
                         <svg
-                            class="h-4 w-4 md:h-6 md:w-6"
+                            class="h-4 w-4 md:h-6 md:w-6 hidden md:block"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
@@ -313,10 +317,11 @@
                         :href="route('kids-zone.index')"
                         class="
                             flex
-                            justify-between
+                            justify-center
+                            md:justify-between
                             items-center
                             w-full
-                            px-2
+                            px-1
                             md:px-4
                             py-1
                             border
@@ -327,7 +332,7 @@
                     >
                         <span>Kids Zone</span>
                         <svg
-                            class="h-4 w-4 md:h-6 md:w-6"
+                            class="h-4 w-4 md:h-6 md:w-6 hidden md:block"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
