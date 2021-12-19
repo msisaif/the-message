@@ -1,12 +1,14 @@
 <template>
     <div class="min-h-screen bg-gray-100">
-        <header class="bg-white w-full z-40">
+        <header class="bg-white w-full p-2 z-40">
             <div
                 class="
-                    container
+                    w-full
+                    max-w-6xl
                     mx-auto
-                    h-20
-                    py-4
+                    h-12
+                    md:h-16
+                    py-2
                     flex
                     justify-between
                     items-center
@@ -102,93 +104,249 @@
                     </div>
                 </div>
             </div>
-        </header>
-        <div class="flex justify-between items-center h-16">
-            <!-- Hamburger -->
-            <div class="flex items-center">
-                <button
-                    @click="
-                        showingNavigationDropdown = !showingNavigationDropdown
-                    "
-                    class="
-                        inline-flex
-                        items-center
-                        justify-center
-                        p-2
-                        rounded-md
-                        text-gray-600
-                        hover:text-gray-700 hover:bg-gray-200
-                        focus:outline-none focus:bg-gray-200 focus:text-gray-700
-                        transition
-                        duration-150
-                        ease-in-out
-                    "
-                >
-                    <svg
-                        class="h-6 w-6"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            :class="{
-                                hidden: showingNavigationDropdown,
-                                'inline-flex': !showingNavigationDropdown,
-                            }"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"
-                        />
-                        <path
-                            :class="{
-                                hidden: !showingNavigationDropdown,
-                                'inline-flex': showingNavigationDropdown,
-                            }"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12"
-                        />
-                    </svg>
-                </button>
-            </div>
-        </div>
 
-        <div class="w-full flex z-30 overflow-hidden">
             <nav
                 class="
-                    bg-white
-                    shadow
                     w-full
-                    sm:max-w-max
-                    fixed
-                    sm:static
-                    top-16
-                    left-0
-                    overflow-hidden
-                    z-30
+                    max-w-6xl
+                    mx-auto
+                    flex
+                    items-center
+                    justify-between
+                    relative
+                    gap-2
                 "
             >
-                <!-- Navigation Menu -->
-                <div
-                    :class="{
-                        'block sm:hidden': showingNavigationDropdown,
-                        'hidden sm:block': !showingNavigationDropdown,
-                    }"
-                    class="h-screen -mt-16 pt-16 overflow-auto"
-                >
-                    <navigation />
+                <div class="flex items-center">
+                    <!-- Hamburger -->
+                    <button
+                        @click="
+                            showingNavigationDropdown =
+                                !showingNavigationDropdown
+                        "
+                        class="
+                            inline-flex
+                            items-center
+                            justify-center
+                            text-gray-600
+                            hover:text-gray-700
+                            focus:outline-none
+                        "
+                    >
+                        <svg
+                            class="w-6 h-6 md:w-8 md:h-8"
+                            stroke="currentColor"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                :class="{
+                                    hidden: showingNavigationDropdown,
+                                    'inline-flex': !showingNavigationDropdown,
+                                }"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                            <path
+                                :class="{
+                                    hidden: !showingNavigationDropdown,
+                                    'inline-flex': showingNavigationDropdown,
+                                }"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="
+                            absolute
+                            top-full
+                            ring-0
+                            md:right-full
+                            w-full
+                            md:max-w-max
+                            overflow-hidden
+                            z-30
+                            py-2
+                        "
+                    >
+                        <!-- Navigation Menu -->
+                        <div
+                            class="overflow-auto bg-white shadow"
+                            :class="{
+                                block: showingNavigationDropdown,
+                                hidden: !showingNavigationDropdown,
+                            }"
+                        >
+                            <navigation />
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex items-center gap-1 md:gap-2">
+                    <Link
+                        href="/"
+                        class="
+                            hidden
+                            md:flex
+                            justify-between
+                            items-center
+                            w-full
+                            px-2
+                            md:px-4
+                            py-1
+                            border
+                            rounded
+                            text-xs
+                            md:text-base
+                        "
+                    >
+                        <span>Home</span>
+                        <svg
+                            class="h-4 w-4 md:h-6 md:w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </Link>
+                    <Link
+                        :href="route('quran.index')"
+                        class="
+                            flex
+                            justify-between
+                            items-center
+                            w-full
+                            px-2
+                            md:px-4
+                            py-1
+                            border
+                            rounded
+                            text-xs
+                            md:text-base
+                        "
+                    >
+                        <span>Al-Quran</span>
+                        <svg
+                            class="h-4 w-4 md:h-6 md:w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </Link>
+                    <Link
+                        :href="route('hadith.index')"
+                        class="
+                            flex
+                            justify-between
+                            items-center
+                            w-full
+                            px-2
+                            md:px-4
+                            py-1
+                            border
+                            rounded
+                            text-xs
+                            md:text-base
+                        "
+                    >
+                        <span>Hadith</span>
+                        <svg
+                            class="h-4 w-4 md:h-6 md:w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </Link>
+                    <Link
+                        :href="route('article.index')"
+                        class="
+                            flex
+                            justify-between
+                            items-center
+                            w-full
+                            px-2
+                            md:px-4
+                            py-1
+                            border
+                            rounded
+                            text-xs
+                            md:text-base
+                        "
+                    >
+                        <span>Article</span>
+                        <svg
+                            class="h-4 w-4 md:h-6 md:w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </Link>
+                    <Link
+                        :href="route('kids-zone.index')"
+                        class="
+                            flex
+                            justify-between
+                            items-center
+                            w-full
+                            px-2
+                            md:px-4
+                            py-1
+                            border
+                            rounded
+                            text-xs
+                            md:text-base
+                        "
+                    >
+                        <span>Kids Zone</span>
+                        <svg
+                            class="h-4 w-4 md:h-6 md:w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </Link>
                 </div>
             </nav>
+        </header>
 
+        <main class="w-full mx-auto max-w-6xl overflow-hidden">
             <!-- Page Content -->
-            <main class="w-full h-screen -mt-16 pt-16 overflow-hidden">
-                <div class="h-full p-2 sm:p-4 overflow-auto">
-                    <slot />
-                </div>
-            </main>
-        </div>
+            <slot />
+        </main>
     </div>
 </template>
 

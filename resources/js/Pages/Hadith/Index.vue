@@ -1,5 +1,5 @@
 <template>
-    <h1 class="mt-10 text-2xl md:text-5xl text-gray-600 text-center">Home</h1>
+    <h1 class="mt-10 text-2xl md:text-5xl text-gray-600 text-center">Hadith</h1>
 </template>
 
 <script>
