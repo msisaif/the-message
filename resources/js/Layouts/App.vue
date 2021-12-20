@@ -352,6 +352,12 @@
             <!-- Page Content -->
             <slot />
         </main>
+
+        <footer>
+            <div class="bg-brand-dark text-white py-8 mt-10">
+                <p class="text-center">&copy; 2021 - 2022</p>
+            </div>
+        </footer>
     </div>
 </template>
 
