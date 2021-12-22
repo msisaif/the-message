@@ -17,7 +17,7 @@
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased overflow-y-scroll">
+    <body class="font-sans antialiased overflow-y-scroll bg-brand-light">
         @inertia
     </body>
 </html>
