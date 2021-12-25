@@ -3,7 +3,7 @@
         <div
             class="
                 w-full
-                max-w-6xl
+                max-w-content
                 mx-auto
                 h-12
                 md:h-16
@@ -109,7 +109,7 @@
         <nav
             class="
                 w-full
-                max-w-6xl
+                max-w-content
                 mx-auto
                 flex
                 items-center

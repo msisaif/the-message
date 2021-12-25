@@ -26,6 +26,12 @@ module.exports = {
                     light: '#F5F5F5',
                 },
             },
+            maxWidth: {
+                'content': '1220px',
+            },
+            minHeight: {
+                'content': 'calc( 100vh - 500px )'
+            },
         },
     },
 

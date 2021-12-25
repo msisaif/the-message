@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HadithController;
 use App\Http\Controllers\HomeController;
@@ -17,6 +18,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/quran', [QuranController::class, 'index'])->name('quran.index');
 Route::get('/hadith', [HadithController::class, 'index'])->name('hadith.index');
+Route::get('/course', [CourseController::class, 'index'])->name('course.index');
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.index');
 

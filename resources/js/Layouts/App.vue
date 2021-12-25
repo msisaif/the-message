@@ -2,7 +2,7 @@
     <!-- Header -->
     <app-header></app-header>
 
-    <main class="w-full mx-auto max-w-6xl overflow-hidden">
+    <main class="w-full mx-auto max-w-content overflow-hidden min-h-content">
         <!-- Content -->
         <slot />
     </main>
