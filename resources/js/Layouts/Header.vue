@@ -6,7 +6,7 @@
                 max-w-content
                 mx-auto
                 h-12
-                md:h-16
+                md:h-20
                 py-2
                 flex
                 justify-between
@@ -125,12 +125,13 @@
                         showingNavigationDropdown = !showingNavigationDropdown
                     "
                     class="
-                        w-6
                         h-6
-                        md:w-8 md:h-8
+                        md:h-8
                         text-brand-primary
                         cursor-pointer
                     "
+                    width="42"
+                    height="26"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 42 26"
                 >
