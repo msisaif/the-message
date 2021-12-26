@@ -36,10 +36,12 @@
 
 <script>
 import SectionCard from "./SectionCard.vue";
+import { SearchIcon } from "@heroicons/vue/solid";
 
 export default {
     components: {
         SectionCard,
+        SearchIcon,
     },
 };
 </script>

@@ -7,11 +7,21 @@
             <!-- <img class="w-full h-auto" src="/images/banner.jpg" /> -->
         </splash-banner>
 
-        <search-section></search-section>
+        <search-section />
 
-        <service-section></service-section>
+        <service-section />
 
-        <article-section></article-section>
+        <section-card class="mt-8" title="Recent Posts">
+            <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
+                <article-card
+                    v-for="(post, index) in posts"
+                    :key="index"
+                    :src="post.thumbnail"
+                    :title="post.title"
+                    :summary="post.summary"
+                />
+            </div>
+        </section-card>
     </app-layout>
 </template>
 
@@ -22,8 +32,7 @@ import SplashBanner from "@/Components/SplashBanner.vue";
 import SectionCard from "./SectionCard.vue";
 import SearchSection from "./SearchSection.vue";
 import ServiceSection from "./ServiceSection.vue";
-import ArticleSection from "./ArticleSection.vue";
-import { SearchIcon } from "@heroicons/vue/solid";
+import ArticleCard from "./Components/ArticleCard.vue";
 
 export default {
     components: {
@@ -33,8 +42,82 @@ export default {
         SectionCard,
         SearchSection,
         ServiceSection,
-        ArticleSection,
-        SearchIcon,
+        ArticleCard,
+    },
+    props: {
+        posts: {
+            type: Object,
+            default: {
+                0: {
+                    id: 13,
+                    title: "Here will be the post title",
+                    thumbnail: "/images/banner.jpg",
+                    summary:
+                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
+                    body: `
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>`,
+                },
+                1: {
+                    id: 13,
+                    title: "Here will be the post title",
+                    thumbnail: "/images/banner.jpg",
+                    summary:
+                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
+                    body: `
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>`,
+                },
+                2: {
+                    id: 13,
+                    title: "Here will be the post title",
+                    thumbnail: "/images/banner.jpg",
+                    summary:
+                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
+                    body: `
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>`,
+                },
+                3: {
+                    id: 13,
+                    title: "Here will be the post title",
+                    thumbnail: "/images/banner.jpg",
+                    summary:
+                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
+                    body: `
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>
+                        <p>
+                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
+                        </p>`,
+                },
+            },
+        },
     },
 };
 </script>

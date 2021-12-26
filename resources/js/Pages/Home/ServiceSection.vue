@@ -4,7 +4,7 @@
             class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0"
         >
             <Link
-                href="/"
+                :href="route('quran.index')"
                 class="
                     flex flex-col
                     md:flex-row
@@ -198,7 +198,7 @@
                 <div>Quran Reading</div>
             </Link>
             <Link
-                href="/"
+                :href="route('hadith.index')"
                 class="
                     flex flex-col
                     md:flex-row
@@ -273,7 +273,7 @@
                 <div>Hadith Reading</div>
             </Link>
             <Link
-                href="/"
+                :href="route('article.index')"
                 class="
                     flex flex-col
                     md:flex-row
@@ -348,7 +348,7 @@
                 <div>Article Reading</div>
             </Link>
             <Link
-                href="/"
+                :href="route('kids-zone.index')"
                 class="
                     flex flex-col
                     md:flex-row

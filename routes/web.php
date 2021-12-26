@@ -21,6 +21,7 @@ Route::get('/quran', [QuranController::class, 'index'])->name('quran.index');
 Route::get('/hadith', [HadithController::class, 'index'])->name('hadith.index');
 Route::get('/course', [CourseController::class, 'index'])->name('course.index');
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.index');
 Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
 

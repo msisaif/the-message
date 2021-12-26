@@ -1,14 +1,12 @@
 <template>
-    <div class="">
-        <!-- Header -->
-        <app-header></app-header>
+    <div>
+        <app-header />
 
-        <main class="w-full mx-auto max-w-content overflow-hidden min-h-content">
-            <!-- Content -->
+        <main class="mx-auto max-w-content overflow-hidden min-h-content">
             <slot />
         </main>
 
-        <app-footer></app-footer>
+        <app-footer />
     </div>
 </template>
 
