@@ -46,8 +46,11 @@ Then in file ".env" setup database configuration:
 # generate laravel APP_KEY
 $ php artisan key:generate
 
-# run database migration and seed
+# run database migration
 $ php artisan migrate
+
+# run database seed
+$ php artisan db:seed
 
 # install app's dependencies
 $ npm install
