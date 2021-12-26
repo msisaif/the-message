@@ -8,7 +8,6 @@
             items-center
             flex-auto
             sm:flex-1
-            px-1.5
             md:px-3
             py-1
             border border-brand-secondary

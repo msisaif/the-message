@@ -1,8 +1,16 @@
 <template>
     <footer class="mt-10">
-        <div class="w-full bg-white py-6 px-2 md:px-0">
-            <div class="mx-auto max-w-content grid md:grid-cols-5 gap-6">
-                <div class="md:col-span-2 space-y-4">
+        <div class="w-full bg-white py-3 md:py-6 px-2">
+            <div
+                class="
+                    mx-auto
+                    max-w-content
+                    grid grid-cols-2
+                    md:grid-cols-6
+                    gap-6
+                "
+            >
+                <div class="col-span-2 lg:col-span-3 space-y-4">
                     <div class="flex justify-center md:justify-start">
                         <application-logo class="w-28" />
                     </div>
@@ -12,17 +20,14 @@
                         magna. Lorem ipsum dolor sit sed do ut magna.
                     </p>
                 </div>
-                <div class="col-span-1 text-center md:text-right">
+                <div class="col-span-1 text-right md:text-right">
                     <h3 class="font-bold text-brand-dark">Menu</h3>
                     <div class="grid text-brand-gray">
-                        <Link class="hover:text-brand-primary" href="/">
-                            Home
-                        </Link>
                         <Link
                             class="hover:text-brand-primary"
                             :href="route('quran.index')"
                         >
-                            Al-Quran
+                            Quran
                         </Link>
                         <Link
                             class="hover:text-brand-primary"
@@ -50,7 +55,7 @@
                         </Link>
                     </div>
                 </div>
-                <div class="col-span-1 text-center md:text-right">
+                <div class="col-span-1 text-left md:text-right">
                     <h3 class="font-bold text-brand-dark">Organization</h3>
                     <div class="grid text-brand-gray">
                         <Link class="hover:text-brand-primary" href="/">
@@ -65,9 +70,12 @@
                         <Link class="hover:text-brand-primary" href="/">
                             Donate Us
                         </Link>
+                        <Link class="hover:text-brand-primary" href="/">
+                            FAQs
+                        </Link>
                     </div>
                 </div>
-                <div class="col-span-1 text-center md:text-right">
+                <div class="col-span-2 lg:col-span-1 text-center md:text-right">
                     <h3 class="font-bold text-brand-dark">Contact Us</h3>
                     <div class="grid text-brand-gray space-y-1">
                         <p>info@messagebd.net</p>

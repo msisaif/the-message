@@ -3,7 +3,7 @@
         <div class="grid md:grid-cols-3 gap-2 md:gap-4 px-2 md:px-0">
             <Link href="/" class="bg-white shadow">
                 <img src="/images/banner.jpg" class="w-full" />
-                <div class="flex flex-col gap-2 p-4">
+                <div class="flex flex-col gap-2 p-2 md:p-4">
                     <h3 class="text-xl text-brand-black font-bold">
                         Here will be the post title
                     </h3>
@@ -20,7 +20,7 @@
             </Link>
             <Link href="/" class="bg-white shadow">
                 <img src="/images/banner.jpg" class="w-full" />
-                <div class="flex flex-col gap-2 p-4">
+                <div class="flex flex-col gap-2 p-2 md:p-4">
                     <h3 class="text-xl text-brand-black font-bold">
                         Here will be the post title
                     </h3>
@@ -37,7 +37,7 @@
             </Link>
             <Link href="/" class="bg-white shadow">
                 <img src="/images/banner.jpg" class="w-full" />
-                <div class="flex flex-col gap-2 p-4">
+                <div class="flex flex-col gap-2 p-2 md:p-4">
                     <h3 class="text-xl text-brand-black font-bold">
                         Here will be the post title
                     </h3>

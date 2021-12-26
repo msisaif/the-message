@@ -30,7 +30,7 @@ module.exports = {
                 'content': '1220px',
             },
             minHeight: {
-                'content': 'calc( 100vh - 500px )'
+                'content': 'calc( 100vh - 400px )'
             },
         },
     },

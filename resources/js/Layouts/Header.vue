@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex justify-end items-center gap-2">
+            <div class="w-full flex justify-end items-center gap-1 md:gap-2">
                 <navigation-link
                     :href="route('home')"
                     :active="route().current('home')"
@@ -192,7 +192,7 @@
                     :href="route('quran.index')"
                     :active="route().current('quran.*')"
                 >
-                    Al-Quran
+                    Quran
                 </navigation-link>
 
                 <navigation-link
@@ -207,6 +207,13 @@
                     :active="route().current('article.*')"
                 >
                     Article
+                </navigation-link>
+
+                <navigation-link
+                    :href="route('course.index')"
+                    :active="route().current('course.*')"
+                >
+                    Course
                 </navigation-link>
 
                 <navigation-link
