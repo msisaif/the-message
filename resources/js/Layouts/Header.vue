@@ -29,9 +29,9 @@
                             md:px-6
                             py-0.5
                             md:py-1.5
-                            border border-brand-primary
+                            border-2 border-brand-primary
                             text-brand-primary
-                            hover:bg-brand-primary hover:text-white
+                            hover:bg-brand-primary hover:text-white font-semibold
                         "
                         >Join</Link
                     >
@@ -124,12 +124,7 @@
                     @click="
                         showingNavigationDropdown = !showingNavigationDropdown
                     "
-                    class="
-                        h-6
-                        md:h-8
-                        text-brand-primary
-                        cursor-pointer
-                    "
+                    class="h-6 md:h-8 text-brand-primary cursor-pointer"
                     width="42"
                     height="26"
                     xmlns="http://www.w3.org/2000/svg"
@@ -222,6 +217,13 @@
                     :active="route().current('kids-zone.*')"
                 >
                     Kids Zone
+                </navigation-link>
+
+                <navigation-link
+                    :href="route('donate.index')"
+                    :active="route().current('donate.*')"
+                >
+                    Donate Us
                 </navigation-link>
             </div>
         </nav>

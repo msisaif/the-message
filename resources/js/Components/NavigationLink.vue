@@ -10,7 +10,7 @@
             sm:flex-1
             md:px-3
             py-1
-            border border-brand-secondary
+            border-2 border-brand-secondary
             text-xs
             md:text-base
         "
