@@ -1,6 +1,7 @@
 <template>
     <section class="relative">
         <div
+            v-if="title || subtitle"
             class="
                 absolute
                 inset-0

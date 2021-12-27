@@ -1,15 +1,5 @@
 <template>
-    <div
-        class="
-            w-full
-            sm:max-w-xs
-            bg-white
-            shadow-md
-            rounded-xl
-            overflow-hidden
-            relative
-        "
-    >
+    <div class="w-full sm:max-w-xs bg-white shadow-md overflow-hidden relative">
         <div class="flex items-center gap-4 p-4">
             <div class="text-gray-400">
                 <svg
