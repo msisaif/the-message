@@ -1,5 +1,5 @@
 <template>
-    <section-card class="mt-8" title="Services">
+    <section-card title="Services">
         <div
             class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0"
         >
@@ -428,7 +428,7 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
-import SectionCard from "./SectionCard.vue";
+import SectionCard from "@/Components/SectionCard.vue";
 
 export default {
     components: {

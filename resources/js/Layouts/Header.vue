@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex justify-end items-center gap-1 md:gap-2">
+            <div class="w-full flex justify-end items-center gap-px md:gap-2">
                 <navigation-link
                     :href="route('home')"
                     :active="route().current('home')"
@@ -133,14 +133,14 @@
                     :href="route('kids-zone.index')"
                     :active="route().current('kids-zone.*')"
                 >
-                    Kids Zone
+                    KidsZone
                 </navigation-link>
 
                 <navigation-link
                     :href="route('donate.index')"
                     :active="route().current('donate.*')"
                 >
-                    Donate Us
+                    Donate
                 </navigation-link>
             </div>
         </nav>

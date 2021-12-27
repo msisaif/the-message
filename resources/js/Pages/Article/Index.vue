@@ -1,14 +1,17 @@
 <template>
-    <h1 class="mt-10 text-2xl md:text-5xl text-gray-600 text-center">
-        Article
-    </h1>
+    <app-layout>
+        <h1 class="mt-10 text-2xl md:text-5xl text-gray-600 text-center">
+            Article
+        </h1>
+    </app-layout>
 </template>
 
 <script>
 import AppLayout from "@/Layouts/App.vue";
 
 export default {
-    layout: AppLayout,
-    components: {},
+    components: {
+        AppLayout,
+    },
 };
 </script>

@@ -4,22 +4,139 @@
             title="The Message"
             subtitle="Enlighten the society with the light of holy Qur'an &amp; Hadith."
         >
-            <!-- <img class="w-full h-auto" src="/images/banner.jpg" /> -->
+            <!-- <img class="w-full h-72 object-cover" src="/images/video.png" /> -->
+            <!-- <img class="w-full h-72 object-cover" src="/images/article.jpg" /> -->
         </splash-banner>
 
-        <search-section />
+        <section-card
+            title="Search Anything"
+            class="mt-6 md:mt-12 bg-white py-4"
+        >
+            <div class="flex justify-center items-center px-2">
+                <input
+                    class="
+                        w-full
+                        max-w-sm
+                        border-2 border-brand-secondary
+                        px-2
+                        py-1
+                        focus:outline-none focus:ring-0
+                        placeholder-brand-gray
+                        text-brand-primary
+                    "
+                    placeholder="Search Anything..."
+                />
+                <button
+                    class="
+                        px-3
+                        py-1
+                        flex
+                        justify-center
+                        items-center
+                        gap-2
+                        bg-brand-secondary
+                        text-white
+                    "
+                    type="button"
+                >
+                    <search-icon class="h-6 w-6" />
+                    <span class="text-xl font-medium">Search</span>
+                </button>
+            </div>
+        </section-card>
 
-        <service-section />
+        <service-section class="mt-6 md:mt-12" />
 
-        <section-card class="mt-8" title="Recent Posts">
+        <section-card class="mt-6 md:mt-12" title="Recent Posts">
             <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
-                <article-card
+                <Link
                     v-for="(post, index) in posts"
                     :key="index"
-                    :src="post.thumbnail"
-                    :title="post.title"
-                    :summary="post.summary"
-                />
+                    href="/"
+                    class="bg-white shadow"
+                >
+                    <img :src="post.thumbnail" class="w-full" />
+                    <div class="flex flex-col gap-2 p-2 md:p-4">
+                        <h3 class="text-lg text-brand-black font-bold">
+                            {{ post.title }}
+                        </h3>
+                        <p class="text-brand-gray text-sm text-justify">
+                            {{ post.summary }}
+                            <span class="underline text-brand-primary">
+                                Read More
+                            </span>
+                        </p>
+                    </div>
+                </Link>
+            </div>
+        </section-card>
+
+        <section-card class="mt-6 md:mt-12" title="Recent Videos">
+            <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
+                <Link
+                    v-for="(video, index) in videos"
+                    :key="index"
+                    href="/"
+                    class="bg-white shadow"
+                >
+                    <div class="relative">
+                        <img :src="video.thumbnail" class="w-full" />
+                        <div
+                            class="
+                                absolute
+                                inset-0
+                                flex
+                                justify-center
+                                items-center
+                                bg-brand-black bg-opacity-0
+                                hover:bg-opacity-50
+                            "
+                        >
+                            <play-icon
+                                class="
+                                    w-10
+                                    text-brand-primary
+                                    bg-white
+                                    rounded-full
+                                "
+                            />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 p-2 md:p-4">
+                        <h3 class="text-lg text-brand-black font-bold">
+                            {{ video.title }}
+                        </h3>
+                    </div>
+                    <slot></slot>
+                </Link>
+            </div>
+        </section-card>
+
+        <section-card class="mt-6 md:mt-12 bg-brand-primary text-white py-4">
+            <h2 class="text-brand-secondary text-xl font-bold text-center mb-4">
+                Ayat Of The Day
+            </h2>
+            <div class="space-y-1 px-4">
+                <p class="text-white text-center">
+                    {{ ayahOfTheDay.text }}
+                </p>
+                <p class="text-white text-center">
+                    {{ ayahOfTheDay.reference }}
+                </p>
+            </div>
+        </section-card>
+
+        <section-card class="mt-6 md:mt-12 bg-brand-secondary text-white py-4">
+            <h2 class="text-brand-primary text-xl font-bold text-center mb-4">
+                Hadith Of The Day
+            </h2>
+            <div class="space-y-1 px-4">
+                <p class="text-white text-center">
+                    {{ hadithOfTheDay.text }}
+                </p>
+                <p class="text-white text-center">
+                    {{ hadithOfTheDay.reference }}
+                </p>
             </div>
         </section-card>
     </app-layout>
@@ -29,10 +146,9 @@
 import AppLayout from "@/Layouts/App.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import SplashBanner from "@/Components/SplashBanner.vue";
-import SectionCard from "./SectionCard.vue";
-import SearchSection from "./SearchSection.vue";
+import SectionCard from "@/Components/SectionCard.vue";
 import ServiceSection from "./ServiceSection.vue";
-import ArticleCard from "./Components/ArticleCard.vue";
+import { SearchIcon, PlayIcon } from "@heroicons/vue/solid";
 
 export default {
     components: {
@@ -40,9 +156,9 @@ export default {
         Link,
         SplashBanner,
         SectionCard,
-        SearchSection,
         ServiceSection,
-        ArticleCard,
+        SearchIcon,
+        PlayIcon,
     },
     props: {
         posts: {
@@ -51,71 +167,66 @@ export default {
                 0: {
                     id: 13,
                     title: "Here will be the post title",
-                    thumbnail: "/images/banner.jpg",
-                    summary:
-                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
-                    body: `
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>`,
+                    thumbnail: "/images/article.jpg",
+                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
                 1: {
                     id: 13,
                     title: "Here will be the post title",
-                    thumbnail: "/images/banner.jpg",
-                    summary:
-                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
-                    body: `
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>`,
+                    thumbnail: "/images/article.jpg",
+                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
                 2: {
                     id: 13,
                     title: "Here will be the post title",
-                    thumbnail: "/images/banner.jpg",
-                    summary:
-                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
-                    body: `
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>`,
+                    thumbnail: "/images/article.jpg",
+                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
                 3: {
                     id: 13,
                     title: "Here will be the post title",
-                    thumbnail: "/images/banner.jpg",
-                    summary:
-                        "Post summary Lorem ipsum dolor sit sed do ut magna. Post summary Lorem ipsum dolor sit sed do ut magna.",
-                    body: `
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>
-                        <p>
-                            Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna. Post body Lorem ipsum dolor sit sed do ut magna.
-                        </p>`,
+                    thumbnail: "/images/article.jpg",
+                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
+            },
+        },
+        videos: {
+            type: Object,
+            default: {
+                0: {
+                    id: 13,
+                    title: "Quranic Science",
+                    thumbnail: "/images/video.png",
+                },
+                1: {
+                    id: 13,
+                    title: "Quranic Science",
+                    thumbnail: "/images/video.png",
+                },
+                2: {
+                    id: 13,
+                    title: "Quranic Science",
+                    thumbnail: "/images/video.png",
+                },
+                3: {
+                    id: 13,
+                    title: "Quranic Science",
+                    thumbnail: "/images/video.png",
+                },
+            },
+        },
+        ayahOfTheDay: {
+            type: Object,
+            default: {
+                text: `" Had there been within the heavens and earth gods besides Allah, they both would have been ruined. So exalted is Allah, Lord of the Throne, (High is He) above what they attribute to Him. "`,
+                reference: "Quran 21:22",
+            },
+        },
+        hadithOfTheDay: {
+            type: Object,
+            default: {
+                text: `" And an impious wicked person is like a pine tree which keeps hard and straight till Allah cuts (breaks) it down when He wishes. "`,
+                reference: "SAHIH BUKHARI, BOOK 70, Hadith No. 558, Vol. 9",
             },
         },
     },
