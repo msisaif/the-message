@@ -1,6 +1,6 @@
 <template>
     <app-layout>
-        <banner />
+        <banner-section />
 
         <section-card
             title="Search Anything in Quran"
@@ -150,7 +150,7 @@
 <script>
 import AppLayout from "@/Layouts/App.vue";
 import { Link } from "@inertiajs/inertia-vue3";
-import Banner from "./banner.vue";
+import BannerSection from "./BannerSection.vue";
 import SectionCard from "@/Components/SectionCard.vue";
 import { SearchIcon } from "@heroicons/vue/solid";
 
@@ -158,7 +158,7 @@ export default {
     components: {
         AppLayout,
         Link,
-        Banner,
+        BannerSection,
         SectionCard,
         SearchIcon,
     },
