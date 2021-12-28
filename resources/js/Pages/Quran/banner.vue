@@ -9,6 +9,7 @@
                 justify-center
                 items-center
                 gap-3
+                z-10
             "
         >
             <svg

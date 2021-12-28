@@ -43,29 +43,21 @@
             <div class="flex justify-center items-center gap-4">
                 <button
                     @click="show = 'sura'"
-                    class="
-                        w-40
-                        py-2
-                        bg-brand-secondary
-                        text-white
-                        flex
-                        justify-center
-                        items-center
-                    "
+                    class="w-40 py-2 flex justify-center items-center"
+                    :class="{
+                        'bg-brand-secondary text-white': show == 'sura',
+                        'bg-white text-brand-secondary': show != 'sura',
+                    }"
                 >
                     Show Surah
                 </button>
                 <button
                     @click="show = 'juz'"
-                    class="
-                        w-40
-                        py-2
-                        bg-white
-                        text-brand-secondary
-                        flex
-                        justify-center
-                        items-center
-                    "
+                    class="w-40 py-2 flex justify-center items-center"
+                    :class="{
+                        'bg-brand-secondary text-white': show == 'juz',
+                        'bg-white text-brand-secondary': show != 'juz',
+                    }"
                 >
                     Show Juz
                 </button>
