@@ -9,13 +9,7 @@
                 @change="searchHandler"
                 v-model="filterData[key]"
                 :name="key"
-                class="
-                    block
-                    w-full
-                    rounded-md
-                    shadow-sm
-                    focus:outline-none focus:ring-0
-                "
+                class="block w-full shadow-sm focus:outline-none focus:ring-0"
             >
                 <option value="" selected>
                     {{
@@ -40,32 +34,13 @@
 
         <div
             v-if="dateFilter"
-            class="
-                ml-auto
-                w-full
-                lg:max-w-xl lg:w-auto
-                flex flex-col
-                sm:flex-row
-                justify-between
-                items-end
-                gap-2
-                order-1
-                lg:order-2
-            "
+            class="ml-auto w-full lg:max-w-xl lg:w-auto flex flex-col sm:flex-row justify-between items-end gap-2 order-1 lg:order-2"
         >
             <div class="w-full max-w-sm flex justify-end items-center gap-1">
                 <select
                     @change="dateSearchHandler"
                     v-model="valueDateFilter"
-                    class="
-                        block
-                        w-full
-                        rounded-md
-                        min-w-max
-                        shadow-sm
-                        focus:outline-none focus:ring-0
-                        cursor-pointer
-                    "
+                    class="block w-full min-w-max shadow-sm focus:outline-none focus:ring-0 cursor-pointer"
                 >
                     <option value="">Custom Date</option>
                     <option
@@ -85,14 +60,7 @@
                     v-model="dateFrom"
                     :max="this.dateTo"
                     type="date"
-                    class="
-                        block
-                        w-full
-                        max-w-xs
-                        rounded-md
-                        shadow-sm
-                        focus:outline-none focus:ring-0
-                    "
+                    class="block w-full max-w-xs shadow-sm focus:outline-none focus:ring-0"
                 />
             </div>
             <div class="w-full max-w-sm flex justify-end items-center gap-1">
@@ -103,14 +71,7 @@
                     v-model="dateTo"
                     :min="this.dateFrom"
                     type="date"
-                    class="
-                        block
-                        w-full
-                        max-w-xs
-                        rounded-md
-                        shadow-sm
-                        focus:outline-none focus:ring-0
-                    "
+                    class="block w-full max-w-xs shadow-sm focus:outline-none focus:ring-0"
                 />
             </div>
         </div>
@@ -119,14 +80,7 @@
             <select
                 @change="searchHandler"
                 v-model="perpage"
-                class="
-                    block
-                    w-full
-                    rounded-md
-                    shadow-sm
-                    focus:outline-none focus:ring-0
-                    cursor-pointer
-                "
+                class="block w-full shadow-sm focus:outline-none focus:ring-0 cursor-pointer"
             >
                 <option
                     v-for="pageLengthItem in pageLength"
@@ -141,13 +95,7 @@
         <div class="ml-auto w-2/3 max-w-xs lg:w-auto flex order-4 lg:order-4">
             <input
                 @input="searchHandler"
-                class="
-                    block
-                    w-full
-                    rounded-md
-                    shadow-sm
-                    focus:outline-none focus:ring-0
-                "
+                class="block w-full shadow-sm focus:outline-none focus:ring-0"
                 type="search"
                 v-model="search"
                 placeholder="Search here ..."
@@ -163,17 +111,11 @@
         <table class="min-w-max w-full table-auto">
             <thead>
                 <tr
-                    class="
-                        bg-blue-600
-                        text-white
-                        uppercase
-                        text-sm
-                        leading-normal
-                    "
+                    class="bg-brand-primary text-white uppercase text-sm leading-normal"
                 >
                     <th
                         v-if="serialColumn"
-                        class="py-3 px-2 text-left sticky left-0 bg-blue-600"
+                        class="py-3 px-2 text-left sticky left-0 bg-brand-primary"
                     >
                         SL
                     </th>

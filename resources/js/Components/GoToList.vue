@@ -1,17 +1,7 @@
 <template>
     <span
         @click="goBack"
-        class="
-            text-center
-            font-bold
-            cursor-pointer
-            border border-blue-500
-            text-blue-600
-            hover:bg-blue-500 hover:text-white
-            rounded-lg
-            px-3
-            py-1.5
-        "
+        class="text-center font-bold cursor-pointer border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-3 py-1.5"
     >
         Go to list
     </span>

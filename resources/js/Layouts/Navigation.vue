@@ -1,21 +1,25 @@
 <template>
-    <div>
+    <div v-if="$page.props.auth.user">
         <nav-link
             :href="route('dashboard')"
             :active="route().current('dashboard')"
             >Dashboard</nav-link
         >
         <nav-link
+            v-if="$page.props.auth.user.type === 1"
             :href="route('admins.index')"
             :active="route().current('admins.*')"
-            >Admins</nav-link
         >
+            Admins
+        </nav-link>
         <nav-link
+            v-if="$page.props.auth.user.type === 1"
             :href="route('users.index')"
             :active="route().current('users.*')"
             >Users</nav-link
         >
         <nav-link
+            v-if="$page.props.auth.user.type === 1"
             :href="route('posts.index')"
             :active="route().current('posts.*')"
             >Posts</nav-link

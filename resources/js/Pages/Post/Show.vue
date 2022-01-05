@@ -15,7 +15,7 @@
                 <show-table-row heading="Author">
                     <Link
                         :href="route('users.show', post.userId)"
-                        class="text-blue-600 hover:underline"
+                        class="text-brand-primary hover:underline"
                     >
                         {{ post.userName }}
                     </Link>

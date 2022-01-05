@@ -37,7 +37,7 @@ export default {
     computed: {
         classes() {
             return this.active
-                ? "text-white bg-blue-600 focus:outline-none"
+                ? "text-white bg-brand-primary focus:outline-none"
                 : "text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none";
         },
     },

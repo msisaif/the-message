@@ -9,7 +9,7 @@
         <add-new-button :href="route('admins.create')" class="mb-2" />
 
         <div class="overflow-auto">
-            <table class="table-auto bg-white border rounded shadow">
+            <table class="table-auto bg-white border shadow">
                 <show-table-row heading="ID">{{ admin.id }}</show-table-row>
                 <show-table-row heading="Name">{{ admin.name }}</show-table-row>
                 <show-table-row heading="Email">{{

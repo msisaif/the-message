@@ -13,13 +13,10 @@ use Inertia\Inertia;
 
 class AdminController extends Controller
 {
-    use DateFilter;
-
     public function index()
     {
         $admins = $this->setQuery(User::query())
             ->search()->filter()
-            ->dateFilter()
             ->getQuery()
             ->onlyAdmin()
             ->latest();

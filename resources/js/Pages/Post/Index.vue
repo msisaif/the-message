@@ -19,7 +19,7 @@
                 <td class="py-3 px-2 text-left">
                     <Link
                         :href="route('users.show', post.userId)"
-                        class="text-blue-600 hover:underline"
+                        class="text-brand-primary hover:underline"
                     >
                         {{ post.userName }}
                     </Link>

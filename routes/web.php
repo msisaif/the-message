@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KidsZoneController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuranController;
+use App\Http\Controllers\SuraController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,12 +31,15 @@ Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.
 
 Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
 
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::resources([
         'admins'        => AdminController::class,
         'users'         => UserController::class,
+        'suras'         => SuraController::class,
         'posts'         => PostController::class,
     ]);
 });

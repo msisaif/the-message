@@ -22,6 +22,7 @@ class UserResource extends JsonResource
             'type'          => (int) ($this->type ?? 0),
             'typeName'      => (string) ($this->type_name ?? ''),
             'emailVerified' => (string) ($this->email_verified ?? ''),
+            'isAdmin'       => (boolean) ($this->is_admin ?? false),
         ];
     }
 }

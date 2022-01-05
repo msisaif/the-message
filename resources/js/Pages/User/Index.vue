@@ -4,35 +4,41 @@
     <app-layout>
         <template #header> User List </template>
 
-        <add-new-button :href="route('users.create')" />
+        <div class="py-4">
+            <add-new-button :href="route('users.create')" />
 
-        <data-table :collections="users" :filters="filters" :dateFilter="true">
-            <template #head>
-                <th class="py-3 px-2 text-left">ID</th>
-                <th class="py-3 px-2 text-left">Name</th>
-                <th class="py-3 px-2 text-left">Email</th>
-                <th class="py-3 px-2 text-left">Phone</th>
-                <th class="py-3 px-2 text-center">Action</th>
-            </template>
-            <template #default="{ item: user }">
-                <td class="py-3 px-2 text-left">{{ user.id }}</td>
-                <td class="py-3 px-2 text-left">{{ user.name }}</td>
-                <td class="py-3 px-2 text-left">{{ user.email }}</td>
-                <td class="py-3 px-2 text-left">{{ user.phone }}</td>
-                <td class="py-2.5 px-2">
-                    <div
-                        class="flex justify-center items-center gap-1 md:gap-2"
-                    >
-                        <action-button-show
-                            :href="route('users.show', user.id)"
-                        />
-                        <action-button-edit
-                            :href="route('users.edit', user.id)"
-                        />
-                    </div>
-                </td>
-            </template>
-        </data-table>
+            <data-table
+                :collections="users"
+                :filters="filters"
+                :dateFilter="true"
+            >
+                <template #head>
+                    <th class="py-3 px-2 text-left">ID</th>
+                    <th class="py-3 px-2 text-left">Name</th>
+                    <th class="py-3 px-2 text-left">Email</th>
+                    <th class="py-3 px-2 text-left">Phone</th>
+                    <th class="py-3 px-2 text-center">Action</th>
+                </template>
+                <template #default="{ item: user }">
+                    <td class="py-3 px-2 text-left">{{ user.id }}</td>
+                    <td class="py-3 px-2 text-left">{{ user.name }}</td>
+                    <td class="py-3 px-2 text-left">{{ user.email }}</td>
+                    <td class="py-3 px-2 text-left">{{ user.phone }}</td>
+                    <td class="py-2.5 px-2">
+                        <div
+                            class="flex justify-center items-center gap-1 md:gap-2"
+                        >
+                            <action-button-show
+                                :href="route('users.show', user.id)"
+                            />
+                            <action-button-edit
+                                :href="route('users.edit', user.id)"
+                            />
+                        </div>
+                    </td>
+                </template>
+            </data-table>
+        </div>
     </app-layout>
 </template>
 

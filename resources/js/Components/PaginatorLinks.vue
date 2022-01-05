@@ -9,21 +9,11 @@
                 v-for="link in collections.meta.links"
                 :key="link.index"
                 :class="{
-                    'bg-blue-600 text-white border-blue-600': link.active,
+                    'bg-brand-primary text-white border-brand-primary':
+                        link.active,
                     'bg-white text-gray-700 border-gray-300': !link.active,
                 }"
-                class="
-                    inline-flex
-                    items-center
-                    ml-0.5
-                    px-3.5
-                    py-1.5
-                    text-sm
-                    border
-                    leading-5
-                    rounded-md
-                    focus:outline-none focus:ring-0
-                "
+                class="inline-flex items-center ml-0.5 px-3.5 py-1.5 text-sm border leading-5 focus:outline-none focus:ring-0"
                 :href="link.url"
                 v-html="link.label"
             />
@@ -33,30 +23,12 @@
             v-if="collections.meta.last_page > 1"
         >
             <Link
-                class="
-                    inline-flex
-                    items-center
-                    px-3.5
-                    py-1.5
-                    border
-                    leading-5
-                    rounded-md
-                    focus:outline-none focus:ring-0
-                "
+                class="inline-flex items-center px-3.5 py-1.5 border leading-5 focus:outline-none focus:ring-0"
                 :href="collections.links.prev"
                 v-html="`&laquo; Previous`"
             />
             <Link
-                class="
-                    inline-flex
-                    items-center
-                    px-3.5
-                    py-1.5
-                    border
-                    leading-5
-                    rounded-md
-                    focus:outline-none focus:ring-0
-                "
+                class="inline-flex items-center px-3.5 py-1.5 border leading-5 focus:outline-none focus:ring-0"
                 :href="collections.links.next"
                 v-html="`Next &raquo;`"
             />

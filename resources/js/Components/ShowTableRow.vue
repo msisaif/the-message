@@ -1,5 +1,5 @@
 <template>
-    <tr class="bg-blue-600 text-sm leading-normal">
+    <tr class="bg-brand-primary text-sm leading-normal">
         <th class="p-2 text-right bg-gray-200 uppercase align-top">
             {{ heading }}
         </th>

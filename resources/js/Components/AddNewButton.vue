@@ -2,17 +2,7 @@
     <div class="w-full flex">
         <Link
             :href="href"
-            class="
-                text-center
-                cursor-pointer
-                border border-blue-600
-                text-white
-                hover:bg-blue-700
-                bg-blue-600
-                rounded-md
-                px-3
-                py-1.5
-            "
+            class="text-center cursor-pointer border border-brand-primary text-white hover:bg-brand-primary bg-brand-primary px-3 py-1.5"
         >
             + Add New
         </Link>

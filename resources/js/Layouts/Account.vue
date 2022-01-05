@@ -4,16 +4,7 @@
         <div v-if="!$page.props.auth.user">
             <Link
                 :href="route('login')"
-                class="
-                    px-3
-                    md:px-6
-                    py-0.5
-                    md:py-1.5
-                    border-2 border-brand-primary
-                    text-brand-primary
-                    hover:bg-brand-primary hover:text-white
-                    font-bold
-                "
+                class="px-3 md:px-6 py-0.5 md:py-1.5 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-bold"
             >
                 Join
             </Link>
@@ -21,23 +12,10 @@
         <div v-else class="relative">
             <dropdown align="right" width="48">
                 <template #trigger>
-                    <span class="inline-flex rounded-md">
+                    <span class="inline-flex">
                         <button
                             type="button"
-                            class="
-                                inline-flex
-                                items-center
-                                gap-1
-                                text-sm
-                                font-medium
-                                border border-brand-primary
-                                text-brand-primary
-                                hover:bg-brand-primary hover:text-white hover:
-                                focus:outline-none
-                                px-2
-                                py-0.5
-                                md:py-1.5
-                            "
+                            class="inline-flex items-center gap-1 text-sm font-medium border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white hover: focus:outline-none px-2 py-0.5 md:py-1.5"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
