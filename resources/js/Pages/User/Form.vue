@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-md mx-auto p-4 bg-white border shadow">
+    <div class="w-full max-w-md mx-auto p-4 bg-white border shadow m-4">
         <ValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit" class="">
