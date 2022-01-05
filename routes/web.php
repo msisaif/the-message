@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AyahController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonateController;
@@ -40,6 +41,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'admins'        => AdminController::class,
         'users'         => UserController::class,
         'suras'         => SuraController::class,
+        'ayahs'         => AyahController::class,
         'posts'         => PostController::class,
     ]);
 });

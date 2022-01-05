@@ -6,7 +6,7 @@
             {{ sura.name }}
         </template>
 
-        <div class="mx-auto w-full max-w-3xl py-4">
+        <div class="mx-auto w-full py-4">
             <add-new-button :href="route('suras.create')" class="mb-4" />
 
             <div class="overflow-auto bg-white border">

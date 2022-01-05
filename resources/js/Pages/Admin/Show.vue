@@ -10,17 +10,21 @@
 
         <div class="overflow-auto">
             <table class="table-auto bg-white border shadow">
-                <show-table-row heading="ID">{{ admin.id }}</show-table-row>
-                <show-table-row heading="Name">{{ admin.name }}</show-table-row>
-                <show-table-row heading="Email">{{
-                    admin.email
-                }}</show-table-row>
-                <show-table-row heading="Phone">{{
-                    admin.phone
-                }}</show-table-row>
-                <show-table-row heading="Type">{{
-                    admin.typeName
-                }}</show-table-row>
+                <show-table-row heading="ID">
+                    {{ admin.id }}
+                </show-table-row>
+                <show-table-row heading="Name">
+                    {{ admin.name }}
+                </show-table-row>
+                <show-table-row heading="Email">
+                    {{ admin.email }}
+                </show-table-row>
+                <show-table-row heading="Phone">
+                    {{ admin.phone }}
+                </show-table-row>
+                <show-table-row heading="Type">
+                    {{ admin.typeName }}
+                </show-table-row>
                 <show-table-row heading="Action">
                     <div class="flex justify-start items-center gap-1 md:gap-2">
                         <action-button-edit

@@ -29,17 +29,12 @@ export default {
         return {
             data: {
                 sura: this.sura,
-                suraTypes: this.suraTypes,
             },
         };
     },
 
     props: {
         sura: {
-            type: Object,
-            default: {},
-        },
-        suraTypes: {
             type: Object,
             default: {},
         },

@@ -10,14 +10,18 @@
                 {{ sura.suraNumber }}
             </span>
             <div>
-                <div class="text-brand-dark">{{ sura.latin }}</div>
+                <div class="text-brand-black">
+                    {{ sura.latin }}
+                </div>
                 <div class="text-xs text-brand-gray">
                     {{ sura.bengali }}
                 </div>
             </div>
         </div>
         <div class="text-right">
-            <div class="text-brand-dark">{{ sura.arabic }}</div>
+            <div class="text-brand-black text-lg">
+                {{ sura.arabic }}
+            </div>
             <div class="text-xs text-brand-gray">
                 {{ sura.totalAyah }} Ayahs
             </div>

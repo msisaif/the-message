@@ -22,16 +22,18 @@
                         </Link>
                     </show-table-row>
 
-                    <show-table-row heading="Title">{{
-                        post.title
-                    }}</show-table-row>
+                    <show-table-row heading="Title">
+                        {{ post.title }}
+                    </show-table-row>
 
-                    <show-table-row heading="Description">{{
-                        post.description
-                    }}</show-table-row>
+                    <show-table-row heading="Description">
+                        {{ post.description }}
+                    </show-table-row>
 
                     <show-table-row heading="Body">
-                        <div class="whitespace-pre-wrap">{{ post.body }}</div>
+                        <div class="whitespace-pre-wrap">
+                            {{ post.body }}
+                        </div>
                     </show-table-row>
 
                     <show-table-row heading="Action">

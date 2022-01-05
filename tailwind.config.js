@@ -14,7 +14,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans]
+                sans: ['Poppins', 'Scheherazade New', 'Noto Sans Bengali', 'sans-serif'],
             },
             colors: {
                 brand: {
