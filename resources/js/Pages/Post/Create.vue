@@ -4,7 +4,9 @@
     <app-layout>
         <template #header> Create Post </template>
 
-        <form-component :data="data" module-action="store" />
+        <div class="py-4">
+            <form-component :data="data" module-action="store" />
+        </div>
     </app-layout>
 </template>
 

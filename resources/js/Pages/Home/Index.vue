@@ -14,29 +14,11 @@
         >
             <div class="flex justify-center items-center px-2">
                 <input
-                    class="
-                        w-full
-                        max-w-sm
-                        border-2 border-brand-secondary
-                        px-2
-                        py-1
-                        focus:outline-none focus:ring-0
-                        placeholder-brand-gray
-                        text-brand-primary
-                    "
+                    class="w-full max-w-sm border-2 border-brand-secondary px-2 py-1 focus:outline-none focus:ring-0 placeholder-brand-gray text-brand-primary"
                     placeholder="Search Anything..."
                 />
                 <button
-                    class="
-                        px-3
-                        py-1
-                        flex
-                        justify-center
-                        items-center
-                        gap-2
-                        bg-brand-secondary
-                        text-white
-                    "
+                    class="px-3 py-1 flex justify-center items-center gap-2 bg-brand-secondary text-white"
                     type="button"
                 >
                     <search-icon class="h-6 w-6" />
@@ -55,13 +37,16 @@
                     href="/"
                     class="bg-white shadow"
                 >
-                    <img :src="post.thumbnail" class="w-full" />
-                    <div class="flex flex-col gap-2 p-2 md:p-4">
-                        <h3 class="text-lg text-brand-black font-bold">
+                    <img
+                        :src="post.thumbnail || '/images/article.jpg'"
+                        class="w-full"
+                    />
+                    <div class="flex flex-col gap-1 p-2 md:p-4">
+                        <h3 class="text-base text-brand-black font-bold">
                             {{ post.title }}
                         </h3>
-                        <p class="text-brand-gray text-sm text-justify">
-                            {{ post.summary }}
+                        <p class="text-brand-gray text-xs text-justify">
+                            {{ post.description }}
                             <span class="underline text-brand-primary">
                                 Read More
                             </span>
@@ -82,23 +67,10 @@
                     <div class="relative">
                         <img :src="video.thumbnail" class="w-full" />
                         <div
-                            class="
-                                absolute
-                                inset-0
-                                flex
-                                justify-center
-                                items-center
-                                bg-brand-black bg-opacity-0
-                                hover:bg-opacity-50
-                            "
+                            class="absolute inset-0 flex justify-center items-center bg-brand-black bg-opacity-0 hover:bg-opacity-50"
                         >
                             <play-icon
-                                class="
-                                    w-10
-                                    text-brand-primary
-                                    bg-white
-                                    rounded-full
-                                "
+                                class="w-10 text-brand-primary bg-white rounded-full"
                             />
                         </div>
                     </div>
@@ -168,25 +140,25 @@ export default {
                     id: 13,
                     title: "Here will be the post title",
                     thumbnail: "/images/article.jpg",
-                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
+                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
                 1: {
                     id: 13,
                     title: "Here will be the post title",
                     thumbnail: "/images/article.jpg",
-                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
+                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
                 2: {
                     id: 13,
                     title: "Here will be the post title",
                     thumbnail: "/images/article.jpg",
-                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
+                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
                 3: {
                     id: 13,
                     title: "Here will be the post title",
                     thumbnail: "/images/article.jpg",
-                    summary: `Post summary Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
+                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
                 },
             },
         },

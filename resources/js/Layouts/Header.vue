@@ -1,17 +1,7 @@
 <template>
     <header class="bg-white w-full p-2 z-40">
         <div
-            class="
-                w-full
-                max-w-content
-                mx-auto
-                h-12
-                md:h-20
-                py-2
-                flex
-                justify-between
-                items-center
-            "
+            class="w-full max-w-content mx-auto h-12 md:h-20 py-2 flex justify-between items-center"
         >
             <Link href="/" class="h-full">
                 <application-logo class="h-full" />
@@ -23,17 +13,7 @@
         </div>
 
         <nav
-            class="
-                w-full
-                max-w-content
-                mx-auto
-                flex
-                items-center
-                justify-between
-                relative
-                gap-2
-                py-1
-            "
+            class="w-full max-w-content mx-auto flex items-center justify-between relative gap-2 py-1"
         >
             <div class="flex items-center">
                 <!-- Hamburger -->
@@ -68,21 +48,11 @@
                 </svg>
 
                 <div
-                    class="
-                        absolute
-                        top-full
-                        ring-0
-                        left-0
-                        w-full
-                        md:max-w-max
-                        overflow-hidden
-                        z-30
-                        py-2
-                    "
+                    class="absolute top-full ring-0 left-0 w-full md:max-w-max overflow-hidden z-30 py-2"
                 >
                     <!-- Navigation Menu -->
                     <div
-                        class="overflow-auto bg-white shadow"
+                        class="overflow-auto bg-white shadow-md border"
                         :class="{
                             block: showingNavigationDropdown,
                             hidden: !showingNavigationDropdown,

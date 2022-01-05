@@ -4,9 +4,8 @@
 
         <form @submit.prevent="submit" class="">
             <div class="mb-4">
-                <Label for="title" value="Title" />
+                <Label value="Title" />
                 <Input
-                    id="title"
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.title"
@@ -16,25 +15,23 @@
             </div>
 
             <div class="mb-4">
-                <Label for="description" value="Description" />
-                <Input
-                    id="description"
-                    type="text"
-                    class="mt-1 block w-full"
+                <Label value="Description" />
+                <textarea
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 shadow-sm resize-y"
                     v-model="form.description"
+                    rows="3"
                     required
-                />
+                ></textarea>
             </div>
 
             <div class="mb-4">
                 <Label for="body" value="Body" />
-                <Input
-                    id="body"
-                    type="text"
-                    class="mt-1 block w-full"
+                <textarea
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 shadow-sm resize-y"
                     v-model="form.body"
+                    rows="10"
                     required
-                />
+                ></textarea>
             </div>
 
             <hr class="w-full my-4" />

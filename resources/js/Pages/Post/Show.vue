@@ -6,45 +6,49 @@
             {{ post.name }}
         </template>
 
-        <add-new-button :href="route('posts.create')" class="mb-2" />
+        <div class="py-4">
+            <add-new-button :href="route('posts.create')" class="mb-2" />
 
-        <div class="overflow-auto bg-white border">
-            <table class="table-auto">
-                <show-table-row heading="ID">{{ post.id }}</show-table-row>
+            <div class="overflow-auto bg-white border">
+                <table class="table-auto">
+                    <show-table-row heading="ID">{{ post.id }}</show-table-row>
 
-                <show-table-row heading="Author">
-                    <Link
-                        :href="route('users.show', post.userId)"
-                        class="text-brand-primary hover:underline"
-                    >
-                        {{ post.userName }}
-                    </Link>
-                </show-table-row>
+                    <show-table-row heading="Author">
+                        <Link
+                            :href="route('users.show', post.userId)"
+                            class="text-brand-primary hover:underline"
+                        >
+                            {{ post.userName }}
+                        </Link>
+                    </show-table-row>
 
-                <show-table-row heading="Title">{{
-                    post.title
-                }}</show-table-row>
+                    <show-table-row heading="Title">{{
+                        post.title
+                    }}</show-table-row>
 
-                <show-table-row heading="Description">{{
-                    post.description
-                }}</show-table-row>
+                    <show-table-row heading="Description">{{
+                        post.description
+                    }}</show-table-row>
 
-                <show-table-row heading="Body">
-                    <div class="whitespace-pre-wrap">{{ post.body }}</div>
-                </show-table-row>
+                    <show-table-row heading="Body">
+                        <div class="whitespace-pre-wrap">{{ post.body }}</div>
+                    </show-table-row>
 
-                <show-table-row heading="Action">
-                    <div class="flex justify-start items-center gap-1 md:gap-2">
-                        <action-button-edit
-                            :href="route('posts.edit', post.id)"
-                        />
-                    </div>
-                </show-table-row>
-            </table>
-        </div>
+                    <show-table-row heading="Action">
+                        <div
+                            class="flex justify-start items-center gap-1 md:gap-2"
+                        >
+                            <action-button-edit
+                                :href="route('posts.edit', post.id)"
+                            />
+                        </div>
+                    </show-table-row>
+                </table>
+            </div>
 
-        <div class="w-full mt-4 flex">
-            <go-to-list :href="route('posts.index')" />
+            <div class="w-full mt-4 flex">
+                <go-to-list :href="route('posts.index')" />
+            </div>
         </div>
     </app-layout>
 </template>

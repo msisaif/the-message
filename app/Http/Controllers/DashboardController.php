@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\Sura;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class DashboardController extends Controller
                 'admin' => User::onlyAdmin()->count(),
                 'user'  => User::onlyUser()->count(),
                 'sura'  => Sura::count(),
+                'post'  => Post::count(),
             ] 
         ]);
     }

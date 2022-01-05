@@ -1,7 +1,7 @@
 <template>
     <Link
         :href="href"
-        class="flex items-center py-1 px-2 text-base font-medium gap-1"
+        class="flex items-center py-2 px-2 text-base font-medium gap-1"
         :class="classes"
     >
         <svg

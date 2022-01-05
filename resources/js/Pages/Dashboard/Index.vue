@@ -1,6 +1,6 @@
 <template>
     <app-layout>
-        <div class="mt-6 w-ful flex flex-wrap gap-4">
+        <div class="mt-6 w-ful grid md:grid-cols-4 gap-4 px-4 md:px-0">
             <dashboard-card
                 v-if="$page.props.auth.user.type === 1"
                 title="Admins"
@@ -38,6 +38,19 @@
                     stroke-linejoin="round"
                     stroke-width="2"
                     d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+            </dashboard-card>
+            <dashboard-card
+                v-if="$page.props.auth.user.type === 1"
+                title="Post"
+                :count="count.post"
+                :href="route('posts.index')"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                 />
             </dashboard-card>
         </div>

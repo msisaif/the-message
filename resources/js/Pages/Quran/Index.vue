@@ -8,29 +8,11 @@
         >
             <div class="flex justify-center items-center px-2">
                 <input
-                    class="
-                        w-full
-                        max-w-sm
-                        border-2 border-brand-secondary
-                        px-2
-                        py-1
-                        focus:outline-none focus:ring-0
-                        placeholder-brand-gray
-                        text-brand-primary
-                    "
+                    class="w-full max-w-sm border-2 border-brand-secondary px-2 py-1 focus:outline-none focus:ring-0 placeholder-brand-gray text-brand-primary"
                     placeholder="Search 'Noah'"
                 />
                 <button
-                    class="
-                        px-3
-                        py-1
-                        flex
-                        justify-center
-                        items-center
-                        gap-2
-                        bg-brand-secondary
-                        text-white
-                    "
+                    class="px-3 py-1 flex justify-center items-center gap-2 bg-brand-secondary text-white"
                     type="button"
                 >
                     <search-icon class="h-6 w-6" />
@@ -64,82 +46,32 @@
             </div>
 
             <div v-if="show == 'sura'" class="grid md:grid-cols-3 gap-4 py-6">
-                <Link
-                    href="/"
+                <sura-card
                     v-for="(sura, index) in suras"
                     :key="index"
-                    class="
-                        p-6
-                        flex
-                        justify-between
-                        items-center
-                        gap-4
-                        text-brand-gray
-                        bg-white
-                    "
-                >
-                    <div class="flex gap-4 items-center">
-                        <span
-                            class="
-                                w-10
-                                h-10
-                                bg-brand-light
-                                rounded-full
-                                flex
-                                justify-center
-                                items-center
-                            "
-                        >
-                            {{ sura.numberOfSura }}
-                        </span>
-                        <span>{{ sura.nameBengali }}</span>
-                    </div>
-                    <div>{{ sura.nameArabic }}</div>
-                </Link>
+                    href="/"
+                    :sura="sura"
+                />
             </div>
 
-            <div v-if="show == 'juz'" class="grid md:grid-cols-2 gap-4 py-6">
-                <div
-                    v-for="(juz, index) in juzs"
-                    :key="index"
-                    class="p-4 bg-brand-primary"
-                >
-                    <div class="space-y-4">
-                        <div class="text-white font-bold">
-                            {{ juz.numberOfJuz }} পাড়া
-                        </div>
-                        <Link
-                            href="/"
-                            v-for="(sura, index) in juz.suras"
-                            :key="index"
-                            class="
-                                p-6
-                                flex
-                                justify-between
-                                items-center
-                                gap-4
-                                text-brand-gray
-                                bg-white
-                            "
-                        >
-                            <div class="flex gap-4 items-center">
-                                <span
-                                    class="
-                                        w-10
-                                        h-10
-                                        bg-brand-light
-                                        rounded-full
-                                        flex
-                                        justify-center
-                                        items-center
-                                    "
-                                >
-                                    {{ sura.numberOfSura }}
-                                </span>
-                                <span>{{ sura.nameBengali }}</span>
+            <div
+                v-if="show == 'juz'"
+                class="flex flex-col flex-wrap my-6"
+                style="height: 500px"
+            >
+                <div v-for="(juz, index) in juzs" :key="index" class="w-1/3">
+                    <div class="p-2">
+                        <div class="space-y-4 p-4 bg-brand-primary">
+                            <div class="text-white font-bold">
+                                {{ juz.numberOfJuz }} পাড়া
                             </div>
-                            <div>{{ sura.nameArabic }}</div>
-                        </Link>
+                            <sura-card
+                                v-for="(sura, index) in juz.suras"
+                                :key="index"
+                                href="/"
+                                :sura="sura"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -153,6 +85,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import BannerSection from "./BannerSection.vue";
 import SectionCard from "@/Components/SectionCard.vue";
 import { SearchIcon } from "@heroicons/vue/solid";
+import SuraCard from "./SuraCard.vue";
 
 export default {
     components: {
@@ -161,40 +94,53 @@ export default {
         BannerSection,
         SectionCard,
         SearchIcon,
+        SuraCard,
     },
     props: {
         suras: {
             type: Object,
             default: {
                 0: {
-                    numberOfSura: 1,
-                    nameBengali: "সূরা আল-ফাতিহা",
-                    nameArabic: "سورة الفاتحة",
+                    suraNumber: 1,
+                    latin: "সূরা আল-ফাতিহা",
+                    arabic: "سورة الفاتحة",
+                    totalAyah: 7,
+                    bengali: "সূচনা",
                 },
                 1: {
-                    numberOfSura: 2,
-                    nameBengali: "সূরা আল বাকারা",
-                    nameArabic: "سورة البقرة",
+                    suraNumber: 2,
+                    latin: "সূরা আল বাকারা",
+                    arabic: "سورة البقرة",
+                    totalAyah: 286,
+                    bengali: "বকনা-বাছুর",
                 },
                 2: {
-                    numberOfSura: 1,
-                    nameBengali: "সূরা আল-ফাতিহা",
-                    nameArabic: "سورة الفاتحة",
+                    suraNumber: 1,
+                    latin: "সূরা আল-ফাতিহা",
+                    arabic: "سورة الفاتحة",
+                    totalAyah: 7,
+                    bengali: "সূচনা",
                 },
                 3: {
-                    numberOfSura: 2,
-                    nameBengali: "সূরা আল বাকারা",
-                    nameArabic: "سورة البقرة",
+                    suraNumber: 2,
+                    latin: "সূরা আল বাকারা",
+                    arabic: "سورة البقرة",
+                    totalAyah: 286,
+                    bengali: "বকনা-বাছুর",
                 },
                 4: {
-                    numberOfSura: 1,
-                    nameBengali: "সূরা আল-ফাতিহা",
-                    nameArabic: "سورة الفاتحة",
+                    suraNumber: 1,
+                    latin: "সূরা আল-ফাতিহা",
+                    arabic: "سورة الفاتحة",
+                    totalAyah: 7,
+                    bengali: "সূচনা",
                 },
                 5: {
-                    numberOfSura: 2,
-                    nameBengali: "সূরা আল বাকারা",
-                    nameArabic: "سورة البقرة",
+                    suraNumber: 2,
+                    latin: "সূরা আল বাকারা",
+                    arabic: "سورة البقرة",
+                    totalAyah: 286,
+                    bengali: "বকনা-বাছুর",
                 },
             },
         },
@@ -205,29 +151,87 @@ export default {
                     numberOfJuz: 1,
                     suras: {
                         0: {
-                            numberOfSura: 1,
-                            nameBengali: "সূরা আল-ফাতিহা",
-                            nameArabic: "سورة الفاتحة",
+                            suraNumber: 1,
+                            latin: "সূরা আল-ফাতিহা",
+                            arabic: "سورة الفاتحة",
+                            totalAyah: 7,
+                            bengali: "সূচনা",
                         },
                         1: {
-                            numberOfSura: 2,
-                            nameBengali: "সূরা আল বাকারা",
-                            nameArabic: "سورة البقرة",
+                            suraNumber: 2,
+                            latin: "সূরা আল বাকারা",
+                            arabic: "سورة البقرة",
+                            totalAyah: 286,
+                            bengali: "বকনা-বাছুর",
                         },
                     },
                 },
                 2: {
-                    numberOfJuz: 1,
+                    numberOfJuz: 2,
                     suras: {
                         0: {
-                            numberOfSura: 1,
-                            nameBengali: "সূরা আল-ফাতিহা",
-                            nameArabic: "سورة الفاتحة",
+                            suraNumber: 1,
+                            latin: "সূরা আল-ফাতিহা",
+                            arabic: "سورة الفاتحة",
+                            totalAyah: 7,
+                            bengali: "সূচনা",
+                        },
+                    },
+                },
+                3: {
+                    numberOfJuz: 3,
+                    suras: {
+                        0: {
+                            suraNumber: 1,
+                            latin: "সূরা আল-ফাতিহা",
+                            arabic: "سورة الفاتحة",
+                            totalAyah: 7,
+                            bengali: "সূচনা",
+                        },
+                    },
+                },
+                4: {
+                    numberOfJuz: 4,
+                    suras: {
+                        0: {
+                            suraNumber: 1,
+                            latin: "সূরা আল-ফাতিহা",
+                            arabic: "سورة الفاتحة",
+                            totalAyah: 7,
+                            bengali: "সূচনা",
                         },
                         1: {
-                            numberOfSura: 2,
-                            nameBengali: "সূরা আল বাকারা",
-                            nameArabic: "سورة البقرة",
+                            suraNumber: 2,
+                            latin: "সূরা আল বাকারা",
+                            arabic: "سورة البقرة",
+                            totalAyah: 286,
+                            bengali: "বকনা-বাছুর",
+                        },
+                    },
+                },
+                5: {
+                    numberOfJuz: 4,
+                    suras: {
+                        0: {
+                            suraNumber: 1,
+                            latin: "সূরা আল-ফাতিহা",
+                            arabic: "سورة الفاتحة",
+                            totalAyah: 7,
+                            bengali: "সূচনা",
+                        },
+                        1: {
+                            suraNumber: 2,
+                            latin: "সূরা আল বাকারা",
+                            arabic: "سورة البقرة",
+                            totalAyah: 286,
+                            bengali: "বকনা-বাছুর",
+                        },
+                        2: {
+                            suraNumber: 2,
+                            latin: "সূরা আল বাকারা",
+                            arabic: "سورة البقرة",
+                            totalAyah: 286,
+                            bengali: "বকনা-বাছুর",
                         },
                     },
                 },
