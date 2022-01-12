@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AyahController;
@@ -16,6 +17,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
+
+Route::get('/phpinfo', [Controller::class, 'phpinfo']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
