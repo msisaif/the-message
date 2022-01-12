@@ -24,4 +24,9 @@ class Controller extends BaseController
         
         return $this;
     }
+    
+    public function phpinfo()
+    {
+        return phpinfo();
+    }
 }
