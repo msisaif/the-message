@@ -24,7 +24,7 @@ Route::get('/phpinfo', [Controller::class, 'phpinfo']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/quran', [QuranController::class, 'index'])->name('quran.index');
-Route::get('/quran/{sura}/{from?}-{to?}', [QuranController::class, 'sura'])->name('quran.show');
+Route::get('/quran/{sura}/{range?}', [QuranController::class, 'sura'])->name('quran.show');
 
 Route::get('/hadith', [HadithController::class, 'index'])->name('hadith.index');
 

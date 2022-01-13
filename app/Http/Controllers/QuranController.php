@@ -32,8 +32,11 @@ class QuranController extends Controller
         ]);
     }
 
-    public function sura(Sura $sura, $from = null, $to = null)
+    public function sura(Sura $sura, $range = null)
     {
+        $from = explode("-", $range)[0] ?? null;
+        $to = explode("-", $range)[1] ?? null;
+
         $ayahs = $sura
             ->ayahs()
             ->when($from, function($query, $from) {
