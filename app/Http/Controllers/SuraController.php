@@ -45,7 +45,7 @@ class SuraController extends Controller
         return Inertia::render('Sura/Create', [
             'data' => [
                 'sura' => new Sura(),
-                'juzs' => new JuzResource($juzs),
+                'juzs' => JuzResource::collection($juzs),
             ],
         ]);
     }
