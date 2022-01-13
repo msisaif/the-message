@@ -17,7 +17,6 @@ class SuraResource extends JsonResource
         return [
             'id'                => (int) $this->id,
             'suraNumber'        => (int) ($this->sura_number ?? 0),
-            'juzNumber'         => (int) ($this->juz_number ?? 0),
             'totalAyah'         => (int) ($this->total_ayah ?? 0),
             'bismillahPre'      => (boolean) ($this->bismillah_pre ?? false),
             'revelationPlace'   => (int) ($this->revelation_place ?? 0),

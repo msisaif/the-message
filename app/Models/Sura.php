@@ -13,4 +13,9 @@ class Sura extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public function ayahs()
+    {
+        return $this->hasMany(Ayah::class, 'sura_number', 'sura_number');
+    }
 }

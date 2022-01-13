@@ -22,7 +22,7 @@ class QuranController extends Controller
             ->get();
 
         $juzs = Juz::query()
-            ->with('suras')
+            ->with('ayahs','suras')
             ->orderBy('juz_number')
             ->get();
 
@@ -30,5 +30,10 @@ class QuranController extends Controller
             'suras' => SuraResource::collection($suras),
             'juzs'  => JuzResource::collection($juzs),
         ]);
+    }
+
+    public function sura(Sura $sura)
+    {
+        return $sura->ayahs;
     }
 }

@@ -36,16 +36,9 @@ class SuraController extends Controller
                 ->with('status', '114 Sura has already been created.');
         }
 
-        JuzResource::withoutWrapping();
-
-        $juzs = Juz::query()
-            ->orderBy('juz_number')
-            ->get();
-
         return Inertia::render('Sura/Create', [
             'data' => [
                 'sura' => new Sura(),
-                'juzs' => JuzResource::collection($juzs),
             ],
         ]);
     }
@@ -70,16 +63,9 @@ class SuraController extends Controller
 
     public function edit(Sura $sura)
     {
-        JuzResource::withoutWrapping();
-
-        $juzs = Juz::query()
-            ->orderBy('juz_number')
-            ->get();
-
         return Inertia::render('Sura/Edit', [
             'data' => [
                 'sura' => $sura,
-                'juzs' => JuzResource::collection($juzs),
             ],
         ]);
     }
@@ -132,10 +118,6 @@ class SuraController extends Controller
     {
         return $request->validate([
             'sura_number' => [
-                'required',
-                'numeric',
-            ],
-            'juz_number' => [
                 'required',
                 'numeric',
             ],

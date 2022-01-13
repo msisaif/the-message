@@ -11,4 +11,11 @@ class Ayah extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public $timestamps = false;
+
+    public function sura()
+    {
+        return $this->belongsTo(Sura::class, 'sura_number', 'sura_number');
+    }
 }

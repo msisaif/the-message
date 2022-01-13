@@ -14,7 +14,6 @@
             >
                 <template #head>
                     <th class="py-3 px-2 text-left">Sura</th>
-                    <th class="py-3 px-2 text-left">Juz</th>
                     <th class="py-3 px-2 text-left">Arabic</th>
                     <th class="py-3 px-2 text-left">Pronunciation</th>
                     <th class="py-3 px-2 text-left">English Meaning</th>
@@ -23,7 +22,6 @@
                 </template>
                 <template #default="{ item: sura }">
                     <td class="py-3 px-2 text-left">{{ sura.suraNumber }}</td>
-                    <td class="py-3 px-2 text-left">{{ sura.juzNumber }}</td>
                     <td class="py-3 px-2 text-left">{{ sura.arabic }}</td>
                     <td class="py-3 px-2 text-left">{{ sura.latin }}</td>
                     <td class="py-3 px-2 text-left">{{ sura.english }}</td>

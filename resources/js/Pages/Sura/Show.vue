@@ -14,9 +14,6 @@
                     <show-table-row heading="Sura Number">
                         {{ sura.suraNumber }}
                     </show-table-row>
-                    <show-table-row heading="Juz Number">
-                        {{ sura.juzNumber }}
-                    </show-table-row>
                     <show-table-row heading="Total Ayah">
                         {{ sura.totalAyah }}
                     </show-table-row>

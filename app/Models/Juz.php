@@ -14,8 +14,13 @@ class Juz extends Model
 
     public $timestamps = false;
 
+    public function ayahs()
+    {
+        return $this->hasMany(Ayah::class, 'juz_number', 'juz_number');
+    }
+
     public function suras()
     {
-        return $this->hasMany(Sura::class, 'juz_number', 'juz_number');
+        return $this->belongsToMany(Sura::class, 'ayahs', 'juz_number', 'sura_number')->distinct('sura_number');
     }
 }

@@ -48,20 +48,6 @@
                 </div>
 
                 <div class="">
-                    <Label value="Juz Number" />
-                    <Select class="mt-1 block w-full" v-model="form.juz_number">
-                        <option value="">- Select -</option>
-                        <option
-                            v-for="juz in data.juzs"
-                            :key="juz.id"
-                            :value="juz.juzNumber"
-                        >
-                            {{ juz.juzNumber }} {{ juz.name }}
-                        </option>
-                    </Select>
-                </div>
-
-                <div class="">
                     <Label value="Revelation Order" />
                     <Input
                         type="number"
