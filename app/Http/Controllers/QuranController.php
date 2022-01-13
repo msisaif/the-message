@@ -32,8 +32,20 @@ class QuranController extends Controller
         ]);
     }
 
-    public function sura(Sura $sura)
+    public function sura(Sura $sura, $from = null, $to = null)
     {
-        return $sura->ayahs;
+        $ayahs = $sura
+            ->ayahs()
+            ->when($from, function($query, $from) {
+                $query->where('ayah_number', '>=', $from);
+            })
+            ->when($to, function($query, $to) {
+                $query->where('ayah_number', '<=', $to);
+            })
+            ->get();
+
+        return Inertia::render('Quran/Show', [
+            'ayahs' => $ayahs,
+        ]);
     }
 }
