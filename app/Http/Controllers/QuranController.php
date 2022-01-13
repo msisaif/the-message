@@ -49,6 +49,7 @@ class QuranController extends Controller
 
         return Inertia::render('Quran/Show', [
             'ayahs' => $ayahs,
+            'bismillahPre' => (boolean) $sura->bismillah_pre,
         ]);
     }
 }
