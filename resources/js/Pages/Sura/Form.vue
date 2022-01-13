@@ -1,10 +1,10 @@
 <template>
-    <div class="w-full max-w-3xl mx-auto p-4 bg-white border shadow">
+    <div class="w-full max-w-4xl mx-auto p-4 bg-white border shadow">
         <ValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit" class="">
-            <div class="grid grid-cols-2 md:grid-cols-10 gap-x-4">
-                <div class="mb-4 md:col-span-2">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+                <div class="">
                     <Label value="Sura Number" />
                     <Input
                         type="number"
@@ -15,7 +15,7 @@
                     />
                 </div>
 
-                <div class="mb-4 md:col-span-2">
+                <div class="">
                     <Label value="Total Ayah" />
                     <Input
                         type="number"
@@ -24,7 +24,7 @@
                     />
                 </div>
 
-                <div class="mb-4 md:col-span-2">
+                <div class="">
                     <Label value="Bismillah" />
                     <Select
                         class="mt-1 block w-full"
@@ -35,7 +35,7 @@
                     </Select>
                 </div>
 
-                <div class="mb-4 md:col-span-2">
+                <div class="">
                     <Label value="Revelation Place" />
                     <Select
                         class="mt-1 block w-full"
@@ -47,7 +47,21 @@
                     </Select>
                 </div>
 
-                <div class="mb-4 md:col-span-2">
+                <div class="">
+                    <Label value="Juz Number" />
+                    <Select class="mt-1 block w-full" v-model="form.juz_number">
+                        <option value="">- Select -</option>
+                        <option
+                            v-for="juz in data.juzs"
+                            :key="juz.id"
+                            :value="juz.juzNumber"
+                        >
+                            {{ juz.juzNumber }} {{ juz.name }}
+                        </option>
+                    </Select>
+                </div>
+
+                <div class="">
                     <Label value="Revelation Order" />
                     <Input
                         type="number"
@@ -56,7 +70,7 @@
                     />
                 </div>
 
-                <div class="mb-4 col-span-2 md:col-span-5 col-start-1">
+                <div class="col-span-2 md:col-span-3 col-start-1">
                     <Label value="Arabic" />
                     <Input
                         type="text"
@@ -65,7 +79,7 @@
                     />
                 </div>
 
-                <div class="mb-4 col-span-2 md:col-span-5">
+                <div class="col-span-2 md:col-span-3">
                     <Label value="Pronunciation" />
                     <Input
                         type="text"
@@ -74,7 +88,7 @@
                     />
                 </div>
 
-                <div class="mb-4 col-span-2 md:col-span-5">
+                <div class="col-span-2 md:col-span-3">
                     <Label value="Bengali Meaning" />
                     <Input
                         type="text"
@@ -83,7 +97,7 @@
                     />
                 </div>
 
-                <div class="mb-4 col-span-2 md:col-span-5">
+                <div class="col-span-2 md:col-span-3">
                     <Label value="English Meaning" />
                     <Input
                         type="text"
@@ -145,6 +159,7 @@ export default {
         return {
             form: this.$inertia.form({
                 sura_number: this.data.sura.sura_number,
+                juz_number: this.data.sura.juz_number,
                 total_ayah: this.data.sura.total_ayah,
                 bismillah_pre:
                     this.moduleAction == "store"

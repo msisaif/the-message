@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\JuzResource;
 use App\Http\Resources\SuraResource;
+use App\Models\Juz;
 use App\Models\Sura;
 use App\Traits\DateFilter;
 use Illuminate\Http\Request;
@@ -28,8 +30,23 @@ class SuraController extends Controller
 
     public function create()
     {
+        if(Sura::count() >= 114) {
+            return redirect()
+                ->route('suras.index')
+                ->with('status', '114 Sura has already been created.');
+        }
+
+        JuzResource::withoutWrapping();
+
+        $juzs = Juz::query()
+            ->orderBy('juz_number')
+            ->get();
+
         return Inertia::render('Sura/Create', [
-            'sura' => new Sura(),
+            'data' => [
+                'sura' => new Sura(),
+                'juzs' => new JuzResource($juzs),
+            ],
         ]);
     }
 
@@ -53,8 +70,17 @@ class SuraController extends Controller
 
     public function edit(Sura $sura)
     {
+        JuzResource::withoutWrapping();
+
+        $juzs = Juz::query()
+            ->orderBy('juz_number')
+            ->get();
+
         return Inertia::render('Sura/Edit', [
-            'sura' => $sura,
+            'data' => [
+                'sura' => $sura,
+                'juzs' => JuzResource::collection($juzs),
+            ],
         ]);
     }
 
@@ -106,6 +132,10 @@ class SuraController extends Controller
     {
         return $request->validate([
             'sura_number' => [
+                'required',
+                'numeric',
+            ],
+            'juz_number' => [
                 'required',
                 'numeric',
             ],

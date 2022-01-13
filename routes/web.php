@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonateController;
 use App\Http\Controllers\HadithController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JuzController;
 use App\Http\Controllers\KidsZoneController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuranController;
@@ -23,6 +24,7 @@ Route::get('/phpinfo', [Controller::class, 'phpinfo']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/quran', [QuranController::class, 'index'])->name('quran.index');
+Route::get('/quran/{sura}', [QuranController::class, 'index'])->name('quran.show');
 
 Route::get('/hadith', [HadithController::class, 'index'])->name('hadith.index');
 
@@ -44,6 +46,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'admins'        => AdminController::class,
         'users'         => UserController::class,
         'suras'         => SuraController::class,
+        'juzs'          => JuzController::class,
         'ayahs'         => AyahController::class,
         'posts'         => PostController::class,
     ]);

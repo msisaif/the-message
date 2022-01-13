@@ -80,6 +80,13 @@
                     </nav-link>
                     <nav-link
                         v-if="$page.props.auth.user.type === 1"
+                        :href="route('juzs.index')"
+                        :active="route().current('juzs.*')"
+                    >
+                        Juzs
+                    </nav-link>
+                    <nav-link
+                        v-if="$page.props.auth.user.type === 1"
                         :href="route('ayahs.index')"
                         :active="route().current('ayahs.*')"
                     >

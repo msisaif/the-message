@@ -16,6 +16,7 @@ class CreateSurasTable extends Migration
         Schema::create('suras', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->unsignedTinyInteger('sura_number');
+            $table->unsignedTinyInteger('juz_number');
             $table->unsignedTinyInteger('revelation_place')->comment('1=Makkah, 2=Madinah');
             $table->unsignedTinyInteger('revelation_order')->nullable();
             $table->boolean('bismillah_pre');

@@ -11,4 +11,11 @@ class Juz extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public $timestamps = false;
+
+    public function suras()
+    {
+        return $this->hasMany(Sura::class, 'juz_number', 'juz_number');
+    }
 }

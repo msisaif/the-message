@@ -31,7 +31,7 @@
                         'bg-white text-brand-secondary': show != 'sura',
                     }"
                 >
-                    Show Surah
+                    Show Sura
                 </button>
                 <button
                     @click="show = 'juz'"
@@ -49,7 +49,7 @@
                 <sura-card
                     v-for="(sura, index) in suras"
                     :key="index"
-                    href="/"
+                    :href="route('quran.show', sura.id)"
                     :sura="sura"
                 />
                 <Link
@@ -68,18 +68,18 @@
             <div
                 v-if="show == 'juz'"
                 class="flex flex-col flex-wrap my-6"
-                style="height: 500px"
+                style="height: 750px"
             >
                 <div v-for="(juz, index) in juzs" :key="index" class="w-1/3">
                     <div class="p-2">
                         <div class="space-y-4 p-4 bg-brand-primary">
                             <div class="text-white font-bold">
-                                {{ juz.numberOfJuz }} পাড়া
+                                {{ juz.juzNumber }} পাড়া
                             </div>
                             <sura-card
                                 v-for="(sura, index) in juz.suras"
                                 :key="index"
-                                href="/"
+                                :href="route('quran.show', sura.id)"
                                 :sura="sura"
                             />
                         </div>
@@ -110,143 +110,11 @@ export default {
     props: {
         suras: {
             type: Object,
-            default: {
-                0: {
-                    suraNumber: 1,
-                    latin: "সূরা আল-ফাতিহা",
-                    arabic: "سورة الفاتحة",
-                    totalAyah: 7,
-                    bengali: "সূচনা",
-                },
-                1: {
-                    suraNumber: 2,
-                    latin: "সূরা আল বাকারা",
-                    arabic: "سورة البقرة",
-                    totalAyah: 286,
-                    bengali: "বকনা-বাছুর",
-                },
-                2: {
-                    suraNumber: 1,
-                    latin: "সূরা আল-ফাতিহা",
-                    arabic: "سورة الفاتحة",
-                    totalAyah: 7,
-                    bengali: "সূচনা",
-                },
-                3: {
-                    suraNumber: 2,
-                    latin: "সূরা আল বাকারা",
-                    arabic: "سورة البقرة",
-                    totalAyah: 286,
-                    bengali: "বকনা-বাছুর",
-                },
-                4: {
-                    suraNumber: 1,
-                    latin: "সূরা আল-ফাতিহা",
-                    arabic: "سورة الفاتحة",
-                    totalAyah: 7,
-                    bengali: "সূচনা",
-                },
-                5: {
-                    suraNumber: 2,
-                    latin: "সূরা আল বাকারা",
-                    arabic: "سورة البقرة",
-                    totalAyah: 286,
-                    bengali: "বকনা-বাছুর",
-                },
-            },
+            default: {},
         },
         juzs: {
             type: Object,
-            default: {
-                0: {
-                    numberOfJuz: 1,
-                    suras: {
-                        0: {
-                            suraNumber: 1,
-                            latin: "সূরা আল-ফাতিহা",
-                            arabic: "سورة الفاتحة",
-                            totalAyah: 7,
-                            bengali: "সূচনা",
-                        },
-                        1: {
-                            suraNumber: 2,
-                            latin: "সূরা আল বাকারা",
-                            arabic: "سورة البقرة",
-                            totalAyah: 286,
-                            bengali: "বকনা-বাছুর",
-                        },
-                    },
-                },
-                2: {
-                    numberOfJuz: 2,
-                    suras: {
-                        0: {
-                            suraNumber: 1,
-                            latin: "সূরা আল-ফাতিহা",
-                            arabic: "سورة الفاتحة",
-                            totalAyah: 7,
-                            bengali: "সূচনা",
-                        },
-                    },
-                },
-                3: {
-                    numberOfJuz: 3,
-                    suras: {
-                        0: {
-                            suraNumber: 1,
-                            latin: "সূরা আল-ফাতিহা",
-                            arabic: "سورة الفاتحة",
-                            totalAyah: 7,
-                            bengali: "সূচনা",
-                        },
-                    },
-                },
-                4: {
-                    numberOfJuz: 4,
-                    suras: {
-                        0: {
-                            suraNumber: 1,
-                            latin: "সূরা আল-ফাতিহা",
-                            arabic: "سورة الفاتحة",
-                            totalAyah: 7,
-                            bengali: "সূচনা",
-                        },
-                        1: {
-                            suraNumber: 2,
-                            latin: "সূরা আল বাকারা",
-                            arabic: "سورة البقرة",
-                            totalAyah: 286,
-                            bengali: "বকনা-বাছুর",
-                        },
-                    },
-                },
-                5: {
-                    numberOfJuz: 4,
-                    suras: {
-                        0: {
-                            suraNumber: 1,
-                            latin: "সূরা আল-ফাতিহা",
-                            arabic: "سورة الفاتحة",
-                            totalAyah: 7,
-                            bengali: "সূচনা",
-                        },
-                        1: {
-                            suraNumber: 2,
-                            latin: "সূরা আল বাকারা",
-                            arabic: "سورة البقرة",
-                            totalAyah: 286,
-                            bengali: "বকনা-বাছুর",
-                        },
-                        2: {
-                            suraNumber: 2,
-                            latin: "সূরা আল বাকারা",
-                            arabic: "سورة البقرة",
-                            totalAyah: 286,
-                            bengali: "বকনা-বাছুর",
-                        },
-                    },
-                },
-            },
+            default: {},
         },
     },
     data() {

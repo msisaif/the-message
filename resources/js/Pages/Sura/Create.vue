@@ -25,16 +25,8 @@ export default {
         FormComponent,
     },
 
-    data() {
-        return {
-            data: {
-                sura: this.sura,
-            },
-        };
-    },
-
     props: {
-        sura: {
+        data: {
             type: Object,
             default: {},
         },
