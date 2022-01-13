@@ -14,8 +14,12 @@ class QuranController extends Controller
     {
         SuraResource::withoutWrapping();
 
+        $suras = Sura::query()
+            ->orderBy('sura_number')
+            ->get();
+
         return Inertia::render('Quran/Index', [
-            'suras' => SuraResource::collection(Sura::get()),
+            'suras' => SuraResource::collection($suras),
         ]);
     }
 }

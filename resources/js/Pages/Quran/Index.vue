@@ -52,6 +52,17 @@
                     href="/"
                     :sura="sura"
                 />
+                <Link
+                    v-if="
+                        $page.props.auth.user &&
+                        $page.props.auth.user.type === 1 &&
+                        suras.length < 114
+                    "
+                    :href="route('suras.create')"
+                    class="p-6 flex justify-center items-center text-2xl text-brand-primary border border-dashed border-brand-primary"
+                >
+                    (+) Add Sura
+                </Link>
             </div>
 
             <div

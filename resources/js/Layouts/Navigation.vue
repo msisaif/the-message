@@ -1,5 +1,5 @@
 <template>
-    <div v-if="$page.props.auth.user" class="p-4">
+    <div class="p-4">
         <nav-link :href="route('home')" :active="route().current('home')">
             Home
             <template #icon>
