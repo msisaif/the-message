@@ -17,10 +17,12 @@
                             {{ ayah.position }}
                         </span>
                     </div>
-                    <div
-                        class="p-2 border w-full flex flex-col justify-center items-center text-xl text-brand-black"
-                    >
-                        <div>{{ ayah.text }}</div>
+                    <div class="p-4 border w-full">
+                        <div
+                            class="text-xl md:text-2xl text-right text-brand-black font-bold"
+                        >
+                            {{ ayah.text }}
+                        </div>
                     </div>
                 </div>
             </div>
