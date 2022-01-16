@@ -1,3 +1,19 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import url("./font.css");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* @layer base {
+    @font-face {
+        font-family: "alqalam";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local("alqalam"),
+            url("/fonts/AlQalamQuranMajeedWeb2.woff") format("woff");
+        src: local("alqalam"),
+            url("/fonts/Al_Qalam_Quran_Majeed_Web.ttf") format("ttf");
+        unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41,
+            U+FB50-FDFF, U+FE80-FEFC;
+    }
+} */

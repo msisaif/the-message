@@ -14,18 +14,28 @@
             >
                 <template #head>
                     <th class="py-3 px-2 text-left">Sura</th>
-                    <th class="py-3 px-2 text-left">Arabic</th>
-                    <th class="py-3 px-2 text-left">Pronunciation</th>
-                    <th class="py-3 px-2 text-left">English Meaning</th>
+                    <th class="py-3 px-2 text-right">Arabic</th>
+                    <th class="py-3 px-2 text-left">Bengali Pronunciation</th>
                     <th class="py-3 px-2 text-left">Bengali Meaning</th>
+                    <th class="py-3 px-2 text-left">English Pronunciation</th>
+                    <th class="py-3 px-2 text-left">English Meaning</th>
                     <th class="py-3 px-2 text-center">Action</th>
                 </template>
                 <template #default="{ item: sura }">
                     <td class="py-3 px-2 text-left">{{ sura.suraNumber }}</td>
-                    <td class="py-3 px-2 text-left">{{ sura.arabic }}</td>
-                    <td class="py-3 px-2 text-left">{{ sura.latin }}</td>
-                    <td class="py-3 px-2 text-left">{{ sura.english }}</td>
-                    <td class="py-3 px-2 text-left">{{ sura.bengali }}</td>
+                    <td class="py-3 px-2 text-right" dir="rtl">{{ sura.arabic }}</td>
+                    <td class="py-3 px-2 text-left">
+                        {{ sura.bengaliPronunciation }}
+                    </td>
+                    <td class="py-3 px-2 text-left">
+                        {{ sura.bengaliMeaning }}
+                    </td>
+                    <td class="py-3 px-2 text-left">
+                        {{ sura.englishPronunciation }}
+                    </td>
+                    <td class="py-3 px-2 text-left">
+                        {{ sura.englishMeaning }}
+                    </td>
                     <td class="py-2.5 px-2">
                         <div
                             class="flex justify-center items-center gap-1 md:gap-2"

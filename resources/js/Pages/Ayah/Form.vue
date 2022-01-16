@@ -20,6 +20,19 @@
                         </option>
                     </Select>
                 </div>
+                <div class="mb-4" v-if="form.sura_number">
+                    <Label value="Ayah Number of Sura" />
+                    <Select class="mt-1 block w-full" v-model="form.position">
+                        <option value="">- Select -</option>
+                        <option
+                            v-for="n in selectedSura.total_ayah"
+                            :key="n"
+                            :value="n"
+                        >
+                            {{ n }}
+                        </option>
+                    </Select>
+                </div>
                 <div class="mb-4">
                     <Label value="Ayah Number of Quran" />
                     <Input
@@ -30,19 +43,11 @@
                         autofocus
                     />
                 </div>
-                <div class="mb-4">
-                    <Label value="Ayah Number of Sura" />
-                    <Input
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.position"
-                        required
-                        autofocus
-                    />
-                </div>
+
                 <div class="mb-4 md:col-span-4">
                     <Label value="Ayah (Arabic)" />
                     <Input
+                        dir="rtl"
                         type="text"
                         class="mt-1 block w-full"
                         v-model="form.text"
@@ -96,6 +101,17 @@ export default {
         Select,
     },
 
+    computed: {
+        selectedSura() {
+            return [];
+            return this.data.suras[
+                this.data.suras.findIndex(
+                    (item) => item.sura_number == this.form.sura_number
+                )
+            ];
+        },
+    },
+
     props: {
         moduleAction: String,
         buttonValue: {
@@ -111,18 +127,10 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
+                sura_number: this.data.ayah.sura_number,
                 ayah_number: this.data.ayah.ayah_number,
-                total_ayah: this.data.ayah.total_ayah,
-                bismillah_pre:
-                    this.moduleAction == "store"
-                        ? 1
-                        : this.data.ayah.bismillah_pre,
-                revelation_place: this.data.ayah.revelation_place,
-                revelation_order: this.data.ayah.revelation_order,
-                arabic: this.data.ayah.arabic,
-                latin: this.data.ayah.latin,
-                bengali: this.data.ayah.bengali,
-                english: this.data.ayah.english,
+                position: this.data.ayah.position,
+                text: this.data.ayah.text,
             }),
             words: [],
         };

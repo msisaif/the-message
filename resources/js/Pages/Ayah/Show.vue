@@ -14,29 +14,11 @@
                     <show-table-row heading="Ayah Number">
                         {{ ayah.ayahNumber }}
                     </show-table-row>
-                    <show-table-row heading="Total Ayah">
-                        {{ ayah.totalAyah }}
+                    <show-table-row heading="Key">
+                        {{ ayah.key }}
                     </show-table-row>
-                    <show-table-row heading="Bismillah">
-                        {{ ayah.bismillahPre ? "Yes" : "No" }}
-                    </show-table-row>
-                    <show-table-row heading="Revelation Place">
-                        {{ ayah.revelationPlace }}
-                    </show-table-row>
-                    <show-table-row heading="Revelation Order">
-                        {{ ayah.revelationOrder || "" }}
-                    </show-table-row>
-                    <show-table-row heading="Arabic">
-                        {{ ayah.arabic }}
-                    </show-table-row>
-                    <show-table-row heading="Pronunciation">
-                        {{ ayah.latin }}
-                    </show-table-row>
-                    <show-table-row heading="Bengali Meaning">
-                        {{ ayah.bengali }}
-                    </show-table-row>
-                    <show-table-row heading="English Meaning">
-                        {{ ayah.english }}
+                    <show-table-row heading="Text">
+                        <div dir="rtl">{{ ayah.text }}</div>
                     </show-table-row>
                     <show-table-row heading="Action">
                         <div

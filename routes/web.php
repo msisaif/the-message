@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AyahController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonateController;
@@ -52,3 +53,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     ]);
 });
 
+Route::get('/collection', [CollectionController::class, 'create'])->name('collection');
+Route::post('/collection', [CollectionController::class, 'store']);

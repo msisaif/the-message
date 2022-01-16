@@ -13,19 +13,14 @@
                 :serialColumn="false"
             >
                 <template #head>
-                    <th class="py-3 px-2 text-left">Ayah Number</th>
-                    <th class="py-3 px-2 text-left">Arabic</th>
-                    <th class="py-3 px-2 text-left">Pronunciation</th>
-                    <th class="py-3 px-2 text-left">English Meaning</th>
-                    <th class="py-3 px-2 text-left">Bengali Meaning</th>
+                    <th class="py-3 px-2 text-center">Key</th>
                     <th class="py-3 px-2 text-center">Action</th>
+                    <th class="py-3 px-2 text-right">Arabic</th>
                 </template>
                 <template #default="{ item: ayah }">
-                    <td class="py-3 px-2 text-left">{{ ayah.ayahNumber }}</td>
-                    <td class="py-3 px-2 text-left">{{ ayah.arabic }}</td>
-                    <td class="py-3 px-2 text-left">{{ ayah.latin }}</td>
-                    <td class="py-3 px-2 text-left">{{ ayah.english }}</td>
-                    <td class="py-3 px-2 text-left">{{ ayah.bengali }}</td>
+                    <td class="py-3 px-2 text-center">
+                        <span class="font-bold">{{ ayah.key }}</span>
+                    </td>
                     <td class="py-2.5 px-2">
                         <div
                             class="flex justify-center items-center gap-1 md:gap-2"
@@ -36,6 +31,13 @@
                             <action-button-edit
                                 :href="route('ayahs.edit', ayah.id)"
                             />
+                        </div>
+                    </td>
+                    <td
+                        class="py-3 px-2 text-right max-w-xs whitespace-pre-wrap"
+                    >
+                        <div dir="rtl">
+                            {{ ayah.text }}
                         </div>
                     </td>
                 </template>

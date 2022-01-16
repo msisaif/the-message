@@ -26,17 +26,20 @@
                     <show-table-row heading="Revelation Order">
                         {{ sura.revelationOrder || "" }}
                     </show-table-row>
-                    <show-table-row heading="Arabic">
+                    <show-table-row heading="Arabic" dir="rtl">
                         {{ sura.arabic }}
                     </show-table-row>
-                    <show-table-row heading="Pronunciation">
-                        {{ sura.latin }}
+                    <show-table-row heading="Bengali Pronunciation">
+                        {{ sura.bengaliPronunciation }}
                     </show-table-row>
                     <show-table-row heading="Bengali Meaning">
-                        {{ sura.bengali }}
+                        {{ sura.bengaliMeaning }}
+                    </show-table-row>
+                    <show-table-row heading="English Pronunciation">
+                        {{ sura.englishPronunciation }}
                     </show-table-row>
                     <show-table-row heading="English Meaning">
-                        {{ sura.english }}
+                        {{ sura.englishMeaning }}
                     </show-table-row>
                     <show-table-row heading="Action">
                         <div

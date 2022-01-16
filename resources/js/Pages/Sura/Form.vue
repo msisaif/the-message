@@ -35,7 +35,7 @@
                     </Select>
                 </div>
 
-                <div class="">
+                <div class="md:col-span-2">
                     <Label value="Revelation Place" />
                     <Select
                         class="mt-1 block w-full"
@@ -56,39 +56,49 @@
                     />
                 </div>
 
-                <div class="col-span-2 md:col-span-3 col-start-1">
+                <div class="col-span-2 md:col-span-2 col-start-1">
                     <Label value="Arabic" />
                     <Input
+                        dir="rtl"
                         type="text"
                         class="mt-1 block w-full"
                         v-model="form.arabic"
                     />
                 </div>
 
-                <div class="col-span-2 md:col-span-3">
-                    <Label value="Pronunciation" />
+                <div class="col-span-2 md:col-span-2">
+                    <Label value="Bengali Pronunciation" />
                     <Input
                         type="text"
                         class="mt-1 block w-full"
-                        v-model="form.latin"
+                        v-model="form.bengali_pronunciation"
                     />
                 </div>
 
-                <div class="col-span-2 md:col-span-3">
+                <div class="col-span-2 md:col-span-2">
+                    <Label value="English Pronunciation" />
+                    <Input
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.english_pronunciation"
+                    />
+                </div>
+
+                <div class="col-span-2 md:col-span-2">
                     <Label value="Bengali Meaning" />
                     <Input
                         type="text"
                         class="mt-1 block w-full"
-                        v-model="form.bengali"
+                        v-model="form.bengali_meaning"
                     />
                 </div>
 
-                <div class="col-span-2 md:col-span-3">
+                <div class="col-span-2 md:col-span-2">
                     <Label value="English Meaning" />
                     <Input
                         type="text"
                         class="mt-1 block w-full"
-                        v-model="form.english"
+                        v-model="form.english_meaning"
                     />
                 </div>
             </div>
@@ -154,9 +164,10 @@ export default {
                 revelation_place: this.data.sura.revelation_place,
                 revelation_order: this.data.sura.revelation_order,
                 arabic: this.data.sura.arabic,
-                latin: this.data.sura.latin,
-                bengali: this.data.sura.bengali,
-                english: this.data.sura.english,
+                bengali_pronunciation: this.data.sura.bengali_pronunciation,
+                english_pronunciation: this.data.sura.english_pronunciation,
+                bengali_meaning: this.data.sura.bengali_meaning,
+                english_meaning: this.data.sura.english_meaning,
             }),
         };
     },

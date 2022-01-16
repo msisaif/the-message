@@ -15,16 +15,17 @@ class SuraResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'                => (int) $this->id,
-            'suraNumber'        => (int) ($this->sura_number ?? 0),
-            'totalAyah'         => (int) ($this->total_ayah ?? 0),
-            'bismillahPre'      => (boolean) ($this->bismillah_pre ?? false),
-            'revelationPlace'   => (int) ($this->revelation_place ?? 0),
-            'revelationOrder'   => (int) ($this->revelation_order ?? 0),
-            'arabic'            => (string) ($this->arabic ?? ''),
-            'latin'             => (string) ($this->latin ?? ''),
-            'bengali'           => (string) ($this->bengali ?? ''),
-            'english'           => (string) ($this->english ?? ''),
+            'id'                    => (int) $this->id,
+            'suraNumber'            => (int) ($this->sura_number ?? 0),
+            'totalAyah'             => (int) ($this->total_ayah ?? 0),
+            'bismillahPre'          => (boolean) ($this->bismillah_pre ?? false),
+            'revelationPlace'       => (int) ($this->revelation_place ?? 0),
+            'revelationOrder'       => (int) ($this->revelation_order ?? 0),
+            'arabic'                => (string) ($this->arabic ?? ''),
+            'bengaliMeaning'        => (string) ($this->bengali_meaning ?? ''),
+            'bengaliPronunciation'  => (string) ($this->bengali_pronunciation ?? ''),
+            'englishMeaning'        => (string) ($this->english_meaning ?? ''),
+            'englishPronunciation'  => (string) ($this->english_pronunciation ?? ''),
         ];
     }
 }

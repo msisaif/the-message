@@ -21,7 +21,9 @@
                         <div
                             class="text-xl md:text-2xl text-right text-brand-black font-bold"
                         >
-                            {{ ayah.text }}
+                            <div dir="rtl">
+                                {{ ayah.text }}
+                            </div>
                         </div>
                     </div>
                 </div>

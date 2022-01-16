@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\JuzResource;
 use App\Http\Resources\SuraResource;
+use App\Models\Ayah;
 use App\Models\Juz;
 use App\Models\Sura;
 use App\Traits\DateFilter;
@@ -45,11 +46,35 @@ class SuraController extends Controller
 
     public function store(Request $request)
     {
+        if(Sura::count() >= 114) {
+            return redirect()
+                ->route('suras.index')
+                ->with('status', '114 Sura has already been created.');
+        }
+
         $sura = Sura::create($this->validateData($request));
+
+        // $this->addAyah($sura);
 
         return redirect()
             ->route('suras.show', $sura->id)
             ->with('status', 'The record has been added successfully.');
+    }
+
+    private function addAyah($sura) {
+        $data = [];
+
+        for($i = 1; $i <= $sura->total_ayah; $i++) {
+            $data[] = [
+                'sura_number'   => $sura->sura_number,
+                'position'      => $i,
+                'key'           => "{$sura->sura_number}:{$i}"
+            ];
+        }
+
+        // return $data;
+
+        Ayah::insert($data);
     }
 
     public function show(Sura $sura)
@@ -138,15 +163,19 @@ class SuraController extends Controller
                 'required',
                 'string',
             ],
-            'latin' => [
+            'bengali_pronunciation' => [
                 'required',
                 'string',
             ],
-            'bengali' => [
+            'english_pronunciation' => [
                 'required',
                 'string',
             ],
-            'english' => [
+            'bengali_meaning' => [
+                'required',
+                'string',
+            ],
+            'english_meaning' => [
                 'required',
                 'string',
             ],

@@ -26,9 +26,12 @@ class AyahController extends Controller
 
     public function create()
     {
+        // return
+        $suras = Sura::with('ayahs')->get();
+
         return Inertia::render('Ayah/Create', [
             'ayah' => new Ayah(),
-            'suras' => Sura::get(),
+            'suras' => $suras,
         ]);
     }
 
@@ -52,8 +55,11 @@ class AyahController extends Controller
 
     public function edit(Ayah $ayah)
     {
+        $suras = Sura::with('ayahs')->get();
+
         return Inertia::render('Ayah/Edit', [
             'ayah' => $ayah,
+            'suras' => $suras,
         ]);
     }
 

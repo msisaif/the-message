@@ -11,10 +11,10 @@
             </span>
             <div>
                 <div class="text-brand-black">
-                    {{ sura.latin }}
+                    {{ sura.bengaliPronunciation }}
                 </div>
                 <div class="text-xs text-brand-gray">
-                    {{ sura.bengali }}
+                    {{ sura.bengaliMeaning }}
                 </div>
             </div>
         </div>

@@ -65,23 +65,23 @@
                 </Link>
             </div>
 
-            <div
-                v-if="show == 'juz'"
-                class="flex flex-col flex-wrap my-6"
-                style="height: 750px"
-            >
-                <div v-for="(juz, index) in juzs" :key="index" class="w-1/3">
+            <div v-if="show == 'juz'" class="flex flex-col flex-wrap my-6">
+                <div v-for="(juz, index) in juzs" :key="index" class="w-full">
                     <div class="p-2">
-                        <div class="space-y-4 p-4 bg-brand-primary">
+                        <div class="space-y-2 p-4 bg-brand-primary">
                             <div class="text-white font-bold">
                                 {{ juz.juzNumber }} পাড়া
                             </div>
-                            <sura-card
-                                v-for="(sura, index) in juz.suras"
-                                :key="index"
-                                :href="route('quran.show', sura.id)"
-                                :sura="sura"
-                            />
+                            <div
+                                class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+                            >
+                                <sura-card
+                                    v-for="(sura, index) in juz.suras"
+                                    :key="index"
+                                    :href="route('quran.show', sura.id)"
+                                    :sura="sura"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ export default {
     },
     data() {
         return {
-            show: "sura",
+            show: "juz",
         };
     },
 };

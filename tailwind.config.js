@@ -14,7 +14,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Poppins', 'Scheherazade New', 'Noto Sans Bengali', 'sans-serif'],
+                sans: ['alqalam', 'Scheherazade New', 'Poppins', 'Noto Sans Bengali', 'sans-serif'],
             },
             colors: {
                 brand: {
