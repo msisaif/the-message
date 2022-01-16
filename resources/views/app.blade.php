@@ -9,6 +9,7 @@
         <title inertia>{{ config('app.name', 'The Message') }}</title>
 
         <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+Bengali" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
         
         <!-- Styles -->
@@ -18,7 +19,7 @@
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased overflow-y-scroll bg-brand-light">
+    <body class="font-brand antialiased overflow-y-scroll bg-brand-light">
         @inertia
     </body>
 </html>

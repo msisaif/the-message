@@ -8,6 +8,15 @@
             <!-- <img class="w-full h-72 object-cover" src="/images/article.jpg" /> -->
         </splash-banner>
 
+        <div class="w-full mx-auto max-w-xs">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            <p>আমাদের দেশ বাংলাদেশ।</p>
+            <p dir="rtl">
+                صِرَاطَ الَّذِيۡنَ اَنۡعَمۡتَ عَلَيۡهِمۡ ۙ‏ غَيۡرِ
+                الۡمَغۡضُوۡبِ عَلَيۡهِمۡ وَلَا الضَّآلِّيۡنَ‏
+            </p>
+        </div>
+
         <section-card
             title="Search Anything"
             class="mt-6 md:mt-12 bg-white py-4"
