@@ -70,7 +70,7 @@
                                 >(</span
                             >
                             <span
-                                class="absolute -left-3 top-1.5 text-base md:text-xl"
+                                class="absolute -right-3 top-1.5 text-base md:text-xl"
                                 >)</span
                             >
                         </span>
