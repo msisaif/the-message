@@ -28,11 +28,16 @@ class CollectionController extends Controller
             return $this->apiToSuraStore();
         }
 
+        if($option === 'word') {
+            return $this->apiToWordStore();
+        }
+
         return "
             <ul>
                 <li><a href='/quran-api/juz'>juz insert from api</a></li>
-                <li><a href='/quran-api/ayah'>ayah insert from api</a></li>
                 <li><a href='/quran-api/sura'>sura insert from api</a></li>
+                <li><a href='/quran-api/ayah'>ayah insert from api</a></li>
+                <li><a href='/quran-api/word'>word testing</a></li>
             </ul>
         ";
     }
@@ -126,21 +131,47 @@ class CollectionController extends Controller
 
         $response = Http::get('https://api.quran.com/api/v4/quran/verses/indopak');
 
+        $response2 = Http::get('https://api.quran.com/api/v4/quran/verses/code_v2');
+
         $collection = $response->object()->verses;
 
+        $collection2 = $response2->object()->verses;
+
         // dd($collection);
+
+        // dd($collection2);
 
         $data = [];
 
         $juzs = Juz::pluck('id', 'first_ayah');
 
+        $sajdah = [
+            "7:206",
+            "13:15",
+            "16:50",
+            "17:109",
+            "19:58",
+            "22:18",
+            "22:77",
+            "25:60",
+            "27:26",
+            "32:15",
+            "38:24",
+            "41:38",
+            "53:62",
+            "84:21",
+            "96:19",
+        ];
+
         // dd($juzs);
 
         $juz = 0;
 
-        foreach($collection as $item) {
+        foreach($collection as $index => $item) {
 
             // dd($item);
+
+            // dd($collection2[$index]);
 
             $data[] = [
                 "sura_number"   => explode(":", $item->verse_key)[0],
@@ -148,13 +179,33 @@ class CollectionController extends Controller
                 "key"           => $item->verse_key,
                 "text"          => $item->text_indopak,
                 "ayah_number"   => $item->id,
+                "sajdah"        => in_array($item->verse_key, $sajdah) ? 1 : 0,
+                "page_number"   => $collection2[$index]->v2_page,
                 "juz_number"    => isset($juzs[$item->id]) ? $juz = $juzs[$item->id] : $juz
             ];
         }
 
-        // dd($data);
+        dd($data);
 
         return Ayah::insert($data);
+    }
+    
+    public function apiToWordStore()
+    {
+        // dd(313);
+
+        $ayahs = Ayah::query()
+            ->whereIn('key', ["1:7"])
+            ->get();
+
+        foreach($ayahs as $ayah)
+        {
+            // dd($ayah->text); // ۙ‏ //
+
+            $words = explode(" ", $ayah->text);
+
+            dd($words);
+        }
     }
 
     public function create()

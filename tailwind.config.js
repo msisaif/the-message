@@ -14,7 +14,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                brand: ['Poppins', 'Noto Sans Bengali', 'alqalam'],
+                // brand: ['Poppins', 'Noto Sans Bengali', 'alqalam'],
+                brand: ['Poppins', 'Noto Sans Bengali', 'indopak'],
             },
             colors: {
                 brand: {

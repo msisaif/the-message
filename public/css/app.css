@@ -549,6 +549,10 @@ select {
         font-family: "alqalam";
         src: url("/webfonts/alqalam/AlQalamQuranMajeedWeb2.woff") format("woff");
     }
+    @font-face {
+        font-family: "indopak";
+        src: url("/webfonts/indopak/IndoPak.woff2") format("woff2");
+    }
 
 *, ::before, ::after {
   --tw-translate-x: 0;
@@ -657,9 +661,6 @@ select {
 }
 .col-start-1 {
   grid-column-start: 1;
-}
-.clear-both {
-  clear: both;
 }
 .m-4 {
   margin: 1rem;
@@ -916,10 +917,6 @@ select {
 }
 .list-disc {
   list-style-type: disc;
-}
-.columns-3 {
-  -moz-columns: 3;
-       columns: 3;
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1213,7 +1210,10 @@ select {
   vertical-align: top;
 }
 .font-brand {
-  font-family: Poppins, Noto Sans Bengali, alqalam;
+  font-family: Poppins, Noto Sans Bengali, indopak;
+}
+.font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .text-sm {
   font-size: 0.875rem;
@@ -1276,6 +1276,9 @@ select {
 }
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+.tracking-wide {
+  letter-spacing: 0.025em;
 }
 .text-gray-500 {
   --tw-text-opacity: 1;
@@ -1671,10 +1674,6 @@ select {
     max-width: max-content;
   }
 
-  .md\:grid-flow-row {
-    grid-auto-flow: row;
-  }
-
   .md\:grid-cols-6 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
@@ -1689,10 +1688,6 @@ select {
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .md\:grid-rows-3 {
-    grid-template-rows: repeat(3, minmax(0, 1fr));
   }
 
   .md\:flex-row {
