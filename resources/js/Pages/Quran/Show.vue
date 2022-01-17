@@ -66,11 +66,11 @@
                         <span class="text-xl md:text-3xl relative">
                             {{ numberToArabicNumber(ayah.position) }}
                             <span
-                                class="absolute -left-3 top-1.5 text-base md:text-xl"
+                                class="absolute -left-2 top-1.5 text-base md:text-xl"
                                 >(</span
                             >
                             <span
-                                class="absolute -right-3 top-1.5 text-base md:text-xl"
+                                class="absolute -right-2 top-1.5 text-base md:text-xl"
                                 >)</span
                             >
                         </span>
