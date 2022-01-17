@@ -629,6 +629,42 @@ select {
 .top-full {
   top: 100%;
 }
+.-left-1 {
+  left: -0.25rem;
+}
+.-right-1 {
+  right: -0.25rem;
+}
+.-left-2 {
+  left: -0.5rem;
+}
+.-right-2 {
+  right: -0.5rem;
+}
+.-left-4 {
+  left: -1rem;
+}
+.-right-4 {
+  right: -1rem;
+}
+.-left-3 {
+  left: -0.75rem;
+}
+.-right-3 {
+  right: -0.75rem;
+}
+.top-3 {
+  top: 0.75rem;
+}
+.top-2 {
+  top: 0.5rem;
+}
+.top-1\.5 {
+  top: 0.375rem;
+}
+.top-1 {
+  top: 0.25rem;
+}
 .z-0 {
   z-index: 0;
 }
@@ -970,6 +1006,10 @@ select {
   -moz-column-gap: 1rem;
        column-gap: 1rem;
 }
+.gap-x-2 {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+}
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1276,9 +1316,6 @@ select {
 }
 .tracking-widest {
   letter-spacing: 0.1em;
-}
-.tracking-wide {
-  letter-spacing: 0.025em;
 }
 .text-gray-500 {
   --tw-text-opacity: 1;
@@ -1714,6 +1751,10 @@ select {
     gap: 1rem;
   }
 
+  .md\:gap-8 {
+    gap: 2rem;
+  }
+
   .md\:space-y-20 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1790,6 +1831,16 @@ select {
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 @media (min-width: 1024px) {

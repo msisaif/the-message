@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AyahResource;
 use App\Http\Resources\JuzResource;
 use App\Http\Resources\SuraResource;
 use App\Models\Juz;
@@ -47,8 +48,10 @@ class QuranController extends Controller
             })
             ->get();
 
+        AyahResource::withoutWrapping();
+
         return Inertia::render('Quran/Show', [
-            'ayahs' => $ayahs,
+            'ayahs' => AyahResource::collection($ayahs),
             'bismillahPre' => (boolean) $sura->bismillah_pre,
         ]);
     }
