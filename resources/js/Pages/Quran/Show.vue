@@ -74,11 +74,7 @@
                                 >)</span
                             >
                         </span>
-                        <span
-                            dir="rtl"
-                            class="text-xl md:text-3xl"
-                            style="word-spacing: 12px"
-                        >
+                        <span dir="rtl" class="text-xl md:text-3xl">
                             {{ ayah.text }}
                         </span>
                     </div>
