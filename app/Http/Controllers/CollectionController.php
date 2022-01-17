@@ -16,9 +16,6 @@ class CollectionController extends Controller
 {
     public function apiToSql($option = null)
     {
-
-        //return Sura::pluck('bengali_pronunciation');
-
         if($option === 'juz') {
             return $this->apiToJuzStore();
         }
