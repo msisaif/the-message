@@ -21,6 +21,6 @@ class Juz extends Model
 
     public function suras()
     {
-        return $this->belongsToMany(Sura::class, 'ayahs', 'juz_number', 'sura_number')->distinct('sura_number');
+        return $this->belongsToMany(Sura::class, 'ayahs', 'juz_number', 'sura_number')->whereNull('ayahs.deleted_at')->distinct('sura_number');
     }
 }
