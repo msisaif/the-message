@@ -15,14 +15,14 @@ class CreateAyahsTable extends Migration
     {
         Schema::create('ayahs', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->unsignedTinyInteger('sura_number');
-            $table->unsignedSmallInteger('position');
-            $table->string('key')->comment('sura_number:position');
-            $table->unsignedSmallInteger('ayah_number');
-            $table->unsignedTinyInteger('juz_number');
-            $table->unsignedSmallInteger('page_number');
-            $table->boolean('sajdah');
-            $table->text('text');
+            $table->unsignedTinyInteger('sura_number')->nullable();
+            $table->unsignedSmallInteger('position')->nullable();
+            $table->string('key')->comment('sura_number:position')->nullable();
+            $table->unsignedSmallInteger('ayah_number')->nullable();
+            $table->unsignedTinyInteger('juz_number')->nullable();
+            $table->unsignedSmallInteger('page_number')->nullable();
+            $table->boolean('sajdah')->nullable();
+            $table->text('text')->nullable();
             $table->softDeletes();
         });
     }

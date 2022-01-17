@@ -53,5 +53,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     ]);
 });
 
+Route::get('quran-api/{option?}', [CollectionController::class, 'apiToSql']);
 Route::get('/collection', [CollectionController::class, 'create'])->name('collection');
 Route::post('/collection', [CollectionController::class, 'store']);

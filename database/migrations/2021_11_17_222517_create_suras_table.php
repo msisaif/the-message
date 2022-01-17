@@ -15,15 +15,16 @@ class CreateSurasTable extends Migration
     {
         Schema::create('suras', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->unsignedTinyInteger('sura_number');
-            $table->unsignedTinyInteger('revelation_place')->comment('1=Makkah, 2=Madinah');
+            $table->unsignedTinyInteger('sura_number')->nullable();
+            $table->unsignedSmallInteger('total_ayah')->nullable();
+            $table->boolean('bismillah_pre')->nullable();
+            $table->unsignedTinyInteger('revelation_place')->nullable()->comment('1=Makkah, 2=Madinah');
             $table->unsignedTinyInteger('revelation_order')->nullable();
-            $table->boolean('bismillah_pre');
             $table->string('arabic')->nullable();
-            $table->string('latin')->nullable();
-            $table->string('bengali')->nullable();
-            $table->string('english')->nullable();
-            $table->unsignedSmallInteger('total_ayah');
+            $table->string('bengali_meaning')->nullable();
+            $table->string('bengali_pronunciation')->nullable();
+            $table->string('english_meaning')->nullable();
+            $table->string('english_pronunciation')->nullable();
             $table->softDeletes();
         });
     }

@@ -119,7 +119,7 @@ export default {
     },
     data() {
         return {
-            show: "juz",
+            show: "sura",
         };
     },
 };
