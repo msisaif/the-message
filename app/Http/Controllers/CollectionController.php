@@ -16,6 +16,9 @@ class CollectionController extends Controller
 {
     public function apiToSql($option = null)
     {
+
+        //return Sura::pluck('bengali_pronunciation');
+
         if($option === 'juz') {
             return $this->apiToJuzStore();
         }
@@ -68,7 +71,7 @@ class CollectionController extends Controller
             ];
         }
 
-        dd($data);
+        // dd($data);
 
         return Juz::insert($data);
     }
@@ -100,11 +103,129 @@ class CollectionController extends Controller
 
         $data = [];
 
+        $bengali_pronunciations = [
+            "আল ফাতিহা",
+            "আল বাক্বারাহ",
+            "আল ইমরান",
+            "আন নিসা",
+            "আল মায়েদাহ",
+            "আল আন-আম",
+            "আল আ’রাফ",
+            "আল-আনফাল",
+            "আত তাওবাহ",
+            "ইউনুস",
+            "হুদ",
+            "ইউসূফ",
+            "রা’দ",
+            "ইব্রাহীম",
+            "হিজর",
+            "নাহল",
+            "বনী ইসরাঈল",
+            "কাহফ",
+            "মারইয়াম",
+            "ত্বোয়া-হা",
+            "আম্বিয়া",
+            "হাজ্জ্ব",
+            "আল মু’মিনূন",
+            "আন-নূর",
+            "আল-ফুরকান",
+            "আশ-শো'আরা",
+            "নমল",
+            "আল কাসাস",
+            "আল আনকাবুত",
+            "আর-রূম",
+            "লুকমান",
+            "সেজদাহ",
+            "আল আহযাব",
+            "সাবা",
+            "ফাতির",
+            "ইয়াসীন",
+            "আস-সাফফাত",
+            "ছোয়াদ",
+            "আল-যুমার",
+            "আল মু'মিন",
+            "হা-মীম সেজদাহ্‌",
+            "আশ্‌-শূরা",
+            "আয্‌-যুখরুফ",
+            "আদ-দোখান",
+            "আল জাসিয়াহ",
+            "আল আহ্‌ক্বাফ",
+            "মুহাম্মদ",
+            "আল ফাত্‌হ",
+            "আল হুজুরাত",
+            "ক্বাফ",
+            "আয-যারিয়াত",
+            "আত্ব তূর",
+            "আন-নাজম",
+            "আল ক্বামার",
+            "আর রাহমান",
+            "আল-ওয়াকিয়াহ",
+            "আল-হাদীদ",
+            "আল-মুজাদালাহ",
+            "আল-হাশর",
+            "আল-মুমতাহিনাহ",
+            "আস-সাফ",
+            "আল-জুমুআ",
+            "আল-মুনাফিকুন",
+            "আত-তাগাবুন",
+            "আত-তালাক",
+            "আত-তাহরীম",
+            "আল-মুলক",
+            "আল-কলম",
+            "আল-হাক্কাহ",
+            "আল-মাআরিজ",
+            "নূহ",
+            "আল জ্বিন",
+            "আল মুজাম্মিল",
+            "আল মুদ্দাস্সির",
+            "আল-ক্বিয়ামাহ",
+            "আদ-দাহর",
+            "আল-মুরসালাত",
+            "আন নাবা",
+            "আন নাযিয়াত",
+            "আবাসা",
+            "আত-তাকভীর",
+            "আল-ইনফিতার",
+            "আত মুত্বাফ্‌ফিফীন",
+            "আল ইন‌শিকাক",
+            "আল-বুরুজ",
+            "আত-তারিক্ব",
+            "আল আ'লা",
+            "আল গাশিয়াহ্‌",
+            "আল ফাজ্‌র",
+            "আল বালাদ",
+            "আশ-শাম্‌স",
+            "আল-লাইল",
+            "আদ-দুহা",
+            "আল ইনশিরাহ",
+            "আত-ত্বীন",
+            "আলাক্ব",
+            "ক্বদর",
+            "বাইয়্যিনাহ",
+            "যিলযাল",
+            "আল-আদিয়াত",
+            "আল-ক্বারিয়াহ",
+            "আত-তাকাসুর",
+            "আল-আছর",
+            "হুমাযাহ",
+            "আল-ফীল",
+            "কুরাইশ",
+            "মাউন",
+            "আল-কাওসার",
+            "আল-কাফিরুন",
+            "আন-নাসর",
+            "লাহাব",
+            "আল-ইখলাস",
+            "আল-ফালাক",
+            "আন-নাস",
+        ];
+
         foreach($collection as $index => $item) {
 
             // dd($item);
 
             $data[] = [
+                "id"                    => $item->id,
                 "sura_number"           => $item->id,
                 "total_ayah"            => $item->verses_count,
                 "bismillah_pre"         => $item->bismillah_pre ? 1 : 0,
@@ -112,13 +233,13 @@ class CollectionController extends Controller
                 "revelation_order"      => $item->revelation_order,
                 "arabic"                => $item->name_arabic,
                 "bengali_meaning"       => $collection_bn[$index]->translated_name->name,
-                // "bengali_pronunciation" => null,
+                "bengali_pronunciation" => $bengali_pronunciations[$index],
                 "english_meaning"       => $item->translated_name->name,
                 "english_pronunciation" => $item->name_simple,
             ];
         }
 
-        dd($data);
+        // dd($data);
 
         return Sura::insert($data);
     }
@@ -185,7 +306,7 @@ class CollectionController extends Controller
             ];
         }
 
-        dd($data);
+        // dd($data);
 
         return Ayah::insert($data);
     }
