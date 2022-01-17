@@ -295,6 +295,7 @@ class CollectionController extends Controller
             // dd($collection2[$index]);
 
             $data[] = [
+                "id"            => $item->id,
                 "sura_number"   => explode(":", $item->verse_key)[0],
                 "position"      => explode(":", $item->verse_key)[1],
                 "key"           => $item->verse_key,
