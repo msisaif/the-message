@@ -42,12 +42,21 @@
                             {{ numberToArabicNumber(ayah.position) }}
                         </span>
                     </div>
-                    <div class="p-4 border w-full">
+                    <div class="p-4 border w-full space-y-2">
                         <div
                             class="text-xl md:text-2xl text-right text-brand-black font-bold"
                         >
                             <div dir="rtl">
                                 {{ ayah.text }}
+                            </div>
+                        </div>
+                        <div
+                            v-for="translation in ayah.translations"
+                            :key="translation.id"
+                            class="text-lg md:text-xl text-left text-brand-black"
+                        >
+                            <div v-if="translation.resourceId === resourceId">
+                                {{ translation.text }}
                             </div>
                         </div>
                     </div>
@@ -105,6 +114,10 @@ export default {
         bismillahPre: {
             type: Boolean,
             default: false,
+        },
+        resourceId: {
+            type: Number,
+            default: 1,
         },
     },
     data() {

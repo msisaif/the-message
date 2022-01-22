@@ -40,6 +40,7 @@ class QuranController extends Controller
 
         $ayahs = $sura
             ->ayahs()
+            ->with('translations')
             ->when($from, function($query, $from) {
                 $query->where('ayah_number', '>=', $from);
             })
@@ -50,9 +51,12 @@ class QuranController extends Controller
 
         AyahResource::withoutWrapping();
 
+        // return AyahResource::collection($ayahs);
+
         return Inertia::render('Quran/Show', [
             'ayahs' => AyahResource::collection($ayahs),
             'bismillahPre' => (boolean) $sura->bismillah_pre,
+            'resourceId' => 2,
         ]);
     }
 }

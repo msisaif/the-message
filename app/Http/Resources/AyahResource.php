@@ -24,6 +24,7 @@ class AyahResource extends JsonResource
             'sajdah'            => (boolean) ($this->sajdah ?? false),
             'key'               => (string) ($this->key ?? ""),
             'text'              => (string) ($this->text ?? ""),
+            'translations'     => TranslationResource::collection($this->translations),
         ];
     }
 }
