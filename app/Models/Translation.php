@@ -11,4 +11,6 @@ class Translation extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public $timestamps = false;
 }

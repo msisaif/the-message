@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Imports\CollectionImport;
 use App\Models\Ayah;
 use App\Models\Juz;
+use App\Models\Resource;
 use App\Models\Sura;
+use App\Models\Translation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
@@ -32,12 +34,17 @@ class CollectionController extends Controller
             return $this->apiToWordStore();
         }
 
+        if($option === 'translations') {
+            return $this->apiToTranslationsStore();
+        }
+
         return "
             <ul>
                 <li><a href='/quran-api/juz'>juz insert from api</a></li>
                 <li><a href='/quran-api/sura'>sura insert from api</a></li>
                 <li><a href='/quran-api/ayah'>ayah insert from api</a></li>
                 <li><a href='/quran-api/word'>word testing</a></li>
+                <li><a href='/quran-api/translations'>translations</a></li>
             </ul>
         ";
     }
@@ -324,6 +331,50 @@ class CollectionController extends Controller
             $words = explode(" ", $ayah->text);
 
             dd($words);
+        }
+    }
+
+    public function apiToTranslationsStore()
+    {
+        $response = Http::get('https://api.quran.com/api/v4/resources/translations');
+        
+        $collection = $response->object()->translations;
+
+        // dd($collection);
+
+        $collection = array_filter($collection, function ($item) {
+            return $item->language_name == 'bengali';
+            // return $item->language_name == 'english';
+        });
+
+        // dd($collection);
+
+        foreach($collection as $item) {
+            if(Resource::where('name', $item->name)->exists()) {
+                continue;
+            }
+
+            $resource = Resource::create([
+                'name' => $item->name,
+                'author' => $item->author_name,
+                'language_id' => 1, // 1=bengali, 2=english
+            ]);
+
+            $response2 = Http::get('https://api.quran.com/api/v4/quran/translations/' . $item->id);
+        
+            $collection2 = $response2->object()->translations;
+
+            $data = [];
+
+            foreach($collection2 as $index => $row) {
+                $data[] = [
+                    'resource_id' => $resource->id,
+                    'ayah_number' => $index + 1,
+                    'text' => $row->text,
+                ];
+            }
+
+            Translation::insert($data);
         }
     }
 

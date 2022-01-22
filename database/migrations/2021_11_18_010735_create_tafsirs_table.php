@@ -16,7 +16,6 @@ class CreateTafsirsTable extends Migration
         Schema::create('tafsirs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('user_id');
             $table->unsignedTinyInteger('language_id');
             $table->timestamps();
             $table->softDeletes();
