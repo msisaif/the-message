@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AyahController;
+use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -44,12 +45,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resources([
-        'admins'        => AdminController::class,
-        'users'         => UserController::class,
-        'suras'         => SuraController::class,
-        'juzs'          => JuzController::class,
-        'ayahs'         => AyahController::class,
-        'posts'         => PostController::class,
+        'admins'            => AdminController::class,
+        'users'             => UserController::class,
+        'suras'             => SuraController::class,
+        'juzs'              => JuzController::class,
+        'ayahs'             => AyahController::class,
+        'posts'             => PostController::class,
+        'classifications'   => ClassificationController::class,
     ]);
 });
 

@@ -80,6 +80,13 @@
                     </nav-link>
                     <nav-link
                         v-if="$page.props.auth.user.type === 1"
+                        :href="route('classifications.index')"
+                        :active="route().current('classifications.*')"
+                    >
+                        Classifications
+                    </nav-link>
+                    <nav-link
+                        v-if="$page.props.auth.user.type === 1"
                         :href="route('juzs.index')"
                         :active="route().current('juzs.*')"
                     >

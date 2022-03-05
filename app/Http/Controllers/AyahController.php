@@ -19,7 +19,7 @@ class AyahController extends Controller
             ->getQuery();
 
         return Inertia::render('Ayah/Index', [
-            'ayahs' => AyahResource::collection($ayahs->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'ayahs' => AyahResource::collection($ayahs->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }
