@@ -22,6 +22,18 @@
                 >
                     Read
                 </button>
+                <button
+                    @click="show = 'classification'"
+                    class="w-40 py-2 flex justify-center items-center"
+                    :class="{
+                        'bg-brand-secondary text-white':
+                            show == 'classification',
+                        'bg-white text-brand-secondary':
+                            show != 'classification',
+                    }"
+                >
+                    বিষয়বস্তু
+                </button>
             </div>
             <div
                 v-if="show == 'translations'"
@@ -55,8 +67,16 @@
                             :key="translation.id"
                             class="text-lg md:text-xl text-left text-brand-black"
                         >
-                            <div v-if="translation.resourceId === resourceId">
-                                {{ translation.text }}
+                            <div
+                                v-if="
+                                    resources.includes(translation.resourceId)
+                                "
+                                class="grid gap-1 pt-2"
+                            >
+                                <div>{{ translation.text }}</div>
+                                <div class="font-semibold text-xs">
+                                    - {{ translation.resourceName }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -89,6 +109,52 @@
                     </div>
                 </div>
             </div>
+            <div
+                v-if="show == 'classification'"
+                class="bg-white p-4 md:p-6 space-y-4"
+            >
+                <div
+                    class="text-center text-brand-primary mb-4 text-lg font-bold"
+                >
+                    ({{ sura.bengaliPronunciation }}) {{ sura.arabic }}
+                </div>
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr
+                            class="bg-brand-secondary text-white uppercase leading-normal text-sm md:text-xl"
+                        >
+                            <th class="py-3 px-2 text-center">আয়াত</th>
+                            <th class="py-3 px-2 text-left">বিষয়বস্তু</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-light bg-white">
+                        <tr
+                            v-for="(classification, index) in classifications"
+                            :key="index"
+                            class="border-b border-gray-200 hover:bg-gray-50"
+                        >
+                            <td
+                                class="py-3 px-2 text-center text-sm md:text-xl"
+                            >
+                                <Link
+                                    class="underline cursor-pointer"
+                                    :href="
+                                        route('quran.show', [
+                                            classification.suraNumber,
+                                            classification.ayah,
+                                        ])
+                                    "
+                                >
+                                    {{ classification.ayah }}
+                                </Link>
+                            </td>
+                            <td class="py-3 px-2 text-left text-sm md:text-xl">
+                                {{ classification.topic }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section-card>
     </app-layout>
 </template>
@@ -107,7 +173,15 @@ export default {
         BismillahirRahmanirRahim,
     },
     props: {
+        sura: {
+            type: Object,
+            default: {},
+        },
         ayahs: {
+            type: Object,
+            default: {},
+        },
+        classifications: {
             type: Object,
             default: {},
         },
@@ -115,15 +189,14 @@ export default {
             type: Boolean,
             default: false,
         },
-        resourceId: {
-            type: Number,
-            default: 1,
+        resources: {
+            type: Array,
+            default: [1],
         },
-    },
-    data() {
-        return {
-            show: "translations",
-        };
+        show: {
+            type: String,
+            default: "translations",
+        },
     },
     methods: {
         numberToArabicNumber(position) {

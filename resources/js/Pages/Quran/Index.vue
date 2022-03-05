@@ -43,10 +43,23 @@
                 >
                     Show Juz
                 </button>
+                <button
+                    @click="show = 'classification'"
+                    class="w-40 py-2 flex justify-center items-center"
+                    :class="{
+                        'bg-brand-secondary text-white':
+                            show == 'classification',
+                        'bg-white text-brand-secondary':
+                            show != 'classification',
+                    }"
+                >
+                    বিষয়বস্তু
+                </button>
             </div>
 
             <div v-if="show == 'sura'" class="grid md:grid-cols-3 gap-4 py-6">
                 <sura-card
+                    class="bg-white"
                     v-for="(sura, index) in suras"
                     :key="index"
                     :href="route('quran.show', sura.id)"
@@ -76,6 +89,7 @@
                                 class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
                             >
                                 <sura-card
+                                    class="bg-white"
                                     v-for="(sura, index) in juz.suras"
                                     :key="index"
                                     :href="route('quran.show', sura.id)"
@@ -85,6 +99,21 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div
+                v-if="show == 'classification'"
+                class="grid md:grid-cols-3 gap-4 py-6"
+            >
+                <sura-card
+                    class="bg-gray-200"
+                    v-for="(sura, index) in suras"
+                    :key="index"
+                    :href="
+                        route('quran.show', sura.id) + '?option=classification'
+                    "
+                    :sura="sura"
+                />
             </div>
         </section-card>
     </app-layout>

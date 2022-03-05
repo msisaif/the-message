@@ -1,7 +1,7 @@
 <template>
     <Link
         :href="href"
-        class="p-6 flex justify-between items-center gap-4 text-brand-gray bg-white"
+        class="p-6 flex justify-between items-center gap-4 text-brand-gray"
     >
         <div class="flex gap-4 items-center">
             <span

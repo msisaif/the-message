@@ -17,6 +17,7 @@ class TranslationResource extends JsonResource
         return [
             'id'            => (int) $this->id,
             'resourceId'    => (int) ($this->resource_id ?? 0),
+            'resourceName'  => (string) ($this->resourcer->name ?? ''),
             'ayahNumber'    => (int) ($this->ayah_number ?? 0),
             'text'          => (string) ($this->text ?? ''),
         ];

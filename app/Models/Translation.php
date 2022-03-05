@@ -13,4 +13,9 @@ class Translation extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public function resourcer()
+    {
+        return $this->belongsTo(Resource::class, 'resource_id');
+    }
 }

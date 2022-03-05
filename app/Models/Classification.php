@@ -31,6 +31,16 @@ class Classification extends Model
 
         return array_filter($data);
     }
+    
+    public function getAyahAttribute($value)
+    {
+        return preg_replace('/\s+/', '', $value);;
+    }
+    
+    public function setAyahAttribute($value)
+    {
+        $this->attributes['ayah'] = preg_replace('/\s+/', '', $value);;
+    }
 
     public function sura()
     {
