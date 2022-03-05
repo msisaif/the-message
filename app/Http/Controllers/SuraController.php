@@ -24,7 +24,7 @@ class SuraController extends Controller
             ->orderBy('sura_number');
 
         return Inertia::render('Sura/Index', [
-            'suras' => SuraResource::collection($suras->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'suras' => SuraResource::collection($suras->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }

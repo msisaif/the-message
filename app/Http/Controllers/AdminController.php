@@ -22,7 +22,7 @@ class AdminController extends Controller
             ->latest();
 
         return Inertia::render('Admin/Index', [
-            'admins' => UserResource::collection($admins->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'admins' => UserResource::collection($admins->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }

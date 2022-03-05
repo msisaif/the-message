@@ -24,7 +24,7 @@ class UserController extends Controller
             ->latest();
 
         return Inertia::render('User/Index', [
-            'users' => UserResource::collection($users->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'users' => UserResource::collection($users->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }

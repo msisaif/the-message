@@ -17,8 +17,8 @@
                             :key="sura.id"
                             :value="sura.suraNumber"
                         >
-                            {{ sura.bengaliPronunciation }} -
-                            {{ sura.suraNumber }}
+                            {{ sura.suraNumber }} -
+                            {{ sura.bengaliPronunciation }}
                         </option>
                     </Select>
                 </div>

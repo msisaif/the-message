@@ -20,7 +20,7 @@ class ClassificationController extends Controller
             ->getQuery();
 
         return Inertia::render('Classification/Index', [
-            'classifications' => ClassificationResource::collection($classifications->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'classifications' => ClassificationResource::collection($classifications->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }

@@ -18,7 +18,7 @@ class JuzController extends Controller
             ->getQuery();
 
         return Inertia::render('Juz/Index', [
-            'juzs' => JuzResource::collection($juzs->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'juzs' => JuzResource::collection($juzs->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }

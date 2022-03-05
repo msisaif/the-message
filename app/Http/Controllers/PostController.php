@@ -21,7 +21,7 @@ class PostController extends Controller
             ->getQuery();
 
         return Inertia::render('Post/Index', [
-            'posts'   => PostResource::collection($posts->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'posts'   => PostResource::collection($posts->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }

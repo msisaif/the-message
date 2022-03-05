@@ -20,7 +20,7 @@
                 </template>
                 <template #default="{ item: sura }">
                     <td class="py-3 px-2 text-left">
-                        {{ sura.suraName }} - {{ sura.suraNumber }}
+                        {{ sura.suraNumber }} - {{ sura.suraName }}
                     </td>
                     <td class="py-3 px-2 text-left">
                         {{ sura.topic }}

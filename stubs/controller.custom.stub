@@ -21,7 +21,7 @@ class {{ class }} extends Controller
             ->getQuery();
 
         return Inertia::render('{{ model }}/Index', [
-            'collections' => {{ model }}Resource::collection($collections->paginate(request()->perpage ?? 100)->onEachSide(1)->appends(request()->input())),
+            'collections' => {{ model }}Resource::collection($collections->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }
