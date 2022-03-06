@@ -343,8 +343,8 @@ class CollectionController extends Controller
         // dd($collection);
 
         $collection = array_filter($collection, function ($item) {
-            return $item->language_name == 'bengali';
-            // return $item->language_name == 'english';
+            // return $item->language_name == 'bengali';
+            return $item->language_name == 'english';
         });
 
         // dd($collection);
@@ -357,7 +357,7 @@ class CollectionController extends Controller
             $resource = Resource::create([
                 'name' => $item->name,
                 'author' => $item->author_name,
-                'language_id' => 1, // 1=bengali, 2=english
+                'language_id' => 2, // 1=bengali, 2=english
             ]);
 
             $response2 = Http::get('https://api.quran.com/api/v4/quran/translations/' . $item->id);
