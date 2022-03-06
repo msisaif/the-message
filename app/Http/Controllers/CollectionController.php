@@ -18,6 +18,9 @@ class CollectionController extends Controller
 {
     public function apiToSql($option = null)
     {
+
+        return 'ok';
+        
         if($option === 'juz') {
             return $this->apiToJuzStore();
         }
