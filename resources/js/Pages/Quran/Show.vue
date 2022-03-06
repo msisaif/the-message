@@ -39,6 +39,11 @@
                 v-if="show == 'translations'"
                 class="bg-white p-4 md:p-6 space-y-4"
             >
+                <div
+                    class="text-center text-brand-primary mb-4 text-lg font-bold"
+                >
+                    ({{ sura.bengaliPronunciation }}) {{ sura.arabic }}
+                </div>
                 <div v-if="bismillahPre" class="flex justify-center">
                     <bismillahir-rahmanir-rahim class="h-8" />
                 </div>
@@ -83,9 +88,15 @@
                 </div>
             </div>
             <div v-if="show == 'read'" class="bg-white p-4 md:p-6 space-y-4">
+                <div
+                    class="text-center text-brand-primary mb-4 text-lg font-bold"
+                >
+                    ({{ sura.bengaliPronunciation }}) {{ sura.arabic }}
+                </div>
                 <div v-if="bismillahPre" class="flex justify-center">
                     <bismillahir-rahmanir-rahim class="h-8" />
                 </div>
+                <hr />
                 <div
                     v-for="(ayah, index) in ayahs"
                     :key="index"
