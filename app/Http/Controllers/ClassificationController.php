@@ -32,7 +32,7 @@ class ClassificationController extends Controller
         return Inertia::render('Classification/Create', [
             'data' => [
                 'classification'    => new Classification(),
-                'suras'             => SuraResource::collection(Sura::query()->orderBy('sura_number')->get())
+                'suras'             => SuraResource::collection(Sura::query()->orderBy('sura_number')->get()),
             ]
         ]);
     }
@@ -40,6 +40,9 @@ class ClassificationController extends Controller
     public function store(Request $request)
     {
         $classification = Classification::create($this->validateData($request));
+
+        return back()
+            ->with('status', "'{$classification->sura->bengali_pronunciation}' এর '{$classification->ayah}' নং আয়াতের বিষয়বস্তু '{$classification->topic}' যুক্ত হয়েছে।");
 
         return redirect()
             ->route('classifications.show', $classification->id)

@@ -104,7 +104,12 @@ export default {
     methods: {
         submit() {
             if (this.moduleAction == "store") {
-                return this.form.post(this.route("classifications.store"));
+                return this.form.post(this.route("classifications.store"), {
+                    onSuccess: () => {
+                        this.form.reset("ayah");
+                        this.form.reset("topic");
+                    },
+                });
             }
 
             if (this.moduleAction == "update") {
