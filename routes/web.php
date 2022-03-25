@@ -15,8 +15,10 @@ use App\Http\Controllers\JuzController;
 use App\Http\Controllers\KidsZoneController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuranController;
+use App\Http\Controllers\RecentVideoController;
 use App\Http\Controllers\SuraController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
@@ -37,6 +39,8 @@ Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article
 
 Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.index');
 
+Route::get('/video', [RecentVideoController::class, 'index'])->name('video.index');
+
 Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
 
 Route::middleware(['auth'])->group(function () {
@@ -52,6 +56,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'ayahs'             => AyahController::class,
         'posts'             => PostController::class,
         'classifications'   => ClassificationController::class,
+        'videos'            => VideoController::class,
     ]);
 });
 

@@ -87,6 +87,13 @@
                     </nav-link>
                     <nav-link
                         v-if="$page.props.auth.user.type === 1"
+                        :href="route('videos.index')"
+                        :active="route().current('videos.*')"
+                    >
+                        Videos
+                    </nav-link>
+                    <nav-link
+                        v-if="$page.props.auth.user.type === 1"
                         :href="route('juzs.index')"
                         :active="route().current('juzs.*')"
                     >

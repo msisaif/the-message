@@ -11,4 +11,9 @@ class Video extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function scopeType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
 }

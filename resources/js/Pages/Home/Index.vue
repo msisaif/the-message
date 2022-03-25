@@ -57,29 +57,42 @@
         </section-card>
 
         <section-card class="mt-6 md:mt-12" title="Recent Videos">
-            <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
-                <Link
-                    v-for="(video, index) in videos"
+            <div class="relative w-full flex gap-6 snap-x overflow-x-auto pb-8">
+                <div
+                    v-for="(video, index) in videos.data"
                     :key="index"
-                    href="/"
-                    class="bg-white shadow"
+                    class="snap-center shrink-0 first:ml-8 last:mr-8 bg-white shadow w-80 md:w-96"
                 >
                     <div class="relative">
-                        <img :src="video.thumbnail" class="w-full" />
-                        <div
-                            class="absolute inset-0 flex justify-center items-center bg-brand-black bg-opacity-0 hover:bg-opacity-50"
-                        >
-                            <play-icon
-                                class="w-10 text-brand-primary bg-white rounded-full"
-                            />
+                        <div class="w-full aspect-video rounded shadow">
+                            <iframe
+                                class="w-full h-full"
+                                :src="
+                                    video.url.replace(
+                                        'https://youtu.be/',
+                                        'https://www.youtube.com/embed/'
+                                    )
+                                "
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-2 p-2 md:p-4">
-                        <h3 class="text-lg text-brand-black font-bold">
+                    <div class="flex items-center p-2 md:p-4">
+                        <h3
+                            class="text-xs md:text-sm text-brand-black font-bold"
+                        >
                             {{ video.title }}
                         </h3>
                     </div>
-                    <slot></slot>
+                </div>
+                <Link
+                    :href="route('video.index')"
+                    class="snap-center shrink-0 first:ml-8 last:mr-8 bg-transparent w-80 flex justify-center items-center text-3xl border border-dashed rounded border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white"
+                >
+                    See All
                 </Link>
             </div>
         </section-card>
@@ -164,28 +177,7 @@ export default {
         },
         videos: {
             type: Object,
-            default: {
-                0: {
-                    id: 13,
-                    title: "Quranic Science",
-                    thumbnail: "/images/video.png",
-                },
-                1: {
-                    id: 13,
-                    title: "Quranic Science",
-                    thumbnail: "/images/video.png",
-                },
-                2: {
-                    id: 13,
-                    title: "Quranic Science",
-                    thumbnail: "/images/video.png",
-                },
-                3: {
-                    id: 13,
-                    title: "Quranic Science",
-                    thumbnail: "/images/video.png",
-                },
-            },
+            default: {},
         },
         ayahOfTheDay: {
             type: Object,

@@ -86,10 +86,10 @@
                 </navigation-link>
 
                 <navigation-link
-                    :href="route('article.index')"
-                    :active="route().current('article.*')"
+                    :href="route('video.index')"
+                    :active="route().current('video.*')"
                 >
-                    Article
+                    Video
                 </navigation-link>
 
                 <navigation-link
