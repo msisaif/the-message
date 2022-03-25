@@ -90,7 +90,7 @@
                 </div>
                 <Link
                     :href="route('video.index')"
-                    class="snap-center shrink-0 first:ml-8 last:mr-8 bg-transparent w-80 flex justify-center items-center text-3xl border border-dashed rounded border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white"
+                    class="snap-center shrink-0 first:ml-8 last:mr-8 bg-transparent w-80 md:w-96 flex justify-center items-center text-3xl border border-dashed rounded border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white"
                 >
                     See All
                 </Link>
