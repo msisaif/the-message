@@ -61,7 +61,7 @@
                 <div
                     v-for="(video, index) in videos.data"
                     :key="index"
-                    class="snap-center shrink-0 first:ml-8 last:mr-8 bg-white shadow w-80 md:w-96"
+                    class="snap-center shrink-0 first:ml-8 md:first:ml-0 last:mr-8 md:last:mr-0 bg-white shadow w-80 md:w-96"
                 >
                     <div class="relative">
                         <div class="w-full aspect-video rounded shadow">
