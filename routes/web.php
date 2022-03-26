@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AyahController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CourseController;
@@ -57,6 +58,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'posts'             => PostController::class,
         'classifications'   => ClassificationController::class,
         'videos'            => VideoController::class,
+        'categories'        => CategoryController::class,
     ]);
 });
 
