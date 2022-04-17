@@ -16,6 +16,7 @@ use App\Http\Controllers\JuzController;
 use App\Http\Controllers\KidsZoneController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuranController;
+use App\Http\Controllers\RamadanChecklistController;
 use App\Http\Controllers\RecentVideoController;
 use App\Http\Controllers\SuraController;
 use App\Http\Controllers\UserController;
@@ -43,6 +44,10 @@ Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.
 Route::get('/video', [RecentVideoController::class, 'index'])->name('video.index');
 
 Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
+
+Route::get('/ramadan-checklist', [RamadanChecklistController::class, 'index'])->name('ramadan-checklist.index');
+
+Route::get('/ramadan-checklist/create', [RamadanChecklistController::class, 'create'])->name('ramadan-checklist.create');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

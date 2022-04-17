@@ -55,4 +55,9 @@ class User extends Authenticatable
             ? $this->email_verified_at->diffForHumans()
             : '';
     }
+
+    public function ramadan_checklists()
+    {
+        return $this->hasMany(RamadanChecklist::class);
+    }
 }
