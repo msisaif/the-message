@@ -17,7 +17,9 @@ class ClassificationController extends Controller
     {
         $classifications = $this->setQuery(Classification::query())
             ->search()->filter()
-            ->getQuery();
+            ->getQuery()
+            ->orderBy('sura_number')
+            ->orderBy('ayah');
 
         return Inertia::render('Classification/Index', [
             'classifications' => ClassificationResource::collection($classifications->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
