@@ -5,16 +5,7 @@
         >
             <Link
                 :href="route('quran.index')"
-                class="
-                    flex flex-col
-                    md:flex-row
-                    justify-center
-                    items-center
-                    bg-white
-                    shadow
-                    py-8
-                    gap-4
-                "
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
             >
                 <svg
                     class="h-10"
@@ -199,16 +190,7 @@
             </Link>
             <Link
                 :href="route('hadith.index')"
-                class="
-                    flex flex-col
-                    md:flex-row
-                    justify-center
-                    items-center
-                    bg-white
-                    shadow
-                    py-8
-                    gap-4
-                "
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
             >
                 <svg
                     class="h-10"
@@ -274,16 +256,7 @@
             </Link>
             <Link
                 :href="route('article.index')"
-                class="
-                    flex flex-col
-                    md:flex-row
-                    justify-center
-                    items-center
-                    bg-white
-                    shadow
-                    py-8
-                    gap-4
-                "
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
             >
                 <svg
                     class="h-10"
@@ -348,17 +321,8 @@
                 <div>Article Reading</div>
             </Link>
             <Link
-                :href="route('kids-zone.index')"
-                class="
-                    flex flex-col
-                    md:flex-row
-                    justify-center
-                    items-center
-                    bg-white
-                    shadow
-                    py-8
-                    gap-4
-                "
+                :href="route('ramadan-checklist.index')"
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
             >
                 <svg
                     class="h-10"
@@ -420,7 +384,7 @@
                     </g>
                 </svg>
 
-                <div>Kids Zone</div>
+                <div>Ramadan Checklist</div>
             </Link>
         </div>
     </section-card>

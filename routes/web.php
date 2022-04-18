@@ -47,7 +47,9 @@ Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
 
 Route::get('/ramadan-checklist', [RamadanChecklistController::class, 'index'])->name('ramadan-checklist.index');
 
-Route::get('/ramadan-checklist/create', [RamadanChecklistController::class, 'create'])->name('ramadan-checklist.create');
+Route::get('/ramadan-checklist/form/{date?}', [RamadanChecklistController::class, 'form'])->name('ramadan-checklist.form')->middleware('auth');
+
+Route::post('/ramadan-checklist', [RamadanChecklistController::class, 'save'])->name('ramadan-checklist.save')->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

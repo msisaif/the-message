@@ -16,7 +16,7 @@ class RamadanChecklistField extends Model
     {
         switch($value) {
             case 1:
-                return 'checkbox';
+                return 'radio';
 
             case 2:
                 return 'number';

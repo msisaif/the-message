@@ -18,7 +18,7 @@ class CreateRamadanChecklistsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('date');
             $table->string('title')->nullable();
-            $table->boolean('quran')->nullable();
+            $table->json('checklist')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

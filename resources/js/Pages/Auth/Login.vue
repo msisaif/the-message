@@ -60,6 +60,17 @@
                 Log in
             </BreezeButton>
         </div>
+
+        <div class="flex flex-col items-center justify-end mt-4">
+            <p class="border w-full mt-2 mb-5"></p>
+            <p class="font-bold">Don't have an account?</p>
+            <a
+                :href="route('register')"
+                class="mt-3 inline-flex items-center px-4 py-2 font-semibold text-xs text-white uppercase tracking-widest bg-gray-700 hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25"
+            >
+                Register
+            </a>
+        </div>
     </form>
 </template>
 

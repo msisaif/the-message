@@ -12,6 +12,11 @@ class RamadanChecklist extends Model
 
     protected $guarded = [];
 
+    public function getChecklistAttribute($value)
+    {
+        return json_decode($value, 1);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
