@@ -19,7 +19,7 @@ class ClassificationController extends Controller
             ->search()->filter()
             ->getQuery()
             ->orderBy('sura_number')
-            ->orderByRaw('LENGTH(ayah) asc')
+            ->orderBy('priority')
             ->orderBy('ayah');
 
         return Inertia::render('Classification/Index', [

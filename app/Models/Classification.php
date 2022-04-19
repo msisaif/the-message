@@ -39,7 +39,8 @@ class Classification extends Model
     
     public function setAyahAttribute($value)
     {
-        $this->attributes['ayah'] = preg_replace('/\s+/', '', $value);;
+        $this->attributes['ayah'] = preg_replace('/\s+/', '', $value);
+        $this->attributes['priority'] = explode('(', explode('-', $value)[0])[0];
     }
 
     public function sura()
