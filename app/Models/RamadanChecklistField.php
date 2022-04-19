@@ -22,4 +22,21 @@ class RamadanChecklistField extends Model
                 return 'number';
         }
     }
+
+    public function setTypeAttribute($value)
+    {
+        $type = 0;
+
+        switch($value) {
+            case 'radio':
+                $type = 1;
+                break;
+
+            case 'number':
+                $type = 2;
+                break;
+        }
+
+        $this->attributes['type'] = $type;
+    }
 }

@@ -14,7 +14,7 @@ use Inertia\Inertia;
 
 class RamadanChecklistController extends Controller
 {
-    public function index()
+    public function list()
     {
         // return
         $user = User::find(Auth::id()) ?? null;
@@ -84,15 +84,9 @@ class RamadanChecklistController extends Controller
             ]
         );
 
-
         return redirect()
-            ->route('ramadan-checklist.index')
+            ->route('ramadan-checklist.list')
             ->with('status', 'The record has been added successfully.');
-    }
-
-    public function update(Request $request)
-    {
-        return $request;
     }
 
     protected function getRamadanChecklistField()
@@ -102,16 +96,5 @@ class RamadanChecklistController extends Controller
         $ramadan_checklist_fields = RamadanChecklistField::get();
 
         return RamadanChecklistFieldResource::collection($ramadan_checklist_fields);
-    }
-
-    private function validatedData($request, $id = '')
-    {
-        return $request->validate([
-            'date' => [
-                'required',
-                'string',
-            ],
-            'title' => '',
-        ]);
     }
 }

@@ -17,6 +17,7 @@ use App\Http\Controllers\KidsZoneController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuranController;
 use App\Http\Controllers\RamadanChecklistController;
+use App\Http\Controllers\RamadanChecklistFieldController;
 use App\Http\Controllers\RecentVideoController;
 use App\Http\Controllers\SuraController;
 use App\Http\Controllers\UserController;
@@ -45,7 +46,7 @@ Route::get('/video', [RecentVideoController::class, 'index'])->name('video.index
 
 Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
 
-Route::get('/ramadan-checklist', [RamadanChecklistController::class, 'index'])->name('ramadan-checklist.index');
+Route::get('/ramadan-checklist', [RamadanChecklistController::class, 'list'])->name('ramadan-checklist.list');
 
 Route::get('/ramadan-checklist/form/{date?}', [RamadanChecklistController::class, 'form'])->name('ramadan-checklist.form')->middleware('auth');
 
@@ -66,6 +67,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'classifications'   => ClassificationController::class,
         'videos'            => VideoController::class,
         'categories'        => CategoryController::class,
+        'checklist-fields'  => RamadanChecklistFieldController::class,
     ]);
 });
 

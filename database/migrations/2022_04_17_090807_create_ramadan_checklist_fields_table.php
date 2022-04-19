@@ -16,7 +16,7 @@ class CreateRamadanChecklistFieldsTable extends Migration
         Schema::create('ramadan_checklist_fields', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedTinyInteger('type')->comment('1=Checkbox, 2=Number');
+            $table->unsignedTinyInteger('type')->comment('1=Radio, 2=Number');
             $table->timestamps();
             $table->softDeletes();
         });

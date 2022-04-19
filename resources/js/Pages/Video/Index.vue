@@ -5,10 +5,7 @@
         <template #header> Video List </template>
 
         <div class="py-4">
-            <add-new-button
-                v-if="Object.keys(videos.data).length < 30"
-                :href="route('videos.create')"
-            />
+            <add-new-button :href="route('videos.create')" />
 
             <data-table
                 :collections="videos"

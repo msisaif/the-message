@@ -9,7 +9,7 @@
                     :href="route('ramadan-checklist.form')"
                     class="border border-brand-primary rounded-md bg-brand-primary text-white flex justify-center items-center px-4 py-1.5 gap-2"
                 >
-                    <PencilAltIcon class="w-6" />
+                    <ShieldCheckIcon class="w-6" />
                     <span>এখানে ক্লিক করুন</span>
                 </Link>
             </div>
@@ -93,12 +93,12 @@ import AppLayout from "@/Layouts/App.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import Select from "@/Components/Select.vue";
 import Label from "@/Components/Label.vue";
-import { PencilAltIcon } from "@heroicons/vue/outline";
+import { ShieldCheckIcon } from "@heroicons/vue/outline";
 export default {
     components: {
         AppLayout,
         Link,
-        PencilAltIcon,
+        ShieldCheckIcon,
         Select,
         Label,
     },
