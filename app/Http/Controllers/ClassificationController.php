@@ -18,7 +18,7 @@ class ClassificationController extends Controller
         $classifications = $this->setQuery(Classification::query())
             ->search()->filter()
             ->getQuery()
-            ->orderBy('sura_number')
+            ->orderByRaw('CONVERT(sura_number, SIGNED) asc')
             ->orderBy('ayah');
 
         return Inertia::render('Classification/Index', [
