@@ -18,7 +18,7 @@ class ClassificationController extends Controller
         $classifications = $this->setQuery(Classification::query())
             ->search()->filter()
             ->getQuery()
-            ->orderBy('LENGTH(sura_number)')
+            ->orderByRaw('LENGTH(sura_number) asc')
             ->orderBy('sura_number')
             ->orderBy('ayah');
 
