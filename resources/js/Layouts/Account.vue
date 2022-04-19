@@ -10,7 +10,7 @@
             </Link>
         </div>
         <div v-else class="relative">
-            <dropdown align="right" width="48">
+            <dropdown align="right" width="60">
                 <template #trigger>
                     <span class="inline-flex">
                         <button
@@ -58,6 +58,13 @@
                         Dashboard
                     </nav-link>
                     <nav-link
+                        :href="route('ramadan-checklist.list')"
+                        :active="route().current('ramadan-checklist.list')"
+                    >
+                        Ramadan Checklist
+                    </nav-link>
+
+                    <nav-link
                         v-if="$page.props.auth.user.type === 1"
                         :href="route('admins.index')"
                         :active="route().current('admins.*')"
@@ -91,6 +98,13 @@
                         :active="route().current('categories.*')"
                     >
                         Categories
+                    </nav-link>
+                    <nav-link
+                        v-if="$page.props.auth.user.type === 1"
+                        :href="route('checklist-fields.index')"
+                        :active="route().current('checklist-fields.*')"
+                    >
+                        Checklist Field
                     </nav-link>
                     <nav-link
                         v-if="$page.props.auth.user.type === 1"

@@ -13,6 +13,17 @@
                     <span>এখানে ক্লিক করুন</span>
                 </Link>
             </div>
+            <div
+                v-if="$page.props.auth.user"
+                class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 mt-4"
+            >
+                <div>
+                    Name: <b>{{ $page.props.auth.user.name }}</b>
+                </div>
+                <div>
+                    Email: <b>{{ $page.props.auth.user.email }}</b>
+                </div>
+            </div>
             <div>
                 <table class="w-full border border-gray-300 mt-4">
                     <tr>
