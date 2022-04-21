@@ -61,7 +61,7 @@
                         :href="route('ramadan-checklist.list')"
                         :active="route().current('ramadan-checklist.list')"
                     >
-                        Ramadan Checklist
+                        শেষ দশকের রামাদান
                     </nav-link>
 
                     <nav-link

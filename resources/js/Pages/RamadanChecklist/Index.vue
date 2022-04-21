@@ -2,7 +2,7 @@
     <app-layout>
         <div class="bg-white p-4 mt-4">
             <h3 class="text-center text-2xl text-brand-primary font-bold my-3">
-                রমজান (এতেকাফ) চেক লিস্ট
+                শেষ দশকের রামাদান
             </h3>
             <div class="flex justify-center items-center gap-4">
                 <Link
@@ -10,7 +10,7 @@
                     class="border border-brand-primary rounded-md bg-brand-primary text-white flex justify-center items-center px-4 py-1.5 gap-2"
                 >
                     <ShieldCheckIcon class="w-6" />
-                    <span>এখানে ক্লিক করুন</span>
+                    <span>চেকলিস্ট</span>
                 </Link>
             </div>
             <div
