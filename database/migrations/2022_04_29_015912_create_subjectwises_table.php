@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class {{ class }} extends Migration
+class CreateSubjectwisesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class {{ class }} extends Migration
      */
     public function up()
     {
-        Schema::create('{{ table }}', function (Blueprint $table) {
+        Schema::create('subjectwises', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('category_id')->index();
+            $table->unsignedTinyInteger('type')->comment('1=Ayah, 2=Hadith');
+            $table->text('arabic')->nullable();
+            $table->text('bengali')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +31,6 @@ class {{ class }} extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('{{ table }}');
+        Schema::dropIfExists('subjectwises');
     }
 }

@@ -101,6 +101,13 @@
                     </nav-link>
                     <nav-link
                         v-if="$page.props.auth.user.type === 1"
+                        :href="route('subjectwises.index')"
+                        :active="route().current('subjectwises.*')"
+                    >
+                        বিষয়ভিত্তিক আয়াত হাদিস
+                    </nav-link>
+                    <nav-link
+                        v-if="$page.props.auth.user.type === 1"
                         :href="route('checklist-fields.index')"
                         :active="route().current('checklist-fields.*')"
                     >

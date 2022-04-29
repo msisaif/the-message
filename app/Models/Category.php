@@ -11,4 +11,19 @@ class Category extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function contents()
+    {
+        return $this->hasMany(Subjectwise::class);
+    }
+
+    public function ayah_list()
+    {
+        return $this->hasMany(Subjectwise::class)->where('type', 1);
+    }
+
+    public function hadis_list()
+    {
+        return $this->hasMany(Subjectwise::class)->where('type', 2);
+    }
 }

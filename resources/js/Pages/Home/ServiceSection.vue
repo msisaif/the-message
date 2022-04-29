@@ -341,6 +341,33 @@
 
                 <div>Ramadan Checklist</div>
             </Link>
+            <Link
+                :href="route('subjectwise.index')"
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
+            >
+                <div>বিষয়ভিত্তিক আয়াত হাদিস</div>
+            </Link>
+            <Link
+                :href="route('video.index')"
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
+            >
+                <VideoCameraIcon class="w-16" />
+                <div>ভিডিও গ্যালারি</div>
+            </Link>
+            <Link
+                :href="route('course.index')"
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
+            >
+                <DesktopComputerIcon class="w-16" />
+                <div>Course</div>
+            </Link>
+            <Link
+                :href="route('donate.index')"
+                class="flex flex-col md:flex-row justify-center items-center bg-white shadow py-8 gap-4"
+            >
+                <CurrencyBangladeshiIcon class="w-16" />
+                <div>Donate US</div>
+            </Link>
         </div>
     </section-card>
 </template>
@@ -348,11 +375,21 @@
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import SectionCard from "@/Components/SectionCard.vue";
+import {
+    VideoCameraIcon,
+    CurrencyBangladeshiIcon,
+    DesktopComputerIcon,
+    BookOpenIcon,
+} from "@heroicons/vue/outline";
 
 export default {
     components: {
         Link,
         SectionCard,
+        VideoCameraIcon,
+        CurrencyBangladeshiIcon,
+        DesktopComputerIcon,
+        BookOpenIcon,
     },
 };
 </script>

@@ -19,6 +19,8 @@ use App\Http\Controllers\QuranController;
 use App\Http\Controllers\RamadanChecklistController;
 use App\Http\Controllers\RamadanChecklistFieldController;
 use App\Http\Controllers\RecentVideoController;
+use App\Http\Controllers\SubjectwiseAyatHadisController;
+use App\Http\Controllers\SubjectwiseController;
 use App\Http\Controllers\SuraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
@@ -52,6 +54,10 @@ Route::get('/ramadan-checklist/form/{date?}', [RamadanChecklistController::class
 
 Route::post('/ramadan-checklist', [RamadanChecklistController::class, 'save'])->name('ramadan-checklist.save')->middleware('auth');
 
+Route::get('subjectwise', [SubjectwiseAyatHadisController::class, 'index'])->name('subjectwise.index');
+
+Route::get('subjectwise/{category}', [SubjectwiseAyatHadisController::class, 'show'])->name('subjectwise.show');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
@@ -67,6 +73,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'classifications'   => ClassificationController::class,
         'videos'            => VideoController::class,
         'categories'        => CategoryController::class,
+        'subjectwises'      => SubjectwiseController::class,
         'checklist-fields'  => RamadanChecklistFieldController::class,
     ]);
 });
