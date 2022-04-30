@@ -12,7 +12,9 @@
                         :href="route('subjectwise.show', category.id)"
                         class="flex justify-center items-center gap-2 py-8"
                     >
-                        <span class="text-lg text-brand-black font-bold">
+                        <span
+                            class="text-sm md:text-lg text-center text-brand-black font-bold"
+                        >
                             {{ category.name }}
                         </span>
                     </Link>
