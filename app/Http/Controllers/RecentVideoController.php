@@ -12,7 +12,7 @@ class RecentVideoController extends Controller
     public function index()
     {
         return Inertia::render('RecentVideo/Index', [
-            'videos' => Video::latest()->type(1)->simplePaginate(12)
+            'videos' => Video::latest()->type(1)->simplePaginate(8)
         ]);
     }
 }

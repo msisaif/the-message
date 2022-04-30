@@ -4,7 +4,7 @@
             প্রাত্যহিক জীবনে ইসলাম
         </h1>
         <section-card class="">
-            <div class="grid md:grid-cols-3 gap-2 md:gap-4 px-2 md:px-0">
+            <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <Link
                     v-for="(post, index) in posts.data"
                     :key="index"
@@ -17,7 +17,7 @@
                     /> -->
                     <div class="flex flex-col gap-1 p-2 md:p-4">
                         <h3
-                            class="text-lg text-brand-primary font-bold line-clamp-1 text-center"
+                            class="text-lg text-brand-primary font-bold line-clamp-1"
                         >
                             {{ post.title }}
                         </h3>

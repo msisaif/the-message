@@ -30,12 +30,24 @@
         <service-section class="mt-6 md:mt-12" />
 
         <section-card class="mt-6 md:mt-12">
-            <div class="grid md:grid-cols-3 gap-2 md:gap-4 px-2 md:px-0">
+            <div class="flex justify-between items-center p-4 md:px-0">
+                <h2 class="text-xl md:text-3xl text-brand-secondary">
+                    প্রাত্যহিক জীবনে ইসলাম
+                </h2>
+                <Link
+                    v-if="Object.keys(posts).length >= 4"
+                    :href="route('article.index')"
+                    class="text-brand-primary underline font-bold"
+                >
+                    সব গুলো &#62;
+                </Link>
+            </div>
+            <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <Link
                     v-for="(post, index) in posts"
                     :key="index"
                     :href="route('article.show', post.id)"
-                    class="border bg-white"
+                    class="border bg-white flex flex-col"
                 >
                     <!-- <img
                         :src="post.thumbnail || '/images/article.jpg'"
@@ -43,12 +55,14 @@
                     /> -->
                     <div class="flex flex-col gap-1 p-2 md:p-4">
                         <h3
-                            class="text-lg text-brand-primary font-bold line-clamp-1 text-center"
+                            class="shrink grow text-base text-brand-primary font-bold"
                         >
                             {{ post.title }}
                         </h3>
-                        <hr class="my-2" />
-                        <div class="text-brand-black text-base text-justify">
+                        <hr class="my-2 shrink-0 grow-0" />
+                        <div
+                            class="shrink-0 grow-0 text-brand-black text-base text-justify"
+                        >
                             <div
                                 v-html="post.body"
                                 class="line-clamp-[10] leading-relaxed whitespace-pre-wrap"
@@ -60,11 +74,23 @@
         </section-card>
 
         <section-card class="mt-6 md:mt-12">
-            <div class="relative w-full flex gap-6 snap-x overflow-x-auto pb-8">
+            <div class="flex justify-between items-center p-4 md:px-0">
+                <h2 class="text-xl md:text-3xl text-brand-secondary">
+                    সাম্প্রতিক ভিডিও
+                </h2>
+                <Link
+                    v-if="Object.keys(videos).length >= 4"
+                    :href="route('video.index')"
+                    class="text-brand-primary underline font-bold"
+                >
+                    সব গুলো &#62;
+                </Link>
+            </div>
+            <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <div
-                    v-for="(video, index) in videos.data"
+                    v-for="(video, index) in videos"
                     :key="index"
-                    class="snap-center shrink-0 first:ml-8 md:first:ml-0 last:mr-8 md:last:mr-0 bg-white shadow w-80 md:w-96"
+                    class="bg-white shadow"
                 >
                     <div class="relative">
                         <div class="w-full aspect-video rounded shadow">
@@ -91,12 +117,6 @@
                         </h3>
                     </div>
                 </div>
-                <Link
-                    :href="route('video.index')"
-                    class="snap-center shrink-0 first:ml-8 md:first:ml-0 last:mr-8 md:last:mr-0 bg-transparent w-80 md:w-96 flex justify-center items-center text-3xl border border-dashed rounded border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white"
-                >
-                    See All
-                </Link>
             </div>
         </section-card>
 

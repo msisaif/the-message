@@ -13,14 +13,14 @@ class ArticleController extends Controller
     public function index()
     {
         return Inertia::render('Article/Index', [
-            "posts" => Post::latest()->simplePaginate(12),
+            "posts" => Post::latest()->simplePaginate(8),
         ]);
     }
 
     public function show(Post $post)
     {
         PostResource::withoutWrapping();
-        
+
         return Inertia::render('Article/Show', [
             "post" => new PostResource($post)
         ]);
