@@ -37,6 +37,9 @@ class SubjectwiseController extends Controller
     {
         $subjectwise = Subjectwise::create($this->validateData($request));
 
+        return back()
+            ->with('status', "<div dir='rtl'>{$subjectwise->arabic}</div><div>{$subjectwise->bengali}</div>");
+
         return redirect()
             ->route('subjectwises.show', $subjectwise->id)
             ->with('status', 'The record has been added successfully.');

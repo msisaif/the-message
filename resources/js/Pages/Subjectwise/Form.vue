@@ -114,7 +114,12 @@ export default {
     methods: {
         submit() {
             if (this.moduleAction == "store") {
-                return this.form.post(this.route("subjectwises.store"));
+                return this.form.post(this.route("subjectwises.store"), {
+                    onSuccess: () => {
+                        this.form.reset("arabic");
+                        this.form.reset("bengali");
+                    },
+                });
             }
 
             if (this.moduleAction == "update") {
