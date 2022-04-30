@@ -56,7 +56,7 @@
                         <span
                             class="w-12 h-10 rounded-full text-gray-500 bg-brand-light inline-flex justify-center items-center text-xl md:text-3xl"
                         >
-                            {{ numberToArabicNumber(ayah.position) }}
+                            {{ numberToBengaliNumber(ayah.position) }}
                         </span>
                     </div>
                     <div class="p-4 border w-full space-y-2">
@@ -212,6 +212,15 @@ export default {
     methods: {
         numberToArabicNumber(position) {
             let arabic = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+            position = new String(position);
+
+            return position.replace(/[0-9]/g, function (w) {
+                return arabic[+w];
+            });
+        },
+        numberToBengaliNumber(position) {
+            let arabic = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
 
             position = new String(position);
 

@@ -1,8 +1,15 @@
 <template>
     <Head title="বিষয়ভিত্তিক আয়াত হাদিস" />
     <app-layout>
-        <section-card class="mt-6" :title="data.category.name">
+        <section-card class="mt-6">
             <div class="max-w-2xl mx-auto grid gap-4">
+                <div class="flex justify-center items-center gap-2">
+                    <h1
+                        class="text-xl md:text-2xl text-brand-primary font-bold"
+                    >
+                        {{ data.category.name }}
+                    </h1>
+                </div>
                 <div class="flex justify-center items-center gap-2">
                     <span class="text-lg text-brand-black font-bold">
                         কুরআন

@@ -119,10 +119,7 @@ class PostController extends Controller
                 'required',
                 'string',
             ],
-            'description' => [
-                'required',
-                'string',
-            ],
+            'description' => [],
             'body' => [
                 'required',
                 'string',

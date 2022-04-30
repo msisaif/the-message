@@ -1,431 +1,63 @@
 <template>
-    <section-card title="Services">
+    <section-card>
         <div
             class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0"
         >
             <Link
                 :href="route('quran.index')"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
-                <svg
-                    class="h-10"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 61.472 54.146"
-                >
-                    <g
-                        id="_002-quran"
-                        data-name="002-quran"
-                        transform="translate(-2.5 -6.611)"
-                    >
-                        <path
-                            id="Path_24"
-                            data-name="Path 24"
-                            d="M3,63.3l7.465-15.554-5.1-2.512L22.118,33.98l2.726,1.96-4.891,3.644a2.02,2.02,0,1,0,2.334,3.3l6.3-4.249,4.7,3.394Z"
-                            transform="translate(-0.055 -2.987)"
-                            fill="#1d71b8"
-                        />
-                        <path
-                            id="Path_25"
-                            data-name="Path 25"
-                            d="M2.945,63.689a.445.445,0,0,1-.4-.638L9.818,47.894l-4.7-2.316a.445.445,0,0,1-.053-.769L21.815,33.558a.445.445,0,0,1,.509.008l2.726,1.96a.445.445,0,0,1,.006.719l-4.89,3.644a1.573,1.573,0,0,0-.251,2.3,1.615,1.615,0,0,0,2.072.267l6.3-4.248a.445.445,0,0,1,.51.008l4.7,3.394a.445.445,0,0,1-.005.725L3.2,63.608a.445.445,0,0,1-.256.081ZM6.2,45.117l4.4,2.173a.445.445,0,0,1,.2.592L4.085,61.9,32.467,41.961l-3.945-2.842-6.04,4.075a2.513,2.513,0,0,1-3.241-.426,2.464,2.464,0,0,1,.394-3.6l4.4-3.278-1.98-1.425Z"
-                            transform="translate(0 -2.933)"
-                            fill="#323c6b"
-                        />
-                        <path
-                            id="Path_26"
-                            data-name="Path 26"
-                            d="M67.289,63.3,59.824,47.744l5.1-2.512L48.171,33.98l-2.726,1.96,4.891,3.644A2.02,2.02,0,1,1,48,42.88L41.7,38.63,37,42.024Z"
-                            transform="translate(-3.765 -2.987)"
-                            fill="#1d71b8"
-                        />
-                        <path
-                            id="Path_27"
-                            data-name="Path 27"
-                            d="M64.1,46.211,47.67,35.174l1.666-1.194L66.084,45.232Z"
-                            transform="translate(-4.93 -2.987)"
-                            fill="#1d71b8"
-                        />
-                        <path
-                            id="Path_28"
-                            data-name="Path 28"
-                            d="M69.9,65l-2.629-1.847-6.336-13.2,1.544-.417Z"
-                            transform="translate(-6.378 -4.684)"
-                            fill="#1d71b8"
-                        />
-                        <path
-                            id="Path_29"
-                            data-name="Path 29"
-                            d="M16.549,9.312,13.761,7.423,3.81,17.837,33.378,39.129,62.945,17.837,52.994,7.423,50.215,9.312,33.378,20.837Z"
-                            transform="translate(-0.143 -0.089)"
-                            fill="#1d71b8"
-                        />
-                        <path
-                            id="Path_30"
-                            data-name="Path 30"
-                            d="M66.335,17.834,36.768,39.126l-1.9-1.363,28.053-20.2L54.754,8.525l1.63-1.1Z"
-                            transform="translate(-3.533 -0.088)"
-                            fill="#1d71b8"
-                        />
-                        <path
-                            id="Path_31"
-                            data-name="Path 31"
-                            d="M57.543,16.7,34.132,33.562,10.72,16.7,17.3,9.277l1.915-2.165L34.132,17.3,49.054,7.112l1.915,2.165Z"
-                            transform="translate(-0.897 -0.055)"
-                            fill="#eeefee"
-                        />
-                        <path
-                            id="Path_32"
-                            data-name="Path 32"
-                            d="M51.94,7.11,37.167,17.2v1.718l14.274-9.75L59,17.72,60.43,16.7Z"
-                            transform="translate(-3.784 -0.054)"
-                            fill="#e1e6e9"
-                        />
-                        <g
-                            id="Group_112"
-                            data-name="Group 112"
-                            transform="translate(3.222 6.611)"
-                        >
-                            <path
-                                id="Path_33"
-                                data-name="Path 33"
-                                d="M31.776,20.7a.445.445,0,0,1-.251-.078L20.587,13.144a.445.445,0,1,1,.5-.735l10.937,7.475a.445.445,0,0,1-.251.813Z"
-                                transform="translate(-5.173 -7.234)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_34"
-                                data-name="Path 34"
-                                d="M30.367,26.149a.445.445,0,0,1-.251-.078L19.175,18.6a.445.445,0,1,1,.5-.735l10.937,7.474a.445.445,0,0,1-.251.813Z"
-                                transform="translate(-5.019 -7.83)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_35"
-                                data-name="Path 35"
-                                d="M40.773,20.7a.445.445,0,0,1-.251-.813l10.937-7.474a.445.445,0,1,1,.5.735L41.025,20.619a.445.445,0,0,1-.251.078Z"
-                                transform="translate(-7.351 -7.234)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_36"
-                                data-name="Path 36"
-                                d="M42.181,26.149a.445.445,0,0,1-.251-.813l10.937-7.474a.445.445,0,1,1,.5.735L42.433,26.071a.445.445,0,0,1-.251.078Z"
-                                transform="translate(-7.504 -7.829)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_37"
-                                data-name="Path 37"
-                                d="M36.945,34.883a.445.445,0,0,1-.445-.445V18.5a.445.445,0,0,1,.891,0V34.438A.445.445,0,0,1,36.945,34.883Z"
-                                transform="translate(-6.933 -7.86)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_38"
-                                data-name="Path 38"
-                                d="M33.323,39.519a.445.445,0,0,1-.26-.084L3.5,18.144a.445.445,0,0,1-.061-.669L13.385,7.06A.445.445,0,0,1,13.957,7l2.788,1.889a.445.445,0,0,1-.5.738L13.769,7.947,4.431,17.719,33.323,38.528,62.215,17.719,52.877,7.948,50.411,9.625a.445.445,0,1,1-.5-.737L52.689,7a.445.445,0,0,1,.573.061l9.952,10.414a.445.445,0,0,1-.061.669L33.585,39.435a.445.445,0,0,1-.262.085Z"
-                                transform="translate(-3.31 -6.645)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_39"
-                                data-name="Path 39"
-                                d="M67.235,63.689a.445.445,0,0,1-.256-.081L36.69,42.334a.445.445,0,0,1-.005-.725l4.7-3.394a.445.445,0,0,1,.51-.008l6.3,4.249a1.62,1.62,0,0,0,2.069-.267,1.565,1.565,0,0,0,.379-1.211,1.547,1.547,0,0,0-.624-1.089l-4.893-3.645a.445.445,0,0,1,.006-.719l2.726-1.96a.445.445,0,0,1,.509-.008L65.116,44.809a.445.445,0,0,1-.053.769l-4.7,2.316,7.275,15.157a.445.445,0,0,1-.4.638ZM37.713,41.961,66.1,61.9,59.367,47.882a.445.445,0,0,1,.2-.592l4.4-2.172L48.126,34.468l-1.98,1.425,4.4,3.28a2.465,2.465,0,0,1,.39,3.6A2.516,2.516,0,0,1,47.7,43.2l-6.041-4.079Z"
-                                transform="translate(-6.933 -9.544)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_40"
-                                data-name="Path 40"
-                                d="M34.077,33.95a.445.445,0,0,1-.26-.084L10.405,17a.445.445,0,0,1-.073-.657l8.5-9.586a.445.445,0,0,1,.584-.072L34.077,16.71,48.748,6.69a.445.445,0,0,1,.584.073l8.49,9.586a.445.445,0,0,1-.073.657L34.337,33.869a.445.445,0,0,1-.26.081ZM11.326,16.57,34.077,32.959,56.829,16.567l-7.9-8.92-14.6,9.97a.445.445,0,0,1-.5,0L19.237,7.647Z"
-                                transform="translate(-4.065 -6.611)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_41"
-                                data-name="Path 41"
-                                d="M3.912,14.979a.445.445,0,0,1-.322-.754l.356-.371a.445.445,0,1,1,.644.616l-.356.371a.445.445,0,0,1-.322.138Z"
-                                transform="translate(-3.328 -7.386)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_42"
-                                data-name="Path 42"
-                                d="M5.783,12.564a.445.445,0,0,1-.322-.752L9.346,7.721a.445.445,0,1,1,.646.613L6.106,12.426a.445.445,0,0,1-.323.138Z"
-                                transform="translate(-3.532 -6.716)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_43"
-                                data-name="Path 43"
-                                d="M54.694,59.533a.445.445,0,0,1-.256-.081l-4.882-3.429a.445.445,0,1,1,.511-.729l4.882,3.429a.445.445,0,0,1-.256.81Z"
-                                transform="translate(-8.336 -11.914)"
-                                fill="#323c6b"
-                            />
-                            <path
-                                id="Path_44"
-                                data-name="Path 44"
-                                d="M48.092,54.9a.445.445,0,0,1-.256-.081l-.306-.215a.445.445,0,1,1,.511-.729l.306.215a.445.445,0,0,1-.256.81Z"
-                                transform="translate(-8.115 -11.759)"
-                                fill="#323c6b"
-                            />
-                        </g>
-                        <path
-                            id="Path_45"
-                            data-name="Path 45"
-                            d="M17.218,26.531a.651.651,0,0,1,.8-1.025l5.237,3.835a.651.651,0,1,1-.8,1.025l-5.236-3.834Z"
-                            transform="translate(-1.579 -2.047)"
-                            fill="#fff"
-                        />
-                        <path
-                            id="Path_46"
-                            data-name="Path 46"
-                            d="M25.188,32.393a.65.65,0,0,1,.8-1.028l.13.071a.65.65,0,1,1-.792,1.031l-.13-.071Z"
-                            transform="translate(-2.451 -2.688)"
-                            fill="#fff"
-                        />
-                    </g>
-                </svg>
-                <div>আল কুরআন</div>
+                <QuranIcon class="w-10" />
+                <div class="text-center px-4">আল-কুরআন</div>
             </Link>
             <Link
                 :href="route('hadith.index')"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
-                <svg
-                    class="h-10"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 68.043 48.818"
-                >
-                    <g
-                        id="_001-book"
-                        data-name="001-book"
-                        transform="translate(0 -58.303)"
-                    >
-                        <g
-                            id="Group_110"
-                            data-name="Group 110"
-                            transform="translate(1.319 63.685)"
-                        >
-                            <path
-                                id="Path_19"
-                                data-name="Path 19"
-                                d="M8,90.944h5.79v34.4a58.81,58.81,0,0,1,8.494-.659,35.766,35.766,0,0,1,11.7,1.767l3.2,2.559c-1.886-.211-7.571-.317-9.43-.317a45.766,45.766,0,0,0-17.911,3.482L8,132.965Z"
-                                transform="translate(-8 -90.944)"
-                                fill="#1d71b8"
-                            />
-                            <path
-                                id="Path_20"
-                                data-name="Path 20"
-                                d="M256.611,132.173a45.766,45.766,0,0,0-17.911-3.482c-1.873,0-7.228.211-9.1.422l2.875-2.638a35.808,35.808,0,0,1,11.752-1.794,58.953,58.953,0,0,1,8.494.659v-34.4h5.79v42.034Z"
-                                transform="translate(-193.066 -90.944)"
-                                fill="#1d71b8"
-                            />
-                        </g>
-                        <g
-                            id="Group_111"
-                            data-name="Group 111"
-                            transform="translate(7.109 59.649)"
-                        >
-                            <path
-                                id="Path_21"
-                                data-name="Path 21"
-                                d="M67.982,108.435c-2.783-1.82-7.914-3.957-16.381-3.957a56.718,56.718,0,0,0-7,.462l-1.477.185V67.838l1.029-.237a37.8,37.8,0,0,1,8.111-.9c5.17,0,12.385,1.2,17.436,6.9l.33.33V109.78Z"
-                                transform="translate(-43.12 -66.664)"
-                                fill="#fff"
-                            />
-                            <path
-                                id="Path_22"
-                                data-name="Path 22"
-                                d="M206.32,73.731l.33-.369c5.051-5.711,12.279-6.9,17.436-6.9a37.875,37.875,0,0,1,8.111.9l1.029.237v37.286l-1.477-.185a56.692,56.692,0,0,0-6.964-.462c-8.507,0-13.6,2.176-16.381,3.957l-2.044,1.319Z"
-                                transform="translate(-179.414 -66.464)"
-                                fill="#fff"
-                            />
-                        </g>
-                        <path
-                            id="Path_23"
-                            data-name="Path 23"
-                            d="M66.711,62.366H62.24v-1.53a1.319,1.319,0,0,0-.95-1.319A37.151,37.151,0,0,0,51.781,58.3C46.505,58.3,39.317,59.49,34,64.9,28.726,59.438,21.485,58.3,16.223,58.3a37.151,37.151,0,0,0-9.509,1.213,1.319,1.319,0,0,0-.95,1.319v1.517H1.319A1.319,1.319,0,0,0,0,63.671V105.8a1.316,1.316,0,0,0,1.965,1.147c.132-.066,13.321-7.28,31.733-2.638h.317a1.32,1.32,0,0,0,.317,0c18.465-4.682,31.654,2.519,31.733,2.638a1.319,1.319,0,0,0,1.978-1.134V63.685a1.319,1.319,0,0,0-1.319-1.319ZM2.638,103.7V65H5.79V98.082A1.319,1.319,0,0,0,7.307,99.4a57.717,57.717,0,0,1,8.243-.659,34.212,34.212,0,0,1,11.264,1.7A48.487,48.487,0,0,0,2.638,103.7ZM32.7,100.324c-2.743-1.794-8.1-4.207-17.146-4.207a58.033,58.033,0,0,0-7.175.462v-34.7a36.377,36.377,0,0,1,7.821-.87c4.933,0,11.738,1.134,16.46,6.463ZM35.334,67.47c4.722-5.276,11.527-6.463,16.46-6.463a36.536,36.536,0,0,1,7.821.87v34.7A58.015,58.015,0,0,0,52.48,96.1c-9,0-14.363,2.414-17.146,4.207ZM65.392,103.7a48.5,48.5,0,0,0-24.229-3.258,34.292,34.292,0,0,1,11.316-1.7,57.7,57.7,0,0,1,8.3.646,1.319,1.319,0,0,0,1.517-1.319V65h3.152Z"
-                            transform="translate(0 0)"
-                            fill="#3f2e1b"
-                        />
-                    </g>
-                </svg>
-
-                <div>আল হাদীস</div>
+                <HadithIcon class="w-10" />
+                <div class="text-center px-4">আল-হাদীস</div>
             </Link>
             <Link
                 :href="route('subjectwise.index')"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
-                <svg
-                    class="h-10"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 68.043 48.818"
-                >
-                    <g
-                        id="_001-book"
-                        data-name="001-book"
-                        transform="translate(0 -58.303)"
-                    >
-                        <g
-                            id="Group_110"
-                            data-name="Group 110"
-                            transform="translate(1.319 63.685)"
-                        >
-                            <path
-                                id="Path_19"
-                                data-name="Path 19"
-                                d="M8,90.944h5.79v34.4a58.81,58.81,0,0,1,8.494-.659,35.766,35.766,0,0,1,11.7,1.767l3.2,2.559c-1.886-.211-7.571-.317-9.43-.317a45.766,45.766,0,0,0-17.911,3.482L8,132.965Z"
-                                transform="translate(-8 -90.944)"
-                                fill="#1d71b8"
-                            />
-                            <path
-                                id="Path_20"
-                                data-name="Path 20"
-                                d="M256.611,132.173a45.766,45.766,0,0,0-17.911-3.482c-1.873,0-7.228.211-9.1.422l2.875-2.638a35.808,35.808,0,0,1,11.752-1.794,58.953,58.953,0,0,1,8.494.659v-34.4h5.79v42.034Z"
-                                transform="translate(-193.066 -90.944)"
-                                fill="#1d71b8"
-                            />
-                        </g>
-                        <g
-                            id="Group_111"
-                            data-name="Group 111"
-                            transform="translate(7.109 59.649)"
-                        >
-                            <path
-                                id="Path_21"
-                                data-name="Path 21"
-                                d="M67.982,108.435c-2.783-1.82-7.914-3.957-16.381-3.957a56.718,56.718,0,0,0-7,.462l-1.477.185V67.838l1.029-.237a37.8,37.8,0,0,1,8.111-.9c5.17,0,12.385,1.2,17.436,6.9l.33.33V109.78Z"
-                                transform="translate(-43.12 -66.664)"
-                                fill="#fff"
-                            />
-                            <path
-                                id="Path_22"
-                                data-name="Path 22"
-                                d="M206.32,73.731l.33-.369c5.051-5.711,12.279-6.9,17.436-6.9a37.875,37.875,0,0,1,8.111.9l1.029.237v37.286l-1.477-.185a56.692,56.692,0,0,0-6.964-.462c-8.507,0-13.6,2.176-16.381,3.957l-2.044,1.319Z"
-                                transform="translate(-179.414 -66.464)"
-                                fill="#fff"
-                            />
-                        </g>
-                        <path
-                            id="Path_23"
-                            data-name="Path 23"
-                            d="M66.711,62.366H62.24v-1.53a1.319,1.319,0,0,0-.95-1.319A37.151,37.151,0,0,0,51.781,58.3C46.505,58.3,39.317,59.49,34,64.9,28.726,59.438,21.485,58.3,16.223,58.3a37.151,37.151,0,0,0-9.509,1.213,1.319,1.319,0,0,0-.95,1.319v1.517H1.319A1.319,1.319,0,0,0,0,63.671V105.8a1.316,1.316,0,0,0,1.965,1.147c.132-.066,13.321-7.28,31.733-2.638h.317a1.32,1.32,0,0,0,.317,0c18.465-4.682,31.654,2.519,31.733,2.638a1.319,1.319,0,0,0,1.978-1.134V63.685a1.319,1.319,0,0,0-1.319-1.319ZM2.638,103.7V65H5.79V98.082A1.319,1.319,0,0,0,7.307,99.4a57.717,57.717,0,0,1,8.243-.659,34.212,34.212,0,0,1,11.264,1.7A48.487,48.487,0,0,0,2.638,103.7ZM32.7,100.324c-2.743-1.794-8.1-4.207-17.146-4.207a58.033,58.033,0,0,0-7.175.462v-34.7a36.377,36.377,0,0,1,7.821-.87c4.933,0,11.738,1.134,16.46,6.463ZM35.334,67.47c4.722-5.276,11.527-6.463,16.46-6.463a36.536,36.536,0,0,1,7.821.87v34.7A58.015,58.015,0,0,0,52.48,96.1c-9,0-14.363,2.414-17.146,4.207ZM65.392,103.7a48.5,48.5,0,0,0-24.229-3.258,34.292,34.292,0,0,1,11.316-1.7,57.7,57.7,0,0,1,8.3.646,1.319,1.319,0,0,0,1.517-1.319V65h3.152Z"
-                            transform="translate(0 0)"
-                            fill="#3f2e1b"
-                        />
-                    </g>
-                </svg>
-                <div>বিষয়ভিত্তিক আয়াত-হাদীস</div>
+                <BookOpenIcon class="w-12" />
+                <div class="text-center px-4">বিষয়ভিত্তিক আয়াত-হাদীস</div>
             </Link>
             <Link
                 :href="route('article.index')"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
-                <svg
-                    class="h-10"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 68.043 48.818"
-                >
-                    <g
-                        id="_001-book"
-                        data-name="001-book"
-                        transform="translate(0 -58.303)"
-                    >
-                        <g
-                            id="Group_110"
-                            data-name="Group 110"
-                            transform="translate(1.319 63.685)"
-                        >
-                            <path
-                                id="Path_19"
-                                data-name="Path 19"
-                                d="M8,90.944h5.79v34.4a58.81,58.81,0,0,1,8.494-.659,35.766,35.766,0,0,1,11.7,1.767l3.2,2.559c-1.886-.211-7.571-.317-9.43-.317a45.766,45.766,0,0,0-17.911,3.482L8,132.965Z"
-                                transform="translate(-8 -90.944)"
-                                fill="#1d71b8"
-                            />
-                            <path
-                                id="Path_20"
-                                data-name="Path 20"
-                                d="M256.611,132.173a45.766,45.766,0,0,0-17.911-3.482c-1.873,0-7.228.211-9.1.422l2.875-2.638a35.808,35.808,0,0,1,11.752-1.794,58.953,58.953,0,0,1,8.494.659v-34.4h5.79v42.034Z"
-                                transform="translate(-193.066 -90.944)"
-                                fill="#1d71b8"
-                            />
-                        </g>
-                        <g
-                            id="Group_111"
-                            data-name="Group 111"
-                            transform="translate(7.109 59.649)"
-                        >
-                            <path
-                                id="Path_21"
-                                data-name="Path 21"
-                                d="M67.982,108.435c-2.783-1.82-7.914-3.957-16.381-3.957a56.718,56.718,0,0,0-7,.462l-1.477.185V67.838l1.029-.237a37.8,37.8,0,0,1,8.111-.9c5.17,0,12.385,1.2,17.436,6.9l.33.33V109.78Z"
-                                transform="translate(-43.12 -66.664)"
-                                fill="#fff"
-                            />
-                            <path
-                                id="Path_22"
-                                data-name="Path 22"
-                                d="M206.32,73.731l.33-.369c5.051-5.711,12.279-6.9,17.436-6.9a37.875,37.875,0,0,1,8.111.9l1.029.237v37.286l-1.477-.185a56.692,56.692,0,0,0-6.964-.462c-8.507,0-13.6,2.176-16.381,3.957l-2.044,1.319Z"
-                                transform="translate(-179.414 -66.464)"
-                                fill="#fff"
-                            />
-                        </g>
-                        <path
-                            id="Path_23"
-                            data-name="Path 23"
-                            d="M66.711,62.366H62.24v-1.53a1.319,1.319,0,0,0-.95-1.319A37.151,37.151,0,0,0,51.781,58.3C46.505,58.3,39.317,59.49,34,64.9,28.726,59.438,21.485,58.3,16.223,58.3a37.151,37.151,0,0,0-9.509,1.213,1.319,1.319,0,0,0-.95,1.319v1.517H1.319A1.319,1.319,0,0,0,0,63.671V105.8a1.316,1.316,0,0,0,1.965,1.147c.132-.066,13.321-7.28,31.733-2.638h.317a1.32,1.32,0,0,0,.317,0c18.465-4.682,31.654,2.519,31.733,2.638a1.319,1.319,0,0,0,1.978-1.134V63.685a1.319,1.319,0,0,0-1.319-1.319ZM2.638,103.7V65H5.79V98.082A1.319,1.319,0,0,0,7.307,99.4a57.717,57.717,0,0,1,8.243-.659,34.212,34.212,0,0,1,11.264,1.7A48.487,48.487,0,0,0,2.638,103.7ZM32.7,100.324c-2.743-1.794-8.1-4.207-17.146-4.207a58.033,58.033,0,0,0-7.175.462v-34.7a36.377,36.377,0,0,1,7.821-.87c4.933,0,11.738,1.134,16.46,6.463ZM35.334,67.47c4.722-5.276,11.527-6.463,16.46-6.463a36.536,36.536,0,0,1,7.821.87v34.7A58.015,58.015,0,0,0,52.48,96.1c-9,0-14.363,2.414-17.146,4.207ZM65.392,103.7a48.5,48.5,0,0,0-24.229-3.258,34.292,34.292,0,0,1,11.316-1.7,57.7,57.7,0,0,1,8.3.646,1.319,1.319,0,0,0,1.517-1.319V65h3.152Z"
-                            transform="translate(0 0)"
-                            fill="#3f2e1b"
-                        />
-                    </g>
-                </svg>
-
-                <div>প্রবন্ধ</div>
+                <PencilIcon class="w-10" />
+                <div class="text-center px-4">প্রাত্যহিক জীবনে ইসলাম</div>
             </Link>
             <Link
                 :href="route('ramadan-checklist.list')"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-12 w-12 stroke-green-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                </svg>
-
-                <div>আমলের দিনলিপি</div>
+                <ShieldCheckIcon class="w-12" />
+                <div class="text-center px-4">আমলের দিনলিপি</div>
             </Link>
             <Link
                 :href="route('course.index')"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
                 <DesktopComputerIcon class="w-12" />
-                <div>কোর্স</div>
+                <div class="text-center px-4">আমাদের কোর্স সমূহ</div>
             </Link>
             <Link
                 :href="route('video.index')"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
-                <VideoCameraIcon class="w-16" />
-                <div>ভিডিও গ্যালারি</div>
+                <VideoCameraIcon class="w-14" />
+                <div class="text-center px-4">ভিডিও গ্যালারি</div>
             </Link>
             <Link
                 :href="'#'"
-                class="flex flex-col justify-center items-center bg-white shadow py-8 gap-4"
+                class="flex flex-col justify-center items-center bg-brand-primary text-white py-8 gap-4"
             >
-                <VideoCameraIcon class="w-16" />
-                <div>ফটো গ্যালারি</div>
+                <PhotographIcon class="w-12" />
+                <div class="text-center px-4">ফটো গ্যালারি</div>
             </Link>
         </div>
     </section-card>
@@ -434,21 +66,29 @@
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import SectionCard from "@/Components/SectionCard.vue";
+import QuranIcon from "@/Components/QuranIcon.vue";
+import HadithIcon from "@/Components/HadithIcon.vue";
 import {
     VideoCameraIcon,
-    CurrencyBangladeshiIcon,
     DesktopComputerIcon,
     BookOpenIcon,
+    PhotographIcon,
+    ShieldCheckIcon,
+    PencilIcon,
 } from "@heroicons/vue/outline";
 
 export default {
     components: {
         Link,
         SectionCard,
+        QuranIcon,
+        HadithIcon,
         VideoCameraIcon,
-        CurrencyBangladeshiIcon,
         DesktopComputerIcon,
         BookOpenIcon,
+        PhotographIcon,
+        ShieldCheckIcon,
+        PencilIcon,
     },
 };
 </script>

@@ -29,34 +29,37 @@
 
         <service-section class="mt-6 md:mt-12" />
 
-        <section-card class="mt-6 md:mt-12" title="Recent Posts">
-            <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
+        <section-card class="mt-6 md:mt-12">
+            <div class="grid md:grid-cols-3 gap-2 md:gap-4 px-2 md:px-0">
                 <Link
                     v-for="(post, index) in posts"
                     :key="index"
-                    href="/"
-                    class="bg-white shadow"
+                    :href="route('article.show', post.id)"
+                    class="border bg-white"
                 >
-                    <img
+                    <!-- <img
                         :src="post.thumbnail || '/images/article.jpg'"
-                        class="w-full"
-                    />
+                        class="w-full h-40 object-cover"
+                    /> -->
                     <div class="flex flex-col gap-1 p-2 md:p-4">
-                        <h3 class="text-base text-brand-black font-bold">
+                        <h3
+                            class="text-lg text-brand-primary font-bold line-clamp-1 text-center"
+                        >
                             {{ post.title }}
                         </h3>
-                        <p class="text-brand-gray text-xs text-justify">
-                            {{ post.description }}
-                            <span class="underline text-brand-primary">
-                                Read More
-                            </span>
-                        </p>
+                        <hr class="my-2" />
+                        <div class="text-brand-black text-base text-justify">
+                            <div
+                                v-html="post.body"
+                                class="line-clamp-[10] leading-relaxed whitespace-pre-wrap"
+                            ></div>
+                        </div>
                     </div>
                 </Link>
             </div>
         </section-card>
 
-        <section-card class="mt-6 md:mt-12" title="Recent Videos">
+        <section-card class="mt-6 md:mt-12">
             <div class="relative w-full flex gap-6 snap-x overflow-x-auto pb-8">
                 <div
                     v-for="(video, index) in videos.data"

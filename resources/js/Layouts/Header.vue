@@ -68,49 +68,49 @@
                     :active="route().current('home')"
                     class="hidden md:flex"
                 >
-                    Home
+                    হোম
                 </navigation-link>
 
                 <navigation-link
                     :href="route('quran.index')"
                     :active="route().current('quran.*')"
                 >
-                    Quran
+                    আল-কুরআন
                 </navigation-link>
 
                 <navigation-link
                     :href="route('hadith.index')"
                     :active="route().current('hadith.*')"
                 >
-                    Hadith
+                    আল-হাদীস
                 </navigation-link>
 
                 <navigation-link
                     :href="route('video.index')"
                     :active="route().current('video.*')"
                 >
-                    Video
+                    ভিডিও
                 </navigation-link>
 
                 <navigation-link
                     :href="route('course.index')"
                     :active="route().current('course.*')"
                 >
-                    Course
+                    কোর্স
                 </navigation-link>
 
                 <navigation-link
                     :href="route('kids-zone.index')"
                     :active="route().current('kids-zone.*')"
                 >
-                    KidsZone
+                    শিশু বিচিত্রা
                 </navigation-link>
 
                 <navigation-link
                     :href="route('donate.index')"
                     :active="route().current('donate.*')"
                 >
-                    Donate
+                    দান করুন
                 </navigation-link>
             </div>
         </nav>
