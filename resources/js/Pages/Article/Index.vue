@@ -11,21 +11,23 @@
                     :href="route('article.show', post.id)"
                     class="border bg-white"
                 >
-                    <!-- <img
-                        :src="post.thumbnail || '/images/article.jpg'"
-                        class="w-full h-40 object-cover"
-                    /> -->
+                    <img
+                        :src="post.imageUrl || '/images/article.jpg'"
+                        class="w-full aspect-video object-cover"
+                    />
                     <div class="flex flex-col gap-1 p-2 md:p-4">
                         <h3
-                            class="text-lg text-brand-primary font-bold line-clamp-1"
+                            class="shrink grow text-base text-brand-primary font-bold"
                         >
                             {{ post.title }}
                         </h3>
-                        <hr class="my-2" />
-                        <div class="text-brand-black text-base text-justify">
+                        <hr class="my-2 shrink-0 grow-0" />
+                        <div
+                            class="shrink-0 grow-0 text-brand-black text-base text-justify"
+                        >
                             <div
                                 v-html="post.body"
-                                class="line-clamp-[10] leading-relaxed whitespace-pre-wrap"
+                                class="line-clamp-4 leading-relaxed whitespace-pre-wrap"
                             ></div>
                         </div>
                     </div>

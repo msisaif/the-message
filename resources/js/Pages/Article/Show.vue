@@ -1,5 +1,11 @@
 <template>
     <app-layout>
+        <div class="flex justify-center items-center">
+            <img
+                :src="post.imageUrl || '/images/article.jpg'"
+                class="w-full aspect-video object-cover max-w-xs"
+            />
+        </div>
         <h1 class="text-brand-primary my-6 text-lg md:text-2xl text-center">
             {{ post.title }}
         </h1>
