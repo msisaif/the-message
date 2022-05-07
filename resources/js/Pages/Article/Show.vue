@@ -1,14 +1,14 @@
 <template>
     <app-layout>
-        <div class="flex justify-center items-center">
+        <div class="flex flex-col justify-center items-center mt-6">
             <img
                 :src="post.imageUrl || '/images/article.jpg'"
                 class="w-full aspect-video object-cover max-w-xs"
             />
+            <h1 class="text-brand-primary my-6 text-lg md:text-2xl text-center">
+                {{ post.title }}
+            </h1>
         </div>
-        <h1 class="text-brand-primary my-6 text-lg md:text-2xl text-center">
-            {{ post.title }}
-        </h1>
         <div
             class="text-base md:text-xl border bg-white p-4 md:p-8 whitespace-pre-wrap text-justify"
             v-html="post.body"
