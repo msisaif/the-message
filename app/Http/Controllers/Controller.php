@@ -47,7 +47,9 @@ class Controller extends BaseController
         if($image_path && request()->model == 'post') {
             $post = Post::find(request()->id);
 
-            Storage::delete(str_replace("storage", "public", $post->image->url));
+            if($post->image && $post->image->url) {
+                Storage::delete(str_replace("storage", "public", $post->image->url));
+            }
 
             $post->image()->updateOrCreate(
                 [],
