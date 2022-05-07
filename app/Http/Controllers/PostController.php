@@ -49,6 +49,8 @@ class PostController extends Controller
     {
         PostResource::withoutWrapping();
 
+        $post->load('image');
+
         return Inertia::render('Post/Show', [
             'post' => new PostResource($post),
         ]);

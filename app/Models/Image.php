@@ -11,4 +11,9 @@ class Image extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

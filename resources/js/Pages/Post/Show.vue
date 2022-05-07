@@ -11,6 +11,14 @@
 
             <div class="overflow-auto bg-white border">
                 <table class="table-auto">
+                    <show-table-row heading="Photo">
+                        <image-previe-with-save
+                            :imageUrl="post.imageUrl"
+                            model="post"
+                            :id="post.id"
+                        />
+                    </show-table-row>
+
                     <show-table-row heading="ID">{{ post.id }}</show-table-row>
 
                     <show-table-row heading="Author">
@@ -62,6 +70,7 @@ import ShowTableRow from "@/Components/ShowTableRow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import ImagePrevieWithSave from "@/Components/ImagePrevieWithSave.vue";
 
 export default {
     components: {
@@ -72,6 +81,7 @@ export default {
         ActionButtonEdit,
         GoToList,
         AddNewButton,
+        ImagePrevieWithSave,
     },
     props: {
         post: { type: Object, default: {} },

@@ -49,10 +49,10 @@
                     :href="route('article.show', post.id)"
                     class="border bg-white flex flex-col"
                 >
-                    <!-- <img
-                        :src="post.thumbnail || '/images/article.jpg'"
-                        class="w-full h-40 object-cover"
-                    /> -->
+                    <img
+                        :src="post.imageUrl || '/images/article.jpg'"
+                        class="w-full aspect-video object-cover"
+                    />
                     <div class="flex flex-col gap-1 p-2 md:p-4">
                         <h3
                             class="shrink grow text-base text-brand-primary font-bold"
@@ -65,7 +65,7 @@
                         >
                             <div
                                 v-html="post.body"
-                                class="line-clamp-[10] leading-relaxed whitespace-pre-wrap"
+                                class="line-clamp-4 leading-relaxed whitespace-pre-wrap"
                             ></div>
                         </div>
                     </div>

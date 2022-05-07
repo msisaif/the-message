@@ -60,6 +60,8 @@ Route::get('subjectwise/{category}', [SubjectwiseAyatHadisController::class, 'sh
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::post('/image-upload-get-link', [Controller::class, 'imageUploadGetLink'])->name('image-upload-get-link');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
