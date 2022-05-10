@@ -11,6 +11,13 @@
 
             <div class="overflow-auto bg-white border">
                 <table class="table-auto">
+                    <show-table-row heading="Thumbnail">
+                        <image-previe-with-save
+                            :imageUrl="video.imageUrl"
+                            model="video"
+                            :id="video.id"
+                        />
+                    </show-table-row>
                     <show-table-row heading="id">
                         {{ video.id }}
                     </show-table-row>
@@ -65,6 +72,7 @@ import ShowTableRow from "@/Components/ShowTableRow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import ImagePrevieWithSave from "@/Components/ImagePrevieWithSave.vue";
 
 export default {
     components: {
@@ -75,6 +83,7 @@ export default {
         ActionButtonEdit,
         GoToList,
         AddNewButton,
+        ImagePrevieWithSave,
     },
     props: {
         video: {

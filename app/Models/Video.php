@@ -16,4 +16,9 @@ class Video extends Model
     {
         return $query->where('type', $type);
     }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

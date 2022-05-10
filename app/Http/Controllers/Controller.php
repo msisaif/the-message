@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Video;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -52,6 +53,23 @@ class Controller extends BaseController
             }
 
             $post->image()->updateOrCreate(
+                [],
+                [
+                    'url'       => "/" . "storage" . "/" . $image_path,
+                    'user_id'   => Auth::id(),
+                ]
+            );
+        }
+
+        
+        if($image_path && request()->model == 'video') {
+            $video = Video::find(request()->id);
+
+            if($video->image && $video->image->url) {
+                Storage::delete(str_replace("storage", "public", $video->image->url));
+            }
+
+            $video->image()->updateOrCreate(
                 [],
                 [
                     'url'       => "/" . "storage" . "/" . $image_path,

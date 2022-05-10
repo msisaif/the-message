@@ -15,9 +15,11 @@ class VideoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id" => (int) $this->id,
-            "title" => (string) ($this->title ?? ''),
-            "url" => (string) ($this->url ?? ''),
+            "id"        => (int) $this->id,
+            "title"     => (string) ($this->title ?? ''),
+            "url"       => (string) ($this->url ?? ''),
+            'image'     => new ImageResource($this->whenLoaded('image')),
+            'imageUrl'  => (string) ($this->image->url ?? ''),
         ];
     }
 }
