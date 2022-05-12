@@ -2,7 +2,9 @@
     <Head title="বিষয়ভিত্তিক আয়াত হাদিস" />
     <app-layout>
         <section-card class="mt-6">
-            <div class="max-w-2xl mx-auto grid gap-4">
+            <div
+                class="max-w-3xl mx-auto grid gap-4 py-4 px-2 md:px-6 bg-white"
+            >
                 <div class="flex justify-center items-center gap-2">
                     <h1
                         class="text-xl md:text-2xl text-brand-primary font-bold"

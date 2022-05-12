@@ -13,8 +13,13 @@ class SubjectwiseAyatHadisController extends Controller
 {
     public function index()
     {
+        $categories = Category::query()
+            ->orderBy('name')
+            ->whereHas('contents')
+            ->get();
+
         return Inertia::render('SubjectwiseAaytHadis/Index', [
-            'categories' => CategoryResource::collection(Category::get())
+            'categories' => CategoryResource::collection($categories)
         ]);
     }
 

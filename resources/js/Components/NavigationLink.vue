@@ -1,20 +1,7 @@
 <template>
     <Link
         :href="href"
-        class="
-            flex
-            justify-center
-            md:justify-between
-            items-center
-            flex-auto
-            sm:flex-1
-            px-px
-            md:px-3
-            py-1
-            border-2 border-brand-secondary
-            text-xs
-            md:text-base
-        "
+        class="flex justify-center md:justify-between items-center flex-auto sm:flex-1 px-px md:px-3 py-1 border-2 border-brand-primary text-xs md:text-base"
         :class="classes"
     >
         <div class="">
@@ -47,8 +34,8 @@ export default {
     computed: {
         classes() {
             return this.active
-                ? "bg-brand-secondary text-white"
-                : "text-brand-secondary bg-white hover:bg-brand-secondary hover:text-white";
+                ? "bg-brand-primary text-white"
+                : "text-brand-primary bg-white hover:bg-brand-primary hover:text-white";
         },
     },
 };

@@ -1,13 +1,41 @@
 <template>
     <header class="bg-white w-full p-2 z-40">
         <div
-            class="w-full max-w-content mx-auto h-12 md:h-20 py-2 flex justify-between items-center"
+            class="w-full max-w-content mx-auto h-12 md:h-20 sm:py-2 flex justify-between items-center"
         >
+            <svg
+                @click="showingNavigationDropdown = !showingNavigationDropdown"
+                class="flex sm:hidden h-5 -mb-2 md:h-8 text-brand-primary cursor-pointer"
+                width="42"
+                height="26"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 42 26"
+            >
+                <rect
+                    width="42"
+                    height="3"
+                    transform="translate(0 0)"
+                    fill="currentColor"
+                />
+                <rect
+                    width="42"
+                    height="3"
+                    transform="translate(0 12)"
+                    fill="currentColor"
+                />
+                <rect
+                    width="42"
+                    height="3"
+                    transform="translate(0 23)"
+                    fill="currentColor"
+                />
+            </svg>
+
             <Link href="/" class="h-full">
                 <application-logo class="h-full" />
             </Link>
 
-            <bismillahir-rahmanir-rahim class="h-full" />
+            <bismillahir-rahmanir-rahim class="h-full sm:block hidden" />
 
             <account />
         </div>
@@ -21,7 +49,7 @@
                     @click="
                         showingNavigationDropdown = !showingNavigationDropdown
                     "
-                    class="h-6 md:h-8 text-brand-primary cursor-pointer"
+                    class="hidden sm:block h-6 md:h-8 text-brand-primary cursor-pointer"
                     width="42"
                     height="26"
                     xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +90,9 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex justify-end items-center gap-px md:gap-2">
+            <div
+                class="hidden w-full min-w-max sm:flex justify-end items-center gap-px md:gap-2"
+            >
                 <navigation-link
                     :href="route('home')"
                     :active="route().current('home')"

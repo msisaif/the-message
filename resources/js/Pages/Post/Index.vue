@@ -14,13 +14,22 @@
             >
                 <template #head>
                     <th class="py-3 px-2 text-left">ID</th>
-                    <th class="py-3 px-2 text-left">Author</th>
+                    <th class="py-3 px-2 text-left">Photo</th>
                     <th class="py-3 px-2 text-left">Title</th>
+                    <th class="py-3 px-2 text-left">Author</th>
                     <th class="py-3 px-2 text-left">Type</th>
                     <th class="py-3 px-2 text-center">Action</th>
                 </template>
                 <template #default="{ item: post }">
                     <td class="py-3 px-2 text-left">{{ post.id }}</td>
+                    <td class="py-3 px-2 text-left">
+                        <img
+                            v-if="post.imageUrl"
+                            :src="post.imageUrl"
+                            class="w-20 aspect-video"
+                        />
+                    </td>
+                    <td class="py-3 px-2 text-left">{{ post.title }}</td>
                     <td class="py-3 px-2 text-left">
                         <Link
                             :href="route('users.show', post.userId)"
@@ -29,7 +38,6 @@
                             {{ post.userName }}
                         </Link>
                     </td>
-                    <td class="py-3 px-2 text-left">{{ post.title }}</td>
                     <td class="py-3 px-2 text-left">{{ post.valueOfType }}</td>
                     <td class="py-2.5 px-2">
                         <div

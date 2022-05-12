@@ -11,17 +11,19 @@
                     :href="route('article.show', post.id)"
                     class="border bg-white"
                 >
-                    <img
-                        :src="post.imageUrl || '/images/article.jpg'"
-                        class="w-full aspect-video object-cover"
-                    />
+                    <div class="overflow-hidden">
+                        <img
+                            :src="post.imageUrl || '/images/article.jpg'"
+                            class="w-full aspect-video object-cover hover:scale-110 transition-all ease-in-out"
+                        />
+                    </div>
                     <div class="flex flex-col gap-1 p-2 md:p-4">
                         <h3
                             class="shrink grow text-base text-brand-primary font-bold"
                         >
                             {{ post.title }}
                         </h3>
-                        <hr class="my-2 shrink-0 grow-0" />
+                        <hr class="my-1 shrink-0 grow-0" />
                         <div
                             class="shrink-0 grow-0 text-brand-black text-base text-justify"
                         >
@@ -29,6 +31,13 @@
                                 v-html="post.body"
                                 class="line-clamp-4 leading-relaxed whitespace-pre-wrap"
                             ></div>
+                            <div class="flex justify-center items-center py-2">
+                                <span
+                                    class="text-sm px-4 py-1 text-brand-primary border border-brand-primary hover:bg-brand-primary hover:text-white"
+                                >
+                                    সম্পূর্ন লেখা পড়ুন
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </Link>

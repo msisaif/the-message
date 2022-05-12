@@ -18,7 +18,8 @@ class PostController extends Controller
         $posts = $this->setQuery(Post::query())
             ->search()->filter()
             ->dateFilter()
-            ->getQuery();
+            ->getQuery()
+            ->latest();
 
         return Inertia::render('Post/Index', [
             'posts'   => PostResource::collection($posts->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),

@@ -31,7 +31,7 @@
 
         <section-card class="mt-6 md:mt-12">
             <div class="flex justify-between items-center p-4 md:px-0">
-                <h2 class="text-xl md:text-3xl text-brand-secondary">
+                <h2 class="text-xl md:text-3xl text-brand-primary">
                     প্রাত্যহিক জীবনে ইসলাম
                 </h2>
                 <Link
@@ -49,17 +49,19 @@
                     :href="route('article.show', post.id)"
                     class="border bg-white flex flex-col"
                 >
-                    <img
-                        :src="post.imageUrl || '/images/article.jpg'"
-                        class="w-full aspect-video object-cover"
-                    />
+                    <div class="overflow-hidden">
+                        <img
+                            :src="post.imageUrl || '/images/article.jpg'"
+                            class="w-full aspect-video object-cover hover:scale-110 transition-all ease-in-out"
+                        />
+                    </div>
                     <div class="flex flex-col gap-1 p-2 md:p-4">
                         <h3
                             class="shrink grow text-base text-brand-primary font-bold"
                         >
                             {{ post.title }}
                         </h3>
-                        <hr class="my-2 shrink-0 grow-0" />
+                        <hr class="my-1 shrink-0 grow-0" />
                         <div
                             class="shrink-0 grow-0 text-brand-black text-base text-justify"
                         >
@@ -67,6 +69,13 @@
                                 v-html="post.body"
                                 class="line-clamp-4 leading-relaxed whitespace-pre-wrap"
                             ></div>
+                            <div class="flex justify-center items-center py-2">
+                                <span
+                                    class="text-sm px-4 py-1 text-brand-primary border border-brand-primary hover:bg-brand-primary hover:text-white"
+                                >
+                                    সম্পূর্ন লেখা পড়ুন
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </Link>
@@ -75,7 +84,7 @@
 
         <section-card class="mt-6 md:mt-12">
             <div class="flex justify-between items-center p-4 md:px-0">
-                <h2 class="text-xl md:text-3xl text-brand-secondary">
+                <h2 class="text-xl md:text-3xl text-brand-primary">
                     সাম্প্রতিক ভিডিও
                 </h2>
                 <Link
@@ -90,61 +99,110 @@
                 <div
                     v-for="(video, index) in videos"
                     :key="index"
-                    class="bg-white shadow"
+                    class="relative"
                 >
                     <div class="relative">
-                        <div class="w-full aspect-video rounded shadow">
+                        <div class="w-full aspect-video overflow-hidden shadow">
+                            <img
+                                class="w-full object-cover"
+                                :src="video.imageUrl"
+                            />
+                        </div>
+                    </div>
+                    <h3
+                        class="p-4 text-sm md:text-base text-brand-primary font-bold text-center"
+                    >
+                        {{ video.title }}
+                    </h3>
+                    <div
+                        @click="playVideo = video.id"
+                        class="absolute left-0 right-0 top-0 aspect-video bg-brand-primary/10 cursor-pointer flex justify-center items-center"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="absolute h-20 w-20 text-white/50 animate-ping stroke-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                            />
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="absolute h-20 w-20 text-white stroke-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                            />
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                    </div>
+
+                    <div
+                        v-if="video.id == playVideo"
+                        @click="playVideo = ''"
+                        class="fixed bg-gray-500/25 inset-0 flex justify-center items-center z-50"
+                    >
+                        <div class="aspect-video w-full max-w-3xl">
                             <iframe
-                                class="w-full h-full"
+                                class="w-full aspect-video"
                                 :src="
                                     video.url.replace(
                                         'https://youtu.be/',
                                         'https://www.youtube.com/embed/'
                                     )
                                 "
-                                title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen
                             ></iframe>
                         </div>
                     </div>
-                    <div class="flex items-center p-2 md:p-4">
-                        <h3
-                            class="text-xs md:text-sm text-brand-black font-bold"
-                        >
-                            {{ video.title }}
-                        </h3>
-                    </div>
                 </div>
             </div>
         </section-card>
 
-        <section-card class="mt-6 md:mt-12 bg-brand-primary text-white py-4">
-            <h2 class="text-brand-secondary text-xl font-bold text-center mb-4">
-                Ayat Of The Day
+        <section-card class="mt-6 md:mt-12 bg-brand-primary text-white pt-12">
+            <h2 class="text-brand-secondary text-5xl font-bold text-center">
+                দৈনিক আয়াত
             </h2>
-            <div class="space-y-1 px-4">
-                <p class="text-white text-center">
-                    {{ ayahOfTheDay.text }}
-                </p>
-                <p class="text-white text-center">
-                    {{ ayahOfTheDay.reference }}
-                </p>
+            <div class="px-40 py-10">
+                <p
+                    class="text-white text-center text-4xl leading-relaxed"
+                    v-html="ayahOfTheDay.text"
+                ></p>
             </div>
         </section-card>
 
-        <section-card class="mt-6 md:mt-12 bg-brand-secondary text-white py-4">
-            <h2 class="text-brand-primary text-xl font-bold text-center mb-4">
-                Hadith Of The Day
+        <section-card class="mt-6 md:mt-12 bg-brand-secondary text-white pt-12">
+            <h2 class="text-brand-primary text-5xl font-bold text-center">
+                দৈনিক হাদিস
             </h2>
-            <div class="space-y-1 px-4">
-                <p class="text-white text-center">
-                    {{ hadithOfTheDay.text }}
-                </p>
-                <p class="text-white text-center">
-                    {{ hadithOfTheDay.reference }}
-                </p>
+            <div class="px-40 py-10">
+                <p
+                    class="text-white text-center text-4xl leading-relaxed"
+                    v-html="hadithOfTheDay.text"
+                ></p>
             </div>
         </section-card>
     </app-layout>
@@ -205,17 +263,23 @@ export default {
         ayahOfTheDay: {
             type: Object,
             default: {
-                text: `" Had there been within the heavens and earth gods besides Allah, they both would have been ruined. So exalted is Allah, Lord of the Throne, (High is He) above what they attribute to Him. "`,
-                reference: "Quran 21:22",
+                text: `আসমান ও যমীনে যদি আল্লাহ ছাড়া আরো অনেক ইলাহ থাকত তবে (আসমান ও যমীন) উভয়ই ধ্বংস হয়ে যেত। কাজেই আরশের অধিপতি আল্লাহ মহান ও পবিত্র সে সব থেকে যা তারা তাঁর প্রতি আরোপ করে। <br> সূরা আম্বিয়া, আয়াত: ২২`,
+                reference: "সূরা আম্বিয়া, আয়াত: ২২",
             },
         },
         hadithOfTheDay: {
             type: Object,
             default: {
-                text: `" And an impious wicked person is like a pine tree which keeps hard and straight till Allah cuts (breaks) it down when He wishes. "`,
-                reference: "SAHIH BUKHARI, BOOK 70, Hadith No. 558, Vol. 9",
+                text: `বান্দা যখন ভালমন্দ ‍বিচার না করেই কোন কথা বলে, তখন তার কারণে সে নিজেকে জাহান্নামের এতদূর গভীরে নিয়ে যায় যা পূর্ব-পশ্চিমের দূরত্বের সমান। <br> সহীহ বুখারি - ৬৪৭৭`,
+                reference: "সহীহ বুখারি - ৬৪৭৭",
             },
         },
+    },
+
+    data() {
+        return {
+            playVideo: "",
+        };
     },
 };
 </script>
