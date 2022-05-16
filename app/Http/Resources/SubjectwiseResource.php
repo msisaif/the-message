@@ -18,6 +18,7 @@ class SubjectwiseResource extends JsonResource
             'id'            => (int) ($this->id),
             'categoryId'    => (int) ($this->category_id ?? 0),
             'categoryName'  => (string) ($this->category->name ?? ''),
+            'title'         => (string) ($this->title ?? ''),
             'type'          => (int) ($this->type ?? 0),
             'typeText'      => (string) ($this->type_text ?? ''),
             'arabic'        => (string) ($this->arabic ?? ''),

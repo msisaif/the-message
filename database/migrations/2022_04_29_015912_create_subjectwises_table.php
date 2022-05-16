@@ -17,6 +17,7 @@ class CreateSubjectwisesTable extends Migration
             $table->id();
             $table->unsignedInteger('category_id')->index();
             $table->unsignedTinyInteger('type')->comment('1=Ayah, 2=Hadith');
+            $table->text('title')->nullable();
             $table->text('arabic')->nullable();
             $table->text('bengali')->nullable();
             $table->timestamps();
