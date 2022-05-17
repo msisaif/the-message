@@ -21,12 +21,12 @@
                         {{ checklistField.name }}
                     </td>
                     <td class="py-3 px-2 text-center">
-                        <span v-if="checklistField.type == 'radio'"
-                            >হ্যাঁ/না</span
-                        >
-                        <span v-if="checklistField.type == 'number'"
-                            >সংখ্যা</span
-                        >
+                        <span v-if="checklistField.type == 'radio'">
+                            হ্যাঁ/না
+                        </span>
+                        <span v-if="checklistField.type == 'number'">
+                            সংখ্যা
+                        </span>
                     </td>
                     <td class="py-2.5 px-2">
                         <div

@@ -7,6 +7,7 @@ use App\Http\Resources\RamadanChecklistFieldResource;
 use App\Models\RamadanChecklistField;
 use App\Traits\DateFilter;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class RamadanChecklistFieldController extends Controller
@@ -105,6 +106,9 @@ class RamadanChecklistFieldController extends Controller
             'name' => [
                 'required',
                 'string',
+                Rule::unique(RamadanChecklistField::class, 'name')
+                    ->whereNull('deleted_at')
+                    ->ignore($id),
             ],
             'type' => [
                 'required',

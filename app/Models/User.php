@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(RamadanChecklist::class);
     }
+
+    public function checklists()
+    {
+        return $this->hasMany(Checklist::class);
+    }
 }

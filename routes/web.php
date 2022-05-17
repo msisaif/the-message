@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AyahController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChecklistController;
 use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CourseController;
@@ -47,6 +48,12 @@ Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.
 Route::get('/video', [RecentVideoController::class, 'index'])->name('video.index');
 
 Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
+
+Route::get('/checklist/{year?}/{month?}', [ChecklistController::class, 'list'])->name('checklist.list');
+
+Route::get('/checklist-form/{date?}', [ChecklistController::class, 'form'])->name('checklist.form')->middleware('auth');
+
+Route::post('/checklist-save', [ChecklistController::class, 'save'])->name('checklist.save')->middleware('auth');
 
 Route::get('/ramadan-checklist', [RamadanChecklistController::class, 'list'])->name('ramadan-checklist.list');
 

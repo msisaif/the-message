@@ -40,6 +40,14 @@
                                     )
                                 "
                             />
+                            <action-button-delete
+                                :href="
+                                    route(
+                                        'checklist-fields.destroy',
+                                        checklistField.id
+                                    )
+                                "
+                            />
                         </div>
                     </show-table-row>
                 </table>
@@ -59,6 +67,7 @@ import ShowTableRow from "@/Components/ShowTableRow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import ActionButtonDelete from "@/Components/ActionButtonDelete.vue";
 
 export default {
     components: {
@@ -69,6 +78,7 @@ export default {
         ActionButtonEdit,
         GoToList,
         AddNewButton,
+        ActionButtonDelete,
     },
     props: {
         checklistField: {
