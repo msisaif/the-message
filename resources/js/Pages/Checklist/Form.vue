@@ -13,7 +13,7 @@
                     <option
                         v-for="(column, index) in data.checkListColumns"
                         :key="index"
-                        :value="column.value"
+                        :value="column.date"
                     >
                         {{ column.title }}
                     </option>
@@ -21,7 +21,7 @@
             </div>
             <div class="grid gap-6">
                 <div
-                    v-for="(checkList, index) in data.ramadanCheckListFields"
+                    v-for="(checkList, index) in data.checkListFields"
                     :key="index"
                     class="flex justify-between items-center gap-4"
                 >
@@ -111,9 +111,9 @@ export default {
     created() {
         this.form.date = this.data.selectedDate;
 
-        Object.values(this.data.ramadanCheckListFields).forEach((checkList) => {
+        Object.values(this.data.checkListFields).forEach((checkList) => {
             let selectedColumn = Object.values(
-                this.data.selectedRamadanChecklist
+                this.data.selectedChecklist
             ).filter((selectedChecklist) => {
                 return selectedChecklist.id == checkList.id;
             })[0];

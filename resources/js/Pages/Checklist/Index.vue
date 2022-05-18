@@ -73,13 +73,13 @@
                         </th>
                     </tr>
                     <tr
-                        v-for="(item, itemIndex) in data.checkListFields"
-                        :key="itemIndex"
+                        v-for="(field, fieldIndex) in data.checkListFields"
+                        :key="fieldIndex"
                     >
                         <th
                             class="text-left py-1 px-2 border-t border-gray-300"
                         >
-                            {{ item.name }}
+                            {{ field.name }}
                         </th>
                         <td
                             v-for="(
@@ -88,39 +88,38 @@
                             :key="columnIndex"
                             class="text-center py-1 px-2 border-t border-l border-gray-300 hidden md:table-cell"
                         >
-                            {{ data.userChecklist[columnIndex] }}
-                            <!-- <span v-if="item.type == 'number'">
+                            <span v-if="field.type == 'number'">
                                 {{
-                                    form.checkList[columnIndex]["works"][
-                                        itemIndex
-                                    ]["value"]
+                                    getColumnCheckedData(column.date, field.id)
                                 }}
                             </span>
-                            <span v-if="item.type == 'radio'">
+                            <span v-if="field.type == 'radio'">
                                 <span
                                     v-if="
-                                        form.checkList[columnIndex]['works'][
-                                            itemIndex
-                                        ]['value'] === '1'
+                                        getColumnCheckedData(
+                                            column.date,
+                                            field.id
+                                        ) === '1'
                                     "
                                 >
                                     হ্যাঁ
                                 </span>
                                 <span
                                     v-if="
-                                        form.checkList[columnIndex]['works'][
-                                            itemIndex
-                                        ]['value'] === '0'
+                                        getColumnCheckedData(
+                                            column.date,
+                                            field.id
+                                        ) === '0'
                                     "
                                 >
                                     না
                                 </span>
-                            </span> -->
+                            </span>
                         </td>
                         <th
                             class="text-center py-1 px-2 border-t border-l border-gray-300"
                         >
-                            <!-- {{ checkListSubtotal(item.id) }} -->
+                            {{ checkListSubtotal(field.id) }}
                         </th>
                     </tr>
                 </table>
@@ -159,17 +158,17 @@ export default {
         //         }
         //     )[0];
         //     let array = [];
-        //     Object.values(this.checkListFields).forEach((item) => {
+        //     Object.values(this.checkListFields).forEach((field) => {
         //         let selectedDataForSelectedDate;
         //         if (selectedData) {
         //             selectedDataForSelectedDate = Object.values(
         //                 selectedData.checklist
         //             ).filter((check) => {
-        //                 return check.id == item.id;
+        //                 return check.id == field.id;
         //             })[0];
         //         }
         //         array.push({
-        //             id: item.id,
+        //             id: field.id,
         //             value: selectedDataForSelectedDate
         //                 ? selectedDataForSelectedDate.value
         //                 : "", // current value
@@ -188,14 +187,41 @@ export default {
         },
     },
     methods: {
-        checkListSubtotal(id) {
+        checkListSubtotal(fieldId) {
             let subtotal = 0;
-            this.form.checkList.forEach((checkList) => {
-                let workValue = checkList.works.filter((work) => work.id == id);
-                subtotal += Number(workValue[0].value);
+
+            Object.values(this.data.checklists).forEach((list) => {
+                let selectedField = Object.values(list.checklist).filter(
+                    (field) => {
+                        return field.id == fieldId;
+                    }
+                )[0];
+
+                if (selectedField) {
+                    subtotal += Number(selectedField.value);
+                }
             });
 
             return subtotal;
+        },
+        getColumnCheckedData(columnDate, fieldId) {
+            let selectedChecklist = Object.values(this.data.checklists).filter(
+                (list) => {
+                    return list.date == columnDate;
+                }
+            )[0];
+
+            if (selectedChecklist) {
+                let selectedField = Object.values(
+                    selectedChecklist.checklist
+                ).filter((field) => {
+                    return field.id == fieldId;
+                })[0];
+
+                if (selectedField) {
+                    return selectedField.value;
+                }
+            }
         },
     },
 };

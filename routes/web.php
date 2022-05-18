@@ -6,6 +6,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AyahController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChecklistController;
+use App\Http\Controllers\ChecklistFieldController;
 use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CourseController;
@@ -83,7 +84,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'videos'            => VideoController::class,
         'categories'        => CategoryController::class,
         'subjectwises'      => SubjectwiseController::class,
-        'checklist-fields'  => RamadanChecklistFieldController::class,
+        'checklist-fields'  => ChecklistFieldController::class,
     ]);
 });
 

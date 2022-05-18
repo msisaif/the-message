@@ -1,17 +1,13 @@
 <template>
-    <Head title="Checklist" />
+    <Head title="Checklist Field" />
 
     <app-layout>
         <div class="py-4">
             <h3 class="text-brand-primary text-2xl text-center mb-3 font-bold">
-                Checklist
+                Edit Checklist Field
             </h3>
 
-            <form-component
-                :data="data"
-                module-action="store"
-                buttonValue="Save"
-            />
+            <form-component :data="{ checklistField }" module-action="update" />
         </div>
     </app-layout>
 </template>
@@ -30,7 +26,7 @@ export default {
     },
 
     props: {
-        data: {
+        checklistField: {
             type: Object,
             default: {},
         },

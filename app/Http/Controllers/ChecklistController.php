@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ChecklistFieldResource;
 use App\Http\Resources\RamadanChecklistFieldResource;
 use App\Models\Checklist;
+use App\Models\ChecklistField;
 use App\Models\RamadanChecklistField;
 use App\Models\User;
 use Carbon\Carbon;
@@ -27,13 +28,17 @@ class ChecklistController extends Controller
         
         $user = User::find(Auth::id()) ?? null;
 
-        $checklist = $user ? $user->checklists()->get() : [];
+        $checklists = $user ? $user->checklists()->get() : [];
+
+        $checklist_columns = $this->getCheckListColumn($year, $month);
+
+        $checklist_fields = $this->getChecklistField();
 
         return Inertia::render('Checklist/Index', [
             'data' => [
-                'checkListFields'   => $this->getChecklistField(),
-                'checkListColumns'  => $this->getCheckListColumn($year, $month),
-                'userChecklist'     => $checklist,
+                'checkListFields'   => $checklist_fields,
+                'checkListColumns'  => $checklist_columns,
+                'checklists'        => $checklists,
                 'prevMonth'         => $this->getPrevMonthData($year, $month),
                 'nextMonth'         => $this->getNextMonthData($year, $month),
                 'currentMonth'      => $this->getCurrentMonthData($year, $month),
@@ -121,10 +126,10 @@ class ChecklistController extends Controller
 
         $data = Array();
 
-        for($i = 1; $i <= $date->endOfMonth()->format("d"); $i++) {
+        for($i = 1; $i <= $date->endOfMonth()->format("d");  $i++) {
             $data[] = [
                 'title' => $i,
-                'date'  => $date->format("Y-m-") . $i,
+                'date'  => $date->format("Y-m-") . str_pad($i, 2, "0", STR_PAD_LEFT),
             ];
         }
 
@@ -133,13 +138,15 @@ class ChecklistController extends Controller
 
     public function form($date = "")
     {
+        // return
+        // $date = rawurldecode($date);
         if(!$date) {
             $date = date("Y-m-d");
 
             return Redirect::route('checklist.form', $date);
         }
 
-        $ramadanChecklist = Checklist::query()
+        $checklist = Checklist::query()
             ->where([
                 'user_id' => Auth::id(),
                 'date' => $date,
@@ -151,10 +158,10 @@ class ChecklistController extends Controller
 
         return Inertia::render('Checklist/Create', [
             'data' => [
-                'ramadanCheckListFields' => $this->getRamadanChecklistField(),
+                'checkListFields'   => $this->getChecklistField(),
                 'checkListColumns'  => $this->getCheckListColumnFormat($year, $month),
-                'selectedDate' => $date,
-                'selectedRamadanChecklist' => $ramadanChecklist ? $ramadanChecklist->checklist : [],
+                'selectedDate'      => $date,
+                'selectedChecklist' => $checklist ? $checklist->checklist : [],
             ]
         ]);
     }
@@ -181,7 +188,7 @@ class ChecklistController extends Controller
     {
         ChecklistFieldResource::withoutWrapping();
 
-        $checklist_fields = RamadanChecklistField::get();
+        $checklist_fields = ChecklistField::get();
 
         return ChecklistFieldResource::collection($checklist_fields);
     }
