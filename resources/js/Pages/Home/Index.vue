@@ -31,7 +31,9 @@
 
         <section-card class="mt-6 md:mt-12">
             <div class="flex justify-between items-center p-4 md:px-0">
-                <h2 class="text-xl md:text-3xl text-brand-primary">
+                <h2
+                    class="text-xl md:text-3xl text-brand-primary font-semibold"
+                >
                     প্রাত্যহিক জীবনে ইসলাম
                 </h2>
                 <Link
@@ -84,7 +86,9 @@
 
         <section-card class="mt-6 md:mt-12">
             <div class="flex justify-between items-center p-4 md:px-0">
-                <h2 class="text-xl md:text-3xl text-brand-primary">
+                <h2
+                    class="text-xl md:text-3xl text-brand-primary font-semibold"
+                >
                     সাম্প্রতিক ভিডিও
                 </h2>
                 <Link
@@ -182,25 +186,29 @@
             </div>
         </section-card>
 
-        <section-card class="mt-6 md:mt-12 bg-brand-primary text-white pt-12">
-            <h2 class="text-brand-secondary text-5xl font-bold text-center">
-                দৈনিক আয়াত
+        <section-card
+            class="mt-6 md:mt-12 bg-brand-primary text-white py-4 md:py-8 space-y-4"
+        >
+            <h2 class="text-white text-2xl md:text-4xl font-bold text-center">
+                আজকের আয়াত
             </h2>
-            <div class="px-40 py-10">
+            <div class="px-6">
                 <p
-                    class="text-white text-center text-4xl leading-relaxed"
+                    class="text-white text-center text-xl md:text-2xl leading-relaxed"
                     v-html="ayahOfTheDay.text"
                 ></p>
             </div>
         </section-card>
 
-        <section-card class="mt-6 md:mt-12 bg-brand-secondary text-white pt-12">
-            <h2 class="text-brand-primary text-5xl font-bold text-center">
-                দৈনিক হাদিস
+        <section-card
+            class="mt-6 md:mt-12 bg-brand-secondary text-white py-4 md:py-8 space-y-4"
+        >
+            <h2 class="text-white text-2xl md:text-4xl font-bold text-center">
+                আজকের হাদিস
             </h2>
-            <div class="px-40 py-10">
+            <div class="px-6">
                 <p
-                    class="text-white text-center text-4xl leading-relaxed"
+                    class="text-white text-center text-xl md:text-2xl leading-relaxed"
                     v-html="hadithOfTheDay.text"
                 ></p>
             </div>
@@ -263,14 +271,14 @@ export default {
         ayahOfTheDay: {
             type: Object,
             default: {
-                text: `আসমান ও যমীনে যদি আল্লাহ ছাড়া আরো অনেক ইলাহ থাকত তবে (আসমান ও যমীন) উভয়ই ধ্বংস হয়ে যেত। কাজেই আরশের অধিপতি আল্লাহ মহান ও পবিত্র সে সব থেকে যা তারা তাঁর প্রতি আরোপ করে। <br> সূরা আম্বিয়া, আয়াত: ২২`,
+                text: `আসমান ও যমীনে যদি আল্লাহ ছাড়া আরো অনেক ইলাহ থাকত তবে (আসমান ও যমীন) উভয়ই ধ্বংস হয়ে যেত। কাজেই আরশের অধিপতি আল্লাহ মহান ও পবিত্র সে সব থেকে যা তারা তাঁর প্রতি আরোপ করে। (সূরা আম্বিয়া, আয়াত: ২২)`,
                 reference: "সূরা আম্বিয়া, আয়াত: ২২",
             },
         },
         hadithOfTheDay: {
             type: Object,
             default: {
-                text: `বান্দা যখন ভালমন্দ ‍বিচার না করেই কোন কথা বলে, তখন তার কারণে সে নিজেকে জাহান্নামের এতদূর গভীরে নিয়ে যায় যা পূর্ব-পশ্চিমের দূরত্বের সমান। <br> সহীহ বুখারি - ৬৪৭৭`,
+                text: `বান্দা যখন ভালমন্দ ‍বিচার না করেই কোন কথা বলে, তখন তার কারণে সে নিজেকে জাহান্নামের এতদূর গভীরে নিয়ে যায় যা পূর্ব-পশ্চিমের দূরত্বের সমান। (সহীহ বুখারি - ৬৪৭৭)`,
                 reference: "সহীহ বুখারি - ৬৪৭৭",
             },
         },

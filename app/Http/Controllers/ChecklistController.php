@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class ChecklistController extends Controller
 {
@@ -44,6 +45,7 @@ class ChecklistController extends Controller
                 'currentMonth'      => $this->getCurrentMonthData($year, $month),
                 'year'              => $year,
                 'month'             => $month,
+                'day'               => $year . $month == date("Ym") ? date('d') : '01',
             ]
         ]);
     }
@@ -110,7 +112,7 @@ class ChecklistController extends Controller
         for($i = 1; $i <= $date->endOfMonth()->format("d"); $i++) {
             $data[] = [
                 'title' => $i . $date->format(" M Y"),
-                'date'  => $date->format("Y-m-") . $i,
+                'date'  => $date->format("Y-m-") . str_pad($i, 2, "0", STR_PAD_LEFT),
             ];
         }
 

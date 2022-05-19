@@ -58,10 +58,10 @@
                         Dashboard
                     </nav-link>
                     <nav-link
-                        :href="route('ramadan-checklist.list')"
-                        :active="route().current('ramadan-checklist.list')"
+                        :href="route('checklist.list')"
+                        :active="route().current('checklist.list')"
                     >
-                        শেষ দশকের রামাদান
+                        আমলের দিনলিপি
                     </nav-link>
 
                     <nav-link

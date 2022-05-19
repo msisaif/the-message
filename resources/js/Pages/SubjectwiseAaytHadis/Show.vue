@@ -7,7 +7,7 @@
             >
                 <div class="flex justify-center items-center gap-2">
                     <h1
-                        class="text-xl md:text-3xl text-brand-primary font-bold"
+                        class="text-xl md:text-3xl text-brand-primary font-semibold"
                     >
                         {{ data.category.name }}
                     </h1>
@@ -32,7 +32,11 @@
                         >
                             {{ ayah.arabic }}
                         </div>
-                        <div>{{ ayah.bengali }}</div>
+                        <div
+                            class="text-lg md:text-xl text-left text-brand-black"
+                        >
+                            {{ ayah.bengali }}
+                        </div>
                     </div>
                 </div>
                 <div class="grid gap-2">
@@ -55,7 +59,11 @@
                         >
                             {{ hadith.arabic }}
                         </div>
-                        <div>{{ hadith.bengali }}</div>
+                        <div
+                            class="text-lg md:text-xl text-left text-brand-black"
+                        >
+                            {{ hadith.bengali }}
+                        </div>
                     </div>
                 </div>
             </div>

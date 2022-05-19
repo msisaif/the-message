@@ -2,8 +2,8 @@
     <app-layout>
         <div class="mt-6 w-ful grid md:grid-cols-4 gap-4 px-4 md:px-0">
             <dashboard-card
-                title="Ramadan Checklist"
-                :href="route('ramadan-checklist.list')"
+                title="আমলের দিনলিপি"
+                :href="route('checklist.list')"
             >
                 <path
                     stroke-linecap="round"

@@ -1,7 +1,10 @@
 <template>
     <Head title="বিষয়ভিত্তিক আয়াত হাদিস" />
     <app-layout>
-        <section-card class="mt-6" title="বিষয়ভিত্তিক আয়াত হাদিস">
+        <section-card>
+            <h2 class="text-xl md:text-3xl text-center text-brand-primary my-4">
+                বিষয়ভিত্তিক আয়াত হাদিস
+            </h2>
             <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <div
                     v-for="(category, index) in categories.data"

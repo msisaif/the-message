@@ -44,7 +44,12 @@
             </div>
             <div class="flex justify-center items-center gap-4">
                 <Link
-                    :href="route('checklist.form')"
+                    :href="
+                        route(
+                            'checklist.form',
+                            `${data.year}-${data.month}-${data.day}`
+                        )
+                    "
                     class="border border-brand-primary rounded-md bg-brand-primary text-white flex justify-center items-center px-4 py-1.5 gap-2"
                 >
                     <ShieldCheckIcon class="w-6" />

@@ -34,8 +34,8 @@
             </template>
         </nav-link>
         <nav-link
-            :href="route('ramadan-checklist.list')"
-            :active="route().current('qramadan-checklist.list')"
+            :href="route('checklist.list')"
+            :active="route().current('checklist.list')"
         >
             আমলের দিনলিপি
             <template #icon>
