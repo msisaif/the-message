@@ -15,7 +15,7 @@ class ArticleController extends Controller
         PostResource::withoutWrapping();
 
         return Inertia::render('Article/Index', [
-            "posts" => PostResource::collection(Post::latest()->simplePaginate(8)),
+            "posts" => PostResource::collection(Post::latest()->simplePaginate(20)),
         ]);
     }
 

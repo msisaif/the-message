@@ -16,8 +16,8 @@ class HomeController extends Controller
         PostResource::withoutWrapping();
         
         return Inertia::render('Home/Index', [
-            'posts' => PostResource::collection(Post::latest()->take(4)->get()),
-            'videos' => VideoResource::collection(Video::latest()->type(1)->take(4)->get()),
+            'posts' => PostResource::collection(Post::inRandomOrder()->take(4)->get()),
+            'videos' => VideoResource::collection(Video::inRandomOrder()->type(1)->take(4)->get()),
         ]);
     }
 }

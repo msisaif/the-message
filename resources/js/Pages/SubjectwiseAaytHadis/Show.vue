@@ -26,7 +26,12 @@
                         <div v-if="ayah.title" class="font-bold">
                             {{ ayah.title }}:
                         </div>
-                        <div dir="rtl">{{ ayah.arabic }}</div>
+                        <div
+                            class="text-xl md:text-2xl !leading-loose"
+                            dir="rtl"
+                        >
+                            {{ ayah.arabic }}
+                        </div>
                         <div>{{ ayah.bengali }}</div>
                     </div>
                 </div>
@@ -44,7 +49,12 @@
                         <div v-if="hadith.title" class="font-bold">
                             {{ hadith.title }}:
                         </div>
-                        <div dir="rtl">{{ hadith.arabic }}</div>
+                        <div
+                            class="text-xl md:text-2xl !leading-loose"
+                            dir="rtl"
+                        >
+                            {{ hadith.arabic }}
+                        </div>
                         <div>{{ hadith.bengali }}</div>
                     </div>
                 </div>
