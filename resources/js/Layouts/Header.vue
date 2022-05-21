@@ -104,15 +104,36 @@
                 <navigation-link
                     :href="route('quran.index')"
                     :active="route().current('quran.*')"
+                    :dropdown="true"
                 >
-                    আল-কুরআন
+                    কুরআন
+                    <template #dropdownContent>
+                        <nav-link
+                            :href="route('quran.index')"
+                            :active="route().current('quran.index')"
+                        >
+                            <template #icon>
+                                <QuranIcon class="w-5" />
+                            </template>
+                            আল-কুরআন
+                        </nav-link>
+                        <nav-link
+                            :href="route('subjectwise.index')"
+                            :active="route().current('subjectwise.index')"
+                        >
+                            <template #icon>
+                                <BookOpenIcon class="w-5" />
+                            </template>
+                            বিষয়ভিত্তিক আয়াত-হাদীস
+                        </nav-link>
+                    </template>
                 </navigation-link>
 
                 <navigation-link
                     :href="route('hadith.index')"
                     :active="route().current('hadith.*')"
                 >
-                    আল-হাদীস
+                    হাদীস
                 </navigation-link>
 
                 <navigation-link
@@ -154,6 +175,9 @@ import Navigation from "./Navigation.vue";
 import Account from "./Account.vue";
 import BismillahirRahmanirRahim from "@/Components/BismillahirRahmanirRahim.vue";
 import NavigationLink from "@/Components/NavigationLink.vue";
+import NavLink from "@/Components/NavLink.vue";
+import { BookOpenIcon } from "@heroicons/vue/outline";
+import QuranIcon from "@/Components/QuranIcon.vue";
 
 export default {
     components: {
@@ -163,6 +187,9 @@ export default {
         Account,
         BismillahirRahmanirRahim,
         NavigationLink,
+        NavLink,
+        QuranIcon,
+        BookOpenIcon,
     },
     data() {
         return {

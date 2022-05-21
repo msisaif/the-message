@@ -55,7 +55,7 @@
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
                     >
-                        Dashboard
+                        ড্যাশবোর্ড
                     </nav-link>
                     <nav-link
                         :href="route('checklist.list')"
@@ -63,84 +63,99 @@
                     >
                         আমলের দিনলিপি
                     </nav-link>
-
-                    <nav-link
+                    <hr />
+                    <div
+                        class="grid bg-gray-100 pl-2"
                         v-if="$page.props.auth.user.type === 1"
-                        :href="route('admins.index')"
-                        :active="route().current('admins.*')"
                     >
-                        Admins
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('users.index')"
-                        :active="route().current('users.*')"
-                    >
-                        Users
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('suras.index')"
-                        :active="route().current('suras.*')"
-                    >
-                        Suras
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('classifications.index')"
-                        :active="route().current('classifications.*')"
-                    >
-                        Classifications
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('categories.index')"
-                        :active="route().current('categories.*')"
-                    >
-                        Categories
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('subjectwises.index')"
-                        :active="route().current('subjectwises.*')"
-                    >
-                        বিষয়ভিত্তিক আয়াত হাদিস
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('checklist-fields.index')"
-                        :active="route().current('checklist-fields.*')"
-                    >
-                        Checklist Field
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('videos.index')"
-                        :active="route().current('videos.*')"
-                    >
-                        Videos
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('juzs.index')"
-                        :active="route().current('juzs.*')"
-                    >
-                        Juzs
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('ayahs.index')"
-                        :active="route().current('ayahs.*')"
-                    >
-                        Ayahs
-                    </nav-link>
-                    <nav-link
-                        v-if="$page.props.auth.user.type === 1"
-                        :href="route('posts.index')"
-                        :active="route().current('posts.*')"
-                    >
-                        Posts
-                    </nav-link>
+                        <!-- <nav-link
+                            :href="route('admins.index')"
+                            :active="route().current('admins.*')"
+                        >
+                            Admins
+                        </nav-link> -->
+                        <nav-link
+                            :href="route('users.index')"
+                            :active="route().current('users.*')"
+                        >
+                            <template #icon>
+                                <UserGroupIcon class="w-5" />
+                            </template>
+                            ইউজার তালিকা
+                        </nav-link>
+                        <!-- <nav-link
+                            :href="route('suras.index')"
+                            :active="route().current('suras.*')"
+                        >
+                            Suras
+                        </nav-link> -->
+                        <nav-link
+                            :href="route('classifications.index')"
+                            :active="route().current('classifications.*')"
+                        >
+                            <template #icon>
+                                <BookOpenIcon class="w-5" />
+                            </template>
+                            আয়াতের বিষয়বস্তু
+                        </nav-link>
+                        <nav-link
+                            :href="route('categories.index')"
+                            :active="route().current('categories.*')"
+                        >
+                            <template #icon>
+                                <ViewGridIcon class="w-5" />
+                            </template>
+                            বিষয় তালিকা
+                        </nav-link>
+                        <nav-link
+                            :href="route('subjectwises.index')"
+                            :active="route().current('subjectwises.*')"
+                        >
+                            <template #icon>
+                                <BookOpenIcon class="w-5" />
+                            </template>
+                            বিষয়ভিত্তিক আয়াত-হাদিস
+                        </nav-link>
+                        <nav-link
+                            :href="route('videos.index')"
+                            :active="route().current('videos.*')"
+                        >
+                            <template #icon>
+                                <VideoCameraIcon class="w-5" />
+                            </template>
+                            সাম্প্রতিক ভিডিও
+                        </nav-link>
+                        <!-- <nav-link
+                            :href="route('juzs.index')"
+                            :active="route().current('juzs.*')"
+                        >
+                            Juzs
+                        </nav-link> -->
+                        <!-- <nav-link
+                            :href="route('ayahs.index')"
+                            :active="route().current('ayahs.*')"
+                        >
+                            Ayahs
+                        </nav-link> -->
+                        <nav-link
+                            :href="route('posts.index')"
+                            :active="route().current('posts.*')"
+                        >
+                            <template #icon>
+                                <PencilIcon class="w-5" />
+                            </template>
+                            প্রাত্যহিক জীবনে ইসলাম
+                        </nav-link>
+                        <nav-link
+                            :href="route('checklist-fields.index')"
+                            :active="route().current('checklist-fields.*')"
+                        >
+                            <template #icon>
+                                <QuestionMarkCircleIcon class="w-5" />
+                            </template>
+                            আমলের দিনলিপি এর প্রশ্ন
+                        </nav-link>
+                    </div>
                     <hr />
                     <dropdown-link
                         :href="route('logout')"
@@ -175,6 +190,14 @@ import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import NavLink from "@/Components/NavLink.vue";
+import {
+    UserGroupIcon,
+    VideoCameraIcon,
+    PencilIcon,
+    QuestionMarkCircleIcon,
+    ViewGridIcon,
+    BookOpenIcon,
+} from "@heroicons/vue/outline";
 
 export default {
     components: {
@@ -182,6 +205,12 @@ export default {
         DropdownLink,
         Link,
         NavLink,
+        UserGroupIcon,
+        VideoCameraIcon,
+        PencilIcon,
+        QuestionMarkCircleIcon,
+        ViewGridIcon,
+        BookOpenIcon,
     },
 };
 </script>
