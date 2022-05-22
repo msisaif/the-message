@@ -1,6 +1,8 @@
 <template>
     <app-layout>
-        <h1 class="text-brand-primary my-6 text-lg md:text-3xl text-center">
+        <h1
+            class="text-brand-primary my-6 text-lg md:text-3xl text-center font-bold"
+        >
             প্রাত্যহিক জীবনে ইসলাম
         </h1>
         <section-card class="">

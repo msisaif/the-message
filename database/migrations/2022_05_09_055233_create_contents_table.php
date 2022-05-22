@@ -17,8 +17,10 @@ class CreateContentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('topic_id')->index();
             $table->unsignedSmallInteger('priority')->default(0);
+            $table->string('title');
             $table->string('video')->nullable();
             $table->string('file')->nullable();
+            $table->json('questions')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

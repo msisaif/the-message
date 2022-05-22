@@ -1,6 +1,11 @@
 <template>
     <app-layout>
-        <section-card class="mt-6" title="Recent Videos">
+        <section-card>
+            <h1
+                class="text-brand-primary my-6 text-lg md:text-3xl text-center font-bold"
+            >
+                সাম্প্রতিক ভিডিও
+            </h1>
             <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <div
                     v-for="(video, index) in videos.data"

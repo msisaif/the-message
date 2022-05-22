@@ -40,6 +40,7 @@ Route::get('/quran/{sura}/{range?}', [QuranController::class, 'sura'])->name('qu
 Route::get('/hadith', [HadithController::class, 'index'])->name('hadith.index');
 
 Route::get('/course', [CourseController::class, 'index'])->name('course.index');
+Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
 
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article.show');
