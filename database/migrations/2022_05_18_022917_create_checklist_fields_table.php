@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubjectwisesTable extends Migration
+class CreateChecklistFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateSubjectwisesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjectwises', function (Blueprint $table) {
+        Schema::create('checklist_fields', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('category_id')->index();
-            $table->unsignedTinyInteger('type')->comment('1=Ayah, 2=Hadith');
-            $table->text('title')->nullable();
-            $table->text('arabic')->nullable();
-            $table->text('bengali')->nullable();
+            $table->string('name');
+            $table->unsignedTinyInteger('type')->comment('1=Radio, 2=Number');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +29,6 @@ class CreateSubjectwisesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjectwises');
+        Schema::dropIfExists('checklist_fields');
     }
 }

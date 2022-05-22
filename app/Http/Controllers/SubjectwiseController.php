@@ -117,6 +117,7 @@ class SubjectwiseController extends Controller
                 'required',
                 'numeric',
             ],
+            'title' => [],
             'arabic' => [],
             'bengali' => [],
         ]);

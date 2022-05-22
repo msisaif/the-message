@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Video extends Model
+class Checklist extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
-    public function scopeType($query, $type)
+    public function getChecklistAttribute($value)
     {
-        return $query->where('type', $type);
+        return json_decode($value, 1);
     }
 
-    public function image()
+    public function user()
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->belongsTo(User::class);
     }
 }

@@ -1,18 +1,26 @@
 <template>
     <app-layout>
-        <div class="flex flex-col justify-center items-center mt-6">
-            <img
-                :src="post.imageUrl || '/images/article.jpg'"
-                class="w-full aspect-video object-cover max-w-xs"
-            />
-            <h1 class="text-brand-primary my-6 text-lg md:text-2xl text-center">
-                {{ post.title }}
-            </h1>
+        <div class="max-w-6xl md:mx-auto">
+            <div class="w-full sm:max-w-xl float-left px-8 pt-5 sm:pt-8">
+                <div
+                    class="bg-gray-300 flex-initial flex-col justify-center items-center"
+                >
+                    <img
+                        :src="post.imageUrl || '/images/article.jpg'"
+                        class="w-full aspect-video border border-gray-300"
+                    />
+                    <h1
+                        class="text-brand-primary py-3 text-lg md:text-2xl text-center font-bold"
+                    >
+                        {{ post.title }}
+                    </h1>
+                </div>
+            </div>
+            <div
+                v-html="post.body"
+                class="text-base md:text-xl border bg-white p-4 md:p-8 mt-6 whitespace-pre-wrap text-justify leading-relaxed"
+            ></div>
         </div>
-        <div
-            class="text-base md:text-xl border bg-white p-4 md:p-8 whitespace-pre-wrap text-justify"
-            v-html="post.body"
-        ></div>
     </app-layout>
 </template>
 

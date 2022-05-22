@@ -34,6 +34,14 @@
                     </Select>
                 </div>
                 <div class="col-span-full">
+                    <Label value="Sub Heading" />
+                    <Input
+                        type="text"
+                        v-model="form.title"
+                        class="block w-full"
+                    />
+                </div>
+                <div class="col-span-full">
                     <Label value="Arabic" />
                     <textarea
                         class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 shadow-sm resize-y"
@@ -105,6 +113,7 @@ export default {
             form: this.$inertia.form({
                 category_id: this.data.subjectwise.category_id,
                 type: this.data.subjectwise.type,
+                title: this.data.subjectwise.title,
                 arabic: this.data.subjectwise.arabic,
                 bengali: this.data.subjectwise.bengali,
             }),

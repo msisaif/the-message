@@ -32,7 +32,7 @@
                 <div class="text-center px-4">প্রাত্যহিক জীবনে ইসলাম</div>
             </Link>
             <Link
-                :href="route('ramadan-checklist.list')"
+                :href="route('checklist.list')"
                 class="flex flex-col justify-center items-center bg-brand-primary text-white py-4 gap-4"
             >
                 <ShieldCheckIcon class="w-12" />

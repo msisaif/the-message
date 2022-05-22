@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VideoResource extends JsonResource
+class ChecklistFieldResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,9 @@ class VideoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id"        => (int) $this->id,
-            "title"     => (string) ($this->title ?? ''),
-            "url"       => (string) ($this->url ?? ''),
-            'image'     => new ImageResource($this->whenLoaded('image')),
-            'imageUrl'  => (string) ($this->image->url ?? ''),
+            'id'    => (int) ($this->id),
+            'name'  => (string) ($this->name ?? ''),
+            'type'  => (string) ($this->type ?? ''),
         ];
     }
 }

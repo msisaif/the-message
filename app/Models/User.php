@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $this->hasMany(RamadanChecklist::class);
     }
 
+    public function checklists()
+    {
+        return $this->hasMany(Checklist::class);
+    }
+
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'course_mentor', 'course_id', 'mentor_id');

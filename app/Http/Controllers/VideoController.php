@@ -48,6 +48,8 @@ class VideoController extends Controller
     {
         VideoResource::withoutWrapping();
 
+        $video->load('image');
+
         return Inertia::render('Video/Show', [
             'video' => new VideoResource($video),
         ]);

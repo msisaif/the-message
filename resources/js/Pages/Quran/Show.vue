@@ -61,7 +61,7 @@
                     </div>
                     <div class="p-4 border w-full space-y-2">
                         <div
-                            class="text-xl md:text-2xl text-right text-brand-black font-bold"
+                            class="text-xl md:text-2xl text-right text-brand-black font-bold !leading-loose"
                         >
                             <div dir="rtl">
                                 {{ ayah.text }}

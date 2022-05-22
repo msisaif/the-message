@@ -15,6 +15,9 @@
                     <show-table-row heading="Category">
                         {{ subjectwise.categoryName }}
                     </show-table-row>
+                    <show-table-row heading="Sub Heading">
+                        <b>{{ subjectwise.title }}</b>
+                    </show-table-row>
                     <show-table-row heading="Arabic">
                         {{ subjectwise.arabic }}
                     </show-table-row>

@@ -3,60 +3,59 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\RamadanChecklistFieldResource;
-use App\Models\RamadanChecklistField;
-use App\Traits\DateFilter;
+use App\Http\Resources\ChecklistFieldResource;
+use App\Models\ChecklistField;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
-class RamadanChecklistFieldController extends Controller
+class ChecklistFieldController extends Controller
 {
     public function index()
     {
-        $checklist_fields = $this->setQuery(RamadanChecklistField::query())
+        $collections = $this->setQuery(ChecklistField::query())
             ->search()->filter()
             ->getQuery();
 
-        return Inertia::render('RamadanChecklistField/Index', [
-            'checklistFields' => RamadanChecklistFieldResource::collection($checklist_fields->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
+        return Inertia::render('ChecklistField/Index', [
+            'checklistFields' => ChecklistFieldResource::collection($collections->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
             'filters' => $this->getFilterProperty(),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('RamadanChecklistField/Create', [
-            'checklistField' => new RamadanChecklistField(),
+        return Inertia::render('ChecklistField/Create', [
+            'checklistField' => new ChecklistField(),
         ]);
     }
 
     public function store(Request $request)
     {
-        $checklistField = RamadanChecklistField::create($this->validateData($request));
+        $checklistField = ChecklistField::create($this->validateData($request));
 
         return redirect()
             ->route('checklist-fields.show', $checklistField->id)
             ->with('status', 'The record has been added successfully.');
     }
 
-    public function show(RamadanChecklistField $checklistField)
+    public function show(ChecklistField $checklistField)
     {
-        RamadanChecklistFieldResource::withoutWrapping();
+        ChecklistFieldResource::withoutWrapping();
 
-        return Inertia::render('RamadanChecklistField/Show', [
-            'checklistField' => new RamadanChecklistFieldResource($checklistField),
+        return Inertia::render('ChecklistField/Show', [
+            'checklistField' => new ChecklistFieldResource($checklistField),
         ]);
     }
 
-    public function edit(RamadanChecklistField $checklistField)
+    public function edit(ChecklistField $checklistField)
     {
-        return Inertia::render('RamadanChecklistField/Edit', [
+        return Inertia::render('ChecklistField/Edit', [
             'checklistField' => $checklistField,
         ]);
     }
 
-    public function update(Request $request, RamadanChecklistField $checklistField)
+    public function update(Request $request, ChecklistField $checklistField)
     {
         $checklistField->update($this->validateData($request, $checklistField->id));
 
@@ -65,7 +64,7 @@ class RamadanChecklistFieldController extends Controller
             ->with('status', 'The record has been update successfully.');
     }
 
-    public function destroy(RamadanChecklistField $checklistField)
+    public function destroy(ChecklistField $checklistField)
     {
         $checklistField->delete();
 
@@ -106,7 +105,7 @@ class RamadanChecklistFieldController extends Controller
             'name' => [
                 'required',
                 'string',
-                Rule::unique(RamadanChecklistField::class, 'name')
+                Rule::unique(ChecklistField::class, 'name')
                     ->whereNull('deleted_at')
                     ->ignore($id),
             ],
