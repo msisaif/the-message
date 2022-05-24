@@ -94,14 +94,6 @@
                 class="hidden w-full min-w-max sm:flex justify-end items-center gap-px md:gap-2"
             >
                 <navigation-link
-                    :href="route('home')"
-                    :active="route().current('home')"
-                    class="hidden md:flex"
-                >
-                    হোম
-                </navigation-link>
-
-                <navigation-link
                     :href="route('quran.index')"
                     :active="route().current('quran.*')"
                     :dropdown="true"

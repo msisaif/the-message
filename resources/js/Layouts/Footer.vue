@@ -8,72 +8,63 @@
                     <div class="flex justify-center lg:justify-start">
                         <application-logo class="w-28" />
                     </div>
-                    <p class="text-justify text-brand-gray">
-                        The Message aims to ensure easy access to authentic
-                        Islamic knowledge readily available to the Muslim world
-                        through the Internet. Our goal is to enlighten people
-                        through applied knowledge of Qur'an and Hadith and
-                        ultimately to seek the pleasure of Almighty Allah.
+                    <p class="text-justify text-brand-black">
+                        ‘দ্যা ম্যাসেজ’ এর লক্ষ্য ইন্টারনেটের মাধ্যমে মুসলিম
+                        বিশ্বের কাছে সহজে উপলব্ধ প্রামাণিক ইসলামিক জ্ঞান নিশ্চিত
+                        করা। আমাদের লক্ষ্য হল কুরআন ও হাদীসের ফলিত জ্ঞানের
+                        মাধ্যমে মানুষকে আলোকিত করা এবং শেষ পর্যন্ত সর্বশক্তিমান
+                        আল্লাহর সন্তুষ্টি অর্জন করা।
                     </p>
                 </div>
                 <div class="col-span-1 text-right lg:text-right">
-                    <h3 class="font-bold text-brand-dark">Menu</h3>
-                    <div class="grid text-brand-gray">
+                    <h3 class="font-bold text-brand-primary">লিংক</h3>
+                    <div class="grid text-brand-black gap-1">
                         <Link
                             class="hover:text-brand-primary"
                             :href="route('quran.index')"
                         >
-                            Quran
+                            ‍আল-কুরআন
                         </Link>
                         <Link
                             class="hover:text-brand-primary"
                             :href="route('hadith.index')"
                         >
-                            Hadith
+                            আল-হাদিস
                         </Link>
                         <Link
                             class="hover:text-brand-primary"
                             :href="route('course.index')"
                         >
-                            Course
+                            সকল কোর্স
                         </Link>
                         <Link
                             class="hover:text-brand-primary"
-                            :href="route('article.index')"
+                            :href="route('video.index')"
                         >
-                            Article
-                        </Link>
-                        <Link
-                            class="hover:text-brand-primary"
-                            :href="route('kids-zone.index')"
-                        >
-                            Kids Zone
+                            ভিডিও
                         </Link>
                     </div>
                 </div>
                 <div class="col-span-1 text-left lg:text-right">
-                    <h3 class="font-bold text-brand-dark">Organization</h3>
-                    <div class="grid text-brand-gray">
-                        <Link class="hover:text-brand-primary" href="/">
-                            About Us
+                    <h3 class="font-bold text-brand-primary">অন্যান্য</h3>
+                    <div class="grid text-brand-black gap-1">
+                        <Link class="hover:text-brand-primary" href="#">
+                            আমাদের সম্পর্কে
                         </Link>
-                        <Link class="hover:text-brand-primary" href="/">
-                            Privacy Policy
+                        <Link class="hover:text-brand-primary" href="#">
+                            প্রাইভেসি পলিসি
                         </Link>
-                        <Link class="hover:text-brand-primary" href="/">
-                            Terms &amp; Conditions
+                        <Link class="hover:text-brand-primary" href="#">
+                            দান করুন
                         </Link>
-                        <Link class="hover:text-brand-primary" href="/">
-                            Donate Us
-                        </Link>
-                        <Link class="hover:text-brand-primary" href="/">
-                            FAQs
+                        <Link class="hover:text-brand-primary" href="#">
+                            প্রশ্নোত্তর
                         </Link>
                     </div>
                 </div>
                 <div class="col-span-2 lg:col-span-1 text-center lg:text-right">
-                    <h3 class="font-bold text-brand-dark">Contact Us</h3>
-                    <div class="grid text-brand-gray space-y-1">
+                    <h3 class="font-bold text-brand-primary">যোগাযোগ</h3>
+                    <div class="grid text-brand-black gap-2">
                         <p>info@messagebd.net</p>
                         <p>01736268035</p>
                         <div

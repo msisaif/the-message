@@ -37,9 +37,7 @@
                                     :key="content.id"
                                     class="space-y-2"
                                 >
-                                    <div
-                                        class="flex items-center gap-2 hover:text-rose-500 cursor-pointer"
-                                    >
+                                    <div class="flex items-center gap-2">
                                         <PlayIcon class="w-5 text-rose-500" />
                                         <div class="grow shrink">
                                             {{ content.title }}
@@ -47,7 +45,7 @@
                                     </div>
                                     <div
                                         v-if="content.file"
-                                        class="flex items-center gap-2 hover:text-blue-600 cursor-pointer"
+                                        class="flex items-center gap-2"
                                     >
                                         <DownloadIcon
                                             class="w-5 text-blue-600"
