@@ -155,6 +155,15 @@
                             </template>
                             আমলের দিনলিপি এর প্রশ্ন
                         </nav-link>
+                        <nav-link
+                            :href="route('courses.index')"
+                            :active="route().current('courses.*')"
+                        >
+                            <template #icon>
+                                <DesktopComputerIcon class="w-5" />
+                            </template>
+                            কোর্স
+                        </nav-link>
                     </div>
                     <hr />
                     <dropdown-link
@@ -197,6 +206,7 @@ import {
     QuestionMarkCircleIcon,
     ViewGridIcon,
     BookOpenIcon,
+    DesktopComputerIcon,
 } from "@heroicons/vue/outline";
 
 export default {
@@ -211,6 +221,7 @@ export default {
         QuestionMarkCircleIcon,
         ViewGridIcon,
         BookOpenIcon,
+        DesktopComputerIcon,
     },
 };
 </script>

@@ -10,6 +10,7 @@ use App\Http\Controllers\ChecklistFieldController;
 use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\OurCourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonateController;
 use App\Http\Controllers\HadithController;
@@ -39,8 +40,8 @@ Route::get('/quran/{sura}/{range?}', [QuranController::class, 'sura'])->name('qu
 
 Route::get('/hadith', [HadithController::class, 'index'])->name('hadith.index');
 
-Route::get('/course', [CourseController::class, 'index'])->name('course.index');
-Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
+Route::get('/course', [OurCourseController::class, 'index'])->name('course.index');
+Route::get('/course/{course}', [OurCourseController::class, 'show'])->name('course.show');
 
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article.show');
@@ -86,6 +87,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'categories'        => CategoryController::class,
         'subjectwises'      => SubjectwiseController::class,
         'checklist-fields'  => ChecklistFieldController::class,
+        'courses'           => CourseController::class,
     ]);
 });
 
