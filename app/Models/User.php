@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class, 'course_mentor', 'course_id', 'mentor_id');
     }
+    
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

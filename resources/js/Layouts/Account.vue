@@ -17,18 +17,10 @@
                             type="button"
                             class="inline-flex items-center gap-1 text-sm font-medium border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white hover: focus:outline-none px-2 py-0.5 md:py-1.5"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-                                    clip-rule="evenodd"
-                                />
-                            </svg>
+                            <user-photo-view
+                                :firstLatter="$page.props.auth.user.name[0]"
+                                class="w-8 text-lg bg-brand-primary text-white border border-white"
+                            />
                             <span
                                 class="hidden sm:block"
                                 v-if="$page.props.auth.user"
@@ -68,12 +60,15 @@
                         class="grid bg-gray-100 pl-2"
                         v-if="$page.props.auth.user.type === 1"
                     >
-                        <!-- <nav-link
+                        <nav-link
                             :href="route('admins.index')"
                             :active="route().current('admins.*')"
                         >
+                            <template #icon>
+                                <UsersIcon class="w-5" />
+                            </template>
                             Admins
-                        </nav-link> -->
+                        </nav-link>
                         <nav-link
                             :href="route('users.index')"
                             :active="route().current('users.*')"
@@ -207,7 +202,9 @@ import {
     ViewGridIcon,
     BookOpenIcon,
     DesktopComputerIcon,
+    UsersIcon,
 } from "@heroicons/vue/outline";
+import UserPhotoView from "@/Components/UserPhotoView.vue";
 
 export default {
     components: {
@@ -222,6 +219,8 @@ export default {
         ViewGridIcon,
         BookOpenIcon,
         DesktopComputerIcon,
+        UsersIcon,
+        UserPhotoView,
     },
 };
 </script>

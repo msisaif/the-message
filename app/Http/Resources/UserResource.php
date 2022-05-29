@@ -23,6 +23,9 @@ class UserResource extends JsonResource
             'typeName'      => (string) ($this->type_name ?? ''),
             'emailVerified' => (string) ($this->email_verified ?? ''),
             'isAdmin'       => (boolean) ($this->is_admin ?? false),
+            'image'         => new ImageResource($this->whenLoaded('image')),
+            'imageUrl'      => (string) ($this->image->url ?? ''),
+            'firstLatter'   => (string) (mb_strtoupper(mb_substr($this->name, 0, 1, 'utf-8'), 'utf-8') ?? ''),
         ];
     }
 }

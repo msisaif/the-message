@@ -10,17 +10,30 @@
 
         <div class="overflow-auto bg-white border">
             <table class="table-auto">
-                <show-table-row heading="ID">{{ user.id }}</show-table-row>
+                <show-table-row heading="Image">
+                    <image-previe-with-save
+                        :imageUrl="user.imageUrl"
+                        option="user"
+                        :id="user.id"
+                        ratioClass="aspect-square"
+                    />
+                </show-table-row>
 
-                <show-table-row heading="Name">{{ user.name }}</show-table-row>
+                <show-table-row heading="ID">
+                    {{ user.id }}
+                </show-table-row>
 
-                <show-table-row heading="Email">{{
-                    user.email
-                }}</show-table-row>
+                <show-table-row heading="Name">
+                    {{ user.name }}
+                </show-table-row>
 
-                <show-table-row heading="Phone">{{
-                    user.phone
-                }}</show-table-row>
+                <show-table-row heading="Email">
+                    {{ user.email }}
+                </show-table-row>
+
+                <show-table-row heading="Phone">
+                    {{ user.phone }}
+                </show-table-row>
 
                 <show-table-row heading="Action">
                     <div class="flex justify-start items-center gap-1 md:gap-2">
@@ -45,6 +58,7 @@ import ShowTableRow from "@/Components/ShowTableRow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import ImagePrevieWithSave from "@/Components/ImagePrevieWithSave.vue";
 
 export default {
     components: {
@@ -55,6 +69,7 @@ export default {
         ActionButtonEdit,
         GoToList,
         AddNewButton,
+        ImagePrevieWithSave,
     },
     props: {
         user: { type: Object, default: {} },

@@ -10,6 +10,14 @@
 
         <div class="overflow-auto">
             <table class="table-auto bg-white border shadow">
+                <show-table-row heading="Image">
+                    <image-previe-with-save
+                        :imageUrl="admin.imageUrl"
+                        option="user"
+                        :id="admin.id"
+                        ratioClass="aspect-square"
+                    />
+                </show-table-row>
                 <show-table-row heading="ID">
                     {{ admin.id }}
                 </show-table-row>
@@ -47,6 +55,7 @@ import ShowTableRow from "@/Components/ShowTableRow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import ImagePrevieWithSave from '@/Components/ImagePrevieWithSave.vue';
 
 export default {
     components: {
@@ -56,6 +65,7 @@ export default {
         ActionButtonEdit,
         GoToList,
         AddNewButton,
+        ImagePrevieWithSave,
     },
     props: {
         admin: {

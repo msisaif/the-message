@@ -14,7 +14,7 @@
                     <show-table-row heading="Photo">
                         <image-previe-with-save
                             :imageUrl="post.imageUrl"
-                            model="post"
+                            option="post"
                             :id="post.id"
                         />
                     </show-table-row>

@@ -17,7 +17,16 @@
                 </template>
                 <template #default="{ item: admin }">
                     <td class="py-3 px-2 text-left">{{ admin.id }}</td>
-                    <td class="py-3 px-2 text-left">{{ admin.name }}</td>
+                    <td class="py-3 px-2 text-left">
+                        <div class="flex gap-4 items-center">
+                            <user-photo-view
+                                :imageUrl="admin.imageUrl"
+                                :firstLatter="admin.firstLatter"
+                                class="w-10 text-xl bg-brand-black text-white"
+                            />
+                            <div class="grow shrink">{{ admin.name }}</div>
+                        </div>
+                    </td>
                     <td class="py-3 px-2 text-left">{{ admin.email }}</td>
                     <td class="py-3 px-2 text-left">{{ admin.phone }}</td>
                     <td class="py-2.5 px-2">
@@ -45,6 +54,7 @@ import DataTable from "@/Components/DataTable.vue";
 import ActionButtonShow from "@/Components/ActionButtonShow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import UserPhotoView from "@/Components/UserPhotoView.vue";
 
 export default {
     components: {
@@ -55,6 +65,7 @@ export default {
         ActionButtonShow,
         ActionButtonEdit,
         AddNewButton,
+        UserPhotoView,
     },
     props: {
         admins: { type: Object, default: {} },

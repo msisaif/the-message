@@ -21,7 +21,16 @@
                 </template>
                 <template #default="{ item: user }">
                     <td class="py-3 px-2 text-left">{{ user.id }}</td>
-                    <td class="py-3 px-2 text-left">{{ user.name }}</td>
+                    <td class="py-3 px-2 text-left">
+                        <div class="flex gap-4 items-center">
+                            <user-photo-view
+                                :imageUrl="user.imageUrl"
+                                :firstLatter="user.firstLatter"
+                                class="w-10 text-xl bg-brand-black text-white"
+                            />
+                            <div class="grow shrink">{{ user.name }}</div>
+                        </div>
+                    </td>
                     <td class="py-3 px-2 text-left">{{ user.email }}</td>
                     <td class="py-3 px-2 text-left">{{ user.phone }}</td>
                     <td class="py-2.5 px-2">
@@ -49,6 +58,7 @@ import DataTable from "@/Components/DataTable.vue";
 import ActionButtonShow from "@/Components/ActionButtonShow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import UserPhotoView from "@/Components/UserPhotoView.vue";
 
 export default {
     components: {
@@ -59,6 +69,7 @@ export default {
         ActionButtonShow,
         ActionButtonEdit,
         AddNewButton,
+        UserPhotoView,
     },
     props: {
         users: { type: Object, default: {} },

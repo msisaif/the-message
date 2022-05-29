@@ -120,10 +120,9 @@ class UserController extends Controller
                 'string',
             ],
             'email' => [
-                'required',
-                'string',
-                'email',
-                Rule::unique(User::class, 'email')->ignore($id),
+                Rule::unique(User::class, 'email')
+                    ->whereNotNull('email')
+                    ->ignore($id),
             ],
             'phone' => [
                 Rule::unique(User::class, 'phone')

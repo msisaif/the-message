@@ -2,7 +2,7 @@
     <div
         class="max-w-xs p-3 border border-dashed border-brand-secondary grid gap-3"
     >
-        <div v-if="imagePreview" class="border overflow-hidden aspect-video">
+        <div v-if="imagePreview" class="border overflow-hidden" :class="ratioClass">
             <img :src="imagePreview" class="w-full h-full object-cover" />
         </div>
         <div v-if="status" class="flex justify-center items-center">
@@ -66,7 +66,11 @@ export default {
             type: String,
             default: null,
         },
-        model: {
+        ratioClass: {
+            type: String,
+            default: 'aspect-video',
+        },
+        option: {
             type: String,
             default: null,
         },
@@ -110,7 +114,7 @@ export default {
             this.status = 2;
             const formData = new FormData();
             formData.append("image", this.file);
-            formData.append("model", this.model);
+            formData.append("option", this.option);
             formData.append("id", this.id);
 
             axios

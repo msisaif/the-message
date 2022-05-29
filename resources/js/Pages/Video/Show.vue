@@ -14,7 +14,7 @@
                     <show-table-row heading="Thumbnail">
                         <image-previe-with-save
                             :imageUrl="video.imageUrl"
-                            model="video"
+                            option="video"
                             :id="video.id"
                         />
                     </show-table-row>

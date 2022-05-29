@@ -6,7 +6,6 @@
 
         <div class="py-4">
             <add-new-button :href="route('courses.create')" />
-            {{ playVideo }}
             <data-table
                 :collections="courses"
                 :filters="filters"
