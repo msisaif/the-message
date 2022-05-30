@@ -12,13 +12,15 @@ class Course extends Model
 
     protected $guarded = [];
 
-    public function mentors()
-    {
-        return $this->belongsToMany(User::class, 'course_mentor', 'mentor_id', 'course_id');
-    }
-
     public function topics()
     {
         return $this->hasMany(Topic::class);
+    }
+
+    public function mentors()
+    {
+        return $this->belongsToMany(Mentor::class)
+            ->whereNull('course_mentor.deleted_at')
+            ->orderBy('course_mentor.id');
     }
 }

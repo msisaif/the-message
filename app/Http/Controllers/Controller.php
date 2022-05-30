@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mentor;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Video;
@@ -56,6 +57,10 @@ class Controller extends BaseController
     
         if(request()->option == 'user') {
             $model_instance = User::find(request()->id);
+        }
+    
+        if(request()->option == 'mentor') {
+            $model_instance = Mentor::find(request()->id);
         }
 
         if($model_instance && $image_path) {

@@ -22,6 +22,7 @@ class CourseResource extends JsonResource
             'video'     => (string) ($this->video ?? ''),
             'details'   => (string) ($this->details ?? ''),
             'topics'    => TopicResource::collection($this->whenLoaded('topics')),
+            'mentors'   => MentorResource::collection($this->whenLoaded('mentors')),
         ];
     }
 }

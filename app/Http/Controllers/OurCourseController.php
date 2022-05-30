@@ -27,7 +27,10 @@ class OurCourseController extends Controller
     {
         CourseResource::withoutWrapping();
 
-        $course->load('topics.contents');
+        $course->load([
+            'topics.contents',
+            'mentors'
+        ]);
 
         return Inertia::render('OurCourse/Show', [
             'course' => new CourseResource($course),

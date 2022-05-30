@@ -17,7 +17,8 @@
                             type="button"
                             class="inline-flex items-center gap-1 text-sm font-medium border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white hover: focus:outline-none px-2 py-0.5 md:py-1.5"
                         >
-                            <user-photo-view
+                            <avatar-photo-view
+                                :imageUrl="$page.props.auth.user.avatar"
                                 :firstLatter="$page.props.auth.user.name[0]"
                                 class="w-8 text-lg bg-brand-primary text-white border border-white"
                             />
@@ -204,7 +205,7 @@ import {
     DesktopComputerIcon,
     UsersIcon,
 } from "@heroicons/vue/outline";
-import UserPhotoView from "@/Components/UserPhotoView.vue";
+import AvatarPhotoView from "@/Components/AvatarPhotoView.vue";
 
 export default {
     components: {
@@ -220,7 +221,7 @@ export default {
         BookOpenIcon,
         DesktopComputerIcon,
         UsersIcon,
-        UserPhotoView,
+        AvatarPhotoView,
     },
 };
 </script>

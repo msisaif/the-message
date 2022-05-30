@@ -1,9 +1,11 @@
 <template>
-    <div
-        class="max-w-xs p-3 border border-dashed border-brand-secondary grid gap-3"
-    >
-        <div v-if="imagePreview" class="border overflow-hidden" :class="ratioClass">
+    <div class="max-w-xs p-3 border grid gap-3">
+        <div v-if="imagePreview" class="border relative" :class="ratioClass">
             <img :src="imagePreview" class="w-full h-full object-cover" />
+            <div
+                class="absolute inset-0 border border-gray-600 border-dashed bg-transparent"
+                :class="ratioClass"
+            ></div>
         </div>
         <div v-if="status" class="flex justify-center items-center">
             <div
@@ -68,7 +70,7 @@ export default {
         },
         ratioClass: {
             type: String,
-            default: 'aspect-video',
+            default: "aspect-video",
         },
         option: {
             type: String,

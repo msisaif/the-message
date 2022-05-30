@@ -17,6 +17,7 @@ use App\Http\Controllers\HadithController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JuzController;
 use App\Http\Controllers\KidsZoneController;
+use App\Http\Controllers\MentorController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuranController;
 use App\Http\Controllers\RamadanChecklistController;
@@ -87,6 +88,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'categories'        => CategoryController::class,
         'subjectwises'      => SubjectwiseController::class,
         'checklist-fields'  => ChecklistFieldController::class,
+        'mentors'           => MentorController::class,
         'courses'           => CourseController::class,
     ]);
 });

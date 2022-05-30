@@ -7,51 +7,96 @@
             <div
                 class="flex flex-col-reverse md:flex-row gap-4 justify-between"
             >
-                <div class="shrink grow space-y-6">
-                    <div class="border p-4">
-                        <h2 class="font-semibold">কোর্স সম্পর্কে:</h2>
+                <div class="shrink grow">
+                    <div v-if="Object.keys(course.mentors).length" class="mb-6">
+                        <h3 class="font-semibold text-lg py-2">
+                            কোর্স ইন্সট্রাক্টর
+                        </h3>
                         <div
-                            v-html="course.details"
-                            class="leading-loose text-justify"
-                        ></div>
-                        <!-- <div class="flex justify-center items-center -mb-8">
-                            <span
-                                class="px-4 py-1 border bg-gray-300 font-medium text-sm cursor-pointer"
-                            >
-                                আরো পড়ুন
-                            </span>
-                        </div> -->
-                    </div>
-                    <div
-                        class="border border-gray-300 divide-gray-300 divide-y px-4"
-                    >
-                        <div
-                            v-for="topic in course.topics"
-                            :key="topic.id"
-                            class="py-4"
+                            class="grid md:grid-cols-2 gap-4 border border-gray-300 p-4 md:py-8"
                         >
-                            <div class="font-semibold">{{ topic.title }}</div>
-                            <div class="space-y-2 pt-2">
-                                <div
-                                    v-for="content in topic.contents"
-                                    :key="content.id"
-                                    class="space-y-2"
-                                >
-                                    <div class="flex items-center gap-2">
-                                        <PlayIcon class="w-5 text-rose-500" />
-                                        <div class="grow shrink">
-                                            {{ content.title }}
-                                        </div>
-                                    </div>
-                                    <div
-                                        v-if="content.file"
-                                        class="flex items-center gap-2"
+                            <div
+                                v-for="mentor in course.mentors"
+                                :key="mentor.id"
+                                class="flex gap-4"
+                            >
+                                <div class="grow-0 shrink-0">
+                                    <avatar-photo-view
+                                        :imageUrl="mentor.imageUrl"
+                                        :firstLatter="mentor.firstLatter"
+                                        class="w-12 text-3xl bg-brand-dark text-white"
+                                    />
+                                </div>
+                                <div class="grow shrink">
+                                    <h5
+                                        class="text-lg font-semibold text-brand-black"
                                     >
-                                        <DownloadIcon
-                                            class="w-5 text-blue-600"
-                                        />
-                                        <div class="grow shrink">
-                                            ডকুমেন্ট ডাউনলোড করুন
+                                        {{ mentor.name }}
+                                    </h5>
+                                    <p class="text-sm text-brand-dark">
+                                        {{ mentor.designation }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="course.details" class="mb-6">
+                        <h3 class="font-semibold text-lg py-2">
+                            কোর্স সম্পর্কে
+                        </h3>
+                        <div class="border border-gray-300 p-4">
+                            <div
+                                v-html="course.details"
+                                class="leading-loose text-justify"
+                            ></div>
+                            <!-- <div class="flex justify-center items-center -mb-8">
+                                <span
+                                    class="px-4 py-1 border bg-gray-300 font-medium text-sm cursor-pointer"
+                                >
+                                    আরো পড়ুন
+                                </span>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div v-if="Object.keys(course.topics).length" class="mb-6">
+                        <h3 class="font-semibold text-lg py-2">
+                            কোর্স সিলেবাস
+                        </h3>
+                        <div
+                            class="border border-gray-300 divide-gray-300 divide-y px-4"
+                        >
+                            <div
+                                v-for="topic in course.topics"
+                                :key="topic.id"
+                                class="py-4"
+                            >
+                                <div class="font-semibold">
+                                    {{ topic.title }}
+                                </div>
+                                <div class="space-y-2 pt-2">
+                                    <div
+                                        v-for="content in topic.contents"
+                                        :key="content.id"
+                                        class="space-y-2"
+                                    >
+                                        <div class="flex items-center gap-2">
+                                            <PlayIcon
+                                                class="w-5 text-rose-500"
+                                            />
+                                            <div class="grow shrink">
+                                                {{ content.title }}
+                                            </div>
+                                        </div>
+                                        <div
+                                            v-if="content.file"
+                                            class="flex items-center gap-2"
+                                        >
+                                            <DownloadIcon
+                                                class="w-5 text-blue-600"
+                                            />
+                                            <div class="grow shrink">
+                                                পি.ডি.এফ. ডকুমেন্ট
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -168,6 +213,7 @@ import AppLayout from "@/Layouts/App.vue";
 import SectionCard from "@/Components/SectionCard.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { PlayIcon, DownloadIcon } from "@heroicons/vue/outline";
+import AvatarPhotoView from "@/Components/AvatarPhotoView.vue";
 
 export default {
     components: {
@@ -177,6 +223,7 @@ export default {
         Link,
         PlayIcon,
         DownloadIcon,
+        AvatarPhotoView,
     },
     props: {
         course: {

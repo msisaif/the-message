@@ -1,0 +1,33 @@
+<template>
+    <Head title="Mentor" />
+
+    <app-layout>
+        <template #header> Create Mentor </template>
+
+        <form-component
+            :mentor="mentor"
+            :mentor-type="mentorType"
+            module-action="store"
+        />
+    </app-layout>
+</template>
+
+<script>
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import AppLayout from "@/Layouts/App.vue";
+import FormComponent from "./Form.vue";
+
+export default {
+    components: {
+        AppLayout,
+        Head,
+        Link,
+        FormComponent,
+    },
+
+    props: {
+        mentor: { type: Object, default: {} },
+        mentorType: { type: Object, default: {} },
+    },
+};
+</script>

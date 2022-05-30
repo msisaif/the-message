@@ -23,7 +23,7 @@
                     <td class="py-3 px-2 text-left">{{ user.id }}</td>
                     <td class="py-3 px-2 text-left">
                         <div class="flex gap-4 items-center">
-                            <user-photo-view
+                            <avatar-photo-view
                                 :imageUrl="user.imageUrl"
                                 :firstLatter="user.firstLatter"
                                 class="w-10 text-xl bg-brand-black text-white"
@@ -58,7 +58,7 @@ import DataTable from "@/Components/DataTable.vue";
 import ActionButtonShow from "@/Components/ActionButtonShow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
-import UserPhotoView from "@/Components/UserPhotoView.vue";
+import AvatarPhotoView from "@/Components/AvatarPhotoView.vue";
 
 export default {
     components: {
@@ -69,7 +69,7 @@ export default {
         ActionButtonShow,
         ActionButtonEdit,
         AddNewButton,
-        UserPhotoView,
+        AvatarPhotoView,
     },
     props: {
         users: { type: Object, default: {} },
