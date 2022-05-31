@@ -28,7 +28,7 @@
                             @click="playVideo = course.video"
                         >
                             <img
-                                :src="course.image"
+                                :src="course.imageUrl"
                                 class="w-full h-full object-cover"
                             />
                             <div

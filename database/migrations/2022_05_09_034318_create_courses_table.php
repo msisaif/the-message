@@ -17,9 +17,8 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title')->index();
             $table->unsignedFloat('amount')->default(0);
-            $table->string('image')->nullable();
             $table->string('video')->nullable();
-            $table->text('details')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

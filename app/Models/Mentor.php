@@ -10,7 +10,7 @@ class Mentor extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];  
+    protected $guarded = [];
   
     public function image()
     {

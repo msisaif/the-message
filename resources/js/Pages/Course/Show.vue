@@ -11,35 +11,26 @@
 
             <div class="overflow-auto bg-white border">
                 <table class="table-auto">
-                    <show-table-row heading="Course Number">
-                        {{ course.courseNumber }}
+                    <show-table-row heading="Thumbnail">
+                        <image-previe-with-save
+                            :imageUrl="course.imageUrl"
+                            option="course"
+                            :id="course.id"
+                        />
                     </show-table-row>
-                    <show-table-row heading="Total Ayah">
-                        {{ course.totalAyah }}
+                    <show-table-row heading="Course Title">
+                        {{ course.title }}
                     </show-table-row>
-                    <show-table-row heading="Bismillah">
-                        {{ course.bismillahPre ? "Yes" : "No" }}
+                    <show-table-row heading="Amount">
+                        {{ course.amount }}
                     </show-table-row>
-                    <show-table-row heading="Revelation Place">
-                        {{ course.revelationPlace }}
+                    <show-table-row heading="Intro Video Link">
+                        {{ course.video }}
                     </show-table-row>
-                    <show-table-row heading="Revelation Order">
-                        {{ course.revelationOrder || "" }}
-                    </show-table-row>
-                    <show-table-row heading="Arabic" dir="rtl">
-                        {{ course.arabic }}
-                    </show-table-row>
-                    <show-table-row heading="Bengali Pronunciation">
-                        {{ course.bengaliPronunciation }}
-                    </show-table-row>
-                    <show-table-row heading="Bengali Meaning">
-                        {{ course.bengaliMeaning }}
-                    </show-table-row>
-                    <show-table-row heading="English Pronunciation">
-                        {{ course.englishPronunciation }}
-                    </show-table-row>
-                    <show-table-row heading="English Meaning">
-                        {{ course.englishMeaning }}
+                    <show-table-row heading="Description">
+                        <div class="whitespace-pre-wrap">
+                            {{ course.description }}
+                        </div>
                     </show-table-row>
                     <show-table-row heading="Action">
                         <div
@@ -67,6 +58,7 @@ import ShowTableRow from "@/Components/ShowTableRow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import ImagePrevieWithSave from "@/Components/ImagePrevieWithSave.vue";
 
 export default {
     components: {
@@ -77,6 +69,7 @@ export default {
         ActionButtonEdit,
         GoToList,
         AddNewButton,
+        ImagePrevieWithSave,
     },
     props: {
         course: {

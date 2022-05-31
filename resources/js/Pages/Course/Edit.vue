@@ -7,7 +7,10 @@
                 Edit Course
             </h3>
 
-            <form-component :data="data" module-action="update" />
+            <form-component
+                :data="{ course, mentors }"
+                module-action="update"
+            />
         </div>
     </app-layout>
 </template>
@@ -26,7 +29,11 @@ export default {
     },
 
     props: {
-        data: {
+        course: {
+            type: Object,
+            default: {},
+        },
+        mentors: {
             type: Object,
             default: {},
         },

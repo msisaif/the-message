@@ -152,6 +152,15 @@
                             আমলের দিনলিপি এর প্রশ্ন
                         </nav-link>
                         <nav-link
+                            :href="route('mentors.index')"
+                            :active="route().current('mentors.*')"
+                        >
+                            <template #icon>
+                                <UserCircleIcon class="w-5" />
+                            </template>
+                            কোর্স ইন্সট্রাক্টর
+                        </nav-link>
+                        <nav-link
                             :href="route('courses.index')"
                             :active="route().current('courses.*')"
                         >
@@ -204,6 +213,7 @@ import {
     BookOpenIcon,
     DesktopComputerIcon,
     UsersIcon,
+    UserCircleIcon,
 } from "@heroicons/vue/outline";
 import AvatarPhotoView from "@/Components/AvatarPhotoView.vue";
 
@@ -213,6 +223,7 @@ export default {
         DropdownLink,
         Link,
         NavLink,
+        AvatarPhotoView,
         UserGroupIcon,
         VideoCameraIcon,
         PencilIcon,
@@ -221,7 +232,7 @@ export default {
         BookOpenIcon,
         DesktopComputerIcon,
         UsersIcon,
-        AvatarPhotoView,
+        UserCircleIcon,
     },
 };
 </script>

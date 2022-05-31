@@ -40,13 +40,13 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="course.details" class="mb-6">
+                    <div v-if="course.description" class="mb-6">
                         <h3 class="font-semibold text-lg py-2">
                             কোর্স সম্পর্কে
                         </h3>
                         <div class="border border-gray-300 p-4">
                             <div
-                                v-html="course.details"
+                                v-html="course.description"
                                 class="leading-loose text-justify"
                             ></div>
                             <!-- <div class="flex justify-center items-center -mb-8">
@@ -113,7 +113,7 @@
                                 >
                                     <img
                                         class="w-full h-full object-cover"
-                                        :src="course.image"
+                                        :src="course.imageUrl"
                                     />
                                 </div>
                             </div>

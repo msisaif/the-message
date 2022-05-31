@@ -7,7 +7,7 @@
                 Add New Course
             </h3>
 
-            <form-component :data="data" module-action="store" />
+            <form-component :data="{ course, mentors }" module-action="store" />
         </div>
     </app-layout>
 </template>
@@ -26,7 +26,11 @@ export default {
     },
 
     props: {
-        data: {
+        course: {
+            type: Object,
+            default: {},
+        },
+        mentors: {
             type: Object,
             default: {},
         },

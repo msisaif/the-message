@@ -17,6 +17,11 @@ class Course extends Model
         return $this->hasMany(Topic::class);
     }
 
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
     public function mentors()
     {
         return $this->belongsToMany(Mentor::class)
