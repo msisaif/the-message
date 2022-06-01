@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CourseResource;
 use App\Http\Resources\MentorResource;
+use App\Models\Content;
 use App\Models\Course;
 use App\Models\CourseMentor;
 use App\Models\Mentor;
+use App\Models\Topic;
 use App\Traits\DateFilter;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -65,6 +67,10 @@ class CourseController extends Controller
         MentorResource::withoutWrapping();
 
         $course->load('mentors');
+        
+        if(request()->step == 'content') {
+            $course->load('topics.contents');
+        }
 
         // return new CourseResource($course);
 
@@ -78,12 +84,14 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         if($request->step == "content") {
-            return $request;
+            $this->saveCourseTopicWithTopicContent($course, $request);
         }
 
-        $course->update($this->validateData($request, $course->id));
+        if(!$request->step) {
+            $course->update($this->validateData($request, $course->id));
 
-        $this->saveCourseMentor($course, $request);
+            $this->saveCourseMentor($course, $request);
+        }
 
         return redirect()
             ->route('courses.show', $course->id)
@@ -154,6 +162,50 @@ class CourseController extends Controller
                     [
                         'course_id'     => $course->id,
                         'mentor_id'     => $mentor_id,
+                        'deleted_at'    => NULL,
+                    ]
+                );
+            }
+        }
+    }
+
+    protected function saveCourseTopicWithTopicContent($course, $request)
+    {
+        Topic::query()
+            ->where('course_id', $course->id)
+            ->delete();
+
+        if(is_array($request->topics)) {
+            foreach($request->topics as $request_topic) {
+                $topic = Topic::onlyTrashed()->updateOrCreate(
+                    [],
+                    [
+                        'course_id'     => $course->id,
+                        'title'         => $request_topic["title"],
+                        'deleted_at'    => NULL,
+                    ]
+                );
+
+                $this->saveTopicContent($topic, $request_topic["contents"]);
+            }
+        }
+    }
+
+    protected function saveTopicContent($topic, $contents)
+    {
+        Content::query()
+            ->where('topic_id', $topic->id)
+            ->delete();
+
+        if(is_array($contents)) {
+            foreach($contents as $content) {
+                Content::onlyTrashed()->updateOrCreate(
+                    [],
+                    [
+                        'topic_id'      => $topic->id,
+                        'title'         => $content["title"],
+                        'type'          => $content["type"],
+                        'link'          => $content["link"],
                         'deleted_at'    => NULL,
                     ]
                 );

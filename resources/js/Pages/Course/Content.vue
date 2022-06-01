@@ -1,57 +1,119 @@
 <template>
-    <div class="w-full max-w-3xl mx-auto p-4 bg-white border shadow">
+    <div class="w-full max-w-3xl mx-auto px-4 py-6 bg-white border shadow">
         <ValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit" class="">
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="col-span-full">
-                    <Label value="Course Content" />
-                    <div class="border border-dashed px-2 py-4 space-y-4">
+            <div class="space-y-8">
+                <div
+                    v-for="(topic, index) in form.topics"
+                    :key="index"
+                    class="grid gap-x-2 gap-y-6 border border-dashed border-brand-primary px-4 py-6"
+                >
+                    <div class="flex items-center gap-2">
+                        <Input
+                            class="block w-full"
+                            type="text"
+                            v-model="topic.title"
+                            required
+                            placeholder="Topic Title"
+                        />
+                        <TrashIcon
+                            @click="removeTopicSlot(index)"
+                            class="w-10 h-10 p-2 text-rose-700 rounded-full bg-rose-700/20 grow-0 shrink-0 cursor-pointer"
+                        />
+                    </div>
+                    <hr class="border-dashed border-gray-400" />
+                    <div
+                        v-for="(content, contentIndex) in topic.contents"
+                        :key="contentIndex"
+                    >
                         <div
-                            v-for="(topic, index) in form.topics"
-                            :key="index"
-                            class="grid gap-2 border border-dashed border-brand-primary p-2"
+                            v-if="content.type === 1"
+                            class="flex items-start md:items-center gap-2 border px-2 py-3 bg-purple-700/20"
                         >
-                            <div class="flex items-center gap-2">
+                            <PlayIcon
+                                class="w-10 h-10 text-purple-700 grow-0 shrink-0"
+                            />
+                            <div
+                                class="flex flex-col md:flex-row gap-2 shrink grow"
+                            >
                                 <Input
                                     class="block w-full"
                                     type="text"
-                                    v-model="topic.title"
+                                    v-model="content.title"
                                     required
-                                    placeholder="Topic Title"
+                                    placeholder="Lecture Title"
                                 />
-                                <TrashIcon
-                                    @click="removeTopicSlot(index)"
-                                    class="w-10 h-10 p-2 text-rose-700 rounded-full bg-rose-700/20 grow-0 shrink-0 cursor-pointer"
+                                <Input
+                                    class="block w-full"
+                                    type="text"
+                                    v-model="content.link"
+                                    required
+                                    placeholder="Video Link"
                                 />
                             </div>
-                            <div class="flex justify-center items-center gap-4">
-                                <button
-                                    class="flex justify-center gap-1 items-center px-2 py-1.5 bg-rose-600/40 text-rose-600"
-                                    type="button"
-                                >
-                                    <PlayIcon class="w-5 h-5" />
-                                    Lecture
-                                </button>
-                                <button
-                                    class="flex justify-center gap-1 items-center px-2 py-1.5 bg-indigo-600/40 text-indigo-600"
-                                    type="button"
-                                >
-                                    <DocumentAddIcon class="w-5 h-5" />
-                                    Document
-                                </button>
-                            </div>
+                            <TrashIcon
+                                @click="removeContentSlot(index, contentIndex)"
+                                class="w-10 h-10 p-1.5 text-rose-700 rounded-full bg-white grow-0 shrink-0 cursor-pointer"
+                            />
                         </div>
-                        <div class="flex justify-center items-center">
+                        <div
+                            v-if="content.type === 2"
+                            class="flex items-start md:items-center gap-2 border px-2 py-3 bg-indigo-700/20"
+                        >
+                            <DocumentAddIcon
+                                class="w-10 h-10 text-indigo-700 grow-0 shrink-0"
+                            />
                             <div
-                                class="flex gap-1 justify-center items-center border px-3 py-1 bg-gray-200 cursor-pointer text-gray-700"
-                                @click="AddTopicSlot"
+                                class="flex flex-col md:flex-row gap-2 shrink grow"
                             >
-                                <PlusCircleIcon class="w-5 h-5" />
-                                <span>Slot</span>
+                                <Input
+                                    class="block w-full"
+                                    type="text"
+                                    v-model="content.title"
+                                    required
+                                    placeholder="Document Title"
+                                />
+                                <Input
+                                    class="block w-full"
+                                    type="text"
+                                    v-model="content.link"
+                                    required
+                                    placeholder="Google Drive Link"
+                                />
                             </div>
+                            <TrashIcon
+                                @click="removeContentSlot(index, contentIndex)"
+                                class="w-10 h-10 p-1.5 text-rose-700 rounded-full bg-white grow-0 shrink-0 cursor-pointer"
+                            />
                         </div>
                     </div>
+                    <hr class="border-dashed border-gray-400" />
+                    <div class="flex justify-center items-center gap-4">
+                        <button
+                            class="flex justify-center gap-1 items-center px-1.5 py-1 bg-purple-700 text-white"
+                            type="button"
+                            @click="AddContentSlot(index, 1)"
+                        >
+                            <PlayIcon class="w-6 h-6" />
+                            Video
+                        </button>
+                        <button
+                            class="flex justify-center gap-1 items-center px-1.5 py-1 bg-indigo-700 text-white"
+                            type="button"
+                            @click="AddContentSlot(index, 2)"
+                        >
+                            <DocumentAddIcon class="w-6 h-6" />
+                            File
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="flex gap-1 justify-center items-center border border-dashed border-gray-400 py-4 text-gray-400 cursor-pointer text-xl md:text-3xl"
+                    @click="AddTopicSlot"
+                >
+                    <PlusCircleIcon class="w-6 md:w-10 md:h-10 h-6" />
+                    <span>Add Topic</span>
                 </div>
             </div>
 
@@ -138,17 +200,41 @@ export default {
                 contents: [],
             });
         },
-        removeTopicSlot(index) {
-            this.form.topics.splice(index, 1);
+        removeTopicSlot(topicIndex) {
+            this.form.topics.splice(topicIndex, 1);
+        },
+        AddContentSlot(topicIndex, type) {
+            this.form.topics[topicIndex].contents.push({
+                title: "",
+                type: parseInt(type),
+                link: "",
+            });
+        },
+        removeContentSlot(topicIndex, contentIndex) {
+            this.form.topics[topicIndex].contents.splice(contentIndex, 1);
         },
     },
 
     created() {
-        // if (this.data.course.mentors) {
-        //     Object.values(this.data.course.mentors).forEach((mentor) => {
-        //         this.form.mentor_ids.push(String(mentor.id));
-        //     });
-        // }
+        if (this.data.course.topics) {
+            Object.values(this.data.course.topics).forEach((topic) => {
+
+                const array = [];
+
+                Object.values(topic.contents).forEach((content) => {
+                    array.push({
+                        title: content.title,
+                        type: parseInt(content.type),
+                        link: content.link,
+                    });
+                });
+
+                this.form.topics.push({
+                    title: topic.title,
+                    contents: array,
+                });
+            });
+        }
     },
 };
 </script>

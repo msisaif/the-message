@@ -11,6 +11,18 @@
 
             <div class="overflow-auto bg-white border">
                 <table class="table-auto">
+                    <show-table-row heading="Public Preview">
+                        <div
+                            class="flex justify-start items-center gap-1 md:gap-2"
+                        >
+                            <Link
+                                :href="route('course.show', course.id)"
+                                class="flex gap-1 justify-center items-center text-white p-2 bg-blue-500"
+                            >
+                                <ExternalLinkIcon class="w-5 h-5" />
+                            </Link>
+                        </div>
+                    </show-table-row>
                     <show-table-row heading="Thumbnail">
                         <image-previe-with-save
                             :imageUrl="course.imageUrl"
@@ -126,7 +138,11 @@ import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
 import ImagePrevieWithSave from "@/Components/ImagePrevieWithSave.vue";
 import AvatarPhotoView from "@/Components/AvatarPhotoView.vue";
-import { PlayIcon, SwitchHorizontalIcon } from "@heroicons/vue/outline";
+import {
+    PlayIcon,
+    SwitchHorizontalIcon,
+    ExternalLinkIcon,
+} from "@heroicons/vue/outline";
 
 export default {
     components: {
@@ -141,6 +157,7 @@ export default {
         AvatarPhotoView,
         PlayIcon,
         SwitchHorizontalIcon,
+        ExternalLinkIcon,
     },
     props: {
         course: {

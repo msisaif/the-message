@@ -16,10 +16,9 @@ class CreateContentsTable extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('topic_id')->index();
-            $table->unsignedTinyInteger('type')->comment('1=Lecture,2=Doctument,3=Quiz');
+            $table->unsignedTinyInteger('type')->comment('1=Lecture, 2=Doctument, 3=Quiz');
             $table->string('title');
             $table->string('link');
-            $table->json('questions')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

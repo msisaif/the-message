@@ -16,7 +16,6 @@ class CreateTopicsTable extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('course_id')->index();
-            $table->unsignedSmallInteger('priority')->default(0);
             $table->string('title');
             $table->timestamps();
             $table->softDeletes();

@@ -79,23 +79,26 @@
                                         :key="content.id"
                                         class="space-y-2"
                                     >
-                                        <div class="flex items-center gap-2">
+                                        <div
+                                            v-if="content.type === 1"
+                                            class="flex items-center gap-2"
+                                        >
                                             <PlayIcon
-                                                class="w-5 text-rose-500"
+                                                class="w-6 text-rose-500"
                                             />
                                             <div class="grow shrink">
                                                 {{ content.title }}
                                             </div>
                                         </div>
                                         <div
-                                            v-if="content.file"
+                                            v-if="content.type === 2"
                                             class="flex items-center gap-2"
                                         >
-                                            <DownloadIcon
-                                                class="w-5 text-blue-600"
+                                            <DocumentTextIcon
+                                                class="w-6 text-blue-600"
                                             />
                                             <div class="grow shrink">
-                                                পি.ডি.এফ. ডকুমেন্ট
+                                                {{ content.title }}
                                             </div>
                                         </div>
                                     </div>
@@ -212,7 +215,7 @@
 import AppLayout from "@/Layouts/App.vue";
 import SectionCard from "@/Components/SectionCard.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-import { PlayIcon, DownloadIcon } from "@heroicons/vue/outline";
+import { PlayIcon, DocumentTextIcon } from "@heroicons/vue/outline";
 import AvatarPhotoView from "@/Components/AvatarPhotoView.vue";
 
 export default {
@@ -221,9 +224,9 @@ export default {
         SectionCard,
         Head,
         Link,
-        PlayIcon,
-        DownloadIcon,
         AvatarPhotoView,
+        PlayIcon,
+        DocumentTextIcon,
     },
     props: {
         course: {
