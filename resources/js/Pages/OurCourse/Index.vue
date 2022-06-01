@@ -39,7 +39,7 @@
                 >
                     <div class="overflow-hidden">
                         <img
-                            :src="course.image"
+                            :src="course.imageUrl"
                             class="w-full aspect-video object-cover hover:scale-110 transition-all ease-in-out"
                         />
                     </div>

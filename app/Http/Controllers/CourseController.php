@@ -52,6 +52,8 @@ class CourseController extends Controller
     {
         CourseResource::withoutWrapping();
 
+        $course->load('mentors');
+
         return Inertia::render('Course/Show', [
             'course' => new CourseResource($course),
         ]);
@@ -69,11 +71,16 @@ class CourseController extends Controller
         return Inertia::render('Course/Edit', [
             'course'    => new CourseResource($course),
             'mentors'   => MentorResource::collection(Mentor::get()),
+            'step'      => request()->step ?? "",
         ]);
     }
 
     public function update(Request $request, Course $course)
     {
+        if($request->step == "content") {
+            return $request;
+        }
+
         $course->update($this->validateData($request, $course->id));
 
         $this->saveCourseMentor($course, $request);
