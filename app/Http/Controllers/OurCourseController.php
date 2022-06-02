@@ -13,6 +13,7 @@ class OurCourseController extends Controller
     public function index()
     {
         $courses = Course::query()
+            ->published()
             ->with('topics.contents')
             ->simplePaginate();
 
@@ -25,6 +26,10 @@ class OurCourseController extends Controller
 
     public function show(Course $course)
     {
+        if(!$course->publish) {
+            return abort(404);
+        }
+
         CourseResource::withoutWrapping();
 
         $course->load([

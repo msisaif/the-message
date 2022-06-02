@@ -3,19 +3,32 @@
         @click="goBack"
         class="text-center font-bold cursor-pointer border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-3 py-1.5"
     >
-        Go to list
+        {{ value }}
     </span>
 </template>
 
 <script>
 export default {
     props: {
-        href: { type: String, default: "#" },
+        href: {
+            type: String,
+            default: "#",
+        },
+        value: {
+            type: String,
+            default: "Go to list",
+        },
+        history: {
+            type: Boolean,
+            default: true,
+        },
     },
     methods: {
         goBack() {
             this.$inertia.get(
-                localStorage.getItem("historyOfList") || this.href
+                this.history
+                    ? localStorage.getItem("historyOfList") || this.href
+                    : this.href
             );
         },
     },

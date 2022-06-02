@@ -62,7 +62,7 @@
                                         {{
                                             course.amount
                                                 ? course.amount
-                                                : "Fee"
+                                                : "ফ্রি"
                                         }}
                                     </span>
                                 </div>

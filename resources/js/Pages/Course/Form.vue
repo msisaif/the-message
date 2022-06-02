@@ -99,7 +99,11 @@
 
             <div class="flex items-center justify-between">
                 <div class="">
-                    <go-to-list :href="route('courses.index')" />
+                    <go-to-list
+                        :href="route('courses.show', data.course.id)"
+                        value="Back"
+                        :history="false"
+                    />
                 </div>
                 <Button
                     class=""

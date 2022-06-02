@@ -12,8 +12,13 @@
                 :data="{ course, mentors }"
                 module-action="update"
             />
+            <publish-component
+                v-if="step == 'publish'"
+                :data="{ course }"
+                module-action="update"
+            />
             <form-component
-                v-else
+                v-if="step == ''"
                 :data="{ course, mentors }"
                 module-action="update"
             />
@@ -26,6 +31,7 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/App.vue";
 import FormComponent from "./Form.vue";
 import ContentComponent from "./Content.vue";
+import PublishComponent from "./Publish.vue";
 
 export default {
     components: {
@@ -34,6 +40,7 @@ export default {
         Link,
         FormComponent,
         ContentComponent,
+        PublishComponent,
     },
 
     props: {

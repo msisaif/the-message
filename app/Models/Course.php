@@ -12,6 +12,11 @@ class Course extends Model
 
     protected $guarded = [];
 
+    public function scopePublished($query)
+    {
+        return $query->where('publish', 1);
+    }
+
     public function topics()
     {
         return $this->hasMany(Topic::class);

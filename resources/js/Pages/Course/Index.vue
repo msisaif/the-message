@@ -15,6 +15,7 @@
                     <th class="py-3 px-2 text-left">id</th>
                     <th class="py-3 px-2 text-left"></th>
                     <th class="py-3 px-2 text-left">title</th>
+                    <th class="py-3 px-2 text-center">Publish</th>
                     <th class="py-3 px-2 text-right">amount</th>
                     <th class="py-3 px-2 text-center">Action</th>
                 </template>
@@ -78,6 +79,25 @@
                     <td class="py-3 px-2 text-left">
                         {{ course.title }}
                     </td>
+                    <td class="py-3 px-2 text-center">
+                        <div
+                            class="flex justify-center items-center gap-1 md:gap-2"
+                        >
+                            <a
+                                v-if="course.publish"
+                                target="_blank"
+                                :href="route('course.show', course.id)"
+                                class="flex gap-1 justify-center items-center text-white p-2 bg-green-500"
+                            >
+                                <ExternalLinkIcon class="w-5 h-5" />
+                            </a>
+                            <span
+                                class="px-3 py-1 bg-rose-500/20 text-rose-500"
+                            >
+                                No
+                            </span>
+                        </div>
+                    </td>
                     <td class="py-3 px-2 text-right">
                         {{ course.amount }}
                     </td>
@@ -87,9 +107,6 @@
                         >
                             <action-button-show
                                 :href="route('courses.show', course.id)"
-                            />
-                            <action-button-edit
-                                :href="route('courses.edit', course.id)"
                             />
                         </div>
                     </td>
@@ -127,6 +144,7 @@ import DataTable from "@/Components/DataTable.vue";
 import ActionButtonShow from "@/Components/ActionButtonShow.vue";
 import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
+import { ExternalLinkIcon } from "@heroicons/vue/outline";
 
 export default {
     components: {
@@ -137,6 +155,7 @@ export default {
         ActionButtonShow,
         ActionButtonEdit,
         AddNewButton,
+        ExternalLinkIcon,
     },
     props: {
         courses: {

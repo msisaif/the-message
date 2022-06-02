@@ -72,6 +72,10 @@ class CourseController extends Controller
             $course->load('topics.contents');
         }
 
+        if(request()->step == 'publish') {
+            $course->load('topics.contents');
+        }
+
         // return new CourseResource($course);
 
         return Inertia::render('Course/Edit', [
@@ -85,6 +89,12 @@ class CourseController extends Controller
     {
         if($request->step == "content") {
             $this->saveCourseTopicWithTopicContent($course, $request);
+        }
+
+        if($request->step == "publish") {
+            $course->update([
+                'publish' => (boolean) $request->publish,
+            ]);
         }
 
         if(!$request->step) {

@@ -194,14 +194,14 @@
                             >
                                 <span>৳</span>
                                 <span>
-                                    {{ course.amount ? course.amount : "Fee" }}
+                                    {{ course.amount ? course.amount : "ফ্রি" }}
                                 </span>
                             </div>
                             <Link
                                 :href="route('course.show', course.id)"
                                 class="text-sm px-4 py-1 text-brand-primary border border-brand-primary hover:bg-brand-primary hover:text-white"
                             >
-                                কোর্সটি কিনুন
+                                শুরু করুন
                             </Link>
                         </div>
                     </div>

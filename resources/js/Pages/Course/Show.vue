@@ -11,17 +11,60 @@
 
             <div class="overflow-auto bg-white border">
                 <table class="table-auto">
-                    <show-table-row heading="Public Preview">
+                    <show-table-row heading="Action">
                         <div
-                            class="flex justify-start items-center gap-1 md:gap-2"
+                            class="flex flex-wrap justify-start items-center gap-2 md:gap-4"
                         >
                             <Link
+                                :href="route('courses.edit', course.id)"
+                                class="flex gap-2 justify-center items-center text-white px-2 h-8 bg-brand-primary"
+                            >
+                                <PencilAltIcon class="w-5 h-5" />
+                                <span>Edit</span>
+                            </Link>
+                            <Link
+                                :href="
+                                    route('courses.edit', course.id) +
+                                    '?step=content'
+                                "
+                                class="flex gap-2 justify-center items-center text-white px-2 h-8 bg-brand-primary"
+                            >
+                                <SwitchHorizontalIcon class="w-5 h-5" />
+                                <span>Contents</span>
+                            </Link>
+                            <Link
+                                :href="
+                                    route('courses.edit', course.id) +
+                                    '?step=publish'
+                                "
+                                class="flex gap-2 justify-center items-center text-white px-2 h-8"
+                                :class="{
+                                    'bg-green-600': course.publish,
+                                    'bg-rose-600': !course.publish,
+                                }"
+                            >
+                                <StatusOnlineIcon
+                                    v-if="course.publish"
+                                    class="w-5 h-5"
+                                />
+                                <StatusOfflineIcon v-else class="w-5 h-5" />
+                                <span>Publish</span>
+                            </Link>
+                            <a
+                                v-if="course.publish"
+                                target="_blank"
                                 :href="route('course.show', course.id)"
-                                class="flex gap-1 justify-center items-center text-white p-2 bg-blue-500"
+                                class="flex gap-1 justify-center items-center text-white px-2 h-8 bg-green-500"
                             >
                                 <ExternalLinkIcon class="w-5 h-5" />
-                            </Link>
+                            </a>
                         </div>
+                    </show-table-row>
+                    <show-table-row heading="Course Title">
+                        {{ course.title }}
+                    </show-table-row>
+                    <show-table-row heading="Amount">
+                        {{ course.amount }} TK
                     </show-table-row>
                     <show-table-row heading="Thumbnail">
                         <image-previe-with-save
@@ -29,12 +72,6 @@
                             option="course"
                             :id="course.id"
                         />
-                    </show-table-row>
-                    <show-table-row heading="Course Title">
-                        {{ course.title }}
-                    </show-table-row>
-                    <show-table-row heading="Amount">
-                        {{ course.amount }}
                     </show-table-row>
                     <show-table-row heading="Intro Video Link">
                         <div class="flex items-center gap-2">
@@ -46,7 +83,7 @@
                         </div>
                     </show-table-row>
                     <show-table-row heading="কোর্স ইন্সট্রাক্টর (Mentor)">
-                        <div class="grid md:grid-cols-4 gap-2">
+                        <div class="grid md:grid-cols-2 gap-2 max-w-2xl">
                             <div
                                 v-for="mentor in course.mentors"
                                 :key="mentor.id"
@@ -71,31 +108,6 @@
                     <show-table-row heading="Description">
                         <div class="whitespace-pre-wrap">
                             {{ course.description }}
-                        </div>
-                    </show-table-row>
-                    <show-table-row heading="Course Content">
-                        <div
-                            class="flex justify-start items-center gap-1 md:gap-2"
-                        >
-                            <Link
-                                :href="
-                                    route('courses.edit', course.id) +
-                                    '?step=content'
-                                "
-                                class="flex gap-1 justify-center items-center text-white px-3 py-1 bg-brand-primary"
-                            >
-                                <SwitchHorizontalIcon class="w-5 h-5" />
-                                <span>Contents</span>
-                            </Link>
-                        </div>
-                    </show-table-row>
-                    <show-table-row heading="Action">
-                        <div
-                            class="flex justify-start items-center gap-1 md:gap-2"
-                        >
-                            <action-button-edit
-                                :href="route('courses.edit', course.id)"
-                            />
                         </div>
                     </show-table-row>
                 </table>
@@ -142,6 +154,9 @@ import {
     PlayIcon,
     SwitchHorizontalIcon,
     ExternalLinkIcon,
+    PencilAltIcon,
+    StatusOnlineIcon,
+    StatusOfflineIcon,
 } from "@heroicons/vue/outline";
 
 export default {
@@ -158,6 +173,9 @@ export default {
         PlayIcon,
         SwitchHorizontalIcon,
         ExternalLinkIcon,
+        PencilAltIcon,
+        StatusOnlineIcon,
+        StatusOfflineIcon,
     },
     props: {
         course: {
