@@ -200,7 +200,7 @@
                                 </span>
                             </div>
                             <Link
-                                :href="route('course.show', course.id)"
+                                :href="route('course.enroll', course.id)"
                                 class="text-sm px-4 py-1 text-brand-primary border border-brand-primary hover:bg-brand-primary hover:text-white"
                             >
                                 {{

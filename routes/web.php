@@ -44,6 +44,14 @@ Route::get('/hadith', [HadithController::class, 'index'])->name('hadith.index');
 Route::get('/course', [OurCourseController::class, 'index'])->name('course.index');
 Route::get('/course/{course}', [OurCourseController::class, 'show'])->name('course.show');
 
+Route::get('/course/{course}/enroll', [OurCourseController::class, 'enroll'])
+    ->name('course.enroll')
+    ->middleware(['auth']);
+
+Route::get('/course/{course}/learn/{content?}', [OurCourseController::class, 'learn'])
+    ->name('course.learn')
+    ->middleware(['auth']);
+
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article.show');
 
