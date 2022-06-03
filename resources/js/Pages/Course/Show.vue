@@ -83,19 +83,23 @@
                         </div>
                     </show-table-row>
                     <show-table-row heading="কোর্স ইন্সট্রাক্টর (Mentor)">
-                        <div class="grid md:grid-cols-2 gap-2 max-w-2xl">
+                        <div
+                            class="grid md:grid-cols-2 gap-2 md:gap-4 max-w-3xl"
+                        >
                             <div
                                 v-for="mentor in course.mentors"
                                 :key="mentor.id"
-                                class="flex gap-2"
+                                class="flex gap-2 md:gap-4"
                             >
-                                <avatar-photo-view
-                                    :imageUrl="mentor.imageUrl"
-                                    :firstLatter="mentor.firstLatter"
-                                    class="grow-0 shrink-0 w-12 text-3xl bg-brand-primary/40 text-brand-primary"
-                                />
+                                <div class="grow-0 shrink-0">
+                                    <avatar-photo-view
+                                        :imageUrl="mentor.imageUrl"
+                                        :firstLatter="mentor.firstLatter"
+                                        class="w-12 text-3xl bg-brand-primary/40 text-brand-primary"
+                                    />
+                                </div>
                                 <div class="grow shrink">
-                                    <h3 class="text-lg font-semibold">
+                                    <h3 class="text-base font-semibold">
                                         {{ mentor.name }}
                                     </h3>
                                     <p class="text-xs">

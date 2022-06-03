@@ -22,7 +22,10 @@
                             class="w-10 h-10 p-2 text-rose-700 rounded-full bg-rose-700/20 grow-0 shrink-0 cursor-pointer"
                         />
                     </div>
-                    <hr class="border-dashed border-gray-400" />
+                    <hr
+                        v-if="topic.contents.length"
+                        class="border-dashed border-gray-400"
+                    />
                     <div
                         v-for="(content, contentIndex) in topic.contents"
                         :key="contentIndex"
@@ -48,7 +51,6 @@
                                     class="block w-full"
                                     type="text"
                                     v-model="content.link"
-                                    required
                                     placeholder="Video Link"
                                 />
                             </div>
@@ -78,7 +80,6 @@
                                     class="block w-full"
                                     type="text"
                                     v-model="content.link"
-                                    required
                                     placeholder="Google Drive Link"
                                 />
                             </div>
@@ -88,7 +89,10 @@
                             />
                         </div>
                     </div>
-                    <hr class="border-dashed border-gray-400" />
+                    <hr
+                        v-if="topic.contents.length"
+                        class="border-dashed border-gray-400"
+                    />
                     <div class="flex justify-center items-center gap-4">
                         <button
                             class="flex justify-center gap-1 items-center px-1.5 py-1 bg-purple-700 text-white"
@@ -222,7 +226,6 @@ export default {
     created() {
         if (this.data.course.topics) {
             Object.values(this.data.course.topics).forEach((topic) => {
-
                 const array = [];
 
                 Object.values(topic.contents).forEach((content) => {

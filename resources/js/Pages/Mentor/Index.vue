@@ -7,20 +7,14 @@
         <div class="py-4">
             <add-new-button :href="route('mentors.create')" />
 
-            <data-table
-                :collections="mentors"
-                :filters="filters"
-                :dateFilter="true"
-            >
+            <data-table :collections="mentors" :filters="filters">
                 <template #head>
-                    <th class="py-3 px-2 text-left">ID</th>
                     <th class="py-3 px-2 text-left">Name</th>
                     <th class="py-3 px-2 text-left">Designation</th>
                     <th class="py-3 px-2 text-left">Phone</th>
                     <th class="py-3 px-2 text-center">Action</th>
                 </template>
                 <template #default="{ item: mentor }">
-                    <td class="py-3 px-2 text-left">{{ mentor.id }}</td>
                     <td class="py-3 px-2 text-left">
                         <div class="flex gap-4 items-center">
                             <avatar-photo-view

@@ -92,6 +92,7 @@
                                 <ExternalLinkIcon class="w-5 h-5" />
                             </a>
                             <span
+                                v-else
                                 class="px-3 py-1 bg-rose-500/20 text-rose-500"
                             >
                                 No

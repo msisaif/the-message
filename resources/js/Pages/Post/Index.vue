@@ -7,13 +7,8 @@
         <div class="py-4">
             <add-new-button :href="route('posts.create')" />
 
-            <data-table
-                :collections="posts"
-                :filters="filters"
-                :dateFilter="true"
-            >
+            <data-table :collections="posts" :filters="filters">
                 <template #head>
-                    <th class="py-3 px-2 text-left">ID</th>
                     <th class="py-3 px-2 text-left">Photo</th>
                     <th class="py-3 px-2 text-left">Title</th>
                     <th class="py-3 px-2 text-left">Author</th>
@@ -21,7 +16,6 @@
                     <th class="py-3 px-2 text-center">Action</th>
                 </template>
                 <template #default="{ item: post }">
-                    <td class="py-3 px-2 text-left">{{ post.id }}</td>
                     <td class="py-3 px-2 text-left">
                         <img
                             v-if="post.imageUrl"

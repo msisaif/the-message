@@ -1,6 +1,6 @@
 <template>
     <app-layout>
-        <div class="max-w-7xl md:mx-auto">
+        <div class="max-w-7xl md:mx-auto px-2 md:px-0">
             <h1 class="text-brand-primary my-4 text-lg md:text-2xl font-bold">
                 {{ course.title }}
             </h1>
@@ -13,12 +13,12 @@
                             কোর্স ইন্সট্রাক্টর
                         </h3>
                         <div
-                            class="grid md:grid-cols-2 gap-4 border border-gray-300 p-4 md:py-8"
+                            class="grid md:grid-cols-2 gap-4 border border-gray-300 p-2 md:p-4 md:py-8"
                         >
                             <div
                                 v-for="mentor in course.mentors"
                                 :key="mentor.id"
-                                class="flex gap-4"
+                                class="flex gap-2 md:gap-4"
                             >
                                 <div class="grow-0 shrink-0">
                                     <avatar-photo-view
@@ -29,11 +29,13 @@
                                 </div>
                                 <div class="grow shrink">
                                     <h5
-                                        class="text-lg font-semibold text-brand-black"
+                                        class="text-base md:text-lg font-semibold text-brand-black"
                                     >
                                         {{ mentor.name }}
                                     </h5>
-                                    <p class="text-sm text-brand-dark">
+                                    <p
+                                        class="text-xs md:text-sm text-brand-dark"
+                                    >
                                         {{ mentor.designation }}
                                     </p>
                                 </div>
@@ -201,7 +203,11 @@
                                 :href="route('course.show', course.id)"
                                 class="text-sm px-4 py-1 text-brand-primary border border-brand-primary hover:bg-brand-primary hover:text-white"
                             >
-                                শুরু করুন
+                                {{
+                                    course.amount
+                                        ? "কোর্সটি কিনুন"
+                                        : "শুরু করুন"
+                                }}
                             </Link>
                         </div>
                     </div>
