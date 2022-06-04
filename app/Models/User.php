@@ -70,6 +70,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class, 'course_mentor', 'course_id', 'mentor_id');
     }
+
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
     
     public function image()
     {

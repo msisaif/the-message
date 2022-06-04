@@ -19,10 +19,12 @@ class CourseResource extends JsonResource
             'title'         => (string) ($this->title ?? ''),
             'amount'        => (double) ($this->amount ?? 0),
             'video'         => (string) ($this->video ?? ''),
+            'message'       => (string) ($this->message ?? 'Not Available'),
             'description'   => (string) ($this->description ?? ''),
             'publish'       => (boolean) ($this->publish ?? 0),
             'image'         => new ImageResource($this->whenLoaded('image')),
             'imageUrl'      => (string) ($this->image->url ?? ''),
+            'thumbnail'     => (string) ($this->image->url ?? ''),
             'topics'        => TopicResource::collection($this->whenLoaded('topics')),
             'mentors'       => MentorResource::collection($this->whenLoaded('mentors')),
         ];

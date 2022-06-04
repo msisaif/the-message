@@ -154,6 +154,7 @@ class CourseController extends Controller
                 'required',
                 'numeric',
             ],
+            'message' => [],
             'description' => [],
             'video' => [],
         ]);

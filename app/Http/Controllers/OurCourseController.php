@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ContentResource;
 use App\Http\Resources\CourseResource;
+use App\Http\Resources\ParticipantResource;
 use App\Models\Content;
 use App\Models\Course;
 use App\Models\Participant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -32,6 +34,19 @@ class OurCourseController extends Controller
     {
         if(!$course->publish) {
             return abort(404);
+        }
+
+        if($user = Auth::user()) {
+            $participant = Participant::query()
+                ->where([
+                    'user_id'   => $user->id,
+                    'course_id' => $course->id,
+                ])
+                ->first();
+    
+            if($participant) {
+                return redirect()->route('course.learn', $course->id);
+            }
         }
 
         CourseResource::withoutWrapping();
@@ -98,18 +113,52 @@ class OurCourseController extends Controller
 
         $content = new Content();
 
-        if($content_id) {
-            $content = Content::query()
-                ->whereHas('topic', function($query) use ($course) {
-                    $query->where('course_id', $course->id);
-                })
-                ->where('id', $content_id)
-                ->first();
+        $total_course_content = Content::query()
+            ->whereHas('topic', function($query) use ($course) {
+                $query->where('course_id', $course->id);
+            })
+            ->count();
+
+        if($total_course_content) {
+            $current_content_id = $content_id;
+
+            do {
+                $content = Content::query()
+                    ->whereHas('topic', function($query) use ($course) {
+                        $query->where('course_id', $course->id);
+                    })
+                    ->when($current_content_id, function($query, $content_id) {
+                        $query->where('id', $content_id);
+                    })
+                    ->first();
+
+                $content_id = $current_content_id;
+                $current_content_id = null;
+            } while (!$content);
+
+            if(!$content_id) {
+                return redirect()->route('course.learn', [$course->id, $content->id]);
+            }
+        }
+
+        if($content->link ?? false) {
+            // View count
         }
 
         return Inertia::render('OurCourse/Learn', [
             'course'            => new CourseResource($course),
             'currentContent'    => new ContentResource($content),
+        ]);
+    }
+
+    public function myCourse()
+    {
+        $user = User::findOrFail(Auth::id());
+
+        $participants = $user->participants()->with('course')->latest()->simplePaginate(20);
+
+        return Inertia::render('MyCourse/Index', [
+            'participants' => ParticipantResource::collection($participants),
         ]);
     }
 }

@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->boolean('publish')->default(0);
             $table->unsignedFloat('amount')->default(0);
             $table->string('video')->nullable();
+            $table->string('message')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();

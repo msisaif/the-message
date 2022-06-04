@@ -8,9 +8,9 @@
                 <div class="shrink grow">
                     <div class="w-full aspect-video border relative">
                         <div
-                            class="absolute inset-0 bg-gray-300 -z-10 flex justify-center items-center text-gray-400 text-3xl"
+                            class="absolute inset-0 bg-gray-300 -z-10 flex justify-center items-center text-gray-700 text-3xl text-center"
                         >
-                            Not Available
+                            {{ course.message }}
                         </div>
                         <iframe
                             v-if="currentContent.type === 1"
@@ -25,7 +25,7 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
                         ></iframe>
-                        <iframe
+                        <!-- <iframe
                             v-if="!currentContent.id"
                             class="w-full aspect-video"
                             :src="
@@ -37,7 +37,7 @@
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
-                        ></iframe>
+                        ></iframe> -->
                     </div>
                 </div>
                 <div class="w-full shrink-0 grow-0 max-w-sm">

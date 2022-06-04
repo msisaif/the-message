@@ -52,6 +52,10 @@ Route::get('/course/{course}/learn/{content?}', [OurCourseController::class, 'le
     ->name('course.learn')
     ->middleware(['auth']);
 
+Route::get('/my-course', [OurCourseController::class, 'myCourse'])
+    ->name('user.courses')
+    ->middleware(['auth']);
+
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article.show');
 

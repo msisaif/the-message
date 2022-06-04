@@ -49,7 +49,7 @@
                                 />
                                 <Input
                                     class="block w-full"
-                                    type="text"
+                                    type="url"
                                     v-model="content.link"
                                     placeholder="Video Link"
                                 />
@@ -78,7 +78,7 @@
                                 />
                                 <Input
                                     class="block w-full"
-                                    type="text"
+                                    type="url"
                                     v-model="content.link"
                                     placeholder="Google Drive Link"
                                 />

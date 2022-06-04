@@ -15,7 +15,7 @@ class ContentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'        => (int) ($this->id),
+            'id'        => (int) ($this->id ?? 0),
             'topic_id'  => (int) ($this->topic_id ?? 0),
             'type'      => (int) ($this->type ?? ''),
             'title'     => (string) ($this->title ?? ''),

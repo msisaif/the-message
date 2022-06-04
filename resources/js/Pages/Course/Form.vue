@@ -25,7 +25,7 @@
                 <div class="col-span-full">
                     <Label value="Course Intro Video Link (YouTube)" />
                     <Input
-                        type="text"
+                        type="url"
                         class="mt-1 block w-full"
                         v-model="form.video"
                     />
@@ -84,6 +84,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-span-full">
+                    <Label value="Short Message" />
+                    <textarea
+                        class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 shadow-sm resize-y"
+                        v-model="form.message"
+                        rows="3"
+                    ></textarea>
                 </div>
                 <div class="col-span-full">
                     <Label value="Course Description" />
@@ -158,6 +166,7 @@ export default {
                 title: this.data.course.title,
                 amount: this.data.course.amount,
                 video: this.data.course.video,
+                message: this.data.course.message,
                 description: this.data.course.description,
                 mentor_ids: [],
             }),

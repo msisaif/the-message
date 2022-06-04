@@ -56,6 +56,12 @@
                     >
                         আমলের দিনলিপি
                     </nav-link>
+                    <nav-link
+                        :href="route('user.courses')"
+                        :active="route().current('course.learn|user.courses')"
+                    >
+                        আমার কোর্স
+                    </nav-link>
                     <hr />
                     <div
                         class="grid bg-gray-100 pl-2"
