@@ -15,8 +15,9 @@
                     <div class="relative">
                         <div class="w-full aspect-video overflow-hidden shadow">
                             <img
-                                class="w-full object-cover"
+                                class="w-full h-full object-cover"
                                 :src="video.imageUrl"
+                                @error="$defaultImage"
                             />
                         </div>
                     </div>

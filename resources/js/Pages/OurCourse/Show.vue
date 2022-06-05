@@ -85,6 +85,7 @@
                                     <img
                                         class="w-full h-full object-cover"
                                         :src="course.imageUrl"
+                                        @error="$defaultImage"
                                     />
                                 </div>
                             </div>

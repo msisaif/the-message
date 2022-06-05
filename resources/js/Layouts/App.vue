@@ -25,5 +25,20 @@ export default {
         AppHeader,
         AppFooter,
     },
+    methods: {
+        checkImageLoding() {
+            window.addEventListener("load", (event) => {
+                const images = document.querySelectorAll("img");
+                images.forEach((image) => {
+                    const isLoaded =
+                        image.complete && image.naturalHeight !== 0;
+
+                    if (!isLoaded) {
+                        image.src = "/images/article.jpg";
+                    }
+                });
+            });
+        },
+    },
 };
 </script>

@@ -18,6 +18,9 @@ createInertiaApp({
                     $can(permissionName) {
                         return this.$page.props.permissions.indexOf(permissionName) !== -1;
                     },
+                    $defaultImage(event) {
+                        return event.target.src = "/images/default.png";
+                    }
                 } 
             })
             .mount(el);

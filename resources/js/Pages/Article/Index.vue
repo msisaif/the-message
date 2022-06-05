@@ -13,10 +13,11 @@
                     :href="route('article.show', post.id)"
                     class="border bg-white"
                 >
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden w-full aspect-video">
                         <img
                             :src="post.imageUrl || '/images/article.jpg'"
-                            class="w-full aspect-video object-cover hover:scale-110 transition-all ease-in-out"
+                            class="w-full h-full object-cover hover:scale-110 transition-all ease-in-out"
+                            @error="$defaultImage"
                         />
                     </div>
                     <div class="flex flex-col gap-1 p-2 md:p-4">

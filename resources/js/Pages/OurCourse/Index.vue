@@ -37,10 +37,11 @@
                     :href="route('course.show', course.id)"
                     class="border bg-white"
                 >
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden w-full aspect-video">
                         <img
                             :src="course.imageUrl"
-                            class="w-full aspect-video object-cover hover:scale-110 transition-all ease-in-out"
+                            class="w-full h-full object-cover hover:scale-110 transition-all ease-in-out"
+                            @error="$defaultImage"
                         />
                     </div>
                     <div class="flex flex-col gap-1 p-2 md:p-4">
@@ -84,6 +85,7 @@
 import AppLayout from "@/Layouts/App.vue";
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import SectionCard from "@/Components/SectionCard.vue";
+import { SearchIcon } from "@heroicons/vue/solid";
 
 export default {
     components: {
@@ -91,6 +93,7 @@ export default {
         Link,
         Head,
         SectionCard,
+        SearchIcon,
     },
     props: {
         data: {

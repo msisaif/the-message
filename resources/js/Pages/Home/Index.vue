@@ -51,33 +51,36 @@
                     :href="route('article.show', post.id)"
                     class="border bg-white flex flex-col"
                 >
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden w-full aspect-video">
                         <img
                             :src="post.imageUrl || '/images/article.jpg'"
-                            class="w-full aspect-video object-cover hover:scale-110 transition-all ease-in-out"
+                            class="w-full bg-gray-200 h-full object-cover hover:scale-110 transition-all ease-in-out"
+                            @error="$defaultImage"
                         />
                     </div>
                     <div class="flex flex-col gap-1 p-2 md:p-4">
-                        <h3
-                            class="shrink grow text-base text-brand-primary font-bold"
-                        >
-                            {{ post.title }}
-                        </h3>
-                        <hr class="my-1 shrink-0 grow-0" />
-                        <div
-                            class="shrink-0 grow-0 text-brand-black text-base text-justify"
-                        >
+                        <div class="line-clamp-6">
+                            <h3
+                                class="shrink grow text-base text-brand-primary font-bold"
+                            >
+                                {{ post.title }}
+                            </h3>
+                            <hr class="my-1 shrink-0 grow-0" />
                             <div
-                                v-html="post.body"
-                                class="line-clamp-4 leading-relaxed whitespace-pre-wrap"
-                            ></div>
-                            <div class="flex justify-center items-center py-2">
-                                <span
-                                    class="text-sm px-4 py-1 text-brand-primary border border-brand-primary hover:bg-brand-primary hover:text-white"
-                                >
-                                    সম্পূর্ন লেখা পড়ুন
-                                </span>
+                                class="shrink-0 grow-0 text-brand-black text-base text-justify"
+                            >
+                                <div
+                                    v-html="post.body"
+                                    class="leading-relaxed whitespace-pre-wrap"
+                                ></div>
                             </div>
+                        </div>
+                        <div class="flex justify-center items-center py-2">
+                            <span
+                                class="text-sm px-4 py-1 text-brand-primary border border-brand-primary hover:bg-brand-primary hover:text-white"
+                            >
+                                সম্পূর্ন লেখা পড়ুন
+                            </span>
                         </div>
                     </div>
                 </Link>
@@ -108,8 +111,9 @@
                     <div class="relative">
                         <div class="w-full aspect-video overflow-hidden shadow">
                             <img
-                                class="w-full object-cover"
+                                class="w-full h-full object-cover"
                                 :src="video.imageUrl"
+                                @error="$defaultImage"
                             />
                         </div>
                     </div>
@@ -237,32 +241,7 @@ export default {
     props: {
         posts: {
             type: Object,
-            default: {
-                0: {
-                    id: 13,
-                    title: "Here will be the post title",
-                    thumbnail: "/images/article.jpg",
-                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
-                },
-                1: {
-                    id: 13,
-                    title: "Here will be the post title",
-                    thumbnail: "/images/article.jpg",
-                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
-                },
-                2: {
-                    id: 13,
-                    title: "Here will be the post title",
-                    thumbnail: "/images/article.jpg",
-                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
-                },
-                3: {
-                    id: 13,
-                    title: "Here will be the post title",
-                    thumbnail: "/images/article.jpg",
-                    description: `Post description Lorem ipsum dolor sit sed do ut magna. Lorem ipsum dolor sit sed do ut magna.`,
-                },
-            },
+            default: {},
         },
         videos: {
             type: Object,
