@@ -8,40 +8,6 @@
                 class="flex flex-col-reverse md:flex-row gap-4 justify-between"
             >
                 <div class="shrink grow">
-                    <div v-if="Object.keys(course.mentors).length" class="mb-6">
-                        <h3 class="font-semibold text-lg py-2">
-                            কোর্স ইন্সট্রাক্টর
-                        </h3>
-                        <div
-                            class="grid md:grid-cols-2 gap-4 border border-gray-300 p-2 md:p-4 md:py-8"
-                        >
-                            <div
-                                v-for="mentor in course.mentors"
-                                :key="mentor.id"
-                                class="flex gap-2 md:gap-4"
-                            >
-                                <div class="grow-0 shrink-0">
-                                    <avatar-photo-view
-                                        :imageUrl="mentor.imageUrl"
-                                        :firstLatter="mentor.firstLatter"
-                                        class="w-12 text-3xl bg-brand-dark text-white"
-                                    />
-                                </div>
-                                <div class="grow shrink">
-                                    <h5
-                                        class="text-base md:text-lg font-semibold text-brand-black"
-                                    >
-                                        {{ mentor.name }}
-                                    </h5>
-                                    <p
-                                        class="text-xs md:text-sm text-brand-dark"
-                                    >
-                                        {{ mentor.designation }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div v-if="course.description" class="mb-6">
                         <h3 class="font-semibold text-lg py-2">
                             কোর্স সম্পর্কে
@@ -110,7 +76,7 @@
                     </div>
                 </div>
                 <div class="w-full shrink-0 grow-0 max-w-sm">
-                    <div class="grid border">
+                    <div class="grid border mb-6">
                         <div class="relative">
                             <div class="relative">
                                 <div
@@ -209,6 +175,40 @@
                                         : "শুরু করুন"
                                 }}
                             </Link>
+                        </div>
+                    </div>
+                    <div v-if="Object.keys(course.mentors).length" class="mb-6">
+                        <h3 class="font-semibold text-lg py-2">
+                            কোর্স ইন্সট্রাক্টর
+                        </h3>
+                        <div
+                            class="grid gap-4 border border-gray-300 p-2 md:p-4 md:py-8"
+                        >
+                            <div
+                                v-for="mentor in course.mentors"
+                                :key="mentor.id"
+                                class="flex gap-2 md:gap-4"
+                            >
+                                <div class="grow-0 shrink-0">
+                                    <avatar-photo-view
+                                        :imageUrl="mentor.imageUrl"
+                                        :firstLatter="mentor.firstLatter"
+                                        class="w-12 text-3xl bg-brand-dark text-white"
+                                    />
+                                </div>
+                                <div class="grow shrink">
+                                    <h5
+                                        class="text-base md:text-lg font-semibold text-brand-black"
+                                    >
+                                        {{ mentor.name }}
+                                    </h5>
+                                    <p
+                                        class="text-xs md:text-sm text-brand-dark"
+                                    >
+                                        {{ mentor.designation }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

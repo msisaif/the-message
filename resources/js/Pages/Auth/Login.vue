@@ -1,83 +1,87 @@
 <template>
     <Head title="Log in" />
 
-    <BreezeValidationErrors class="mb-4" />
+    <div
+        class="w-full mx-auto sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden"
+    >
+        <BreezeValidationErrors class="mb-4" />
 
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-        {{ status }}
-    </div>
-
-    <form @submit.prevent="submit">
-        <div>
-            <BreezeLabel for="email" value="Email" />
-            <BreezeInput
-                id="email"
-                type="email"
-                class="mt-1 block w-full"
-                v-model="form.email"
-                required
-                autofocus
-                autocomplete="username"
-            />
+        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+            {{ status }}
         </div>
 
-        <div class="mt-4">
-            <BreezeLabel for="password" value="Password" />
-            <BreezeInput
-                id="password"
-                type="password"
-                class="mt-1 block w-full"
-                v-model="form.password"
-                required
-                autocomplete="current-password"
-            />
-        </div>
-
-        <div class="block mt-4">
-            <label class="flex items-center">
-                <BreezeCheckbox
-                    name="remember"
-                    v-model:checked="form.remember"
+        <form @submit.prevent="submit">
+            <div>
+                <BreezeLabel for="email" value="Email" />
+                <BreezeInput
+                    id="email"
+                    type="email"
+                    class="mt-1 block w-full"
+                    v-model="form.email"
+                    required
+                    autofocus
+                    autocomplete="username"
                 />
-                <span class="ml-2 text-sm text-gray-600">Remember me</span>
-            </label>
-        </div>
+            </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <Link
-                v-if="canResetPassword"
-                :href="route('password.request')"
-                class="underline text-sm text-gray-600 hover:text-gray-900"
-            >
-                Forgot your password?
-            </Link>
+            <div class="mt-4">
+                <BreezeLabel for="password" value="Password" />
+                <BreezeInput
+                    id="password"
+                    type="password"
+                    class="mt-1 block w-full"
+                    v-model="form.password"
+                    required
+                    autocomplete="current-password"
+                />
+            </div>
 
-            <BreezeButton
-                class="ml-4"
-                :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
-            >
-                Log in
-            </BreezeButton>
-        </div>
+            <div class="block mt-4">
+                <label class="flex items-center">
+                    <BreezeCheckbox
+                        name="remember"
+                        v-model:checked="form.remember"
+                    />
+                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                </label>
+            </div>
 
-        <div class="flex flex-col items-center justify-end mt-4">
-            <p class="border w-full mt-2 mb-5"></p>
-            <p class="font-bold">Don't have an account?</p>
-            <a
-                :href="route('register')"
-                class="mt-3 inline-flex items-center px-4 py-2 font-semibold text-xs text-white uppercase tracking-widest bg-gray-700 hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25"
-            >
-                Register
-            </a>
-        </div>
-    </form>
+            <div class="flex items-center justify-end mt-4">
+                <Link
+                    v-if="canResetPassword"
+                    :href="route('password.request')"
+                    class="underline text-sm text-gray-600 hover:text-gray-900"
+                >
+                    Forgot your password?
+                </Link>
+
+                <BreezeButton
+                    class="ml-4"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
+                    Log in
+                </BreezeButton>
+            </div>
+
+            <div class="flex flex-col items-center justify-end mt-4">
+                <p class="border w-full mt-2 mb-5"></p>
+                <p class="font-bold">Don't have an account?</p>
+                <a
+                    :href="route('register')"
+                    class="mt-3 inline-flex items-center px-4 py-2 font-semibold text-xs text-white uppercase tracking-widest bg-gray-700 hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25"
+                >
+                    Register
+                </a>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
 import BreezeButton from "@/Components/Button.vue";
 import BreezeCheckbox from "@/Components/Checkbox.vue";
-import BreezeGuestLayout from "@/Layouts/Guest.vue";
+import BreezeGuestLayout from "@/Layouts/App.vue";
 import BreezeInput from "@/Components/Input.vue";
 import BreezeLabel from "@/Components/Label.vue";
 import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
