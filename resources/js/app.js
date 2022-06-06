@@ -19,7 +19,7 @@ createInertiaApp({
                         return this.$page.props.permissions.indexOf(permissionName) !== -1;
                     },
                     $defaultImage(event) {
-                        return event.target.src = "/images/default.png";
+                        // return event.target.src = "/images/default.png";
                     }
                 } 
             })
