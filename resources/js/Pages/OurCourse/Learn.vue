@@ -12,32 +12,20 @@
                         >
                             {{ course.message }}
                         </div>
-                        <iframe
+                        <YouTube
                             v-if="currentContent.type === 1"
-                            class="w-full aspect-video border"
-                            :src="
-                                currentContent.link.replace(
-                                    'https://youtu.be/',
-                                    'https://www.youtube.com/embed/'
-                                )
-                            "
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                        ></iframe>
-                        <!-- <iframe
-                            v-if="!currentContent.id"
+                            :src="currentContent.link"
+                            :vars="parameters"
+                            @ready="onReady"
+                            @stateChange="onStateChange"
+                            @playbackQualityChange="onPlaybackQualityChange"
+                            @playbackRateChange="onPlaybackRateChange"
+                            @error="onError"
+                            @apiChange="onApiChange"
+                            width="100%"
+                            height="100%"
                             class="w-full aspect-video"
-                            :src="
-                                course.video.replace(
-                                    'https://youtu.be/',
-                                    'https://www.youtube.com/embed/'
-                                )
-                            "
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                        ></iframe> -->
+                        ></YouTube>
                     </div>
                 </div>
                 <div class="w-full shrink-0 grow-0 max-w-sm">
@@ -119,6 +107,7 @@ import {
     DocumentTextIcon,
     CheckCircleIcon,
 } from "@heroicons/vue/outline";
+import YouTube from "vue3-youtube";
 
 export default {
     components: {
@@ -130,6 +119,7 @@ export default {
         PlayIcon,
         DocumentTextIcon,
         CheckCircleIcon,
+        YouTube,
     },
     props: {
         course: {
@@ -143,8 +133,62 @@ export default {
     },
     data() {
         return {
-            playVideo: false,
+            parameters: {
+                autoplay: 1,
+                enablejsapi: 1,
+            },
+            countDown: 0,
+            duration: 0,
         };
+    },
+    methods: {
+        countDownTimer(time = null) {
+            if (time) {
+                this.countDown = time;
+            }
+
+            if (this.countDown > 0) {
+                setTimeout(() => {
+                    this.countDown -= 1;
+                    this.countDownTimer();
+                }, 1000);
+            }
+        },
+        onReady(event) {
+            console.log("\o/ we are watching!!!");
+            const player = event.target;
+            player.playVideo();
+            this.duration = player.getDuration();
+            this.countDownTimer(
+                Math.floor(player.getDuration() - player.getCurrentTime())
+            );
+        },
+        onStateChange(event) {
+            console.log("onStateChange", event.target);
+            const player = event.target;
+            this.countDown = Math.floor(
+                player.getDuration() - player.getCurrentTime()
+            );
+        },
+        onPlaybackQualityChange(event) {
+            console.log("onPlaybackQualityChange", event.target);
+        },
+        onPlaybackRateChange(event) {
+            console.log("onPlaybackRateChange", event.target);
+        },
+        onError(event) {
+            console.log("onError", event.target);
+        },
+        onApiChange(event) {
+            console.log("onApiChange", event.target);
+        },
+        secondToMinute(second) {
+            let minute = Math.floor(second / 60);
+
+            second = `${second % 60}`;
+
+            return `${minute}:${second.padStart(2, "0")}`;
+        },
     },
 };
 </script>
