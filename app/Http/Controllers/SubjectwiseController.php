@@ -85,7 +85,10 @@ class SubjectwiseController extends Controller
         $this->getQuery()
             ->when(request()->search, function ($query, $search) {
                 $query->where(function ($query) use ($search) {
-                    $query->where('id', 'regexp', $search);
+                    $query->where('id', 'regexp', $search)
+                        ->orWhereHas('category', function($query) use ($search) {
+                            $query->where('name', $search);
+                        });
                 });
             });
 
