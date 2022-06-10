@@ -91,6 +91,7 @@ export default {
         phone: String,
         name: String,
         step: Number,
+        redirect: String,
     },
 
     created() {
@@ -116,7 +117,9 @@ export default {
 
     methods: {
         submit() {
-            this.form.post(this.route("join"));
+            this.form.post(this.route("join"), {
+                onFinish: () => this.form.reset("password"),
+            });
         },
         checkDisabled() {
             return (

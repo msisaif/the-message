@@ -3,7 +3,7 @@
         <!-- Settings Dropdown -->
         <div v-if="!$page.props.auth.user">
             <Link
-                :href="route('login')"
+                :href="route('join')"
                 class="px-3 md:px-6 py-0.5 md:py-1.5 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-bold"
             >
                 Join

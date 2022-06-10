@@ -31,24 +31,13 @@ class JoinController extends Controller
         $name       = $fields["name"];
         $phone      = $fields["phone"];
         $password   = $fields["password"];
+        
+        $message = "";
+        $step = 2;
 
         $user = User::query()
             ->where('phone', $phone)
             ->first();
-
-        if($user && $password) {
-            if($user->security == $password) {
-                Auth::login($user, 1);
-
-                return back();
-            }
-
-            return $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
-        }
-        
-        $message = "";
-
-        $step = 2;
 
         if(!$user) {
             $password = rand(1111, 9999);
@@ -67,6 +56,17 @@ class JoinController extends Controller
             $step = 3;
         }
 
+        if($user && $password) {
+            if($user->security == $password) {
+                Auth::login($user, 1);
+
+                session()->forget(['__phone', '__name', '__step']);
+
+                return redirect(session('__redirect', '/'));
+            }
+
+            $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
+        }
 
         session()->put('__phone', $phone);
         session()->put('__name', $user->name ?? '');
