@@ -1,4 +1,22 @@
 <template>
+    <Head>
+        <title>{{ post.title }}</title>
+        <meta name="title" :content="post.title" />
+        <meta name="description" :content="post.description" />
+
+        <!-- Facebook -->
+        <meta property="og:url" :content="route('article.show', post.id)" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" :content="post.title" />
+        <meta property="og:description" :content="post.description" />
+        <meta
+            property="og:image"
+            :content="
+                'https://messagebd.net' +
+                (post.imageUrl || '/images/article.jpg')
+            "
+        />
+    </Head>
     <app-layout>
         <div class="max-w-6xl md:mx-auto">
             <div class="w-full sm:max-w-xl float-left p-4 pb-2 sm:p-8 sm:pb-2">
