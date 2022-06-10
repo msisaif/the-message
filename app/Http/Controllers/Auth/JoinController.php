@@ -33,6 +33,8 @@ class JoinController extends Controller
         
         $message = "";
 
+        $step = 2;
+
         if(!$user) {
             $password = rand(1111, 9999);
 
@@ -46,11 +48,14 @@ class JoinController extends Controller
             $this->sendSms($phone, $text);
 
             $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
+
+            $step = 3;
         }
 
 
         session()->put('__phone', $phone);
-        session()->put('__name', $phone);
+        session()->put('__name', $user->name ?? '');
+        session()->put('__step', $step);
         session()->flash('status', $message);
 
         return redirect()->route('join');
