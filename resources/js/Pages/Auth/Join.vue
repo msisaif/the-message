@@ -94,10 +94,13 @@ export default {
     },
 
     created() {
-        this.form.name = this.name;
-        this.form.phone = this.phone;
-        this.nameFieldShow = !this.name;
-        this.phoneFieldShow = !this.phone;
+        if (this.step === 2) {
+            this.form.phone = this.phone;
+        }
+
+        if (this.step === 3) {
+            this.form.name = this.name;
+        }
     },
 
     data() {
@@ -119,7 +122,9 @@ export default {
         checkDisabled() {
             return (
                 this.form.processing ||
-                (this.step === 1 && this.form.phone.length !== 11) ||
+                (this.step === 1 &&
+                    this.form.phone &&
+                    this.form.phone.length !== 11) ||
                 (this.step === 2 && this.form.password) ||
                 (this.step === 3 && this.form.password && this.form.name)
             );

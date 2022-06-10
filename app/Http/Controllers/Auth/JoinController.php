@@ -14,6 +14,7 @@ class JoinController extends Controller
         return Inertia::render('Auth/Join', [
             'phone'     => session('__phone'),
             'name'      => session('__name'),
+            'step'      => session('__step', 1),
             'status'    => session('status'),
         ]);
     }
