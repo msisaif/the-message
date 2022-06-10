@@ -36,7 +36,8 @@ class HandleInertiaRequests extends Middleware
         $user = $request->user();
 
         if($user) {
-            $user->avatar = $user->image->url ?? '';
+            $user->avatar = (string) ($user->image->url ?? '');
+            $user->firstLatter = (string) (mb_strtoupper(mb_substr($user->name ?? '', 0, 1, 'utf-8'), 'utf-8') ?? '');
         }
 
         return array_merge(parent::share($request), [

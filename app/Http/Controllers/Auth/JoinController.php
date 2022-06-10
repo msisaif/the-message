@@ -42,6 +42,24 @@ class JoinController extends Controller
             ->where('phone', $phone)
             ->first();
 
+        if($request->step == 4) {
+            if($user->password == $password) {
+                Auth::login($user, 1);
+
+                if($step == 3) {
+                    $user->update([
+                        'name'  => $name,
+                    ]);
+                }
+
+                //session()->forget(['__phone', '__name', '__step', '__message']);
+
+                return redirect()->intended(RouteServiceProvider::HOME);
+            }
+
+            $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
+        }
+
         if(!$user) {
             $password = rand(1111, 9999);
 
@@ -58,24 +76,6 @@ class JoinController extends Controller
             $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
 
             $step = 3;
-        }
-
-        if($user && $password) {
-            if($user->security == $password) {
-                Auth::login($user, 1);
-
-                if($step == 3) {
-                    $user->update([
-                        'name'  => $name,
-                    ]);
-                }
-
-                //session()->forget(['__phone', '__name', '__step', '__message']);
-
-                return redirect()->intended(RouteServiceProvider::HOME);
-            }
-
-            $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
         }
 
         session()->flash('__phone', $phone);

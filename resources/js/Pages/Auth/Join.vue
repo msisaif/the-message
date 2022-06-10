@@ -104,6 +104,7 @@ export default {
         }
 
         if (this.step === 3) {
+            this.form.phone = this.phone;
             this.form.name = this.name;
         }
     },
@@ -115,12 +116,14 @@ export default {
                 password: "",
                 name: "",
                 remember: true,
+                step: "",
             }),
         };
     },
 
     methods: {
         submit() {
+            this.form.step = this.step === 1 ? 1 : 4;
             this.form.post(this.route("join"), {
                 onFinish: () => this.form.reset("password"),
             });

@@ -19,7 +19,7 @@
                         >
                             <avatar-photo-view
                                 :imageUrl="$page.props.auth.user.avatar"
-                                :firstLatter="$page.props.auth.user.name[0]"
+                                :firstLatter="$page.props.auth.user.firstLatter"
                                 class="w-8 text-lg bg-brand-primary text-white border border-white"
                             />
                             <span
