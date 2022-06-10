@@ -11,7 +11,11 @@ class JoinController extends Controller
 {
     public function create()
     {
-        return Inertia::render('Auth/Join');
+        return Inertia::render('Auth/Join', [
+            'phone'     => session('__phone'),
+            'name'      => session('__name'),
+            'status'    => session('status'),
+        ]);
     }
 
     public function store(Request $request)
@@ -25,12 +29,30 @@ class JoinController extends Controller
         $user = User::query()
             ->where('phone', $phone)
             ->first();
+        
+        $message = "";
 
-        $data = [
-            "phone" => $user->phone ?? $phone,
-            "name"  => $user->name ?? '',
-        ];
+        if(!$user) {
+            $password = rand(1111, 9999);
 
-        return redirect()->route('login', $data);
+            $user = User::create([
+                'phone'     => $phone,
+                'password'  => $password,
+            ]);
+
+            $text = "আপনার পাসওয়ার্ড {$password}";
+
+            $this->sendSms($phone, $text);
+
+            $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
+        }
+
+
+        session()->put('__phone', $phone);
+        session()->put('__name', $phone);
+        session()->flash('status', $message);
+
+        return redirect()->route('join');
     }
+
 }

@@ -4,30 +4,39 @@
     <div
         class="w-full mx-auto sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden"
     >
-        <BreezeValidationErrors class="mb-4" />
+        <ValidationErrors class="mb-4" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
+        <div class="flex justify-center items-center">
+            <Link href="/">
+                <application-logo class="w-28" />
+            </Link>
         </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <BreezeLabel for="email" value="Email" />
-                <BreezeInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
+        <form @submit.prevent="submit" class="space-y-6 my-4">
+            <div v-if="nameFieldShow">
+                <Label value="নাম" />
+                <Input
+                    type="text"
+                    class="block w-full"
+                    v-model="form.name"
                     required
-                    autofocus
-                    autocomplete="username"
+                />
+            </div>
+
+            <div v-if="phoneFieldShow">
+                <Label value="মোবাইল নাম্বার" />
+                <Input
+                    type="text"
+                    class="block w-full"
+                    v-model="form.phone"
+                    required
+                    placeholder="01XXXXXXXXX"
                 />
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="password" value="Password" />
-                <BreezeInput
-                    id="password"
+                <Label value="পাসওয়ার্ড" />
+                <Input
                     type="password"
                     class="mt-1 block w-full"
                     v-model="form.password"
@@ -36,81 +45,68 @@
                 />
             </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <BreezeCheckbox
-                        name="remember"
-                        v-model:checked="form.remember"
-                    />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
-                >
-                    Forgot your password?
-                </Link>
-
-                <BreezeButton
-                    class="ml-4"
-                    :class="{ 'opacity-25': form.processing }"
+            <div class="flex items-center justify-center">
+                <Button
+                    class="w-full justify-center py-3"
+                    :class="{
+                        'opacity-25 cursor-not-allowed': form.processing,
+                    }"
                     :disabled="form.processing"
                 >
-                    Log in
-                </BreezeButton>
-            </div>
-
-            <div class="flex flex-col items-center justify-end mt-4">
-                <p class="border w-full mt-2 mb-5"></p>
-                <p class="font-bold">Don't have an account?</p>
-                <a
-                    :href="route('register')"
-                    class="mt-3 inline-flex items-center px-4 py-2 font-semibold text-xs text-white uppercase tracking-widest bg-gray-700 hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25"
-                >
-                    Register
-                </a>
+                    এগিয়ে যান
+                </Button>
             </div>
         </form>
     </div>
 </template>
 
 <script>
-import BreezeButton from "@/Components/Button.vue";
-import BreezeCheckbox from "@/Components/Checkbox.vue";
-import BreezeGuestLayout from "@/Layouts/App.vue";
-import BreezeInput from "@/Components/Input.vue";
-import BreezeLabel from "@/Components/Label.vue";
-import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
+import Button from "@/Components/Button.vue";
+import Checkbox from "@/Components/Checkbox.vue";
+import GuestLayout from "@/Layouts/App.vue";
+import Input from "@/Components/Input.vue";
+import Label from "@/Components/Label.vue";
+import ValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 
 export default {
-    layout: BreezeGuestLayout,
+    layout: GuestLayout,
 
     components: {
-        BreezeButton,
-        BreezeCheckbox,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
+        Button,
+        Checkbox,
+        Input,
+        Label,
+        ValidationErrors,
         Head,
         Link,
+        ApplicationLogo,
     },
 
     props: {
         canResetPassword: Boolean,
         status: String,
+        phone: String,
+        name: String,
+    },
+
+    created() {
+        this.form.name = this.name;
+        this.form.phone = this.phone;
+        this.nameFieldShow = !this.name;
+        this.phoneFieldShow = !this.phone;
     },
 
     data() {
         return {
+            nameFieldShow: false,
+            phoneFieldShow: true,
             form: this.$inertia.form({
-                email: "",
+                phone: "",
                 password: "",
-                remember: false,
+                name: "",
+                remember: true,
             }),
         };
     },
