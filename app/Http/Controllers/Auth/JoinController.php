@@ -13,15 +13,13 @@ class JoinController extends Controller
 {
     public function create()
     {
-        $name   = session('__name');
-        $phone  = session('__phone');
-        $step   = session('__step', 1);
 
         return Inertia::render('Auth/Join', [
-            'phone'     => $phone,
-            'name'      => $name,
-            'step'      => $step,
+            'phone'     => session('__phone'),
+            'name'      => session('__name'),
+            'step'      => session('__step', 1),
             'message'   => session('__message'),
+            'sms'       => session('__sms', false),
         ]);
     }
 
@@ -32,12 +30,14 @@ class JoinController extends Controller
             'phone'     => 'required|numeric',
             'password'  => '',
             'step'      => 'required|numeric',
+            'sms'       => '',
         ]);
 
         $name       = $fields["name"];
         $phone      = $fields["phone"];
         $password   = $fields["password"];
         $step       = $fields["step"];
+        $sms        = $fields["sms"];
 
         if($step == 1) {
             $message = "";
@@ -56,37 +56,11 @@ class JoinController extends Controller
                     'password'  => $password,
                 ]);
 
-                $text = "আপনার পাসওয়ার্ড {$user->password}";
-
-                $numbers = "88{$user->phone}";
-
-                //$this->sendSms($numbers, $text);
-
-                $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
+                $sms = true;
             }
+            
         }
 
-        // if($step == 3) {
-        //     session()->flash('__step', 2);
-
-        //     $user = User::query()
-        //         ->where('phone', $phone)
-        //         ->first();
-
-        //     if(!$user) {
-        //         $message = "আপনার মোবাইল নাম্বার আমাদের কাছে নেই।";
-        //     }
-
-        //     if($user) {
-        //         $text = "আপনার পাসওয়ার্ড {$user->password}";
-
-        //         $numbers = "88{$user->phone}";
-
-        //         $this->sendSms($numbers, $text);
-
-        //         $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
-        //     }
-        // }
 
         if($step == 2) {
             $user = User::query()
@@ -115,9 +89,16 @@ class JoinController extends Controller
             $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
         }
 
+        if($sms) {
+            $this->sendUserPassordBySms($user);
+
+            $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
+        }
+
         session()->flash('__phone', $phone);
-        session()->flash('__name', $user->name ?? '');
+        session()->flash('__name', $user->name);
         session()->flash('__message', $message);
+        session()->flash('__sms', $sms);
 
         return redirect()->route('join');
     }
@@ -134,6 +115,15 @@ class JoinController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    protected function sendUserPassordBySms($user)
+    {
+        $text = "আপনার পাসওয়ার্ড {$user->password}";
+
+        $numbers = "88{$user->phone}";
+
+        //$this->sendSms($numbers, $text);
     }
 
 }

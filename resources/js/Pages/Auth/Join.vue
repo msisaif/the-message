@@ -18,8 +18,8 @@
             <div class="py-3 text-pink-500" v-html="message"></div>
         </div>
 
-        <form @submit.prevent="submit" class="space-y-6 my-4">
-            <div v-if="step === 2 && !name">
+        <form @submit.prevent="submit" class="space-y-4 my-4">
+            <div v-if="step === 2 && !name && !form.sms">
                 <Label value="নাম" />
                 <Input
                     type="text"
@@ -40,7 +40,7 @@
                 />
             </div>
 
-            <div v-if="step === 2" class="mt-4">
+            <div v-if="step === 2 && !form.sms" class="mt-4">
                 <Label value="পাসওয়ার্ড" />
                 <Input
                     type="password"
@@ -49,6 +49,19 @@
                     required
                     autocomplete="current-password"
                 />
+            </div>
+
+            <div v-if="!sms" class="flex justify-start">
+                <label class="flex items-center justify-start">
+                    <Checkbox name="sms" v-model:checked="form.sms" />
+                    <span class="ml-2 text-sm text-gray-600">
+                        পাসওয়ার্ড মনে নেই
+                    </span>
+                </label>
+            </div>
+
+            <div v-if="!sms && form.sms" class="block">
+                <Label value="আপনার মোবাইল নাম্বার দিয়ে এগিয়ে যান" />
             </div>
 
             <div class="flex items-center justify-center">
@@ -96,6 +109,7 @@ export default {
         name: String,
         step: Number,
         redirect: String,
+        sms: Boolean,
     },
 
     created() {
@@ -113,24 +127,26 @@ export default {
                 name: "",
                 remember: true,
                 step: "",
+                sms: false,
             }),
         };
     },
 
     methods: {
         submit() {
-            this.form.step = this.step;
+            this.form.step = this.form.sms ? 1 : this.step;
 
             this.form.post(this.route("join"), {
-                onFinish: () => this.form.reset("password"),
+                onSuccess: () => {
+                    this.form.reset("password");
+                    this.form.reset("sms");
+                },
             });
         },
         checkDisabled() {
             return (
                 this.form.processing ||
-                (this.step === 1 &&
-                    this.form.phone &&
-                    this.form.phone.length !== 11)
+                (this.step === 1 && this.form.phone.length !== 11)
             );
         },
     },
