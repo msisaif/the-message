@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class JoinController extends Controller
@@ -22,14 +23,28 @@ class JoinController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'phone' => 'required|numeric',
+            'name'      => '',
+            'phone'     => 'required|numeric',
+            'password'  => '',
         ]);
 
-        $phone = $fields["phone"];
+        $name       = $fields["name"];
+        $phone      = $fields["phone"];
+        $password   = $fields["password"];
 
         $user = User::query()
             ->where('phone', $phone)
             ->first();
+
+        if($user && $password) {
+            if($user->security == $password) {
+                Auth::login($user, 1);
+
+                return back();
+            }
+
+            return $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
+        }
         
         $message = "";
 
@@ -59,6 +74,17 @@ class JoinController extends Controller
         session()->flash('status', $message);
 
         return redirect()->route('join');
+    }
+
+    public function destroy(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }

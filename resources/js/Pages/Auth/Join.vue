@@ -105,7 +105,6 @@ export default {
 
     data() {
         return {
-            step: 1,
             form: this.$inertia.form({
                 phone: "",
                 password: "",
@@ -125,8 +124,8 @@ export default {
                 (this.step === 1 &&
                     this.form.phone &&
                     this.form.phone.length !== 11) ||
-                (this.step === 2 && this.form.password) ||
-                (this.step === 3 && this.form.password && this.form.name)
+                (this.step === 2 && !this.form.password) ||
+                (this.step === 3 && !(this.form.password && this.form.name))
             );
         },
     },
