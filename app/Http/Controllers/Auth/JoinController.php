@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -12,11 +13,13 @@ class JoinController extends Controller
 {
     public function create()
     {
+
+
         return Inertia::render('Auth/Join', [
             'phone'     => session('__phone'),
             'name'      => session('__name'),
             'step'      => session('__step', 1),
-            'status'    => session('status'),
+            'message'   => session('__message'),
         ]);
     }
 
@@ -48,8 +51,9 @@ class JoinController extends Controller
             ]);
 
             $text = "আপনার পাসওয়ার্ড {$password}";
+            $numbers = "88{$phone}";
 
-            $this->sendSms($phone, $text);
+            $this->sendSms($numbers, $text);
 
             $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
 
@@ -60,18 +64,24 @@ class JoinController extends Controller
             if($user->security == $password) {
                 Auth::login($user, 1);
 
-                session()->forget(['__phone', '__name', '__step']);
+                if($step == 3) {
+                    $user->update([
+                        'name'  => $name,
+                    ]);
+                }
 
-                return redirect(session('__redirect', '/'));
+                //session()->forget(['__phone', '__name', '__step', '__message']);
+
+                return redirect()->intended(RouteServiceProvider::HOME);
             }
 
             $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
         }
 
-        session()->put('__phone', $phone);
-        session()->put('__name', $user->name ?? '');
-        session()->put('__step', $step);
-        session()->flash('status', $message);
+        session()->flash('__phone', $phone);
+        session()->flash('__name', $user->name ?? '');
+        session()->flash('__step', $step);
+        session()->flash('__message', $message);
 
         return redirect()->route('join');
     }

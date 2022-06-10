@@ -14,6 +14,10 @@
 
         <hr class="my-4" />
 
+        <div v-if="message">
+            <div class="py-3 text-pink-500" v-html="message"></div>
+        </div>
+
         <form @submit.prevent="submit" class="space-y-6 my-4">
             <div v-if="step === 3">
                 <Label value="নাম" />
@@ -87,7 +91,7 @@ export default {
     },
 
     props: {
-        status: String,
+        message: String,
         phone: String,
         name: String,
         step: Number,
