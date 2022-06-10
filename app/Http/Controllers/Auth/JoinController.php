@@ -123,7 +123,7 @@ class JoinController extends Controller
 
         $numbers = "88{$user->phone}";
 
-        //$this->sendSms($numbers, $text);
+        $this->sendSms($numbers, $text);
     }
 
 }
