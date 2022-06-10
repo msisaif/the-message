@@ -19,7 +19,7 @@
         </div>
 
         <form @submit.prevent="submit" class="space-y-6 my-4">
-            <div v-if="step === 3">
+            <div v-if="step === 2 && !name">
                 <Label value="নাম" />
                 <Input
                     type="text"
@@ -29,7 +29,7 @@
                 />
             </div>
 
-            <div v-if="step === 1">
+            <div>
                 <Label value="মোবাইল নাম্বার" />
                 <Input
                     type="text"
@@ -40,7 +40,7 @@
                 />
             </div>
 
-            <div v-if="step === 2 || step === 3" class="mt-4">
+            <div v-if="step === 2" class="mt-4">
                 <Label value="পাসওয়ার্ড" />
                 <Input
                     type="password"
@@ -100,12 +100,8 @@ export default {
 
     created() {
         if (this.step === 2) {
-            this.form.phone = this.phone;
-        }
-
-        if (this.step === 3) {
-            this.form.phone = this.phone;
             this.form.name = this.name;
+            this.form.phone = this.phone;
         }
     },
 
@@ -123,7 +119,8 @@ export default {
 
     methods: {
         submit() {
-            this.form.step = this.step === 1 ? 1 : 4;
+            this.form.step = this.step;
+
             this.form.post(this.route("join"), {
                 onFinish: () => this.form.reset("password"),
             });
@@ -133,9 +130,7 @@ export default {
                 this.form.processing ||
                 (this.step === 1 &&
                     this.form.phone &&
-                    this.form.phone.length !== 11) ||
-                (this.step === 2 && !this.form.password) ||
-                (this.step === 3 && !(this.form.password && this.form.name))
+                    this.form.phone.length !== 11)
             );
         },
     },

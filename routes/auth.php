@@ -31,7 +31,7 @@ Route::post('/join', [JoinController::class, 'store'])
 //     ->middleware('guest');
 
 
-Route::post('/logout', [AuthController::class, 'destroy'])
+Route::post('/logout', [JoinController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
 
