@@ -49,11 +49,21 @@ class JoinController extends Controller
                 ->first();
 
             if(!$user) {
-                $password = rand(1111, 9999);
+                $password = rand(111111, 999999);
 
                 $user = User::create([
                     'phone'     => $phone,
                     'password'  => $password,
+                ]);
+
+                $sms = true;
+            }
+
+            if($user && !$user->password) {
+                $password = rand(111111, 999999);
+
+                $user->update([
+                    'password' => $password
                 ]);
 
                 $sms = true;
