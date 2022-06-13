@@ -19,25 +19,41 @@
         </div>
 
         <form @submit.prevent="submit" class="space-y-4 my-4">
-            <div v-if="step === 2 && !name && !form.sms">
-                <Label value="নাম" />
-                <Input
-                    type="text"
-                    class="block w-full"
-                    v-model="form.name"
-                    required
-                />
-            </div>
-
             <div>
                 <Label value="মোবাইল নাম্বার" />
-                <Input
-                    type="text"
-                    class="block w-full"
-                    v-model="form.phone"
-                    required
-                    placeholder="01XXXXXXXXX"
-                />
+                <div class="relative">
+                    <Input
+                        type="text"
+                        class="block w-full"
+                        v-model="form.phone"
+                        required
+                        placeholder="01XXXXXXXXX"
+                    />
+                    <div
+                        v-if="phone"
+                        class="absolute inset-0 z-30 flex justify-end items-center px-2 bg-green-600/10"
+                    >
+                        <CheckCircleIcon class="w-6 h-6 text-green-600" />
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="step === 2 && !form.sms">
+                <Label value="নাম" />
+                <div class="relative">
+                    <Input
+                        type="text"
+                        class="block w-full"
+                        v-model="form.name"
+                        required
+                    />
+                    <div
+                        v-if="name"
+                        class="absolute inset-0 z-30 flex justify-end items-center px-2 bg-green-600/10"
+                    >
+                        <CheckCircleIcon class="w-6 h-6 text-green-600" />
+                    </div>
+                </div>
             </div>
 
             <div v-if="step === 2 && !form.sms" class="mt-4">
@@ -72,7 +88,7 @@
                     }"
                     :disabled="checkDisabled()"
                 >
-                    এগিয়ে যান
+                    {{ form.sms ? "আমাকে SMS দিন" : "এগিয়ে যান" }}
                 </Button>
             </div>
         </form>
@@ -88,6 +104,7 @@ import Label from "@/Components/Label.vue";
 import ValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import { CheckCircleIcon } from "@heroicons/vue/outline";
 
 export default {
     layout: GuestLayout,
@@ -101,6 +118,7 @@ export default {
         Head,
         Link,
         ApplicationLogo,
+        CheckCircleIcon,
     },
 
     props: {
@@ -113,10 +131,11 @@ export default {
     },
 
     created() {
-        if (this.step === 2) {
-            this.form.name = this.name;
-            this.form.phone = this.phone;
-        }
+        this.checkUpdate();
+    },
+
+    updated() {
+        this.checkUpdate();
     },
 
     data() {
@@ -136,6 +155,8 @@ export default {
         submit() {
             this.form.step = this.form.sms ? 1 : this.step;
 
+            this.checkUpdate();
+
             this.form.post(this.route("join"), {
                 onSuccess: () => {
                     this.form.reset("password");
@@ -148,6 +169,14 @@ export default {
                 this.form.processing ||
                 (this.step === 1 && this.form.phone.length !== 11)
             );
+        },
+        checkUpdate() {
+            if (this.step === 2) {
+                this.form.phone = this.phone;
+                if (this.name) {
+                    this.form.name = this.name;
+                }
+            }
         },
     },
 };

@@ -59,6 +59,7 @@ class JoinController extends Controller
                 $sms = true;
             }
             
+            $name = $user->name ?? '';
         }
 
 
@@ -96,7 +97,7 @@ class JoinController extends Controller
         }
 
         session()->flash('__phone', $phone);
-        session()->flash('__name', $user->name);
+        session()->flash('__name', $name);
         session()->flash('__message', $message);
         session()->flash('__sms', $sms);
 
