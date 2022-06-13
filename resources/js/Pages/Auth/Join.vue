@@ -58,13 +58,25 @@
 
             <div v-if="step === 2 && !form.sms" class="mt-4">
                 <Label value="পাসওয়ার্ড" />
-                <Input
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
+                <div class="relative">
+                    <Input
+                        :type="inputTypePassword ? 'password' : 'text'"
+                        class="mt-1 block w-full"
+                        v-model="form.password"
+                        required
+                        autocomplete="current-password"
+                    />
+                    <EyeIcon
+                        v-if="inputTypePassword"
+                        @click="inputTypePassword = false"
+                        class="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6"
+                    />
+                    <EyeOffIcon
+                        v-else
+                        @click="inputTypePassword = true"
+                        class="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6"
+                    />
+                </div>
             </div>
 
             <div v-if="!sms" class="flex justify-start">
@@ -104,7 +116,7 @@ import Label from "@/Components/Label.vue";
 import ValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import { CheckCircleIcon } from "@heroicons/vue/outline";
+import { CheckCircleIcon, EyeIcon, EyeOffIcon } from "@heroicons/vue/outline";
 
 export default {
     layout: GuestLayout,
@@ -119,6 +131,8 @@ export default {
         Link,
         ApplicationLogo,
         CheckCircleIcon,
+        EyeIcon,
+        EyeOffIcon,
     },
 
     props: {
@@ -148,6 +162,7 @@ export default {
                 step: "",
                 sms: false,
             }),
+            inputTypePassword: true,
         };
     },
 
