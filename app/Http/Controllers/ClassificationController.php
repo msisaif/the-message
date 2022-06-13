@@ -21,8 +21,6 @@ class ClassificationController extends Controller
             ->orderBy('sura_number')
             ->orderBy('priority')
             ->orderBy('ayah');
-        
-        return ClassificationResource::collection($classifications->paginate(request()->perpage)->onEachSide(1)->appends(request()->input()));
 
         return Inertia::render('Classification/Index', [
             'classifications' => ClassificationResource::collection($classifications->paginate(request()->perpage)->onEachSide(1)->appends(request()->input())),
