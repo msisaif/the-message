@@ -18,7 +18,7 @@
             <div class="py-3 text-pink-500" v-html="message"></div>
         </div>
 
-        <form @submit.prevent="submit" class="space-y-4 my-4">
+        <form @submit.prevent="submit" class="space-y-4 mb-4">
             <div>
                 <Label value="মোবাইল নাম্বার" />
                 <div class="relative">
@@ -38,7 +38,25 @@
                 </div>
             </div>
 
-            <div v-if="step === 2 && !form.sms">
+            <div v-if="step === 3">
+                <Label value="কোড (OTP)" />
+                <div class="relative">
+                    <Input
+                        type="text"
+                        class="block w-full"
+                        v-model="form.otp"
+                        required
+                    />
+                    <div
+                        v-if="step === 5"
+                        class="absolute inset-0 z-30 flex justify-end items-center px-2 bg-green-600/10"
+                    >
+                        <CheckCircleIcon class="w-6 h-6 text-green-600" />
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="step === 5">
                 <Label value="নাম" />
                 <div class="relative">
                     <Input
@@ -56,7 +74,7 @@
                 </div>
             </div>
 
-            <div v-if="step === 2 && !form.sms" class="mt-4">
+            <div v-if="step === 5 || (step === 2 && !form.sms)" class="mt-4">
                 <Label value="পাসওয়ার্ড" />
                 <div class="relative">
                     <Input
@@ -79,7 +97,7 @@
                 </div>
             </div>
 
-            <div v-if="!sms" class="flex justify-start">
+            <div v-if="step == 2 && !sms" class="flex justify-start">
                 <label class="flex items-center justify-start">
                     <Checkbox name="sms" v-model:checked="form.sms" />
                     <span class="ml-2 text-sm text-gray-600">
@@ -161,6 +179,7 @@ export default {
                 remember: true,
                 step: "",
                 sms: false,
+                otp: "",
             }),
             inputTypePassword: true,
         };
@@ -168,7 +187,7 @@ export default {
 
     methods: {
         submit() {
-            this.form.step = this.form.sms ? 1 : this.step;
+            this.form.step = this.form.sms ? 4 : this.step;
 
             this.checkUpdate();
 
@@ -182,7 +201,8 @@ export default {
         checkDisabled() {
             return (
                 this.form.processing ||
-                (this.step === 1 && this.form.phone.length !== 11)
+                (this.step === 1 && this.form.phone.length !== 11) ||
+                (this.step === 3 && this.form.otp.length !== 4)
             );
         },
         checkUpdate() {

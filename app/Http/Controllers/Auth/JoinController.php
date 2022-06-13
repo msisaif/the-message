@@ -31,47 +31,49 @@ class JoinController extends Controller
             'password'  => '',
             'step'      => 'required|numeric',
             'sms'       => '',
+            'otp'       => '',
         ]);
 
-        $name       = $fields["name"];
-        $phone      = $fields["phone"];
-        $password   = $fields["password"];
-        $step       = $fields["step"];
-        $sms        = $fields["sms"];
+        $name       = $fields["name"] ?? '';
+        $phone      = $fields["phone"] ?? '';
+        $password   = $fields["password"] ?? '';
+        $step       = $fields["step"] ?? '';
+        $sms        = $fields["sms"] ?? '';
+        $otp        = $fields["otp"] ?? '';
+    
+        // return $step;
+
+        if($step == 4) {
+            $user = User::query()
+                ->where('phone', $phone)
+                ->first();
+
+            $this->sendUserPassordBySms($user);
+
+            session()->flash('__step', 2);
+
+            $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
+        }
 
         if($step == 1) {
             $message = "";
-
-            session()->flash('__step', 2);
 
             $user = User::query()
                 ->where('phone', $phone)
                 ->first();
 
-            if(!$user) {
-                $password = rand(111111, 999999);
+            if($user) {
+                session()->flash('__step', 2);
+            } else {
+                $otp = $this->sendOTP($phone);
 
-                $user = User::create([
-                    'phone'     => $phone,
-                    'password'  => $password,
-                ]);
+                $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে OTP পাঠানো হয়েছে।";
 
-                $sms = true;
-            }
-
-            if($user && !$user->password) {
-                $password = rand(111111, 999999);
-
-                $user->update([
-                    'password' => $password
-                ]);
-
-                $sms = true;
+                session()->flash('__step', 3);
             }
             
             $name = $user->name ?? '';
         }
-
 
         if($step == 2) {
             $user = User::query()
@@ -90,7 +92,7 @@ class JoinController extends Controller
                     ]);
                 }
 
-                session()->forget(['__name', '__phone', '__step']);
+                session()->forget(['__name', '__phone', '__step', '__otp']);
 
                 return redirect()->intended(RouteServiceProvider::HOME);
             }
@@ -100,10 +102,39 @@ class JoinController extends Controller
             $message = "আপনার পাসওয়ার্ড ভুল হয়েছে!";
         }
 
-        if($sms) {
-            $this->sendUserPassordBySms($user);
+        if($step == 3) {
+            if($otp == session('__otp')) {
+                session()->flash('__step', 5);
 
-            $message = "আপনার মোবাইল নাম্বারে SMS এর মাধ্যমে পাসওয়ার্ড পাঠানো হয়েছে।";
+                $message = "নাম ও পাসওয়ার্ড দিয়ে এগিয়ে যান।";
+
+            } else {
+                session()->flash('__step', 3);
+    
+                $message = "আপনার কোড (OTP) ভুল হয়েছে!";
+            }
+
+            
+        }
+
+        if($step == 5) {
+            if($otp == session('__otp')) {
+                $user = User::create([
+                    'name' => $name,
+                    'password'  => $password,
+                    'phone' => $phone,
+                ]);
+
+                Auth::login($user, 1);
+
+                session()->forget(['__name', '__phone', '__step', '__otp']);
+
+                return redirect()->intended(RouteServiceProvider::HOME);
+            }
+
+            session()->flash('__step', 3);
+
+            $message = "আপনার কোড (OTP) ভুল হয়েছে!";
         }
 
         session()->flash('__phone', $phone);
@@ -126,6 +157,21 @@ class JoinController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    protected function sendOTP($phone)
+    {
+        $otp = rand(1111, 9999);
+
+        $text = "আপনার কোড {$otp}";
+
+        $numbers = "88{$phone}";
+
+        $this->sendSms($numbers, $text);
+
+        session()->put('__otp', $otp);
+
+        return $otp;
     }
 
     protected function sendUserPassordBySms($user)
