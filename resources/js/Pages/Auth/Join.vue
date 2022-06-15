@@ -74,8 +74,21 @@
                 </div>
             </div>
 
-            <div v-if="step === 5 || (step === 2 && !form.sms)" class="mt-4">
+            <div
+                v-if="step === 5 || (step === 2 && !form.sms)"
+                class="mt-4 relative"
+            >
                 <Label value="পাসওয়ার্ড" />
+                <div
+                    class="absolute top-0 right-0 flex justify-center items-center gap-1"
+                >
+                    <Input
+                        type="checkbox"
+                        @click="inputTypePassword = !inputTypePassword"
+                        :checked="!inputTypePassword"
+                    />
+                    <Label value="দেখুন" />
+                </div>
                 <div class="relative">
                     <Input
                         :type="inputTypePassword ? 'password' : 'text'"
@@ -83,16 +96,6 @@
                         v-model="form.password"
                         required
                         autocomplete="current-password"
-                    />
-                    <EyeIcon
-                        v-if="inputTypePassword"
-                        @click="inputTypePassword = false"
-                        class="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6"
-                    />
-                    <EyeOffIcon
-                        v-else
-                        @click="inputTypePassword = true"
-                        class="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6"
                     />
                 </div>
             </div>
@@ -112,13 +115,13 @@
 
             <div class="flex items-center justify-center">
                 <Button
-                    class="w-full justify-center py-3"
+                    class="w-full justify-center"
                     :class="{
-                        'opacity-25 cursor-not-allowed': checkDisabled(),
+                        'opacity-50 cursor-not-allowed': checkDisabled(),
                     }"
                     :disabled="checkDisabled()"
                 >
-                    {{ form.sms ? "আমাকে SMS দিন" : "এগিয়ে যান" }}
+                    {{ form.sms ? "আমাকে SMS দিন" : buttonText() }}
                 </Button>
             </div>
         </form>
@@ -211,6 +214,20 @@ export default {
                 if (this.name) {
                     this.form.name = this.name;
                 }
+            }
+        },
+        buttonText() {
+            switch (this.step) {
+                case 1:
+                    return "সাবমিট";
+                case 2:
+                    return "লগইন";
+                case 3:
+                    return "সাবমিট";
+                case 5:
+                    return "নিবন্ধন সম্পন্ন করুন";
+                default:
+                    return "এগিয়ে যান";
             }
         },
     },
