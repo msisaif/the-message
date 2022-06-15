@@ -96,7 +96,10 @@ class ClassificationController extends Controller
         $this->getQuery()
             ->when(request()->search, function ($query, $search) {
                 $query->where(function ($query) use ($search) {
-                    $query->where('id', 'regexp', $search);
+                    $query->where('id', 'regexp', $search)
+                        ->orWhereHas('sura', function($query) use ($search) {
+                            $query->where('bengali_pronunciation', 'like', "%{$search}%");
+                        });
                 });
             });
 
