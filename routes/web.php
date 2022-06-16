@@ -19,6 +19,7 @@ use App\Http\Controllers\JuzController;
 use App\Http\Controllers\KidsZoneController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuranController;
 use App\Http\Controllers\RamadanChecklistController;
 use App\Http\Controllers\RamadanChecklistFieldController;
@@ -55,6 +56,11 @@ Route::get('/course/{course}/learn/{content?}', [OurCourseController::class, 'le
 Route::get('/my-course', [OurCourseController::class, 'myCourse'])
     ->name('user.courses')
     ->middleware(['auth']);
+
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('/my-profile', 'index')->name('profile.index');
+    Route::post('/my-profile', 'save')->name('profile.save');
+});
 
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article.show');

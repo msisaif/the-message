@@ -62,6 +62,12 @@
                     >
                         আমার কোর্স
                     </nav-link>
+                    <nav-link
+                        :href="route('profile.index')"
+                        :active="route().current('profile.index')"
+                    >
+                        আমার প্রফাইল
+                    </nav-link>
                     <hr />
                     <div
                         class="grid bg-gray-100 pl-2"
