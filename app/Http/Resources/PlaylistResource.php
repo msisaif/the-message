@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VideoResource extends JsonResource
+class PlaylistResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,10 @@ class VideoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id"        => (int) $this->id,
-            "type"      => (int) ($this->type ?? 1),
-            "typeText"  => (string) ($this->type_text ?? ""),
-            "title"     => (string) ($this->title ?? ''),
-            "url"       => (string) ($this->url ?? ''),
+            'id'        => (int) ($this->id),
+            'title'     => (string) ($this->title ?? ''),
+            'type'      => (string) ($this->type ?? ''),
+            'typeText'  => (string) ($this->type_text ?? ''),
             'image'     => new ImageResource($this->whenLoaded('image')),
             'imageUrl'  => (string) ($this->image->url ?? ''),
         ];

@@ -16,6 +16,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('playlist_id')->nullable();
             $table->string('title');
             $table->string('url');
             $table->unsignedTinyInteger('source_type')->default(1)->comment("1=YouTube");

@@ -5,23 +5,6 @@
         <form @submit.prevent="submit" class="">
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="col-span-2 col-start-1">
-                    <Label value="Type" />
-                    <Select
-                        class="mt-1 block w-full"
-                        v-model="form.type"
-                        required
-                    >
-                        <option value="">-- Select Type --</option>
-                        <option
-                            v-for="(typeLabel, typeValue) in data.types"
-                            :key="typeValue"
-                            :value="typeValue"
-                        >
-                            {{ typeLabel }}
-                        </option>
-                    </Select>
-                </div>
-                <div class="col-span-2 col-start-1">
                     <Label value="Title" />
                     <Input
                         type="text"
@@ -30,12 +13,16 @@
                     />
                 </div>
                 <div class="col-span-2 col-start-1">
-                    <Label value="Url" />
-                    <Input
-                        type="text"
+                    <Select
                         class="mt-1 block w-full"
-                        v-model="form.url"
-                    />
+                        v-model="form.type"
+                        required
+                    >
+                        <option value="">-- Select Type --</option>
+                        <option v-for="(typeLabel, typeValue) in data.types" :key="typeValue" :value="typeValue">
+                            {{ typeLabel }}
+                        </option>
+                    </Select>
                 </div>
             </div>
 
@@ -43,7 +30,7 @@
 
             <div class="flex items-center justify-between">
                 <div class="">
-                    <go-to-list :href="route('videos.index')" />
+                    <go-to-list :href="route('playlists.index')" />
                 </div>
                 <Button
                     class=""
@@ -90,9 +77,8 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                type: this.data.video.type,
-                title: this.data.video.title,
-                url: this.data.video.url,
+                title: this.data.playlist.title,
+                type: this.data.playlist.type,
             }),
         };
     },
@@ -100,12 +86,12 @@ export default {
     methods: {
         submit() {
             if (this.moduleAction == "store") {
-                return this.form.post(this.route("videos.store"));
+                return this.form.post(this.route("playlists.store"));
             }
 
             if (this.moduleAction == "update") {
                 return this.form.put(
-                    this.route("videos.update", this.data.video.id)
+                    this.route("playlists.update", this.data.playlist.id)
                 );
             }
         },

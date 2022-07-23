@@ -1,52 +1,46 @@
 <template>
-    <Head title="Video" />
+    <Head title="Playlist" />
 
     <app-layout>
         <template #header>
-            {{ video.title }}
+            {{ playlist.title }}
         </template>
 
         <div class="mx-auto w-full py-4">
-            <add-new-button :href="route('videos.create')" class="mb-4" />
+            <add-new-button :href="route('playlists.create')" class="mb-4" />
 
             <div class="overflow-auto bg-white border">
                 <table class="table-auto">
-                    <show-table-row heading="Thumbnail">
-                        <image-previe-with-save
-                            :imageUrl="video.imageUrl"
-                            option="video"
-                            :id="video.id"
-                        />
-                    </show-table-row>
-                    <show-table-row heading="Type">
-                        {{ video.typeText }}
-                    </show-table-row>
-                    <show-table-row heading="id">
-                        {{ video.id }}
-                    </show-table-row>
-                    <show-table-row heading="Title">
-                        {{ video.title }}
-                    </show-table-row>
-                    <show-table-row heading="Url">
-                        <div class="select-all">
-                            {{ video.url }}
+                    <show-table-row heading="Playlist Video">
+                        <div class="flex justify-start items-center">
+                            <Link
+                                :href="
+                                    route('playlists.edit', playlist.id) +
+                                    '?step=videos'
+                                "
+                                class="flex gap-2 justify-center items-center text-white px-2 h-8 bg-brand-primary"
+                            >
+                                <SwitchHorizontalIcon class="w-5 h-5" />
+                                <span>Playlist Video</span>
+                            </Link>
                         </div>
                     </show-table-row>
-                    <show-table-row heading="Play">
-                        <div class="w-full aspect-video rounded shadow">
-                            <iframe
-                                class="w-full h-full"
-                                :src="
-                                    video.url.replace(
-                                        'https://youtu.be/',
-                                        'https://www.youtube.com/embed/'
-                                    )
-                                "
-                                title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                            ></iframe>
+                    <show-table-row heading="Thumbnail">
+                        <image-previe-with-save
+                            :imageUrl="playlist.imageUrl"
+                            option="playlist"
+                            :id="playlist.id"
+                        />
+                    </show-table-row>
+                    <show-table-row heading="id">
+                        {{ playlist.id }}
+                    </show-table-row>
+                    <show-table-row heading="Title">
+                        {{ playlist.title }}
+                    </show-table-row>
+                    <show-table-row heading="Type">
+                        <div class="select-all">
+                            {{ playlist.typeText }}
                         </div>
                     </show-table-row>
                     <show-table-row heading="Action">
@@ -54,7 +48,7 @@
                             class="flex justify-start items-center gap-1 md:gap-2"
                         >
                             <action-button-edit
-                                :href="route('videos.edit', video.id)"
+                                :href="route('playlists.edit', playlist.id)"
                             />
                         </div>
                     </show-table-row>
@@ -62,7 +56,7 @@
             </div>
 
             <div class="w-full mt-4 flex">
-                <go-to-list :href="route('videos.index')" />
+                <go-to-list :href="route('playlists.index')" />
             </div>
         </div>
     </app-layout>
@@ -76,6 +70,7 @@ import ActionButtonEdit from "@/Components/ActionButtonEdit.vue";
 import GoToList from "@/Components/GoToList.vue";
 import AddNewButton from "@/Components/AddNewButton.vue";
 import ImagePrevieWithSave from "@/Components/ImagePrevieWithSave.vue";
+import { SwitchHorizontalIcon } from "@heroicons/vue/outline";
 
 export default {
     components: {
@@ -87,9 +82,10 @@ export default {
         GoToList,
         AddNewButton,
         ImagePrevieWithSave,
+        SwitchHorizontalIcon,
     },
     props: {
-        video: {
+        playlist: {
             type: Object,
             default: {},
         },

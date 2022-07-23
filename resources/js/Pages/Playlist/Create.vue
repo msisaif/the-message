@@ -1,13 +1,13 @@
 <template>
-    <Head title="Video" />
+    <Head title="Playlist" />
 
     <app-layout>
         <div class="py-4">
             <h3 class="text-brand-primary text-2xl text-center mb-3 font-bold">
-                Edit Video
+                Add New Playlist
             </h3>
 
-            <form-component :data="data" module-action="update" />
+            <form-component :data="data" module-action="store" />
         </div>
     </app-layout>
 </template>
@@ -28,14 +28,14 @@ export default {
     data() {
         return {
             data: {
-                video: this.video,
+                playlist: this.playlist,
                 types: this.types,
             },
         };
     },
 
     props: {
-        video: {
+        playlist: {
             type: Object,
             default: {},
         },

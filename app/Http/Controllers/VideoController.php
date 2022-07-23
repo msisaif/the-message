@@ -29,6 +29,7 @@ class VideoController extends Controller
     {
         return Inertia::render('Video/Create', [
             'video' => new Video(),
+            'types' => Video::getTypeList(),
         ]);
     }
 
@@ -36,7 +37,6 @@ class VideoController extends Controller
     {
         $video = Video::create($this->validateData($request) + [
             'user_id' => Auth::id(),
-            'type' => 1,
         ]);
 
         return redirect()
@@ -59,6 +59,7 @@ class VideoController extends Controller
     {
         return Inertia::render('Video/Edit', [
             'video' => $video,
+            'types' => Video::getTypeList(),
         ]);
     }
 
@@ -114,6 +115,7 @@ class VideoController extends Controller
                 'required',
                 Rule::unique(Video::class, 'url')->ignore($id),
             ],
+            'type' => 'required|integer',
         ]);
     }
 

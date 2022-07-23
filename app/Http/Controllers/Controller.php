@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Mentor;
+use App\Models\Playlist;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Video;
@@ -76,6 +77,10 @@ class Controller extends BaseController
 
         if(request()->option == 'video') {
             $model_instance = Video::find(request()->id);
+        }
+
+        if(request()->option == 'playlist') {
+            $model_instance = Playlist::find(request()->id);
         }
     
         if(request()->option == 'user') {

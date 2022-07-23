@@ -131,7 +131,16 @@
                             <template #icon>
                                 <VideoCameraIcon class="w-5" />
                             </template>
-                            সাম্প্রতিক ভিডিও
+                            ভিডিও ম্যানেজমেন্ট
+                        </nav-link>
+                        <nav-link
+                            :href="route('playlists.index')"
+                            :active="route().current('playlists.*')"
+                        >
+                            <template #icon>
+                                <VideoCameraIcon class="w-5" />
+                            </template>
+                            প্লেলিস্ট ম্যানেজমেন্ট
                         </nav-link>
                         <!-- <nav-link
                             :href="route('juzs.index')"

@@ -29,12 +29,17 @@ export default {
         return {
             data: {
                 video: this.video,
+                types: this.types,
             },
         };
     },
 
     props: {
         video: {
+            type: Object,
+            default: {},
+        },
+        types: {
             type: Object,
             default: {},
         },

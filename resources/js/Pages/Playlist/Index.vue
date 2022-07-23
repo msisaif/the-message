@@ -1,56 +1,45 @@
 <template>
-    <Head title="Video" />
+    <Head title="Playlist" />
 
     <app-layout>
-        <template #header> Video List </template>
+        <template #header> Playlist List </template>
 
         <div class="py-4">
-            <add-new-button :href="route('videos.create')" />
+            <add-new-button :href="route('playlists.create')" />
 
             <data-table
-                :collections="videos"
+                :collections="playlists"
                 :filters="filters"
                 :serial-column="false"
             >
                 <template #head>
-                    <th class="py-3 px-2 text-left">Preview</th>
+                    <th class="py-3 px-2 text-left">Thumbnail</th>
                     <th class="py-3 px-2 text-left">Title</th>
-                    <th class="py-3 px-2 text-left">url</th>
                     <th class="py-3 px-2 text-left">Type</th>
                     <th class="py-3 px-2 text-center">Action</th>
                 </template>
-                <template #default="{ item: video }">
-                    <td class="py-1 px-2 text-left">
-                        <div class="h-36 aspect-video rounded shadow">
-                            <iframe
-                                class="w-full h-full"
-                                :src="
-                                    video.url.replace(
-                                        'https://youtu.be/',
-                                        'https://www.youtube.com/embed/'
-                                    )
-                                "
-                                title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                            ></iframe>
+                <template #default="{ item: playlist }">
+                    <td class="py-3 px-2 text-left">
+                        <div class="h-20 aspect-video border w-auto overflow-hidden">
+                            <img
+                                :src="playlist.imageUrl"
+                                class="w-full h-full object-cover"
+                            />
                         </div>
                     </td>
-                    <td class="py-3 px-2 text-left">{{ video.title }}</td>
+                    <td class="py-3 px-2 text-left">{{ playlist.title }}</td>
                     <td class="py-3 px-2 text-left select-all">
-                        {{ video.url }}
+                        {{ playlist.typeText }}
                     </td>
-                    <td class="py-3 px-2 text-left">{{ video.typeText }}</td>
                     <td class="py-2.5 px-2">
                         <div
                             class="flex justify-center items-center gap-1 md:gap-2"
                         >
                             <action-button-show
-                                :href="route('videos.show', video.id)"
+                                :href="route('playlists.show', playlist.id)"
                             />
                             <action-button-edit
-                                :href="route('videos.edit', video.id)"
+                                :href="route('playlists.edit', playlist.id)"
                             />
                         </div>
                     </td>
@@ -79,7 +68,7 @@ export default {
         AddNewButton,
     },
     props: {
-        videos: {
+        playlists: {
             type: Object,
             default: {},
         },

@@ -18,6 +18,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JuzController;
 use App\Http\Controllers\KidsZoneController;
 use App\Http\Controllers\MentorController;
+use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuranController;
@@ -66,6 +67,7 @@ Route::get('/article', [ArticleController::class, 'index'])->name('article.index
 Route::get('/article/{post}', [ArticleController::class, 'show'])->name('article.show');
 
 Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.index');
+Route::get('/kids-zone/{playlist}', [KidsZoneController::class, 'show'])->name('kids-zone.show');
 
 Route::get('/video', [RecentVideoController::class, 'index'])->name('video.index');
 
@@ -108,6 +110,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'checklist-fields'  => ChecklistFieldController::class,
         'mentors'           => MentorController::class,
         'courses'           => CourseController::class,
+        'playlists'         => PlaylistController::class,
     ]);
 });
 
