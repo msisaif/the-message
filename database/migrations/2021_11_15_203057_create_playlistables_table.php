@@ -13,10 +13,11 @@ class CreatePlaylistableTable extends Migration
      */
     public function up()
     {
-        Schema::create('playlistable', function (Blueprint $table) {
+        Schema::create('playlistables', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('playlist_id');
+            $table->unsignedBigInteger('playlist_id')->index();
             $table->morphs('playlistable');
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,6 @@ class CreatePlaylistableTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('playlistable');
+        Schema::dropIfExists('playlistables');
     }
 }
