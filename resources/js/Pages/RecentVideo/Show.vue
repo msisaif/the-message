@@ -1,21 +1,14 @@
 <template>
     <app-layout>
-        <splash-banner>
-            <img
-                class="w-full"
-                src="/images/banner-kids-zone.png"
-                alt="banner"
-            />
-        </splash-banner>
         <section-card>
             <h1
                 class="text-brand-primary my-6 text-lg md:text-3xl text-center font-bold"
             >
-                শিশু বিচিত্রা
+                {{ data.playlist.title }}
             </h1>
             <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <div
-                    v-for="(video, index) in data.videos.data"
+                    v-for="(video, index) in data.videos"
                     :key="index"
                     class="relative"
                     @click="
@@ -47,14 +40,14 @@
             <h1
                 class="text-brand-primary my-6 text-lg md:text-3xl text-center font-bold"
             >
-                শিশু বিচিত্রা প্লেলিস্ট
+                অন্যান্য প্লেলিস্ট
             </h1>
             <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <Link
-                    v-for="(playlist, index) in data.playlists"
+                    v-for="(playlist, index) in data.playlists.data"
                     :key="index"
                     class="relative"
-                    :href="route('kids-zone.show', playlist.id)"
+                    :href="route('video.show', playlist.id)"
                 >
                     <div class="relative">
                         <div class="w-full aspect-video overflow-hidden shadow">
@@ -122,5 +115,11 @@ export default {
             playVideo: "",
         };
     },
+    // created() {
+    //     this.playVideo = this.data.videos[0].url.replace(
+    //         "https://youtu.be/",
+    //         "https://www.youtube.com/embed/"
+    //     );
+    // },
 };
 </script>

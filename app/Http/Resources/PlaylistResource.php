@@ -21,6 +21,7 @@ class PlaylistResource extends JsonResource
             'typeText'  => (string) ($this->type_text ?? ''),
             'image'     => new ImageResource($this->whenLoaded('image')),
             'imageUrl'  => (string) ($this->image->url ?? ''),
+            'videos'    => VideoResource::collection($this->whenLoaded('videos')),
         ];
     }
 }

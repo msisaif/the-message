@@ -70,6 +70,7 @@ Route::get('/kids-zone', [KidsZoneController::class, 'index'])->name('kids-zone.
 Route::get('/kids-zone/{playlist}', [KidsZoneController::class, 'show'])->name('kids-zone.show');
 
 Route::get('/video', [RecentVideoController::class, 'index'])->name('video.index');
+Route::get('/video/{playlist}', [RecentVideoController::class, 'show'])->name('video.show');
 
 Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
 

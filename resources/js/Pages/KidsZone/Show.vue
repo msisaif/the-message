@@ -1,12 +1,12 @@
 <template>
     <app-layout>
-        <splash-banner>
+        <!-- <splash-banner>
             <img
                 class="w-full"
                 src="/images/banner-kids-zone.png"
                 alt="banner"
             />
-        </splash-banner>
+        </splash-banner> -->
         <section-card>
             <h1
                 class="text-brand-primary my-6 text-lg md:text-3xl text-center font-bold"
@@ -47,7 +47,7 @@
             <h1
                 class="text-brand-primary my-6 text-lg md:text-3xl text-center font-bold"
             >
-                প্লেলিস্ট সমূহ
+                অন্যান্য প্লেলিস্ট
             </h1>
             <div class="grid md:grid-cols-4 gap-2 md:gap-4 px-2 md:px-0">
                 <Link
@@ -56,7 +56,6 @@
                     class="relative"
                     :href="route('kids-zone.show', playlist.id)"
                 >
-                    >
                     <div class="relative">
                         <div class="w-full aspect-video overflow-hidden shadow">
                             <img
@@ -71,7 +70,7 @@
                     >
                         {{ playlist.title }}
                     </h3>
-                    <play-icon-with-ping-animation />
+                    <playlist-icon />
                 </Link>
             </div>
         </section-card>
@@ -101,6 +100,7 @@ import SplashBanner from "@/Components/SplashBanner.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import PlayIconWithPingAnimation from "@/Components/PlayIconWithPingAnimation.vue";
 import MenuIconWithPingAnimation from "@/Components/MenuIconWithPingAnimation.vue";
+import PlaylistIcon from "@/Components/PlaylistIcon.vue";
 export default {
     components: {
         AppLayout,
@@ -109,6 +109,7 @@ export default {
         SplashBanner,
         PlayIconWithPingAnimation,
         MenuIconWithPingAnimation,
+        PlaylistIcon,
     },
     props: {
         data: {
@@ -121,5 +122,11 @@ export default {
             playVideo: "",
         };
     },
+    // created() {
+    //     this.playVideo = this.data.videos[0].url.replace(
+    //         "https://youtu.be/",
+    //         "https://www.youtube.com/embed/"
+    //     );
+    // },
 };
 </script>

@@ -20,25 +20,36 @@ class KidsZoneController extends Controller
             ->type(2)
             ->simplePaginate(20);
 
+        PlaylistResource::withoutWrapping();
+
         $playlists = Playlist::query()
             ->has('videos')
-            ->latest()
-            ->type(1)
-            ->simplePaginate(20);
+            ->type(2)
+            ->inRandomOrder()
+            ->take(12)
+            ->get();
 
         return Inertia::render('KidsZone/Index', [
-            'videos'    => VideoResource::collection($videos),
-            'playlists' => PlaylistResource::collection($playlists),
+            'data' => [
+                'videos'    => VideoResource::collection($videos),
+                'playlists' => PlaylistResource::collection($playlists),
+            ]
         ]);
     }
 
     public function show(Playlist $playlist)
     {
+        if($playlist->type == 1) {
+            return redirect()->route('video.show', $playlist->id);
+        }
+
         $playlist->load('videos');
 
         $playlists = Playlist::query()
+            ->withCount('videos')
             ->has('videos')
             ->type(2)
+            ->where('id', '!=', $playlist->id)
             ->inRandomOrder()
             ->simplePaginate(12);
 
