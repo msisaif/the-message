@@ -4,7 +4,7 @@
             title="সাম্প্রতিক ভিডিও"
         >
         </splash-banner>
-        <section-card>
+        <section-card v-if="Object.keys(data.videos.data).length">
             <h1
                 class="text-brand-primary my-6 text-lg md:text-3xl text-center font-bold"
             >
